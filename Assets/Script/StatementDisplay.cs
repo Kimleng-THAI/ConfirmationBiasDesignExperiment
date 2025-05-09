@@ -5,7 +5,7 @@ public class StatementDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI statementText;
 
-    // You can replace this with a dynamic value later
+    // We can replace this with a dynamic value later
     private string participantBelief = "I believe that climate change is primarily caused by human activity.";
 
     void Start()
