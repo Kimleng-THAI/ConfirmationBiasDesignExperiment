@@ -1,0 +1,94 @@
+﻿{
+    "questions": [
+        {
+            "conflictStatement": "Michael Jordan's six championships make him the greatest of all time.",
+            "options": [
+                "1. Championships aren't everything—LeBron has better all-around stats.",
+                "2. Jordan dominated in a different era with less competition.",
+                "3. Six titles are the ultimate measure of greatness.",
+                "4. Jordan never lost in the Finals—that's true greatness."
+            ]
+        },
+        {
+            "conflictStatement": "LeBron James has never had a signature Finals moment.",
+            "options": [
+                "1. What about the 2016 block in Game 7?",
+                "2. His triple-double averages are historic.",
+                "3. Signature moments are what define legends.",
+                "4. MJ had multiple clutch shots under pressure."
+            ]
+        },
+        {
+            "conflictStatement": "Steph Curry changed the game more than any player in history.",
+            "options": [
+                "1. He revolutionized the three-point shot and spacing.",
+                "2. Players like Jordan and Magic had a broader cultural impact.",
+                "3. The game was already evolving toward more threes.",
+                "4. Curry made basketball more accessible to undersized players."
+            ]
+        },
+        {
+            "conflictStatement": "Kevin Durant's championships with the Warriors are less legitimate.",
+            "options": [
+                "1. He joined a 73-win team—it's not the same.",
+                "2. He was still the best player in those Finals.",
+                "3. Winning is winning—he did what was best for him.",
+                "4. His move hurt his legacy compared to staying with OKC."
+            ]
+        },
+        {
+            "conflictStatement": "Shaquille O’Neal underachieved given his physical dominance.",
+            "options": [
+                "1. He won 4 titles—how is that underachieving?",
+                "2. He could’ve done more if he stayed in shape.",
+                "3. Shaq didn’t take the game seriously enough.",
+                "4. He dominated when it mattered most."
+            ]
+        },
+        {
+            "conflictStatement": "Kobe Bryant was overrated during his career.",
+            "options": [
+                "1. His work ethic and killer instinct are unmatched.",
+                "2. He was inefficient and took too many bad shots.",
+                "3. Five rings speak for themselves.",
+                "4. He wasn’t as impactful as Duncan or LeBron."
+            ]
+        },
+        {
+            "conflictStatement": "Analytics have ruined the beauty of basketball.",
+            "options": [
+                "1. Analytics have made the game smarter and more efficient.",
+                "2. The midrange game is disappearing—it’s sad.",
+                "3. Players are just following what wins games.",
+                "4. Basketball is less creative now because of analytics."
+            ]
+        },
+        {
+            "conflictStatement": "Load management is hurting the NBA’s reputation.",
+            "options": [
+                "1. Players need rest to avoid injuries—it’s smart.",
+                "2. Fans pay to see stars and feel cheated.",
+                "3. The league schedule needs to change, not the players.",
+                "4. Load management ruins the regular season's value."
+            ]
+        },
+        {
+            "conflictStatement": "The modern NBA is too soft compared to past eras.",
+            "options": [
+                "1. Physical play doesn't equal better basketball.",
+                "2. Today’s game emphasizes skill over brute force.",
+                "3. Players now are more athletic and versatile.",
+                "4. The 90s were tougher and more authentic."
+            ]
+        },
+        {
+            "conflictStatement": "Dirk Nowitzki’s 2011 title run was more impressive than any LeBron championship.",
+            "options": [
+                "1. He beat a superteam with no All-Star help.",
+                "2. LeBron came back from 3–1 against the Warriors—that's bigger.",
+                "3. Dirk dominated every round without controversy.",
+                "4. Context matters—LeBron faced stronger competition overall."
+            ]
+        }
+    ]
+}

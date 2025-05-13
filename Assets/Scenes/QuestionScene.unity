@@ -1017,6 +1017,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b6c3be55ece4024a9b322c160c9bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conflictStatementText: {fileID: 1378177319}
+  optionTexts:
+  - {fileID: 145794392}
+  - {fileID: 1624976134}
+  - {fileID: 1804746966}
+  - {fileID: 341426895}
 --- !u!4 &1496593890
 Transform:
   m_ObjectHideFlags: 0

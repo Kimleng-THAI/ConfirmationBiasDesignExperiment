@@ -18,8 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/QuestionScene.unity
     guid: d2bc08c366c0f4f298bb9a549e60adb7
   - enabled: 1
-    path: Assets/Scenes/QuestionScene2.unity
-    guid: 3523ec2f314b9497c8c4e4f142d68461
+    path: Assets/Scenes/SurveyScene.unity
+    guid: 954bdc10ef67a423da6a49162c989d9d
+  - enabled: 1
+    path: Assets/Scenes/ThankYouScene.unity
+    guid: 45487aa8708ca4e9f9083f816b73b0a8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
