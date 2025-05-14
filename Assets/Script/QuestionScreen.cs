@@ -61,7 +61,7 @@ public class QuestionScreen : MonoBehaviour
         if (index >= questions.Count)
         {
             Debug.Log("All questions completed!");
-            SceneManager.LoadScene("EndScene");
+            SceneManager.LoadScene("SurveyScene");
             return;
         }
 
