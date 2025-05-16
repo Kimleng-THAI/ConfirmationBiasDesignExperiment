@@ -601,7 +601,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 1200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1528244044
 MonoBehaviour:
@@ -623,16 +623,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to the Experiment
+  m_text: 'WELCOME TO THE EXPERIMENT
 
 
     - You will see a series of statements.
 
+
     -
     Please respond quickly and honestly.
 
+
     - The statements might challenge your
     beliefs.
+
+
+
+
 
 
     - Press SPACE to begin.'
