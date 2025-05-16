@@ -14,6 +14,8 @@ public class QuestionScreen : MonoBehaviour
     private static int currentQuestionIndex = 0;
     private List<Question> questions;
 
+    public static ParticipantData1 participantData = new ParticipantData1(); // moved inside class
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -77,7 +79,18 @@ public class QuestionScreen : MonoBehaviour
     private void RecordResponse(string option)
     {
         float reactionTime = Time.time - startTime;
+        var currentQuestion = questions[currentQuestionIndex];
+
         Debug.Log($"[Question {currentQuestionIndex}] Option {option} selected after {reactionTime:F3} seconds.");
+
+        // Save response data
+        var response = new ResponseRecord
+        {
+            questionIndex = currentQuestionIndex,
+            selectedOption = option,
+            reactionTime = reactionTime
+        };
+        participantData.responses.Add(response);
 
         currentQuestionIndex++;
         startTime = Time.time; // reset timer for next question

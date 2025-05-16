@@ -17,7 +17,7 @@ public class ThankYouScreen : MonoBehaviour
         Debug.Log("Participant has finished the experiment.");
 
         // Optionally, you can exit the application after the feedback:
-        Application.Quit();
+        // Application.Quit();
 
         // Or load another scene, for example, the main menu
         // SceneManager.LoadScene("BeliefInputScene");
