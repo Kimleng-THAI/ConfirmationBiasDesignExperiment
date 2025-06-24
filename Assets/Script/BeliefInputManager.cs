@@ -18,6 +18,7 @@ public class BeliefInputManager : MonoBehaviour
             data.belief = input;
             // ISO format
             System.DateTime sydneyTime = System.DateTime.UtcNow.AddHours(10);
+            // Save start time
             data.experimentStartTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
             SceneManager.LoadScene("InstructionScreen");
         }

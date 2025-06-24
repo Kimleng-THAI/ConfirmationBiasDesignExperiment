@@ -41,7 +41,22 @@ public class ThankYouScreen : MonoBehaviour
             Debug.LogWarning("Sydney timezone not found. Using UTC as fallback.");
             sydneyTime = utcNow;
         }
+
+        // Save end time
         QuestionScreen.participantData.experimentEndTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
+
+        // Calculate duration
+        DateTime startTime;
+        if (DateTime.TryParse(QuestionScreen.participantData.experimentStartTime.Replace(" AEST", ""), out startTime))
+        {
+            TimeSpan duration = sydneyTime - startTime;
+            QuestionScreen.participantData.duration = $"{(int)duration.TotalMinutes} minutes and {duration.Seconds} seconds";
+            Debug.Log($"Experiment completed in {duration.Minutes} minutes and {duration.Seconds} seconds.");
+        }
+        else
+        {
+            Debug.LogWarning("Could not parse experimentStartTime.");
+        }
 
         // Convert to JSON
         string json = JsonUtility.ToJson(QuestionScreen.participantData, true);
