@@ -7,8 +7,8 @@ public class StatementDisplay : MonoBehaviour
 
     void Start()
     {
-        // Fetch the belief input from the ParticipantData class
-        string participantBelief = ParticipantData.ParticipantBelief;
+        // Access belief from the shared participantData instance
+        string participantBelief = QuestionScreen.participantData.belief;
 
         // Display the participant's belief
         statementText.text = participantBelief;

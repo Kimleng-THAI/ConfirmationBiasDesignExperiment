@@ -18,7 +18,8 @@ public class QuestionDataLoader : MonoBehaviour
 {
     public static QuestionList LoadQuestionsFromJSON()
     {
-        TextAsset file = Resources.Load<TextAsset>("questions"); // Assets/Resources/questions.json
+        // Assets/Resources/questions.json
+        TextAsset file = Resources.Load<TextAsset>("questions");
         if (file == null)
         {
             Debug.LogError("questions.json not found in Resources folder.");

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.IO;
 
 public class SurveyScreen : MonoBehaviour
 {
@@ -28,42 +27,18 @@ public class SurveyScreen : MonoBehaviour
             return;
         }
 
-        int age;
-        if (!int.TryParse(ageText, out age))
+        if (!int.TryParse(ageText, out int age))
         {
             Debug.LogWarning("Invalid age entered.");
             return;
         }
 
-        // Set participant info
+        // Set participant info (but do NOT save to file yet)
         QuestionScreen.participantData.studentID = studentId;
         QuestionScreen.participantData.age = age;
         QuestionScreen.participantData.feedback = feedback;
 
-        // Convert to JSON
-        string json = JsonUtility.ToJson(QuestionScreen.participantData, true);
-
-        // Get user home folder dynamically
-        string userHome = System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
-        string folderPath = Path.Combine(userHome, "confirmationBiasinJSON");
-
-        // Create folder if it doesn't exist
-        if (!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-            Debug.Log("Created folder: " + folderPath);
-        }
-
-        // Create full file path
-        string filename = $"participant_{studentId}_{System.DateTime.Now:yyyyMMdd_HHmmss}.json";
-        string fullPath = Path.Combine(folderPath, filename);
-
-        // Write JSON to file
-        File.WriteAllText(fullPath, json);
-
-        Debug.Log("Participant data saved to: " + fullPath);
-
-        // Load Thank You scene
+        // Move to Thank You scene
         SceneManager.LoadScene("ThankYouScene");
     }
 }

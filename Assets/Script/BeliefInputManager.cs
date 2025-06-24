@@ -13,7 +13,12 @@ public class BeliefInputManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(input))
         {
-            ParticipantData.ParticipantBelief = input;
+            // Store belief and start time in main data object
+            var data = QuestionScreen.participantData;
+            data.belief = input;
+            // ISO format
+            System.DateTime sydneyTime = System.DateTime.UtcNow.AddHours(10);
+            data.experimentStartTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
             SceneManager.LoadScene("InstructionScreen");
         }
         else

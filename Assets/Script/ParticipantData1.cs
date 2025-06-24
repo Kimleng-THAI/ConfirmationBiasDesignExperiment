@@ -9,6 +9,12 @@ public class ParticipantData1
     public int age;
     public string feedback;
 
+    public string belief;
+
+    // ISO 8601 format
+    public string experimentStartTime;
+    public string experimentEndTime;
+
     public List<ResponseRecord> responses = new List<ResponseRecord>();
 }
 
