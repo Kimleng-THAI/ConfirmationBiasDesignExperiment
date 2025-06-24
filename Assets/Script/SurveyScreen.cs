@@ -36,7 +36,10 @@ public class SurveyScreen : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[SurveyScreen]: Participant took {duration:F2} seconds to submit feedback.");
+        Debug.Log($"[SurveyScene]: Participant took {duration:F2} seconds to submit feedback.");
+
+        // Save to participant data
+        QuestionScreen.participantData.surveySceneDuration = duration.ToString("F2") + " seconds";
 
         // Set participant info (but do NOT save to file yet)
         QuestionScreen.participantData.studentID = studentId;

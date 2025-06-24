@@ -19,6 +19,10 @@ public class ThankYouScreen : MonoBehaviour
     {
         float recordTimeTaken = Time.time - startThankYouScene;
         Debug.Log($"[ThankYouScene]: Participant took {recordTimeTaken:F2} seconds to press Done button.");
+
+        // Save to participant data
+        QuestionScreen.participantData.thankYouSceneDuration = recordTimeTaken.ToString("F2") + " seconds";
+
         Debug.Log("[ThankYouScene]: Participant has finished the experiment.");
 
         // Safely convert to Sydney time (works across OS)

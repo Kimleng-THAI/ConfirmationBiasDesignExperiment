@@ -14,6 +14,11 @@ public class ParticipantData1
     public string experimentEndTime;
     public string duration;
 
+    public string instructionScreenReactionTime;
+    public string statementSceneReactionTime;
+    public string surveySceneDuration;
+    public string thankYouSceneDuration;
+
     public List<ResponseRecord> responses = new List<ResponseRecord>();
 }
 
