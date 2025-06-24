@@ -22,5 +22,5 @@ public class ResponseRecord
 {
     public int questionIndex;
     public string selectedOption;
-    public float reactionTime;
+    public string reactionTime;
 }

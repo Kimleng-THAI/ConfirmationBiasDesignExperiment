@@ -29,8 +29,9 @@ public class StatementScreen : MonoBehaviour
 
     private void OnContinuePressed(InputAction.CallbackContext context)
     {
-        float reactionTime = Time.time - startTime;
-        Debug.Log($"[StatementScene] SPACE pressed after {reactionTime:F3} seconds.");
+        float rawReactionTime = Time.time - startTime;
+        string reactionTime = rawReactionTime.ToString("F3");
+        Debug.Log($"[StatementScene]: Time taken to press SPACE: {reactionTime:F3} seconds.");
         // Replace with the next scene
         SceneManager.LoadScene("QuestionScene");
     }

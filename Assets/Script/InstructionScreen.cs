@@ -30,7 +30,7 @@ public class InstructionScreen : MonoBehaviour
     private void OnContinuePressed(InputAction.CallbackContext context)
     {
         float reactionTime = Time.time - startTime;
-        Debug.Log($"Time taken to press SPACE: {reactionTime:F3} seconds");
+        Debug.Log($"[InstructionScreen]: Time taken to press SPACE: {reactionTime:F3} seconds.");
 
         LoadNextScene();
     }

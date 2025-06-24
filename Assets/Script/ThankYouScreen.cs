@@ -7,15 +7,19 @@ using System.IO;
 public class ThankYouScreen : MonoBehaviour
 {
     public Button exitButton;
+    private float startThankYouScene;
 
     private void Start()
     {
+        startThankYouScene = Time.time;
         exitButton.onClick.AddListener(ExitExperiment);
     }
 
     private void ExitExperiment()
     {
-        Debug.Log("Participant has finished the experiment.");
+        float recordTimeTaken = Time.time - startThankYouScene;
+        Debug.Log($"[ThankYouScene]: Participant took {recordTimeTaken:F2} seconds to press Done button.");
+        Debug.Log("[ThankYouScene]: Participant has finished the experiment.");
 
         // Safely convert to Sydney time (works across OS)
         DateTime utcNow = DateTime.UtcNow;

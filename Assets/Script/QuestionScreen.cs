@@ -62,7 +62,7 @@ public class QuestionScreen : MonoBehaviour
     {
         if (index >= questions.Count)
         {
-            Debug.Log("All questions completed!");
+            Debug.Log("[QuestionScene]: All questions completed!");
             SceneManager.LoadScene("SurveyScene");
             return;
         }
@@ -78,10 +78,10 @@ public class QuestionScreen : MonoBehaviour
 
     private void RecordResponse(string option)
     {
-        float reactionTime = Time.time - startTime;
-        var currentQuestion = questions[currentQuestionIndex];
+        float rawReactionTime = Time.time - startTime;
+        string reactionTime = rawReactionTime.ToString("F3");
 
-        Debug.Log($"[Question {currentQuestionIndex}] Option {option} selected after {reactionTime:F3} seconds.");
+        Debug.Log($"[Question {currentQuestionIndex}] Option {option} selected after {reactionTime} seconds.");
 
         // Save response data
         var response = new ResponseRecord

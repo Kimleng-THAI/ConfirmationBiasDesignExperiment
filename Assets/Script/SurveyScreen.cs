@@ -9,9 +9,11 @@ public class SurveyScreen : MonoBehaviour
     public TMP_InputField studentIdInput;
     public TMP_InputField ageInput;
     public Button submitButton;
+    private float startTime;
 
     private void Start()
     {
+        startTime = Time.time;
         submitButton.onClick.AddListener(SubmitSurvey);
     }
 
@@ -20,6 +22,7 @@ public class SurveyScreen : MonoBehaviour
         string feedback = feedbackInput.text;
         string studentId = studentIdInput.text;
         string ageText = ageInput.text;
+        float duration = Time.time - startTime;
 
         if (string.IsNullOrWhiteSpace(studentId) || string.IsNullOrWhiteSpace(ageText))
         {
@@ -32,6 +35,8 @@ public class SurveyScreen : MonoBehaviour
             Debug.LogWarning("Invalid age entered.");
             return;
         }
+
+        Debug.Log($"[SurveyScreen]: Participant took {duration:F2} seconds to submit feedback.");
 
         // Set participant info (but do NOT save to file yet)
         QuestionScreen.participantData.studentID = studentId;

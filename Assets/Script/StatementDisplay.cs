@@ -13,6 +13,6 @@ public class StatementDisplay : MonoBehaviour
         // Display the participant's belief
         statementText.text = participantBelief;
 
-        Debug.Log($"Displayed Statement: {participantBelief}");
+        Debug.Log($"[StatementScene]: {participantBelief}");
     }
 }
