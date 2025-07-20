@@ -135,6 +135,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select5"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b9a92c9-8341-4566-a4ef-81182d5a002b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Select4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9c6ea4e-02ae-43c0-ae9c-cf2f7b33315d"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +225,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Select2 = m_UI.FindAction("Select2", throwIfNotFound: true);
         m_UI_Select3 = m_UI.FindAction("Select3", throwIfNotFound: true);
         m_UI_Select4 = m_UI.FindAction("Select4", throwIfNotFound: true);
+        m_UI_Select5 = m_UI.FindAction("Select5", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -290,6 +311,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Select2;
     private readonly InputAction m_UI_Select3;
     private readonly InputAction m_UI_Select4;
+    private readonly InputAction m_UI_Select5;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -321,6 +343,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Select4".
         /// </summary>
         public InputAction @Select4 => m_Wrapper.m_UI_Select4;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Select5".
+        /// </summary>
+        public InputAction @Select5 => m_Wrapper.m_UI_Select5;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -362,6 +388,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Select4.started += instance.OnSelect4;
             @Select4.performed += instance.OnSelect4;
             @Select4.canceled += instance.OnSelect4;
+            @Select5.started += instance.OnSelect5;
+            @Select5.performed += instance.OnSelect5;
+            @Select5.canceled += instance.OnSelect5;
         }
 
         /// <summary>
@@ -388,6 +417,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Select4.started -= instance.OnSelect4;
             @Select4.performed -= instance.OnSelect4;
             @Select4.canceled -= instance.OnSelect4;
+            @Select5.started -= instance.OnSelect5;
+            @Select5.performed -= instance.OnSelect5;
+            @Select5.canceled -= instance.OnSelect5;
         }
 
         /// <summary>
@@ -463,5 +495,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSelect4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Select5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSelect5(InputAction.CallbackContext context);
     }
 }

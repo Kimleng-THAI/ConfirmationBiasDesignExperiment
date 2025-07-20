@@ -16,13 +16,18 @@ public class InstructionScreen : MonoBehaviour
     {
         // Record the time when the instruction screen is shown
         startTime = Time.time;
+
+        // Record experiment start time (in Sydney time)
+        System.DateTime sydneyTime = System.DateTime.UtcNow.AddHours(10);
+        QuestionScreen.participantData.experimentStartTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
+        Debug.Log("[InstructionScreen]: Experiment start time set to " + QuestionScreen.participantData.experimentStartTime);
+
         inputActions.UI.Enable();
         inputActions.UI.Continue.performed += OnContinuePressed;
     }
 
     private void OnDisable()
     {
-        // Important to unsubscribe
         inputActions.UI.Continue.performed -= OnContinuePressed;
         inputActions.UI.Disable();
     }
@@ -41,6 +46,6 @@ public class InstructionScreen : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene("StatementScene");
+        SceneManager.LoadScene("QuestionScene");
     }
 }

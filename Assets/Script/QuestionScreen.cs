@@ -14,6 +14,10 @@ public class QuestionScreen : MonoBehaviour
     private static int currentQuestionIndex = 0;
     private List<Question> questions;
 
+    private Coroutine eegCoroutine;
+    private Coroutine heartRateCoroutine;
+    private float experimentStartTimeRealtime;
+
     public static ParticipantData1 participantData = new ParticipantData1(); // moved inside class
 
     private void Awake()
@@ -38,8 +42,12 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select2.performed += OnSelect2;
         inputActions.UI.Select3.performed += OnSelect3;
         inputActions.UI.Select4.performed += OnSelect4;
+        inputActions.UI.Select5.performed += OnSelect5;
 
         startTime = Time.time;
+        experimentStartTimeRealtime = Time.realtimeSinceStartup;
+        eegCoroutine = StartCoroutine(SimulateEEGData());
+        heartRateCoroutine = StartCoroutine(SimulateHeartRateData());
         LoadQuestion(currentQuestionIndex);
     }
 
@@ -49,26 +57,31 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select2.performed -= OnSelect2;
         inputActions.UI.Select3.performed -= OnSelect3;
         inputActions.UI.Select4.performed -= OnSelect4;
+        inputActions.UI.Select5.performed -= OnSelect5;
 
         inputActions.UI.Disable();
+
+        if (eegCoroutine != null) StopCoroutine(eegCoroutine);
+        if (heartRateCoroutine != null) StopCoroutine(heartRateCoroutine);
     }
 
     private void OnSelect1(InputAction.CallbackContext ctx) => RecordResponse("1");
     private void OnSelect2(InputAction.CallbackContext ctx) => RecordResponse("2");
     private void OnSelect3(InputAction.CallbackContext ctx) => RecordResponse("3");
     private void OnSelect4(InputAction.CallbackContext ctx) => RecordResponse("4");
+    private void OnSelect5(InputAction.CallbackContext ctx) => RecordResponse("5");
 
     private void LoadQuestion(int index)
     {
         if (index >= questions.Count)
         {
             Debug.Log("[QuestionScene]: All questions completed!");
-            SceneManager.LoadScene("SurveyScene");
+            SceneManager.LoadScene("TopicSelectorScene");
             return;
         }
 
         var q = questions[index];
-        conflictStatementText.text = q.conflictStatement;
+        conflictStatementText.text = $"<b>{q.topic}</b>\n\n{q.statement}";
 
         for (int i = 0; i < optionTexts.Length; i++)
         {
@@ -95,5 +108,39 @@ public class QuestionScreen : MonoBehaviour
         currentQuestionIndex++;
         startTime = Time.time; // reset timer for next question
         LoadQuestion(currentQuestionIndex);
+    }
+
+    private IEnumerator<WaitForSeconds> SimulateEEGData()
+    {
+        while (true)
+        {
+            float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
+            float microvolts = Random.Range(10f, 100f); // Simulated EEG signal strength
+
+            QuestionScreen.participantData.eegReadings.Add(new EEGReading
+            {
+                timestamp = timestamp,
+                microvolts = microvolts
+            });
+
+            yield return new WaitForSeconds(0.1f); // 10Hz EEG
+        }
+    }
+
+    private IEnumerator<WaitForSeconds> SimulateHeartRateData()
+    {
+        while (true)
+        {
+            float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
+            int bpm = Random.Range(60, 100); // Simulated heart rate
+
+            QuestionScreen.participantData.heartRateReadings.Add(new HeartRateReading
+            {
+                timestamp = timestamp,
+                bpm = bpm
+            });
+
+            yield return new WaitForSeconds(1f); // 1Hz heart rate
+        }
     }
 }

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Question
 {
-    public string conflictStatement;
+    public string topic;
+    public string statement;
     public List<string> options;
 }
 
