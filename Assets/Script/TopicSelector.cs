@@ -18,11 +18,11 @@ public class TopicSelector : MonoBehaviour
         "Education and Learning Methods"
     };
 
-    private bool hasRemovedPlaceholder = false;
-
     private void Start()
     {
-        // Insert "Choose Topic..." at the top
+        // Clear existing options and add "Choose Topic..." placeholder
+        topicDropdown.ClearOptions();
+
         List<TMP_Dropdown.OptionData> dropdownOptions = new List<TMP_Dropdown.OptionData>
         {
             new TMP_Dropdown.OptionData("Choose Topic...")
@@ -33,40 +33,25 @@ public class TopicSelector : MonoBehaviour
             dropdownOptions.Add(new TMP_Dropdown.OptionData(topic));
         }
 
-        topicDropdown.options = dropdownOptions;
+        topicDropdown.AddOptions(dropdownOptions);
         topicDropdown.value = 0;
         topicDropdown.captionText.text = "Choose Topic...";
-
         continueButton.interactable = false;
 
-        topicDropdown.onValueChanged.AddListener(delegate { OnDropdownValueChanged(); });
-
-        // Remove the placeholder when dropdown is clicked
-        topicDropdown.onValueChanged.AddListener(delegate { RemovePlaceholderIfNeeded(); });
-
+        topicDropdown.onValueChanged.AddListener(OnDropdownValueChanged);
         continueButton.onClick.AddListener(OnContinueButtonClicked);
     }
 
-    private void OnDropdownValueChanged()
+    private void OnDropdownValueChanged(int index)
     {
-        // Only enable the continue button if a real topic is selected
-        continueButton.interactable = topicDropdown.value != 0;
-    }
-
-    private void RemovePlaceholderIfNeeded()
-    {
-        if (hasRemovedPlaceholder) return;
-
-        // Remove "Choose Topic..." from options
-        topicDropdown.options.RemoveAt(0);
-        topicDropdown.RefreshShownValue();  // Update the UI
-        hasRemovedPlaceholder = true;
+        // Enable the continue button only if a valid topic is selected
+        continueButton.interactable = index > 0;
     }
 
     private void OnContinueButtonClicked()
     {
         string selectedTopic = topicDropdown.options[topicDropdown.value].text;
-        Debug.Log("[TopicSelectorScene]: Topic selected - " + selectedTopic);
-        SceneManager.LoadScene("SurveyScene");
+        Debug.Log("[TopicSelector]: Topic selected - " + selectedTopic);
+        SceneManager.LoadScene("ArticleSelectorScene");
     }
 }
