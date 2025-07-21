@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class ArticleEntryData
@@ -22,11 +23,15 @@ public class ArticleSelectorManager : MonoBehaviour
 {
     public GameObject articleButtonPrefab; // Assign in Inspector
     public Transform contentPanel;         // Assign in Inspector
+    public Button backButton;              // Assign in Inspector
 
     private List<ArticleEntryData> loadedArticles;
 
     void Start()
     {
+        // Ensure back button always works
+        backButton.onClick.AddListener(OnBackButtonClicked);
+
         string selectedTopic = PlayerPrefs.GetString("SelectedTopic", "");
 
         if (selectedTopic == "Climate Change and Environmental Policy")
@@ -36,8 +41,13 @@ public class ArticleSelectorManager : MonoBehaviour
         else
         {
             Debug.Log($"[ArticleSelectorManager]: No article data loaded for topic: {selectedTopic}");
-            // You can show a "Coming Soon" message or nothing for now
+            // Optional: show a message like "Articles for this topic are coming soon!"
         }
+    }
+
+    void OnBackButtonClicked()
+    {
+        SceneManager.LoadScene("TopicSelectorScene");
     }
 
     void LoadArticles(string resourceFileName)
@@ -72,6 +82,6 @@ public class ArticleSelectorManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("SelectedArticleIndex", index);
         PlayerPrefs.SetString("SelectedTopic", "climate_change");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("ArticleViewerScene");
+        SceneManager.LoadScene("ArticleViewerScene");
     }
 }
