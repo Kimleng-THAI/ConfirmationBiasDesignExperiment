@@ -27,13 +27,22 @@ public class ArticleSelectorManager : MonoBehaviour
 
     void Start()
     {
-        LoadArticles();
+        string selectedTopic = PlayerPrefs.GetString("SelectedTopic", "");
+
+        if (selectedTopic == "Climate Change and Environmental Policy")
+        {
+            LoadArticles("climate_change");
+        }
+        else
+        {
+            Debug.Log($"[ArticleSelectorManager]: No article data loaded for topic: {selectedTopic}");
+            // You can show a "Coming Soon" message or nothing for now
+        }
     }
 
-    void LoadArticles()
+    void LoadArticles(string resourceFileName)
     {
-        // Load JSON from Resources/Articles
-        TextAsset jsonFile = Resources.Load<TextAsset>("Articles/climate_change");
+        TextAsset jsonFile = Resources.Load<TextAsset>($"Articles/{resourceFileName}");
 
         if (jsonFile != null)
         {
@@ -55,7 +64,7 @@ public class ArticleSelectorManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load climate_change.json from Resources/Articles");
+            Debug.LogError($"[ArticleSelectorManager]: Failed to load JSON file: {resourceFileName}.json");
         }
     }
 

@@ -52,6 +52,12 @@ public class TopicSelector : MonoBehaviour
     {
         string selectedTopic = topicDropdown.options[topicDropdown.value].text;
         Debug.Log("[TopicSelector]: Topic selected - " + selectedTopic);
+
+        // Save selected topic to PlayerPrefs
+        PlayerPrefs.SetString("SelectedTopic", selectedTopic);
+        PlayerPrefs.Save();
+
+        // Load next scene
         SceneManager.LoadScene("ArticleSelectorScene");
     }
 }
