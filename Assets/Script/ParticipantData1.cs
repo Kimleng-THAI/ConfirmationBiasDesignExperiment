@@ -20,6 +20,10 @@ public class ParticipantData1
     public List<ResponseRecord> responses = new List<ResponseRecord>();
     public List<EEGReading> eegReadings = new List<EEGReading>();
     public List<HeartRateReading> heartRateReadings = new List<HeartRateReading>();
+
+    public string selectedTopic;
+    public string selectedArticleHeadline;
+    public string selectedArticleContent;
 }
 
 [Serializable]

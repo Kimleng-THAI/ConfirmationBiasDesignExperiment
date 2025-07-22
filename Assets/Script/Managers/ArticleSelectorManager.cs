@@ -27,18 +27,17 @@ public class ArticleSelectorManager : MonoBehaviour
     public TextMeshProUGUI topicTitleText; // Assign in Inspector
 
     private List<ArticleEntryData> loadedArticles;
-    // Store selected topic at class level
     private string selectedTopic;
 
     void Start()
     {
-        // Ensure back button always works
+        // Back button functionality
         backButton.onClick.AddListener(OnBackButtonClicked);
 
-        // Get selected topic from PlayerPrefs
-        string selectedTopic = PlayerPrefs.GetString("SelectedTopic", "");
+        // Retrieve selected topic
+        selectedTopic = PlayerPrefs.GetString("SelectedTopic", "");
 
-        // Update the TopicTitleText dynamically
+        // Update UI text
         if (topicTitleText != null)
         {
             topicTitleText.text = "Selected Topic: " + selectedTopic;
@@ -110,8 +109,36 @@ public class ArticleSelectorManager : MonoBehaviour
 
     void OnReadArticleClicked(int index)
     {
-        PlayerPrefs.SetInt("SelectedArticleIndex", index);
-        PlayerPrefs.SetString("SelectedTopic", selectedTopic);
+        // Prepare selected article object
+        ArticleEntryData selectedArticle = loadedArticles[index];
+
+        SelectedArticle newEntry = new SelectedArticle
+        {
+            topic = selectedTopic,
+            headline = selectedArticle.headline,
+            content = selectedArticle.content
+        };
+
+        // Load existing list or create new one
+        string existingJson = PlayerPrefs.GetString("SelectedArticles", "");
+        SelectedArticleList articleList;
+
+        if (!string.IsNullOrEmpty(existingJson))
+        {
+            articleList = JsonUtility.FromJson<SelectedArticleList>(existingJson);
+        }
+        else
+        {
+            articleList = new SelectedArticleList();
+        }
+
+        // Add and save updated list
+        articleList.articles.Add(newEntry);
+        string updatedJson = JsonUtility.ToJson(articleList);
+        PlayerPrefs.SetString("SelectedArticles", updatedJson);
+        PlayerPrefs.Save();
+
+        // Go to ArticleViewerScene
         SceneManager.LoadScene("ArticleViewerScene");
     }
 }

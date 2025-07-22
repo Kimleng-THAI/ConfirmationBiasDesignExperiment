@@ -20,6 +20,32 @@ public class ThankYouScreen : MonoBehaviour
         float recordTimeTaken = Time.time - startThankYouScene;
         Debug.Log($"[ThankYouScene]: Participant took {recordTimeTaken:F2} seconds to press Done button.");
 
+        // Store selected topic
+        string selectedTopic = PlayerPrefs.GetString("SelectedTopic", "Not Selected");
+        QuestionScreen.participantData.selectedTopic = selectedTopic;
+
+        // Store selected article
+        string selectedArticleJSON = PlayerPrefs.GetString("SelectedArticleJSON", "");
+        if (!string.IsNullOrEmpty(selectedArticleJSON))
+        {
+            Article selectedArticle = JsonUtility.FromJson<Article>(selectedArticleJSON);
+            if (selectedArticle != null)
+            {
+                QuestionScreen.participantData.selectedArticleHeadline = selectedArticle.headline;
+                QuestionScreen.participantData.selectedArticleContent = selectedArticle.content;
+            }
+            else
+            {
+                QuestionScreen.participantData.selectedArticleHeadline = "Error loading headline";
+                QuestionScreen.participantData.selectedArticleContent = "Error loading content";
+            }
+        }
+        else
+        {
+            QuestionScreen.participantData.selectedArticleHeadline = "No article selected";
+            QuestionScreen.participantData.selectedArticleContent = "No content available";
+        }
+
         // Save to participant data
         QuestionScreen.participantData.thankYouSceneDuration = recordTimeTaken.ToString("F2") + " seconds";
 
@@ -89,4 +115,11 @@ public class ThankYouScreen : MonoBehaviour
         // Optionally quit or load another scene
         // Application.Quit();
     }
+}
+
+[System.Serializable]
+public class Article
+{
+    public string headline;
+    public string content;
 }
