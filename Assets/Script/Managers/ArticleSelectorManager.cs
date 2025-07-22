@@ -24,6 +24,7 @@ public class ArticleSelectorManager : MonoBehaviour
     public GameObject articleButtonPrefab; // Assign in Inspector
     public Transform contentPanel;         // Assign in Inspector
     public Button backButton;              // Assign in Inspector
+    public TextMeshProUGUI topicTitleText; // Assign in Inspector
 
     private List<ArticleEntryData> loadedArticles;
 
@@ -32,7 +33,14 @@ public class ArticleSelectorManager : MonoBehaviour
         // Ensure back button always works
         backButton.onClick.AddListener(OnBackButtonClicked);
 
+        // Get selected topic from PlayerPrefs
         string selectedTopic = PlayerPrefs.GetString("SelectedTopic", "");
+
+        // Update the TopicTitleText dynamically
+        if (topicTitleText != null)
+        {
+            topicTitleText.text = "Selected Topic: " + selectedTopic;
+        }
 
         if (selectedTopic == "Climate Change and Environmental Policy")
         {
