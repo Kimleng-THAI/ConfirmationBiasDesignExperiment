@@ -1,0 +1,30 @@
+﻿{
+  "topic": "Economic Policy and Inequality",
+  "articles": [
+    {
+        "headline": "Minimum Wage Increases Lead to Job Losses in Service Industries",
+        "summary": "Economic analysis reveals employment reduction following wage mandates.",
+        "content": "National Bureau of Economic Research study tracked 28 cities with minimum wage increases. Found 8% reduction in entry-level positions, particularly affecting teens and immigrants. Small businesses reduced hours and accelerated automation adoption."
+    },
+    {
+        "headline": "Higher Minimum Wages Boost Economy Without Significant Job Losses",
+        "summary": "Comprehensive study shows increased consumer spending drives business growth.",
+        "content": "Berkeley Labor Center analysis of 138 minimum wage increases found minimal job losses but significant benefits. Worker productivity increased 12%, employee turnover decreased 25%, and consumer spending rose $1.2 billion annually in affected regions."
+    },
+    {
+        "headline": "Progressive Tax Systems Reduce Inequality While Maintaining Economic Growth",
+        "summary": "International comparison shows benefits of graduated tax rates.",
+        "content": "OECD analysis of 36 countries demonstrates progressive taxation reduces inequality by 23% without harming economic growth. High earners contribute proportionally while maintaining investment incentives. Public services improve with stable revenue."
+    },
+    {
+        "headline": "High Tax Rates Drive Investment and Talent to Low-Tax Regions",
+        "summary": "Economic mobility suffers as progressive policies discourage entrepreneurship.",
+        "content": "Tax Foundation research shows high earners relocate to lower-tax states, reducing revenue and economic activity. Startup formation decreases 15% in high-tax regions. Investment capital flows to jurisdictions with competitive tax rates."
+    },
+    {
+        "headline": "Income Inequality Solutions: Evaluating Multiple Policy Approaches",
+        "summary": "Economists debate effectiveness of various intervention strategies.",
+        "content": "American Economic Review synthesis examines taxation, education, and employment policies. Different approaches show varying success rates depending on implementation and local conditions. Combination strategies may be most effective."
+    }
+  ]
+}

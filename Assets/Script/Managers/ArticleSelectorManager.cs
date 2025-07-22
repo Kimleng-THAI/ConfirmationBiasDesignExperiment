@@ -27,6 +27,8 @@ public class ArticleSelectorManager : MonoBehaviour
     public TextMeshProUGUI topicTitleText; // Assign in Inspector
 
     private List<ArticleEntryData> loadedArticles;
+    // Store selected topic at class level
+    private string selectedTopic;
 
     void Start()
     {
@@ -42,20 +44,40 @@ public class ArticleSelectorManager : MonoBehaviour
             topicTitleText.text = "Selected Topic: " + selectedTopic;
         }
 
-        if (selectedTopic == "Climate Change and Environmental Policy")
+        string jsonFileName = GetJsonFileNameForTopic(selectedTopic);
+
+        if (!string.IsNullOrEmpty(jsonFileName))
         {
-            LoadArticles("climate_change");
+            LoadArticles(jsonFileName);
         }
         else
         {
-            Debug.Log($"[ArticleSelectorManager]: No article data loaded for topic: {selectedTopic}");
-            // Optional: show a message like "Articles for this topic are coming soon!"
+            Debug.Log($"[ArticleSelectorManager]: No article JSON file defined for topic: {selectedTopic}");
         }
     }
 
     void OnBackButtonClicked()
     {
         SceneManager.LoadScene("TopicSelectorScene");
+    }
+
+    string GetJsonFileNameForTopic(string topic)
+    {
+        Dictionary<string, string> topicToFileMap = new Dictionary<string, string>
+        {
+            { "Climate Change and Environmental Policy", "climate_change" },
+            { "Economic Policy and Inequality", "economic_policy" },
+            { "Education and Learning Methods", "education" },
+            { "Health and Medical Approaches", "health" },
+            { "Technology and Social Media Impact", "technology" }
+        };
+
+        if (topicToFileMap.ContainsKey(topic))
+        {
+            return topicToFileMap[topic];
+        }
+
+        return null;
     }
 
     void LoadArticles(string resourceFileName)
@@ -89,7 +111,7 @@ public class ArticleSelectorManager : MonoBehaviour
     void OnReadArticleClicked(int index)
     {
         PlayerPrefs.SetInt("SelectedArticleIndex", index);
-        PlayerPrefs.SetString("SelectedTopic", "climate_change");
+        PlayerPrefs.SetString("SelectedTopic", selectedTopic);
         SceneManager.LoadScene("ArticleViewerScene");
     }
 }

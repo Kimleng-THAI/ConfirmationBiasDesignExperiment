@@ -1,0 +1,30 @@
+﻿{
+  "topic": "Technology and Social Media Impact",
+  "articles": [
+    {
+        "headline": "Teen Mental Health Crisis Linked to Social Media Use",
+        "summary": "Large-scale study reveals concerning patterns in anxiety and depression rates.",
+        "content": "Journal of Adolescent Health study of 150,000 teens found 25% increase in anxiety disorders correlated with social media use. Cyberbullying, sleep disruption, and unrealistic comparisons drive mental health decline. Screen time reduction programs show promising results."
+    },
+    {
+        "headline": "Social Connections: How Digital Platforms Support Teen Wellbeing",
+        "summary": "Research highlights positive impacts on friendship, learning, and community building.",
+        "content": "American Psychological Association research shows social media helps 68% of teens maintain friendships, access mental health resources, and find supportive communities. LGBTQ+ teens report reduced isolation. Educational content improves academic performance."
+    },
+    {
+        "headline": "AI Revolution Creates New Employment Opportunities Across Industries",
+        "summary": "Technology advances generate demand for skilled workers in emerging fields.",
+        "content": "McKinsey Global Institute projects AI will create 97 million new jobs by 2030. Healthcare, education, and creative industries expand as AI handles routine tasks. Reskilling programs prepare workers for higher-value roles requiring human judgment and creativity."
+    },
+    {
+        "headline": "Automation Threatens Millions of Jobs Across Economic Sectors",
+        "summary": "Oxford study warns of widespread unemployment from AI advancement.",
+        "content": "Oxford Economics research predicts 47% of US jobs at risk from automation. Manufacturing, retail, and service industries face major disruption. Retraining programs reach only 15% of displaced workers. Economic inequality may worsen as high-skill jobs remain protected."
+    },
+    {
+        "headline": "Digital Technology Impact: Nuanced Effects on Society",
+        "summary": "Researchers find both positive and negative outcomes depend on usage patterns.",
+        "content": "Pew Research Center longitudinal study shows technology impacts vary by age, education, and social context. Benefits include increased access to information and social connections. Risks include privacy concerns and digital divides."
+    }
+  ]
+}
