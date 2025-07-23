@@ -25,19 +25,20 @@ public class ThankYouScreen : MonoBehaviour
         QuestionScreen.participantData.selectedTopic = selectedTopic;
 
         // Store selected article
-        string selectedArticleJSON = PlayerPrefs.GetString("SelectedArticleJSON", "");
-        if (!string.IsNullOrEmpty(selectedArticleJSON))
+        string selectedArticlesJson = PlayerPrefs.GetString("SelectedArticles", "");
+        if (!string.IsNullOrEmpty(selectedArticlesJson))
         {
-            Article selectedArticle = JsonUtility.FromJson<Article>(selectedArticleJSON);
-            if (selectedArticle != null)
+            SelectedArticleList articleList = JsonUtility.FromJson<SelectedArticleList>(selectedArticlesJson);
+            if (articleList != null && articleList.articles.Count > 0)
             {
-                QuestionScreen.participantData.selectedArticleHeadline = selectedArticle.headline;
-                QuestionScreen.participantData.selectedArticleContent = selectedArticle.content;
+                SelectedArticle lastArticle = articleList.articles[articleList.articles.Count - 1];
+                QuestionScreen.participantData.selectedArticleHeadline = lastArticle.headline;
+                QuestionScreen.participantData.selectedArticleContent = lastArticle.content;
             }
             else
             {
-                QuestionScreen.participantData.selectedArticleHeadline = "Error loading headline";
-                QuestionScreen.participantData.selectedArticleContent = "Error loading content";
+                QuestionScreen.participantData.selectedArticleHeadline = "No article selected";
+                QuestionScreen.participantData.selectedArticleContent = "No content available";
             }
         }
         else
