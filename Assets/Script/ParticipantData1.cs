@@ -21,9 +21,10 @@ public class ParticipantData1
     public List<EEGReading> eegReadings = new List<EEGReading>();
     public List<HeartRateReading> heartRateReadings = new List<HeartRateReading>();
 
-    public string selectedTopic;
-    public string selectedArticleHeadline;
-    public string selectedArticleContent;
+    public string selectedFinalTopic;
+    //public string selectedArticleHeadline;
+    //public string selectedArticleContent;
+    public List<SelectedArticle> selectedArticles = new List<SelectedArticle>();
 }
 
 [Serializable]

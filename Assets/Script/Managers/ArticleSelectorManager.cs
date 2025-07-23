@@ -112,31 +112,12 @@ public class ArticleSelectorManager : MonoBehaviour
         // Prepare selected article object
         ArticleEntryData selectedArticle = loadedArticles[index];
 
-        SelectedArticle newEntry = new SelectedArticle
-        {
-            topic = selectedTopic,
-            headline = selectedArticle.headline,
-            content = selectedArticle.content
-        };
-
-        // Load existing list or create new one
-        string existingJson = PlayerPrefs.GetString("SelectedArticles", "");
-        SelectedArticleList articleList;
-
-        if (!string.IsNullOrEmpty(existingJson))
-        {
-            articleList = JsonUtility.FromJson<SelectedArticleList>(existingJson);
-        }
-        else
-        {
-            articleList = new SelectedArticleList();
-        }
-
-        // Add and save updated list
-        articleList.articles.Add(newEntry);
-        string updatedJson = JsonUtility.ToJson(articleList);
-        PlayerPrefs.SetString("SelectedArticles", updatedJson);
-        PlayerPrefs.Save();
+        // Use the tracker singleton to save the selected article
+        ArticleSelectionTracker.Instance.AddSelectedArticle(
+            selectedTopic,
+            selectedArticle.headline,
+            selectedArticle.content
+        );
 
         // Go to ArticleViewerScene
         SceneManager.LoadScene("ArticleViewerScene");

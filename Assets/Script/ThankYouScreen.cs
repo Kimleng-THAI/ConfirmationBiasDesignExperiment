@@ -20,85 +20,93 @@ public class ThankYouScreen : MonoBehaviour
         float recordTimeTaken = Time.time - startThankYouScene;
         Debug.Log($"[ThankYouScene]: Participant took {recordTimeTaken:F2} seconds to press Done button.");
 
-        // Store selected topic
+        // 1. Save selected topic
         string selectedTopic = PlayerPrefs.GetString("SelectedTopic", "Not Selected");
-        QuestionScreen.participantData.selectedTopic = selectedTopic;
+        QuestionScreen.participantData.selectedFinalTopic = selectedTopic;
 
-        // Store selected article
-        string selectedArticlesJson = PlayerPrefs.GetString("SelectedArticles", "");
-        if (!string.IsNullOrEmpty(selectedArticlesJson))
+        // 2. Load full list of selected articles
+        SelectedArticleList fullArticleList = null;
+
+        ArticleSelectionTracker tracker = FindFirstObjectByType<ArticleSelectionTracker>();
+        if (tracker != null && tracker.selectedArticles != null && tracker.selectedArticles.articles.Count > 0)
         {
-            SelectedArticleList articleList = JsonUtility.FromJson<SelectedArticleList>(selectedArticlesJson);
-            if (articleList != null && articleList.articles.Count > 0)
-            {
-                SelectedArticle lastArticle = articleList.articles[articleList.articles.Count - 1];
-                QuestionScreen.participantData.selectedArticleHeadline = lastArticle.headline;
-                QuestionScreen.participantData.selectedArticleContent = lastArticle.content;
-            }
-            else
-            {
-                QuestionScreen.participantData.selectedArticleHeadline = "No article selected";
-                QuestionScreen.participantData.selectedArticleContent = "No content available";
-            }
+            fullArticleList = tracker.selectedArticles;
+            Debug.Log("[ThankYouScene]: Loaded full article history from tracker.");
         }
         else
         {
-            QuestionScreen.participantData.selectedArticleHeadline = "No article selected";
-            QuestionScreen.participantData.selectedArticleContent = "No content available";
+            string json = PlayerPrefs.GetString("SelectedArticles", "");
+            if (!string.IsNullOrEmpty(json))
+            {
+                SelectedArticleList fallbackList = JsonUtility.FromJson<SelectedArticleList>(json);
+                if (fallbackList != null && fallbackList.articles.Count > 0)
+                {
+                    fullArticleList = fallbackList;
+                    Debug.Log("[ThankYouScene]: Loaded full article history from PlayerPrefs.");
+                }
+            }
         }
 
-        // Save to participant data
-        QuestionScreen.participantData.thankYouSceneDuration = recordTimeTaken.ToString("F2") + " seconds";
+        if (fullArticleList != null)
+        {
+            // Assign full list of selected articles to participantData
+            QuestionScreen.participantData.selectedArticles = fullArticleList.articles;
 
-        Debug.Log("[ThankYouScene]: Participant has finished the experiment.");
+            // Optionally, also update participantData's last article headline/content/topic fields for convenience
+            //SelectedArticle lastArticle = fullArticleList.articles[^1];
+            //QuestionScreen.participantData.selectedArticleHeadline = lastArticle.headline;
+            //QuestionScreen.participantData.selectedArticleContent = lastArticle.content;
+            //if (!string.IsNullOrEmpty(lastArticle.topic))
+            //{
+            //    QuestionScreen.participantData.selectedTopic = lastArticle.topic;
+            //}
+        }
+        else
+        {
+            // No articles found - clear or set default messages
+            QuestionScreen.participantData.selectedArticles = new System.Collections.Generic.List<SelectedArticle>();
+            //QuestionScreen.participantData.selectedArticleHeadline = "No article selected";
+            //QuestionScreen.participantData.selectedArticleContent = "No content available";
+        }
 
-        // Safely convert to Sydney time (works across OS)
+        // 3. Record thank you screen duration
+        QuestionScreen.participantData.thankYouSceneDuration = $"{recordTimeTaken:F2} seconds";
+
+        // 4. Get current time in Sydney
         DateTime utcNow = DateTime.UtcNow;
         DateTime sydneyTime;
 
         try
         {
-            // Use "Australia/Sydney" for macOS/Linux, "AUS Eastern Standard Time" for Windows
-            TimeZoneInfo sydTimeZone;
-            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-            {
-                sydTimeZone = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
-            }
-            else
-            {
-                sydTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Australia/Sydney");
-            }
+            TimeZoneInfo sydneyTimeZone = Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor
+                ? TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time")
+                : TimeZoneInfo.FindSystemTimeZoneById("Australia/Sydney");
 
-            sydneyTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, sydTimeZone);
+            sydneyTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, sydneyTimeZone);
         }
         catch (TimeZoneNotFoundException)
         {
-            Debug.LogWarning("Sydney timezone not found. Using UTC as fallback.");
+            Debug.LogWarning("Sydney timezone not found. Falling back to UTC.");
             sydneyTime = utcNow;
         }
 
-        // Save end time
         QuestionScreen.participantData.experimentEndTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
 
-        // Calculate duration
-        DateTime startTime;
-        if (DateTime.TryParse(QuestionScreen.participantData.experimentStartTime.Replace(" AEST", ""), out startTime))
+        // 5. Calculate total experiment duration
+        if (DateTime.TryParse(QuestionScreen.participantData.experimentStartTime.Replace(" AEST", ""), out DateTime startTime))
         {
-            TimeSpan duration = sydneyTime - startTime;
-            QuestionScreen.participantData.duration = $"{(int)duration.TotalMinutes} minutes and {duration.Seconds} seconds";
-            Debug.Log($"Experiment completed in {duration.Minutes} minutes and {duration.Seconds} seconds.");
+            TimeSpan totalDuration = sydneyTime - startTime;
+            QuestionScreen.participantData.duration = $"{(int)totalDuration.TotalMinutes} minutes and {totalDuration.Seconds} seconds";
+            Debug.Log($"Experiment duration: {QuestionScreen.participantData.duration}");
         }
         else
         {
             Debug.LogWarning("Could not parse experimentStartTime.");
         }
 
-        // Convert to JSON
-        string json = JsonUtility.ToJson(QuestionScreen.participantData, true);
-
-        // Save file to ~/confirmationBiasinJSON/
-        string userHome = System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
-        string folderPath = Path.Combine(userHome, "confirmationBiasinJSON");
+        // 6. Save participant data to JSON
+        string jsonOutput = JsonUtility.ToJson(QuestionScreen.participantData, true);
+        string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "confirmationBiasinJSON");
 
         if (!Directory.Exists(folderPath))
         {
@@ -107,20 +115,13 @@ public class ThankYouScreen : MonoBehaviour
         }
 
         string studentId = QuestionScreen.participantData.studentID ?? "unknown";
-        string filename = $"participant_{studentId}_{System.DateTime.Now:yyyyMMdd_HHmmss}.json";
+        string filename = $"participant_{studentId}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
         string fullPath = Path.Combine(folderPath, filename);
 
-        File.WriteAllText(fullPath, json);
+        File.WriteAllText(fullPath, jsonOutput);
         Debug.Log("Participant data saved to: " + fullPath);
 
-        // Optionally quit or load another scene
-        // Application.Quit();
+        // 7. Quit or transition
+        // Application.Quit(); // Uncomment to quit after saving
     }
-}
-
-[System.Serializable]
-public class Article
-{
-    public string headline;
-    public string content;
 }

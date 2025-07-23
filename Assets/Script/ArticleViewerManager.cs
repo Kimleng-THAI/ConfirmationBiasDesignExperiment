@@ -6,8 +6,10 @@ using System.Collections.Generic;
 
 public class ArticleViewerManager : MonoBehaviour
 {
+    public TextMeshProUGUI topicText;
     public TextMeshProUGUI headlineText;
     public TextMeshProUGUI contentText;
+
     public Button backButton;
     public Button continueButton;
 
@@ -24,25 +26,18 @@ public class ArticleViewerManager : MonoBehaviour
             Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
         });
 
-        // Load full list
-        string json = PlayerPrefs.GetString("SelectedArticles", "");
-        if (!string.IsNullOrEmpty(json))
+        // Get the most recently viewed article from the tracker
+        var tracker = ArticleSelectionTracker.Instance;
+        if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
-            SelectedArticleList articleList = JsonUtility.FromJson<SelectedArticleList>(json);
-            if (articleList.articles.Count > 0)
-            {
-                SelectedArticle lastArticle = articleList.articles[articleList.articles.Count - 1];
-                headlineText.text = lastArticle.headline;
-                contentText.text = lastArticle.content;
-            }
-            else
-            {
-                headlineText.text = "No Article Selected";
-                contentText.text = "Please go back and choose an article.";
-            }
+            SelectedArticle lastArticle = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1];
+            topicText.text = lastArticle.topic;
+            headlineText.text = lastArticle.headline;
+            contentText.text = lastArticle.content;
         }
         else
         {
+            topicText.text = "No Topic";
             headlineText.text = "No Article Selected";
             contentText.text = "Please go back and choose an article.";
         }
