@@ -21,10 +21,14 @@ public class ArticleData
 
 public class ArticleSelectorManager : MonoBehaviour
 {
-    public GameObject articleButtonPrefab; // Assign in Inspector
-    public Transform contentPanel;         // Assign in Inspector
-    public Button backButton;              // Assign in Inspector
-    public TextMeshProUGUI topicTitleText; // Assign in Inspector
+    // Assign in Inspector
+    public GameObject articleButtonPrefab;
+    // Assign in Inspector
+    public Transform contentPanel;
+    // Assign in Inspector
+    public Button backButton;
+    // Assign in Inspector
+    public TextMeshProUGUI topicTitleText;
 
     private List<ArticleEntryData> loadedArticles;
     private string selectedTopic;
@@ -112,13 +116,16 @@ public class ArticleSelectorManager : MonoBehaviour
         // Prepare selected article object
         ArticleEntryData selectedArticle = loadedArticles[index];
 
+        // Displaying which article is read
+        Debug.Log($"[ArticleSelectorManager]: Participant is reading article: '{selectedArticle.headline}' from topic: '{selectedTopic}'");
+
         // Use the tracker singleton to save the selected article
         ArticleSelectionTracker.Instance.AddSelectedArticle(
             selectedTopic,
             selectedArticle.headline,
             selectedArticle.content
         );
-
+        
         // Go to ArticleViewerScene
         SceneManager.LoadScene("ArticleViewerScene");
     }

@@ -106,7 +106,8 @@ public class QuestionScreen : MonoBehaviour
         participantData.responses.Add(response);
 
         currentQuestionIndex++;
-        startTime = Time.time; // reset timer for next question
+        // reset timer for next question
+        startTime = Time.time;
         LoadQuestion(currentQuestionIndex);
     }
 
@@ -115,15 +116,16 @@ public class QuestionScreen : MonoBehaviour
         while (true)
         {
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
-            float microvolts = Random.Range(10f, 100f); // Simulated EEG signal strength
+            // Simulated EEG signal strength
+            float microvolts = Random.Range(10f, 100f);
 
             QuestionScreen.participantData.eegReadings.Add(new EEGReading
             {
                 timestamp = timestamp,
                 microvolts = microvolts
             });
-
-            yield return new WaitForSeconds(0.1f); // 10Hz EEG
+            // 10Hz EEG
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -132,15 +134,16 @@ public class QuestionScreen : MonoBehaviour
         while (true)
         {
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
-            int bpm = Random.Range(60, 100); // Simulated heart rate
+            // Simulated heart rate
+            int bpm = Random.Range(60, 100);
 
             QuestionScreen.participantData.heartRateReadings.Add(new HeartRateReading
             {
                 timestamp = timestamp,
                 bpm = bpm
             });
-
-            yield return new WaitForSeconds(1f); // 1Hz heart rate
+            // 1Hz heart rate
+            yield return new WaitForSeconds(1f);
         }
     }
 }
