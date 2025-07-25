@@ -115,6 +115,17 @@ public class QuestionScreen : MonoBehaviour
     {
         while (true)
         {
+            // blank screen for 1 second and then pop up another question (Q + Scene)
+            // Log event marker when part press keyboard
+            // ^^^ Topic they choose
+            // Log event marker before the start of articleselectorscene + articleviewerscene and when they click read article button
+            // Log button clicked
+            // Time logs different
+            // Timestamp
+            // Part needs to read at least 5 articles and then continue button become avai
+            // Continue button needs change
+            // Enter part number or subject number
+            // Before instruction screen, need something to input the subject number and then instr.
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
             // Simulated EEG signal strength
             float microvolts = Random.Range(10f, 100f);
@@ -135,6 +146,7 @@ public class QuestionScreen : MonoBehaviour
         {
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
             // Simulated heart rate
+            // float instead of int
             int bpm = Random.Range(60, 100);
 
             QuestionScreen.participantData.heartRateReadings.Add(new HeartRateReading
