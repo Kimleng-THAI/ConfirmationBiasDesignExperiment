@@ -104,7 +104,12 @@ public class ThankYouScreen : MonoBehaviour
             Debug.LogWarning("Could not parse experimentStartTime.");
         }
 
-        // 6. Save participant data to JSON
+        // 6 Store subject number from DeveloperInputScene
+        string subjectNumber = PlayerPrefs.GetString("SubjectNumber", "unknown");
+        QuestionScreen.participantData.subjectNumber = subjectNumber;
+        Debug.Log($"[ThankYouScreen]: Stored subject number: {subjectNumber}");
+
+        // 7. Save participant data to JSON
         string jsonOutput = JsonUtility.ToJson(QuestionScreen.participantData, true);
         string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "confirmationBiasinJSON");
 
@@ -114,14 +119,13 @@ public class ThankYouScreen : MonoBehaviour
             Debug.Log("Created folder: " + folderPath);
         }
 
-        string studentId = QuestionScreen.participantData.studentID ?? "unknown";
-        string filename = $"participant_{studentId}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+        string filename = $"participant_{subjectNumber}_{DateTime.Now:yyyyMMdd_HHmmss}.json";
         string fullPath = Path.Combine(folderPath, filename);
 
         File.WriteAllText(fullPath, jsonOutput);
         Debug.Log("Participant data saved to: " + fullPath);
 
-        // 7. Quit or transition
+        // 8. Quit or transition
         // Application.Quit(); // Uncomment to quit after saving
     }
 }

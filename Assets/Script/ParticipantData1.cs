@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class ParticipantData1
 {
-    public string studentID;
+    public string subjectNumber;
     public int age;
     public string feedback;
     // ISO 8601 format

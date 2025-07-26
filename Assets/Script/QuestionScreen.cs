@@ -124,8 +124,7 @@ public class QuestionScreen : MonoBehaviour
             // Timestamp
             // Part needs to read at least 5 articles and then continue button become avai
             // Continue button needs change
-            // Enter part number or subject number
-            // Before instruction screen, need something to input the subject number and then instr.
+            
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
             // Simulated EEG signal strength
             float microvolts = Random.Range(10f, 100f);
