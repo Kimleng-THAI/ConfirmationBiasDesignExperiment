@@ -21,6 +21,7 @@ public class ParticipantData1
     public List<EEGReading> eegReadings = new List<EEGReading>();
     public List<HeartRateReading> heartRateReadings = new List<HeartRateReading>();
 
+    public int totalReadArticleClicks;
     public string selectedFinalTopic;
     //public string selectedArticleHeadline;
     //public string selectedArticleContent;

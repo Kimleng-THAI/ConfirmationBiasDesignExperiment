@@ -18,10 +18,12 @@ public class DeveloperInputManager : MonoBehaviour
         }
 
         PlayerPrefs.SetString("SubjectNumber", subjectNumber);
+        PlayerPrefs.SetString("NextSceneAfterTransition", nextSceneName);
         PlayerPrefs.Save();
 
         Debug.Log($"Subject Number stored: {subjectNumber}");
+        Debug.Log("Loading TransitionScene...");
 
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene("TransitionScene");
     }
 }

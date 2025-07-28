@@ -46,6 +46,8 @@ public class InstructionScreen : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene("QuestionScene");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "QuestionScene");
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("TransitionScene");
     }
 }

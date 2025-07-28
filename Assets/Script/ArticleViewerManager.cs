@@ -16,12 +16,14 @@ public class ArticleViewerManager : MonoBehaviour
     {
         backButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("ArticleSelectorScene");
+            PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+            SceneManager.LoadScene("TransitionScene");
         });
 
         continueButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("SurveyScene");
+            PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
+            SceneManager.LoadScene("TransitionScene");
             Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
         });
 

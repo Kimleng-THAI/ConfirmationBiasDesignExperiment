@@ -32,6 +32,9 @@ public class ThankYouScreen : MonoBehaviour
         {
             fullArticleList = tracker.selectedArticles;
             Debug.Log("[ThankYouScene]: Loaded full article history from tracker.");
+
+            // Set the total read count
+            QuestionScreen.participantData.totalReadArticleClicks = tracker.readArticleClickCount;
         }
         else
         {
@@ -45,6 +48,9 @@ public class ThankYouScreen : MonoBehaviour
                     Debug.Log("[ThankYouScene]: Loaded full article history from PlayerPrefs.");
                 }
             }
+
+            // Tracker missing, can't get count
+            QuestionScreen.participantData.totalReadArticleClicks = 0;
         }
 
         if (fullArticleList != null)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class ArticleSelectionTracker : MonoBehaviour
 {
     public static ArticleSelectionTracker Instance;
+    public int readArticleClickCount = 0;
 
     public SelectedArticleList selectedArticles = new SelectedArticleList();
 
@@ -30,6 +31,7 @@ public class ArticleSelectionTracker : MonoBehaviour
         };
 
         selectedArticles.articles.Add(newArticle);
+        readArticleClickCount++;
     }
 
     public SelectedArticleList GetSelectedArticles()

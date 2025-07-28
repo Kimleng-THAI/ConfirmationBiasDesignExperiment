@@ -61,7 +61,8 @@ public class ArticleSelectorManager : MonoBehaviour
 
     void OnBackButtonClicked()
     {
-        SceneManager.LoadScene("TopicSelectorScene");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+        SceneManager.LoadScene("TransitionScene");
     }
 
     string GetJsonFileNameForTopic(string topic)
@@ -125,8 +126,9 @@ public class ArticleSelectorManager : MonoBehaviour
             selectedArticle.headline,
             selectedArticle.content
         );
-        
+
         // Go to ArticleViewerScene
-        SceneManager.LoadScene("ArticleViewerScene");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleViewerScene");
+        SceneManager.LoadScene("TransitionScene");
     }
 }

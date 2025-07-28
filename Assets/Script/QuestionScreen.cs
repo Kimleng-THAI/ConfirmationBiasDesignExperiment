@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class QuestionScreen : MonoBehaviour
 {
+    public GameObject blankOverlay;
+
     public TextMeshProUGUI conflictStatementText;
     public TextMeshProUGUI[] optionTexts;
 
@@ -76,7 +78,7 @@ public class QuestionScreen : MonoBehaviour
         if (index >= questions.Count)
         {
             Debug.Log("[QuestionScene]: All questions completed!");
-            SceneManager.LoadScene("TopicSelectorScene");
+            StartCoroutine(TransitionToTopicSelectorScene());
             return;
         }
 
@@ -96,7 +98,7 @@ public class QuestionScreen : MonoBehaviour
 
         Debug.Log($"[Question {currentQuestionIndex}] Option {option} selected after {reactionTime} seconds.");
 
-        // Save response data
+        // Save response
         var response = new ResponseRecord
         {
             questionIndex = currentQuestionIndex,
@@ -106,9 +108,28 @@ public class QuestionScreen : MonoBehaviour
         participantData.responses.Add(response);
 
         currentQuestionIndex++;
-        // reset timer for next question
+        StartCoroutine(TransitionToNextQuestion());
+    }
+
+    private IEnumerator<WaitForSeconds> TransitionToNextQuestion()
+    {
+        // Show blank screen
+        blankOverlay.SetActive(true);
+        // Wait 1 second
+        yield return new WaitForSeconds(1f);
+        // Hide blank screen
+        blankOverlay.SetActive(false);
+
         startTime = Time.time;
         LoadQuestion(currentQuestionIndex);
+    }
+
+    private IEnumerator<WaitForSeconds> TransitionToTopicSelectorScene()
+    {
+        // Show blank screen
+        blankOverlay.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("TopicSelectorScene");
     }
 
     private IEnumerator<WaitForSeconds> SimulateEEGData()
@@ -122,7 +143,8 @@ public class QuestionScreen : MonoBehaviour
             // Log button clicked
             // Time logs different
             // Timestamp
-            
+
+
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
             // Simulated EEG signal strength
             float microvolts = Random.Range(10f, 100f);
