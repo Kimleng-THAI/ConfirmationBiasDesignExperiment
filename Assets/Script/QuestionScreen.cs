@@ -17,7 +17,6 @@ public class QuestionScreen : MonoBehaviour
     private List<Question> questions;
 
     private Coroutine eegCoroutine;
-    private Coroutine heartRateCoroutine;
     private float experimentStartTimeRealtime;
 
     public static ParticipantData1 participantData = new ParticipantData1(); // moved inside class
@@ -48,8 +47,7 @@ public class QuestionScreen : MonoBehaviour
 
         startTime = Time.time;
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
-        eegCoroutine = StartCoroutine(SimulateEEGData());
-        heartRateCoroutine = StartCoroutine(SimulateHeartRateData());
+        eegCoroutine = StartCoroutine(SimulatePhysiologicalData());
         LoadQuestion(currentQuestionIndex);
     }
 
@@ -64,7 +62,7 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Disable();
 
         if (eegCoroutine != null) StopCoroutine(eegCoroutine);
-        if (heartRateCoroutine != null) StopCoroutine(heartRateCoroutine);
+        
     }
 
     private void OnSelect1(InputAction.CallbackContext ctx) => RecordResponse("1");
@@ -132,49 +130,37 @@ public class QuestionScreen : MonoBehaviour
         SceneManager.LoadScene("TopicSelectorScene");
     }
 
-    private IEnumerator<WaitForSeconds> SimulateEEGData()
+    private IEnumerator<WaitForSeconds> SimulatePhysiologicalData()
     {
+        int heartRateStep = 0;
+
         while (true)
         {
-            // blank screen for 1 second and then pop up another question (Q + Scene)
-            // Log event marker when part press keyboard
-            // ^^^ Topic they choose
-            // Log event marker before the start of articleselectorscene + articleviewerscene and when they click read article button
-            // Log button clicked
-            // Time logs different
-            // Timestamp
-
-
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
-            // Simulated EEG signal strength
-            float microvolts = Random.Range(10f, 100f);
 
-            QuestionScreen.participantData.eegReadings.Add(new EEGReading
+            // Simulate EEG every 0.1s
+            float microvolts = Random.Range(10f, 100f);
+            participantData.eegReadings.Add(new EEGReading
             {
                 timestamp = timestamp,
                 microvolts = microvolts
             });
-            // 10Hz EEG
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
 
-    private IEnumerator<WaitForSeconds> SimulateHeartRateData()
-    {
-        while (true)
-        {
-            float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
-            // Simulated heart rate
-            // float instead of int
-            int bpm = Random.Range(60, 100);
-
-            QuestionScreen.participantData.heartRateReadings.Add(new HeartRateReading
+            // Simulate heart rate every 10 steps (i.e., every 1s)
+            if (heartRateStep % 10 == 0)
             {
-                timestamp = timestamp,
-                bpm = bpm
-            });
-            // 1Hz heart rate
-            yield return new WaitForSeconds(1f);
+                float bpm = Random.Range(60f, 100f);
+                participantData.heartRateReadings.Add(new HeartRateReading
+                {
+                    // same timestamp
+                    timestamp = timestamp,
+                    bpm = bpm
+                });
+            }
+
+            heartRateStep++;
+            // 10Hz loop
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

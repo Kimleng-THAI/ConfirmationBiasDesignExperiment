@@ -51,5 +51,5 @@ public class HeartRateReading
     // in seconds since experiment start
     public float timestamp;
     // beats per minute
-    public int bpm;
+    public float bpm;
 }

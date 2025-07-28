@@ -23,11 +23,8 @@ public class ArticleSelectorManager : MonoBehaviour
 {
     // Assign in Inspector
     public GameObject articleButtonPrefab;
-    // Assign in Inspector
     public Transform contentPanel;
-    // Assign in Inspector
     public Button backButton;
-    // Assign in Inspector
     public TextMeshProUGUI topicTitleText;
 
     private List<ArticleEntryData> loadedArticles;
