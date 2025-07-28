@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class ArticleViewerManager : MonoBehaviour
 {
@@ -26,8 +25,8 @@ public class ArticleViewerManager : MonoBehaviour
             Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
         });
 
-        // Get the most recently viewed article from the tracker
         var tracker = ArticleSelectionTracker.Instance;
+
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
             SelectedArticle lastArticle = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1];
@@ -40,6 +39,18 @@ public class ArticleViewerManager : MonoBehaviour
             topicText.text = "No Topic";
             headlineText.text = "No Article Selected";
             contentText.text = "Please go back and choose an article.";
+        }
+
+        // Disable Continue if fewer than 5 articles have been read
+        if (tracker != null && tracker.selectedArticles.articles.Count < 5)
+        {
+            continueButton.interactable = false;
+            Debug.Log("[ArticleViewerScene]: Continue disabled, less than 5 articles read.");
+        }
+        else
+        {
+            continueButton.interactable = true;
+            Debug.Log("[ArticleViewerScene]: Continue enabled.");
         }
     }
 }

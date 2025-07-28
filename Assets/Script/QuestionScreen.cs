@@ -122,8 +122,6 @@ public class QuestionScreen : MonoBehaviour
             // Log button clicked
             // Time logs different
             // Timestamp
-            // Part needs to read at least 5 articles and then continue button become avai
-            // Continue button needs change
             
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
             // Simulated EEG signal strength
