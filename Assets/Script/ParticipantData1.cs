@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+public class EventMarker
+{
+    public float timestamp;
+    public string label;
+}
+
+[Serializable]
 public class ParticipantData1
 {
     public string subjectNumber;
@@ -26,6 +33,8 @@ public class ParticipantData1
     //public string selectedArticleHeadline;
     //public string selectedArticleContent;
     public List<SelectedArticle> selectedArticles = new List<SelectedArticle>();
+
+    public List<EventMarker> eventMarkers = new List<EventMarker>();
 }
 
 [Serializable]

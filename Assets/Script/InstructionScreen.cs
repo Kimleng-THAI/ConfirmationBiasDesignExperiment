@@ -41,6 +41,15 @@ public class InstructionScreen : MonoBehaviour
         // Save to participant data
         QuestionScreen.participantData.instructionScreenReactionTime = reactionTimeStr;
 
+        // Log event marker (relative to experiment start)
+        float timestamp = Time.realtimeSinceStartup - QuestionScreen.experimentStartTimeRealtime;
+        QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+        {
+            timestamp = timestamp,
+            label = "Instruction_CONTINUE_PRESSED"
+        });
+        Debug.Log($"[InstructionScreen]: Event marker logged at {timestamp:F3}s: Instruction_CONTINUE_PRESSED");
+
         LoadNextScene();
     }
 

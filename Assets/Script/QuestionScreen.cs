@@ -17,7 +17,7 @@ public class QuestionScreen : MonoBehaviour
     private List<Question> questions;
 
     private Coroutine eegCoroutine;
-    private float experimentStartTimeRealtime;
+    public static float experimentStartTimeRealtime;
 
     public static ParticipantData1 participantData = new ParticipantData1(); // moved inside class
 
