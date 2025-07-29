@@ -102,7 +102,7 @@ public class QuestionScreen : MonoBehaviour
 
         // Log event marker for response key press
         float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
-        float globalTimestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
+        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
 
         participantData.eventMarkers.Add(new EventMarker
         {

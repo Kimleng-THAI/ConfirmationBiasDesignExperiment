@@ -48,8 +48,7 @@ public class InstructionScreen : MonoBehaviour
         // Log event marker
         // ** QuestionScreen.experimentStartTimeRealtime means the time when the experiment start, not when the current scene start **
         float localTimestamp = Time.realtimeSinceStartup - sceneStartTimeRealtime;
-        // globalTimestamp is when the DeveloperInputScene appears
-        float globalTimestamp = Time.realtimeSinceStartup - QuestionScreen.experimentStartTimeRealtime;
+        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
 
         QuestionScreen.participantData.eventMarkers.Add(new EventMarker
         {
