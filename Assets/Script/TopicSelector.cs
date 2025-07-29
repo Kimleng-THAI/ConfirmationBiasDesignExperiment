@@ -9,6 +9,8 @@ public class TopicSelector : MonoBehaviour
     public TMP_Dropdown topicDropdown;
     public Button continueButton;
 
+    private float sceneStartTime;
+
     private List<string> topics = new List<string>
     {
         "Climate Change and Environmental Policy",
@@ -20,6 +22,8 @@ public class TopicSelector : MonoBehaviour
 
     private void Start()
     {
+        sceneStartTime = Time.realtimeSinceStartup;
+
         // Clear existing options and add "Choose Topic..." placeholder
         topicDropdown.ClearOptions();
 
@@ -46,12 +50,40 @@ public class TopicSelector : MonoBehaviour
     {
         // Enable the continue button only if a valid topic is selected
         continueButton.interactable = index > 0;
+
+        if (index > 0)
+        {
+            string selectedTopic = topicDropdown.options[index].text;
+            float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
+            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+
+            QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+            {
+                localTimestamp = localTimestamp,
+                globalTimestamp = globalTimestamp,
+                label = $"TOPIC_SELECTED: {selectedTopic}"
+            });
+
+            Debug.Log($"[TopicSelector]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: TOPIC_SELECTED: {selectedTopic}");
+        }
     }
 
     private void OnContinueButtonClicked()
     {
         string selectedTopic = topicDropdown.options[topicDropdown.value].text;
         Debug.Log("[TopicSelector]: Topic selected - " + selectedTopic);
+
+        float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
+        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+
+        QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = "[TopicSelector]: CONTINUE_BUTTON_CLICKED"
+        });
+
+        Debug.Log($"[TopicSelector]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: CONTINUE_BUTTON_CLICKED");
 
         // Save selected topic to PlayerPrefs
         PlayerPrefs.SetString("SelectedTopic", selectedTopic);

@@ -6,6 +6,7 @@ public class InstructionScreen : MonoBehaviour
 {
     private PlayerInputActions inputActions;
     private float startTime;
+    private float sceneStartTimeRealtime;
 
     private void Awake()
     {
@@ -16,6 +17,9 @@ public class InstructionScreen : MonoBehaviour
     {
         // Record the time when the instruction screen is shown
         startTime = Time.time;
+
+        // Record when the scene started
+        sceneStartTimeRealtime = Time.realtimeSinceStartup;
 
         // Record experiment start time (in Sydney time)
         System.DateTime sydneyTime = System.DateTime.UtcNow.AddHours(10);
@@ -34,21 +38,27 @@ public class InstructionScreen : MonoBehaviour
 
     private void OnContinuePressed(InputAction.CallbackContext context)
     {
-        float reactionTime = Time.time - startTime;
+        float reactionTime = Time.realtimeSinceStartup - sceneStartTimeRealtime;
         string reactionTimeStr = reactionTime.ToString("F3") + " seconds";
         Debug.Log($"[InstructionScreen]: Time taken to press SPACE: {reactionTimeStr}");
 
         // Save to participant data
         QuestionScreen.participantData.instructionScreenReactionTime = reactionTimeStr;
 
-        // Log event marker (relative to experiment start)
-        float timestamp = Time.realtimeSinceStartup - QuestionScreen.experimentStartTimeRealtime;
+        // Log event marker
+        // ** QuestionScreen.experimentStartTimeRealtime means the time when the experiment start, not when the current scene start **
+        float localTimestamp = Time.realtimeSinceStartup - sceneStartTimeRealtime;
+        // globalTimestamp is when the DeveloperInputScene appears
+        float globalTimestamp = Time.realtimeSinceStartup - QuestionScreen.experimentStartTimeRealtime;
+
         QuestionScreen.participantData.eventMarkers.Add(new EventMarker
         {
-            timestamp = timestamp,
-            label = "Instruction_CONTINUE_PRESSED"
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = "[InstructionScreen]: CONTINUE_PRESSED"
         });
-        Debug.Log($"[InstructionScreen]: Event marker logged at {timestamp:F3}s: Instruction_CONTINUE_PRESSED");
+
+        Debug.Log($"[InstructionScreen]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Instruction_CONTINUE_PRESSED");
 
         LoadNextScene();
     }

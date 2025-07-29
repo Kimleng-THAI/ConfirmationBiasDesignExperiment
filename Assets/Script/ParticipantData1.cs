@@ -5,7 +5,10 @@ using UnityEngine;
 [Serializable]
 public class EventMarker
 {
-    public float timestamp;
+    // Time since current scene started
+    public float localTimestamp;
+    // Time since experiment started
+    public float globalTimestamp;
     public string label;
 }
 

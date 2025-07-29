@@ -12,16 +12,23 @@ public class ArticleViewerManager : MonoBehaviour
     public Button backButton;
     public Button continueButton;
 
+    // Timestamp for current scene
+    private float sceneStartTime;
+
     void Start()
     {
+        sceneStartTime = Time.realtimeSinceStartup;
+
         backButton.onClick.AddListener(() =>
         {
+            LogEvent("BackButtonClicked");
             PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
             SceneManager.LoadScene("TransitionScene");
         });
 
         continueButton.onClick.AddListener(() =>
         {
+            LogEvent("ContinueButtonClicked");
             PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
             SceneManager.LoadScene("TransitionScene");
             Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
@@ -53,6 +60,28 @@ public class ArticleViewerManager : MonoBehaviour
         {
             continueButton.interactable = true;
             Debug.Log("[ArticleViewerScene]: Continue enabled.");
+        }
+    }
+
+    private void LogEvent(string label)
+    {
+        if (QuestionScreen.participantData != null)
+        {
+            float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
+            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+
+            QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+            {
+                localTimestamp = localTimestamp,
+                globalTimestamp = globalTimestamp,
+                label = $"{label} (local: {localTimestamp:F2}s)"
+            });
+
+            Debug.Log($"[ArticleViewerScene] Event Logged: {label} | Local: {localTimestamp:F2}s | Global: {globalTimestamp:F2}s");
+        }
+        else
+        {
+            Debug.LogWarning("[ArticleViewerScene] Could not log event: participantData is null.");
         }
     }
 }

@@ -30,8 +30,13 @@ public class ArticleSelectorManager : MonoBehaviour
     private List<ArticleEntryData> loadedArticles;
     private string selectedTopic;
 
+    // Timestamp for current scene
+    private float sceneStartTime;
+
     void Start()
     {
+        sceneStartTime = Time.realtimeSinceStartup;
+
         // Back button functionality
         backButton.onClick.AddListener(OnBackButtonClicked);
 
@@ -58,6 +63,18 @@ public class ArticleSelectorManager : MonoBehaviour
 
     void OnBackButtonClicked()
     {
+        float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
+        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+
+        QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = $"[ArticleSelector]: BACK_BUTTON_CLICKED (local: {localTimestamp:F2}s)"
+        });
+
+        Debug.Log($"[ArticleSelectorScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: BACK_BUTTON_CLICKED");
+
         PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         SceneManager.LoadScene("TransitionScene");
     }
@@ -114,7 +131,19 @@ public class ArticleSelectorManager : MonoBehaviour
         // Prepare selected article object
         ArticleEntryData selectedArticle = loadedArticles[index];
 
-        // Displaying which article is read
+        float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
+        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+
+        string label = $"[ArticleSelector]: READ_ARTICLE_BUTTON_CLICKED: {selectedArticle.headline} (local: {localTimestamp:F2}s)";
+
+        QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = label
+        });
+
+        Debug.Log($"[ArticleSelectorScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: {label}");
         Debug.Log($"[ArticleSelectorManager]: Participant is reading article: '{selectedArticle.headline}' from topic: '{selectedTopic}'");
 
         // Use the tracker singleton to save the selected article

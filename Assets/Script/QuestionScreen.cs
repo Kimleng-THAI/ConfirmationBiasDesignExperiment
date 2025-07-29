@@ -12,14 +12,16 @@ public class QuestionScreen : MonoBehaviour
     public TextMeshProUGUI[] optionTexts;
 
     private PlayerInputActions inputActions;
-    private float startTime;
     private static int currentQuestionIndex = 0;
     private List<Question> questions;
 
     private Coroutine eegCoroutine;
     public static float experimentStartTimeRealtime;
 
-    public static ParticipantData1 participantData = new ParticipantData1(); // moved inside class
+    // moved inside class
+    public static ParticipantData1 participantData = new ParticipantData1();
+
+    private float questionStartTimeRealtime;
 
     private void Awake()
     {
@@ -45,7 +47,6 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
 
-        startTime = Time.time;
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
         eegCoroutine = StartCoroutine(SimulatePhysiologicalData());
         LoadQuestion(currentQuestionIndex);
@@ -80,6 +81,9 @@ public class QuestionScreen : MonoBehaviour
             return;
         }
 
+        // reset timer for each question
+        questionStartTimeRealtime = Time.realtimeSinceStartup;
+
         var q = questions[index];
         conflictStatementText.text = $"<b>{q.topic}</b>\n\n{q.statement}";
 
@@ -91,10 +95,23 @@ public class QuestionScreen : MonoBehaviour
 
     private void RecordResponse(string option)
     {
-        float rawReactionTime = Time.time - startTime;
+        float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
         string reactionTime = rawReactionTime.ToString("F3");
 
         Debug.Log($"[Question {currentQuestionIndex}] Option {option} selected after {reactionTime} seconds.");
+
+        // Log event marker for response key press
+        float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
+        float globalTimestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
+
+        participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = $"Question_{currentQuestionIndex}_KEY_{option}_PRESSED"
+        });
+
+        Debug.Log($"[QuestionScreen]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_KEY_{option}_PRESSED");
 
         // Save response
         var response = new ResponseRecord
@@ -118,7 +135,6 @@ public class QuestionScreen : MonoBehaviour
         // Hide blank screen
         blankOverlay.SetActive(false);
 
-        startTime = Time.time;
         LoadQuestion(currentQuestionIndex);
     }
 
