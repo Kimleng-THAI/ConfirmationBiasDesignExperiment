@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class ArticleViewerManager : MonoBehaviour
 {
@@ -14,6 +15,15 @@ public class ArticleViewerManager : MonoBehaviour
 
     // Timestamp for current scene
     private float sceneStartTime;
+
+    private List<string> requiredTopics = new List<string>
+    {
+        "Climate Change and Environmental Policy",
+        "Economic Policy and Inequality",
+        "Education and Learning Methods",
+        "Health and Medical Approaches",
+        "Technology and Social Media Impact"
+    };
 
     void Start()
     {
@@ -50,16 +60,16 @@ public class ArticleViewerManager : MonoBehaviour
             contentText.text = "Please go back and choose an article.";
         }
 
-        // Disable Continue if fewer than 5 articles have been read
-        if (tracker != null && tracker.selectedArticles.articles.Count < 5)
+        // Enable Continue only if 2 unique articles per topic have been read
+        if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
         {
-            continueButton.interactable = false;
-            Debug.Log("[ArticleViewerScene]: Continue disabled, less than 5 articles read.");
+            continueButton.interactable = true;
+            Debug.Log("[ArticleViewerScene]: Continue enabled. All topics have 2 unique articles read.");
         }
         else
         {
-            continueButton.interactable = true;
-            Debug.Log("[ArticleViewerScene]: Continue enabled.");
+            continueButton.interactable = false;
+            Debug.Log("[ArticleViewerScene]: Continue disabled. Participant hasn't read 2 unique articles per topic.");
         }
     }
 
