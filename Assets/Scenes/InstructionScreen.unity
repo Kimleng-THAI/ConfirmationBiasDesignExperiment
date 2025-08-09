@@ -715,8 +715,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "WELCOME TO THE EXPERIMENT\n\n- You will see statements about various topics.\n\n-
-    Please indicate how much you agree or disagree with each statement.\n\n- Please
-    respond thoroughly and honestly.\n\n\n\n\n\n  Press SPACE to begin"
+    Please rate how much you agree or disagree with each statement on a scale of
+    1 to 5.\n\n- Press: 1 - Strongly Disagree, 2 - Disagree,\n3 - Neutral, 4 - Agree,
+    5 - Strongly Agree\n\n- Please respond thoroughly and honestly.\n\n\n\n  Press
+    SPACE to begin"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
