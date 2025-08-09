@@ -44,6 +44,8 @@ public class ParticipantData1
 public class ResponseRecord
 {
     public int questionIndex;
+    public string topicCode;
+    public string statementCode;
     public string selectedOption;
     public string reactionTime;
 }

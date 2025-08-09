@@ -1,6 +1,8 @@
 ﻿{
     "questions": [
         {
+            "topicCode": "T01",
+            "statementCode": "S01",
             "topic": "Climate Change and Environmental Policy",
             "statement": "Government regulation is more effective than individual action for addressing climate change.",
             "options": [
@@ -12,6 +14,8 @@
             ]
         },
         {
+            "topicCode": "T01",
+            "statementCode": "S02",
             "topic": "Climate Change and Environmental Policy",
             "statement": "The economic benefits of renewable energy outweigh the costs of transitioning from fossil fuels.",
             "options": [
@@ -23,6 +27,8 @@
             ]
         },
         {
+            "topicCode": "T02",
+            "statementCode": "S01",
             "topic": "Technology and Social Media Impact",
             "statement": "Social media platforms should be more heavily regulated to protect users' mental health.",
             "options": [
@@ -34,6 +40,8 @@
             ]
         },
         {
+            "topicCode": "T02",
+            "statementCode": "S02",
             "topic": "Technology and Social Media Impact",
             "statement": "Artificial intelligence will create more jobs than it eliminates in the next decade.",
             "options": [
@@ -45,6 +53,8 @@
             ]
         },
         {
+            "topicCode": "T03",
+            "statementCode": "S01",
             "topic": "Economic Policy and Inequality",
             "statement": "Universal basic income would reduce motivation to work and harm the economy.",
             "options": [
@@ -56,6 +66,8 @@
             ]
         },
         {
+            "topicCode": "T03",
+            "statementCode": "S02",
             "topic": "Economic Policy and Inequality",
             "statement": "Wealth taxes on the richest individuals are necessary to reduce inequality.",
             "options": [
@@ -67,6 +79,8 @@
             ]
         },
         {
+            "topicCode": "T04",
+            "statementCode": "S01",
             "topic": "Health and Medical Approaches",
             "statement": "Mental health should be treated primarily through therapy rather than medication.",
             "options": [
@@ -78,6 +92,8 @@
             ]
         },
         {
+            "topicCode": "T04",
+            "statementCode": "S02",
             "topic": "Health and Medical Approaches",
             "statement": "Preventive healthcare measures save more lives than advanced treatment technologies.",
             "options": [
@@ -89,6 +105,8 @@
             ]
         },
         {
+            "topicCode": "T05",
+            "statementCode": "S01",
             "topic": "Education and Learning Methods",
             "statement": "Standardised testing is an effective way to measure student learning and school quality.",
             "options": [
@@ -100,6 +118,8 @@
             ]
         },
         {
+            "topicCode": "T05",
+            "statementCode": "S02",
             "topic": "Education and Learning Methods",
             "statement": "Students learn better when they have more control over their learning pace and style.",
             "options": [

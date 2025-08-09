@@ -23,6 +23,9 @@ public class QuestionScreen : MonoBehaviour
 
     private float questionStartTimeRealtime;
 
+    private Coroutine questionTimerCoroutine;
+    private bool hasResponded = false;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -35,6 +38,15 @@ public class QuestionScreen : MonoBehaviour
         }
 
         questions = qList.questions;
+
+        // Randomise the question order
+        for (int i = 0; i < questions.Count; i++)
+        {
+            Question temp = questions[i];
+            int randomIndex = Random.Range(i, questions.Count);
+            questions[i] = questions[randomIndex];
+            questions[randomIndex] = temp;
+        }
     }
 
     private void OnEnable()
@@ -84,6 +96,15 @@ public class QuestionScreen : MonoBehaviour
         // reset timer for each question
         questionStartTimeRealtime = Time.realtimeSinceStartup;
 
+        // reset flags
+        hasResponded = false;
+
+        // stop any previous timer
+        if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
+
+        // start 10-second timer for non-response
+        questionTimerCoroutine = StartCoroutine(QuestionTimer());
+
         var q = questions[index];
         conflictStatementText.text = $"<b>{q.topic}</b>\n\n{q.statement}";
 
@@ -95,10 +116,19 @@ public class QuestionScreen : MonoBehaviour
 
     private void RecordResponse(string option)
     {
+        // prevent double logging
+        if (hasResponded) return;
+        hasResponded = true;
+
+        // stop timer if answered early
+        if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
+
+        var q = questions[currentQuestionIndex];
+
         float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
         string reactionTime = rawReactionTime.ToString("F3");
 
-        Debug.Log($"[Question {currentQuestionIndex}] Option {option} selected after {reactionTime} seconds.");
+        Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Option {option} selected after {reactionTime} seconds.");
 
         // Log event marker for response key press
         float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
@@ -108,15 +138,17 @@ public class QuestionScreen : MonoBehaviour
         {
             localTimestamp = localTimestamp,
             globalTimestamp = globalTimestamp,
-            label = $"Question_{currentQuestionIndex}_KEY_{option}_PRESSED"
+            label = $"Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_KEY_{option}_PRESSED"
         });
 
-        Debug.Log($"[QuestionScreen]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_KEY_{option}_PRESSED");
+        Debug.Log($"[QuestionScreen]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_KEY_{option}_PRESSED");
 
         // Save response
         var response = new ResponseRecord
         {
             questionIndex = currentQuestionIndex,
+            topicCode = q.topicCode,
+            statementCode = q.statementCode,
             selectedOption = option,
             reactionTime = reactionTime
         };
@@ -124,6 +156,43 @@ public class QuestionScreen : MonoBehaviour
 
         currentQuestionIndex++;
         StartCoroutine(TransitionToNextQuestion());
+    }
+
+    private IEnumerator<WaitForSeconds> QuestionTimer()
+    {
+        yield return new WaitForSeconds(10f);
+
+        if (!hasResponded)
+        {
+            var q = questions[currentQuestionIndex];
+
+            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | No response within 10 seconds.");
+
+            // Log non-response event
+            float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
+            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
+
+            participantData.eventMarkers.Add(new EventMarker
+            {
+                localTimestamp = localTimestamp,
+                globalTimestamp = globalTimestamp,
+                label = $"Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_NO_RESPONSE"
+            });
+
+            // Save non-response as "NR"
+            var response = new ResponseRecord
+            {
+                questionIndex = currentQuestionIndex,
+                topicCode = q.topicCode,
+                statementCode = q.statementCode,
+                selectedOption = "NR",
+                reactionTime = "10.000" // max time
+            };
+            participantData.responses.Add(response);
+
+            currentQuestionIndex++;
+            StartCoroutine(TransitionToNextQuestion());
+        }
     }
 
     private IEnumerator<WaitForSeconds> TransitionToNextQuestion()
