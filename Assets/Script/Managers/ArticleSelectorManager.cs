@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class ArticleEntryData
@@ -24,7 +25,6 @@ public class ArticleSelectorManager : MonoBehaviour
     // Assign in Inspector
     public GameObject articleButtonPrefab;
     public Transform contentPanel;
-    public Button backButton;
     public TextMeshProUGUI topicTitleText;
 
     private List<ArticleEntryData> loadedArticles;
@@ -33,12 +33,17 @@ public class ArticleSelectorManager : MonoBehaviour
     // Timestamp for current scene
     private float sceneStartTime;
 
+    // Input actions for back key detection
+    private PlayerInputActions inputActions;
+
+    void Awake()
+    {
+        inputActions = new PlayerInputActions();
+    }
+
     void Start()
     {
         sceneStartTime = Time.realtimeSinceStartup;
-
-        // Back button functionality
-        backButton.onClick.AddListener(OnBackButtonClicked);
 
         // Retrieve selected topic
         selectedTopic = PlayerPrefs.GetString("SelectedTopic", "");
@@ -59,6 +64,23 @@ public class ArticleSelectorManager : MonoBehaviour
         {
             Debug.Log($"[ArticleSelectorManager]: No article JSON file defined for topic: {selectedTopic}");
         }
+    }
+
+    void OnEnable()
+    {
+        inputActions.UI.Enable();
+        inputActions.UI.GoBack.performed += OnBackKeyPressed;
+    }
+
+    void OnDisable()
+    {
+        inputActions.UI.GoBack.performed -= OnBackKeyPressed;
+        inputActions.UI.Disable();
+    }
+
+    private void OnBackKeyPressed(InputAction.CallbackContext ctx)
+    {
+        OnBackButtonClicked();
     }
 
     void OnBackButtonClicked()

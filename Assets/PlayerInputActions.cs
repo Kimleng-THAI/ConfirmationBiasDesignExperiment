@@ -144,6 +144,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a9857f5-a25b-4710-acc8-2cb525133609"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoForward"",
+                    ""type"": ""Button"",
+                    ""id"": ""3aab5d1c-0135-4e36-a592-ff78a02b1358"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +230,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Select5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3103960a-d1d6-4540-b8a1-ea40b668ade8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GoBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca9e514d-44c4-474e-ac5b-4bdf76d47861"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GoForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -226,6 +266,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Select3 = m_UI.FindAction("Select3", throwIfNotFound: true);
         m_UI_Select4 = m_UI.FindAction("Select4", throwIfNotFound: true);
         m_UI_Select5 = m_UI.FindAction("Select5", throwIfNotFound: true);
+        m_UI_GoBack = m_UI.FindAction("GoBack", throwIfNotFound: true);
+        m_UI_GoForward = m_UI.FindAction("GoForward", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -312,6 +354,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Select3;
     private readonly InputAction m_UI_Select4;
     private readonly InputAction m_UI_Select5;
+    private readonly InputAction m_UI_GoBack;
+    private readonly InputAction m_UI_GoForward;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -347,6 +391,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Select5".
         /// </summary>
         public InputAction @Select5 => m_Wrapper.m_UI_Select5;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/GoBack".
+        /// </summary>
+        public InputAction @GoBack => m_Wrapper.m_UI_GoBack;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/GoForward".
+        /// </summary>
+        public InputAction @GoForward => m_Wrapper.m_UI_GoForward;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -391,6 +443,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Select5.started += instance.OnSelect5;
             @Select5.performed += instance.OnSelect5;
             @Select5.canceled += instance.OnSelect5;
+            @GoBack.started += instance.OnGoBack;
+            @GoBack.performed += instance.OnGoBack;
+            @GoBack.canceled += instance.OnGoBack;
+            @GoForward.started += instance.OnGoForward;
+            @GoForward.performed += instance.OnGoForward;
+            @GoForward.canceled += instance.OnGoForward;
         }
 
         /// <summary>
@@ -420,6 +478,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Select5.started -= instance.OnSelect5;
             @Select5.performed -= instance.OnSelect5;
             @Select5.canceled -= instance.OnSelect5;
+            @GoBack.started -= instance.OnGoBack;
+            @GoBack.performed -= instance.OnGoBack;
+            @GoBack.canceled -= instance.OnGoBack;
+            @GoForward.started -= instance.OnGoForward;
+            @GoForward.performed -= instance.OnGoForward;
+            @GoForward.canceled -= instance.OnGoForward;
         }
 
         /// <summary>
@@ -502,5 +566,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSelect5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GoBack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGoBack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GoForward" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGoForward(InputAction.CallbackContext context);
     }
 }

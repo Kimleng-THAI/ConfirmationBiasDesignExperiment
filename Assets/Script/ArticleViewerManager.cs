@@ -3,15 +3,13 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class ArticleViewerManager : MonoBehaviour
 {
     public TextMeshProUGUI topicText;
     public TextMeshProUGUI headlineText;
     public TextMeshProUGUI contentText;
-
-    public Button backButton;
-    public Button continueButton;
 
     // Timestamp for current scene
     private float sceneStartTime;
@@ -25,24 +23,16 @@ public class ArticleViewerManager : MonoBehaviour
         "Technology and Social Media Impact"
     };
 
+    private PlayerInputActions inputActions;
+
+    void Awake()
+    {
+        inputActions = new PlayerInputActions();
+    }
+
     void Start()
     {
         sceneStartTime = Time.realtimeSinceStartup;
-
-        backButton.onClick.AddListener(() =>
-        {
-            LogEvent("BackButtonClicked");
-            PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
-            SceneManager.LoadScene("TransitionScene");
-        });
-
-        continueButton.onClick.AddListener(() =>
-        {
-            LogEvent("ContinueButtonClicked");
-            PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
-            SceneManager.LoadScene("TransitionScene");
-            Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
-        });
 
         var tracker = ArticleSelectionTracker.Instance;
 
@@ -63,13 +53,49 @@ public class ArticleViewerManager : MonoBehaviour
         // Enable Continue only if 2 unique articles per topic have been read
         if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
         {
-            continueButton.interactable = true;
             Debug.Log("[ArticleViewerScene]: Continue enabled. All topics have 2 unique articles read.");
         }
         else
         {
-            continueButton.interactable = false;
             Debug.Log("[ArticleViewerScene]: Continue disabled. Participant hasn't read 2 unique articles per topic.");
+        }
+    }
+
+    void OnEnable()
+    {
+        inputActions.UI.Enable();
+        inputActions.UI.GoBack.performed += OnBackKeyPressed;
+        inputActions.UI.GoForward.performed += OnForwardKeyPressed;
+    }
+
+    void OnDisable()
+    {
+        inputActions.UI.GoBack.performed -= OnBackKeyPressed;
+        inputActions.UI.GoForward.performed -= OnForwardKeyPressed;
+        inputActions.UI.Disable();
+    }
+
+    private void OnBackKeyPressed(InputAction.CallbackContext ctx)
+    {
+        LogEvent("BackButtonClicked");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+        SceneManager.LoadScene("TransitionScene");
+    }
+
+    private void OnForwardKeyPressed(InputAction.CallbackContext ctx)
+    {
+        // Only allow continue if participant has read minimum two articles per topic
+        var tracker = ArticleSelectionTracker.Instance;
+        if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
+        {
+            LogEvent("ContinueButtonClicked");
+            PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
+            SceneManager.LoadScene("TransitionScene");
+            Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
+        }
+        else
+        {
+            Debug.Log("[ArticleViewerScene]: Continue action ignored. Participant hasn't read 2 unique articles per topic.");
         }
     }
 
