@@ -127,8 +127,44 @@ public class ArticleSelectorManager : MonoBehaviour
         if (jsonFile != null)
         {
             ArticleData data = JsonUtility.FromJson<ArticleData>(jsonFile.text);
-            loadedArticles = data.articles;
 
+            // Filter out articles already read by participant
+            List<ArticleEntryData> allArticles = data.articles;
+            List<ArticleEntryData> unreadArticles = new List<ArticleEntryData>();
+
+            // Get list of read article headlines for current topic from tracker
+            var tracker = ArticleSelectionTracker.Instance;
+            List<string> readHeadlines = new List<string>();
+
+            if (tracker != null)
+            {
+                foreach (var article in tracker.selectedArticles.articles)
+                {
+                    if (article.topic == selectedTopic)
+                    {
+                        readHeadlines.Add(article.headline);
+                    }
+                }
+            }
+
+            // Filter articles by checking if headline is not in readHeadlines
+            foreach (var article in allArticles)
+            {
+                if (!readHeadlines.Contains(article.headline))
+                {
+                    unreadArticles.Add(article);
+                }
+            }
+
+            loadedArticles = unreadArticles;
+
+            // Clear any existing buttons
+            foreach (Transform child in contentPanel)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Create buttons only for unread articles
             for (int i = 0; i < loadedArticles.Count; i++)
             {
                 int index = i;
@@ -140,6 +176,12 @@ public class ArticleSelectorManager : MonoBehaviour
 
                 Button readButton = btn.GetComponentInChildren<Button>();
                 readButton.onClick.AddListener(() => OnReadArticleClicked(index));
+            }
+
+            // if no unread articles left, log a message
+            if (loadedArticles.Count == 0)
+            {
+                Debug.Log("[ArticleSelectorManager]: All articles in this topic have been read.");
             }
         }
         else

@@ -7,6 +7,7 @@ public class SelectedArticle
     public string topic;
     public string headline;
     public string content;
+    public string selectedOption;
 }
 
 [Serializable]
