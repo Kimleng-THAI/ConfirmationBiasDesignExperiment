@@ -122,8 +122,34 @@ public class ArticleViewerManager : MonoBehaviour
             }
             return;
         }
-        LogEvent("BackButtonClicked");
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+        var tracker = ArticleSelectionTracker.Instance;
+
+        // Once participant has read 2 articles in current topic
+        // Left Arrow Key goes back to TopicSelectorScene
+        // Else, it goes back to ArticleSelectorScene
+        string currentTopic = null;
+        if (tracker != null && tracker.selectedArticles.articles.Count > 0)
+        {
+            currentTopic = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1].topic;
+            int articlesReadInCurrentTopic = tracker.GetUniqueArticleCountForTopic(currentTopic);
+            Debug.Log($"Articles read in current topic '{currentTopic}': {articlesReadInCurrentTopic}");
+
+            if (articlesReadInCurrentTopic >= 2)
+            {
+                LogEvent("BackButtonClicked - Redirect to TopicSelectorScene");
+                PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+            }
+            else
+            {
+                LogEvent("BackButtonClicked - Redirect to ArticleSelectorScene");
+                PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+            }
+        }
+        else
+        {
+            // Fallback if no current topic found
+            PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+        }
         SceneManager.LoadScene("TransitionScene");
     }
 

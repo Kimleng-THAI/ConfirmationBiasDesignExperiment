@@ -106,7 +106,7 @@ public class QuestionScreen : MonoBehaviour
         questionTimerCoroutine = StartCoroutine(QuestionTimer());
 
         var q = questions[index];
-        conflictStatementText.text = $"<b>{q.topic}</b>\n\n{q.statement}";
+        conflictStatementText.text = $"<color=#000000><b>{q.topic}</b></color>\n\n{q.statement}";
 
         for (int i = 0; i < optionTexts.Length; i++)
         {
