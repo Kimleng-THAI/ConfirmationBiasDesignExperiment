@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TopicSelectorScene.unity
     guid: e57e5fd26e27840f2b42da47d4e42f04
   - enabled: 1
+    path: Assets/Scenes/ArticleInstructionsScene.unity
+    guid: faf5edb5456db4f6b9bebdc180ee6562
+  - enabled: 1
     path: Assets/Scenes/ArticleSelectorScene.unity
     guid: 880c4055378364fccb7a5273cb7ee3ae
   - enabled: 1

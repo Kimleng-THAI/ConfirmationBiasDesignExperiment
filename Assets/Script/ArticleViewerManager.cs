@@ -109,9 +109,31 @@ public class ArticleViewerManager : MonoBehaviour
 
     private void OnBackKeyPressed(InputAction.CallbackContext ctx)
     {
+        // Prevent going back until a response is given
+        if (!hasResponded)
+        {
+            Debug.Log("[ArticleViewerScene]: Back action ignored. Participant must select a level of agreement first.");
+
+            if (agreementPromptText != null)
+            {
+                // Stop any previous prompt restoration
+                StopAllCoroutines();
+                StartCoroutine(ShowTemporaryPrompt("Please select your level of agreement before going back."));
+            }
+            return;
+        }
         LogEvent("BackButtonClicked");
         PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
         SceneManager.LoadScene("TransitionScene");
+    }
+
+    private IEnumerator<WaitForSeconds> ShowTemporaryPrompt(string warningText)
+    {
+        string originalText = agreementPromptText.text;
+        agreementPromptText.text = warningText;
+        // Show warning for 2 seconds
+        yield return new WaitForSeconds(2f);
+        agreementPromptText.text = originalText;
     }
 
     private void OnForwardKeyPressed(InputAction.CallbackContext ctx)
