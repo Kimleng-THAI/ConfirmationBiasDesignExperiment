@@ -9,6 +9,7 @@ public class Question
     public string topic;
     public string statement;
     public List<string> options;
+    public List<string> confidenceOptions;
 }
 
 [System.Serializable]

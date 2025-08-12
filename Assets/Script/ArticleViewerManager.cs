@@ -191,7 +191,7 @@ public class ArticleViewerManager : MonoBehaviour
             lastArticle.selectedOption = option;
             hasResponded = true;
 
-            LogEvent($"AgreementSelected: {option}", lastArticle.headline);
+            LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline);
 
             Debug.Log($"[ArticleViewerScene]: Agreement response recorded: {option}");
         }

@@ -4,1300 +4,2000 @@
             "topicCode": "T01",
             "statementCode": "S01",
             "topic": "Climate Change and Environmental Policy",
-            "statement": "Government regulation is more effective than individual action for addressing climate change.",
+            "statement": "Government policies like carbon taxes are more effective than individual lifestyle changes for reducing emissions.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T01",
             "statementCode": "S02",
             "topic": "Climate Change and Environmental Policy",
-            "statement": "The economic benefits of renewable energy outweigh the costs of transitioning from fossil fuels.",
+            "statement": "The transition to renewable energy will create more economic benefits than costs for most communities.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T01",
             "statementCode": "S03",
             "topic": "Climate Change and Environmental Policy",
-            "statement": "Carbon taxes are an effective way to reduce greenhouse gas emissions.",
+            "statement": "Nuclear power is essential for achieving carbon neutrality by 2050.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T01",
             "statementCode": "S04",
             "topic": "Climate Change and Environmental Policy",
-            "statement": "Nuclear power should be considered a key part of the transition to clean energy.",
+            "statement": "Electric vehicles are better for the environment than conventional cars over their full lifecycle.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T01",
             "statementCode": "S05",
             "topic": "Climate Change and Environmental Policy",
-            "statement": "Developed countries have a greater responsibility to address climate change than developing nations.",
+            "statement": "Climate change requires immediate radical action rather than gradual technological innovation",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S06",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Investing in green technology will strengthen long-term economic growth.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S07",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Climate change policies should prioritise environmental protection over economic growth.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S08",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Fossil fuel subsidies should be eliminated to encourage renewable energy adoption.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S09",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "International cooperation is essential to effectively combat climate change.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S10",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Corporations should be legally required to report their carbon emissions.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S11",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Protecting biodiversity is as important as reducing carbon emissions.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S12",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Climate change education should be mandatory in all school curricula.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S13",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Transitioning to electric vehicles should be mandated by law within the next 20 years.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S14",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S15",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S16",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Climate refugees should be given priority immigration status by developed nations.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S17",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Green building standards should be mandatory for all new construction projects.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S18",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Geoengineering should be considered as a backup plan to address climate change.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S19",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Urban planning should prioritise public transportation over private vehicle use to reduce emissions.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T01",
-            "statementCode": "S20",
-            "topic": "Climate Change and Environmental Policy",
-            "statement": "Plastic pollution should be addressed with the same urgency as climate change.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T02",
             "statementCode": "S01",
             "topic": "Technology and Social Media Impact",
-            "statement": "Social media platforms should be more heavily regulated to protect users' mental health.",
+            "statement": "Social media platforms cause more harm than good for teenagers' mental health.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T02",
             "statementCode": "S02",
             "topic": "Technology and Social Media Impact",
-            "statement": "Artificial intelligence will create more jobs than it eliminates in the next decade.",
+            "statement": "Artificial intelligence will ultimately create more jobs than it eliminates.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T02",
             "statementCode": "S03",
             "topic": "Technology and Social Media Impact",
-            "statement": "Governments should have the authority to limit the amount of time minors spend on social media.",
+            "statement": "Smartphones have reduced peoples' ability to concentrate and think deeply.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T02",
             "statementCode": "S04",
             "topic": "Technology and Social Media Impact",
-            "statement": "Facial recognition technology should be restricted in public spaces to protect privacy.",
+            "statement": "Technology companies should be regulated like utilities due to their essential role in society.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T02",
             "statementCode": "S05",
             "topic": "Technology and Social Media Impact",
-            "statement": "The benefits of technological innovation outweigh the risks to personal privacy.",
+            "statement": "Virtual reality will fundamentally improve education and training within the next decade.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S06",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Tech companies should be held accountable for the spread of misinformation on their platforms.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S07",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Artificial intelligence poses a greater threat than benefit to society.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S08",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Digital literacy should be a core subject in school education.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S09",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Social media contributes more to political polarisation than to constructive debate.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S10",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Banning addictive app design features will improve public mental health.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S11",
-            "topic": "Technology and Social Media Impact",
-            "statement": "The rise of automation will worsen income inequality.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S12",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Data from wearable devices should be protected by strict privacy laws.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S13",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Technology has made people more connected than ever before in a positive way.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S14",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Online anonymity should be limited to reduce cyberbullying.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S15",
-            "topic": "Technology and Social Media Impact",
-            "statement": "AI should be used to make key decisions in areas like law enforcement and hiring.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S16",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Virtual reality will become a mainstream form of education.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S17",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Children under 13 should be prohibited from creating social media accounts.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S18",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Tech companies should be taxed to fund digital well-being initiatives.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S19",
-            "topic": "Technology and Social Media Impact",
-            "statement": "AI-generated art should be clearly labeled as non-human created.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T02",
-            "statementCode": "S20",
-            "topic": "Technology and Social Media Impact",
-            "statement": "Employers should be banned from monitoring employees outside work hours.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T03",
             "statementCode": "S01",
             "topic": "Economic Policy and Inequality",
-            "statement": "Universal basic income would reduce motivation to work and harm the economy.",
+            "statement": "Raising the minimum wage significantly reduces employment opportunities for entry-level workers.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T03",
             "statementCode": "S02",
             "topic": "Economic Policy and Inequality",
-            "statement": "Wealth taxes on the richest individuals are necessary to reduce inequality.",
+            "statement": "Progressive taxation is necessary to address income inequality.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T03",
             "statementCode": "S03",
             "topic": "Economic Policy and Inequality",
-            "statement": "Raising the minimum wage will reduce poverty without harming the economy.",
+            "statement": "Universal Basic Income would reduce innovation and economic productivity.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T03",
             "statementCode": "S04",
             "topic": "Economic Policy and Inequality",
-            "statement": "Corporations should have a maximum wage ratio between executives and workers.",
+            "statement": "Free market capitalism is the most effective system for reducing poverty.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T03",
             "statementCode": "S05",
             "topic": "Economic Policy and Inequality",
-            "statement": "Progressive taxation is necessary for a fair economy.",
+            "statement": "Cryptocurrency and blockchain technology will revolutionise the global financial system.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S06",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Universal basic income will encourage entrepreneurship.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S07",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Free trade agreements benefit the majority of citizens.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S08",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Rent control is an effective way to make housing affordable.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S09",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Government spending should prioritise healthcare and education over military budgets.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S10",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Automation will require governments to provide stronger social safety nets.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S11",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Tax incentives for small businesses are essential for economic growth.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S12",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Public ownership of key industries improves economic equality.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S13",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Wealth inequality threatens democracy more than political corruption.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S14",
-            "topic": "Economic Policy and Inequality",
-            "statement": "The gig economy exploits workers more than it benefits them.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S15",
-            "topic": "Economic Policy and Inequality",
-            "statement": "A four-day workweek will improve productivity and well-being.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S16",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Free college education will lead to long-term economic growth.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S17",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Raising taxes on luxury goods will help reduce wealth gaps.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S18",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Economic growth should be measured by well-being, not GDP alone.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S19",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Corporate lobbying should be banned to reduce inequality.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T03",
-            "statementCode": "S20",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Inheritance taxes are necessary for a fair distribution of wealth.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T04",
             "statementCode": "S01",
             "topic": "Health and Medical Approaches",
-            "statement": "Mental health should be treated primarily through therapy rather than medication.",
+            "statement": "Mental health conditions are better treated through therapy than medication.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T04",
             "statementCode": "S02",
             "topic": "Health and Medical Approaches",
-            "statement": "Preventive healthcare measures save more lives than advanced treatment technologies.",
+            "statement": "Preventive healthcare is more cost-effective than advanced medical treatments.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T04",
             "statementCode": "S03",
             "topic": "Health and Medical Approaches",
-            "statement": "Public healthcare should be free for all citizens.",
+            "statement": "Alternative medicine practices can be as effective as conventional medicine for chronic conditions.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T04",
             "statementCode": "S04",
             "topic": "Health and Medical Approaches",
-            "statement": "Alternative medicine should be regulated as strictly as conventional medicine.",
+            "statement": "Mandatory vaccination policies are justified for public health protection.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T04",
             "statementCode": "S05",
             "topic": "Health and Medical Approaches",
-            "statement": "Vaccination should be mandatory except for medical exemptions.",
+            "statement": "Genetic engineering of humans should be permitted to eliminate hereditary diseases.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S06",
-            "topic": "Health and Medical Approaches",
-            "statement": "The government should fund universal mental health care.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S07",
-            "topic": "Health and Medical Approaches",
-            "statement": "Sugar taxes will help reduce obesity rates.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S08",
-            "topic": "Health and Medical Approaches",
-            "statement": "Pharmaceutical companies should be prohibited from direct-to-consumer advertising.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S09",
-            "topic": "Health and Medical Approaches",
-            "statement": "Banning junk food in schools will significantly improve public health.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S10",
-            "topic": "Health and Medical Approaches",
-            "statement": "Medical research should be publicly funded to ensure accessibility.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S11",
-            "topic": "Health and Medical Approaches",
-            "statement": "Access to healthcare should be considered a fundamental human right.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S12",
-            "topic": "Health and Medical Approaches",
-            "statement": "Health education is more effective when started in early childhood.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S13",
-            "topic": "Health and Medical Approaches",
-            "statement": "Doctors can use AI for note-taking while talking to the patient rather than typing while talking to the patient.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S14",
-            "topic": "Health and Medical Approaches",
-            "statement": "The organ donation system should be opt-out rather than opt-in.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S15",
-            "topic": "Health and Medical Approaches",
-            "statement": "Healthcare workers should be paid more to reflect their societal value.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S16",
-            "topic": "Health and Medical Approaches",
-            "statement": "Air pollution should be treated as a public health crisis.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S17",
-            "topic": "Health and Medical Approaches",
-            "statement": "Nutrition labeling should be mandatory on all food products.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S18",
-            "topic": "Health and Medical Approaches",
-            "statement": "AI should be used to improve diagnostic accuracy in medicine.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S19",
-            "topic": "Health and Medical Approaches",
-            "statement": "Workplace wellness programs are effective in improving public health.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ]
-        },
-        {
-            "topicCode": "T04",
-            "statementCode": "S20",
-            "topic": "Health and Medical Approaches",
-            "statement": "Hospitals should be required to post transparent pricing for all services.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T05",
             "statementCode": "S01",
             "topic": "Education and Learning Methods",
-            "statement": "Standardised testing is an effective way to measure student learning and school quality.",
+            "statement": "Online learning provides education quality equivalent to in-person instruction.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T05",
             "statementCode": "S02",
             "topic": "Education and Learning Methods",
-            "statement": "Students learn better when they have more control over their learning pace and style.",
+            "statement": "Standardised testing accurately measures student learning and school effectiveness.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T05",
             "statementCode": "S03",
             "topic": "Education and Learning Methods",
-            "statement": "Homework improves student learning outcomes.",
+            "statement": "University education is essential for career success in the modern economy.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T05",
             "statementCode": "S04",
             "topic": "Education and Learning Methods",
-            "statement": "Smaller class sizes lead to better educational results.",
+            "statement": "Students learn better than grouped by ability level rather than mixed-ability classes.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
             "topicCode": "T05",
             "statementCode": "S05",
             "topic": "Education and Learning Methods",
-            "statement": "Technology in the classroom improves learning more than it distracts students.",
+            "statement": "STEM education should be prioritised over arts and humanities in schools.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S06",
-            "topic": "Education and Learning Methods",
-            "statement": "Schools should focus more on critical thinking than rote memorisation.",
+            "topicCode": "T06",
+            "statementCode": "S01",
+            "topic": "Artificial Intelligence and Ethics",
+            "statement": "AI systems should be allowed to make autonomous decisions in healthcare diagnosis.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S07",
-            "topic": "Education and Learning Methods",
-            "statement": "Year-round schooling is more effective than traditional academic calendars.",
+            "topicCode": "T06",
+            "statementCode": "S02",
+            "topic": "Artificial Intelligence and Ethics",
+            "statement": "Facial Recognition technology in public spaces enhances safety more than it threatens privacy.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S08",
-            "topic": "Education and Learning Methods",
-            "statement": "Bilingual education improves cognitive development.",
+            "topicCode": "T06",
+            "statementCode": "S03",
+            "topic": "Artificial Intelligence and Ethics",
+            "statement": "AI-generated art and writing should be clearly labeled as non-human created.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S09",
-            "topic": "Education and Learning Methods",
-            "statement": "Teacher salaries should be increased to attract higher-quality educators.",
+            "topicCode": "T06",
+            "statementCode": "S04",
+            "topic": "Artificial Intelligence and Ethics",
+            "statement": "Autonomous vehicles will be safer than human drivers within five years.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S10",
-            "topic": "Education and Learning Methods",
-            "statement": "Arts education is as important as STEM education.",
+            "topicCode": "T06",
+            "statementCode": "S05",
+            "topic": "Artificial Intelligence and Ethics",
+            "statement": "AI development should be paused until proper regulations are established.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S11",
-            "topic": "Education and Learning Methods",
-            "statement": "Online learning can be as effective as traditional classroom learning.",
+            "topicCode": "T07",
+            "statementCode": "S01",
+            "topic": "Work-Life Balance and Productivity",
+            "statement": "A four-day work week would increase overall productivity and employee wellbeing.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S12",
-            "topic": "Education and Learning Methods",
-            "statement": "Physical education is essential to academic performance.",
+            "topicCode": "T07",
+            "statementCode": "S02",
+            "topic": "Work-Life Balance and Productivity",
+            "statement": "Remote work is as effective as office work for team collaboration and innovation.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S13",
-            "topic": "Education and Learning Methods",
-            "statement": "School uniforms improve discipline and learning focus.",
+            "topicCode": "T07",
+            "statementCode": "S03",
+            "topic": "Work-Life Balance and Productivity",
+            "statement": "Hustle culture and long work hours are necessary for professional success.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S14",
-            "topic": "Education and Learning Methods",
-            "statement": "Grade inflation undermines the credibility of academic achievement.",
+            "topicCode": "T07",
+            "statementCode": "S04",
+            "topic": "Work-Life Balance and Productivity",
+            "statement": "Unlimited vacation policies benefit employees more than traditional PTO systems.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S15",
-            "topic": "Education and Learning Methods",
-            "statement": "Schools should start later to match adolescent sleep patterns.",
+            "topicCode": "T07",
+            "statementCode": "S05",
+            "topic": "Work-Life Balance and Productivity",
+            "statement": "Gig economy jobs provide better flexibility and opportunity than traditional employment.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S16",
-            "topic": "Education and Learning Methods",
-            "statement": "Experiential learning is more valuable than textbook learning.",
+            "topicCode": "T08",
+            "statementCode": "S01",
+            "topic": "Urban Planning and Housing",
+            "statement": "High-density urban living is more sustainable than suburban sprawl.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S17",
-            "topic": "Education and Learning Methods",
-            "statement": "Private schools provide better education than public schools.",
+            "topicCode": "T08",
+            "statementCode": "S02",
+            "topic": "Urban Planning and Housing",
+            "statement": "Rent control policies effectively improve housing affordability.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S18",
-            "topic": "Education and Learning Methods",
-            "statement": "Extracurricular activities are essential to student development.",
+            "topicCode": "T08",
+            "statementCode": "S03",
+            "topic": "Urban Planning and Housing",
+            "statement": "Private car ownership should be discouraged in city centers.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S19",
-            "topic": "Education and Learning Methods",
-            "statement": "Financial literacy should be mandatory in high school curricula.",
+            "topicCode": "T08",
+            "statementCode": "S04",
+            "topic": "Urban Planning and Housing",
+            "statement": "Gentrification ultimately benefits all residents of a neighborhood.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         },
         {
-            "topicCode": "T05",
-            "statementCode": "S20",
-            "topic": "Education and Learning Methods",
-            "statement": "Exams should be replaced with continuous assessment.",
+            "topicCode": "T08",
+            "statementCode": "S05",
+            "topic": "Urban Planning and Housing",
+            "statement": "Single-family zoning laws protect community character and property values.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T09",
+            "statementCode": "S01",
+            "topic": "Food Systems and Agriculture",
+            "statement": "Organic farming is significantly better for the environment than conventional agriculture.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T09",
+            "statementCode": "S02",
+            "topic": "Food Systems and Agriculture",
+            "statement": "Lab-grown meat will be necessary to feed the global population sustainability.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T09",
+            "statementCode": "S03",
+            "topic": "Food Systems and Agriculture",
+            "statement": "Genetically modified crops are safe and essential for food security.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T09",
+            "statementCode": "S04",
+            "topic": "Food Systems and Agriculture",
+            "statement": "Plant-based diets are healthier than diets containing animal products.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T09",
+            "statementCode": "S05",
+            "topic": "Food Systems and Agriculture",
+            "statement": "Local food systems are more sustainable than gloal supply chains.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T10",
+            "statementCode": "S01",
+            "topic": "Criminal Justice and Rehabilitation",
+            "statement": "Rehabilitation programs are more effective than imprisonment for reducing crime.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T10",
+            "statementCode": "S02",
+            "topic": "Criminal Justice and Rehabilitation",
+            "statement": "Police presence in communities increases public safety.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T10",
+            "statementCode": "S03",
+            "topic": "Criminal Justice and Rehabilitation",
+            "statement": "The death penalty serves as an effective deterrent to serious crimes.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T10",
+            "statementCode": "S04",
+            "topic": "Criminal Justice and Rehabilitation",
+            "statement": "Drug addiction should be treated as a health issue rather than a criminal one.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T10",
+            "statementCode": "S05",
+            "topic": "Criminal Justice and Rehabilitation",
+            "statement": "Restrorative justice produces better outcomes than traditional punitive systems.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T11",
+            "statementCode": "S01",
+            "topic": "Gender and Society",
+            "statement": "Gender quotas in leadership positions improve organisational performance.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T11",
+            "statementCode": "S02",
+            "topic": "Gender and Society",
+            "statement": "Biological differences between sexes significantly influence career preferences.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T11",
+            "statementCode": "S03",
+            "topic": "Gender and Society",
+            "statement": "Gender-neutral parenting produces more well-adjusted children.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T11",
+            "statementCode": "S04",
+            "topic": "Gender and Society",
+            "statement": "The gender pay gap is primarily due to discrimination rather than individual choices.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T11",
+            "statementCode": "S05",
+            "topic": "Gender and Society",
+            "statement": "Single-sex education provides better learning outcomes than co-education.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T12",
+            "statementCode": "S01",
+            "topic": "Immigration and Cultural Integraion",
+            "statement": "Immigration provides net economic benefits to receiving countries.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T12",
+            "statementCode": "S02",
+            "topic": "Immigration and Cultural Integraion",
+            "statement": "Multiculturalism strengthens rather than fragments national identity.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T12",
+            "statementCode": "S03",
+            "topic": "Immigration and Cultural Integraion",
+            "statement": "Language requirements for citizenship are necessary for successful integration.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T12",
+            "statementCode": "S04",
+            "topic": "Immigration and Cultural Integraion",
+            "statement": "Skilled immigration should be prioritised over family reunification policies.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T12",
+            "statementCode": "S05",
+            "topic": "Immigration and Cultural Integraion",
+            "statement": "Sanctuary cities make communities safer for all residents.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T13",
+            "statementCode": "S01",
+            "topic": "Privacy and Surveillance",
+            "statement": "Government surveillance programs are justified to prevent terrorism.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T13",
+            "statementCode": "S02",
+            "topic": "Privacy and Surveillance",
+            "statement": "People who have nothing to hide shouldn't worry about privacy.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T13",
+            "statementCode": "S03",
+            "topic": "Privacy and Surveillance",
+            "statement": "Biometric identification should replace traditional passwords and IDs.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T13",
+            "statementCode": "S04",
+            "topic": "Privacy and Surveillance",
+            "statement": "Parents should monitor their children's online activities until age 18.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T13",
+            "statementCode": "S05",
+            "topic": "Privacy and Surveillance",
+            "statement": "The right to be forgotten online should be legally guaranteed.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T14",
+            "statementCode": "S01",
+            "topic": "Sports and Competition",
+            "statement": "Participation trophies diminish the value of genuine achievement.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T14",
+            "statementCode": "S02",
+            "topic": "Sports and Competition",
+            "statement": "Transgender athletes should compete in categories matching their gender identity.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T14",
+            "statementCode": "S03",
+            "topic": "Sports and Competition",
+            "statement": "Performance-enhancing drugs should be allowed in professional sports.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T14",
+            "statementCode": "S04",
+            "topic": "Sports and Competition",
+            "statement": "College atheletes should be paid salaries beyond scholarships.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T14",
+            "statementCode": "S05",
+            "topic": "Sports and Competition",
+            "statement": "Esports deserve the same recognition and support as traditional sports.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T15",
+            "statementCode": "S01",
+            "topic": "Media and Information",
+            "statement": "Traditional journalism is more reliable than citizen journalism and social media news.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T15",
+            "statementCode": "S02",
+            "topic": "Media and Information",
+            "statement": "Fact-checking organisations effectively combat misinformation.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T15",
+            "statementCode": "S03",
+            "topic": "Media and Information",
+            "statement": "Cancel culture is a necessary form of social accountability.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T15",
+            "statementCode": "S04",
+            "topic": "Media and Information",
+            "statement": "Streaming services have improved the quality of entertainment content.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T15",
+            "statementCode": "S05",
+            "topic": "Media and Information",
+            "statement": "Children under 13 should not have access to social media platforms.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T16",
+            "statementCode": "S01",
+            "topic": "Science and Research Funding",
+            "statement": "Basic research without immediate applications deserves public funding.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T16",
+            "statementCode": "S02",
+            "topic": "Science and Research Funding",
+            "statement": "Animal testing remains necessary for medical advancement.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T16",
+            "statementCode": "S03",
+            "topic": "Science and Research Funding",
+            "statement": "Space exploration funding is justified despite problems on Earth.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T16",
+            "statementCode": "S04",
+            "topic": "Science and Research Funding",
+            "statement": "Private companies conduct research more efficiently than universities.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T16",
+            "statementCode": "S05",
+            "topic": "Science and Research Funding",
+            "statement": "Open access to all scientific research should be mandatory.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T17",
+            "statementCode": "S01",
+            "topic": "Parenting and Child Development",
+            "statement": "Screen time limits are essential for healthy child development.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T17",
+            "statementCode": "S02",
+            "topic": "Parenting and Child Development",
+            "statement": "Helicopter parenting produces less resilient children.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T17",
+            "statementCode": "S03",
+            "topic": "Parenting and Child Development",
+            "statement": "Daycare from infancy provides better socialisation than home care.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T17",
+            "statementCode": "S04",
+            "topic": "Parenting and Child Development",
+            "statement": "Physical discipline is sometimes necessary in child-rearing.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T17",
+            "statementCode": "S05",
+            "topic": "Parenting and Child Development",
+            "statement": "Children should be allowed to make their own educational choices from age 14.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T18",
+            "statementCode": "S01",
+            "topic": "Aging and Elder Care",
+            "statement": "Mandatory retirement ages are discriminatory and economically harmful.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T18",
+            "statementCode": "S02",
+            "topic": "Aging and Elder Care",
+            "statement": "Assisted dying should be available for terminally ill patients.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T18",
+            "statementCode": "S03",
+            "topic": "Aging and Elder Care",
+            "statement": "Multi-generational living arrangements benefit all family members.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T18",
+            "statementCode": "S04",
+            "topic": "Aging and Elder Care",
+            "statement": "Aging in place is preferable to assisted living facilities.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T18",
+            "statementCode": "S05",
+            "topic": "Aging and Elder Care",
+            "statement": "Society undervalues the contributions of older adults.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T19",
+            "statementCode": "S01",
+            "topic": "Transportation and Mobility",
+            "statement": "Public transportation should be free to encourage usage.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T19",
+            "statementCode": "S02",
+            "topic": "Transportation and Mobility",
+            "statement": "High-speed rail is more practical than air travel for distances under 500 miles.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T19",
+            "statementCode": "S03",
+            "topic": "Transportation and Mobility",
+            "statement": "Bicycle infrastructure should take priority over car lanes in cities.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T19",
+            "statementCode": "S04",
+            "topic": "Transportation and Mobility",
+            "statement": "Ride-sharing services have improved urban transportation overall.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T19",
+            "statementCode": "S05",
+            "topic": "Transportation and Mobility",
+            "statement": "Flying should be heavily taxed to reduce carbon emissions.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T20",
+            "statementCode": "S01",
+            "topic": "Mental Health and Wellness",
+            "statement": "Mindfulness and meditation are as effective as therapy for managing anxiety.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T20",
+            "statementCode": "S02",
+            "topic": "Mental Health and Wellness",
+            "statement": "Mental health days should be treated the same as sick days by employers.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T20",
+            "statementCode": "S03",
+            "topic": "Mental Health and Wellness",
+            "statement": "Social media use directly causes increased rates of depression in young people.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T20",
+            "statementCode": "S04",
+            "topic": "Mental Health and Wellness",
+            "statement": "Psychedelic-assisted therapy will revolutionise mental health treatment.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
+            ]
+        },
+        {
+            "topicCode": "T20",
+            "statementCode": "S05",
+            "topic": "Mental Health and Wellness",
+            "statement": "The rise in mental health diagnoses reflects over-medicalisation rather than genuine need.",
+            "options": [
+                "1. Strongly Disagree",
+                "2. Disagree",
+                "3. Neutral",
+                "4. Agree",
+                "5. Strongly Agree"
+            ],
+            "confidenceOptions": [
+                "1. Not confident at all",
+                "2. Slightly confident",
+                "3. Moderately confident",
+                "4. Very confident",
+                "5. Extremely confident"
             ]
         }
     ]

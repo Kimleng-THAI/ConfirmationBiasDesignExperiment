@@ -12,7 +12,7 @@ public class QuestionScreen : MonoBehaviour
     public TextMeshProUGUI[] optionTexts;
 
     private PlayerInputActions inputActions;
-    private static int currentQuestionIndex = 0;
+    private static int currentQuestionIndex = 1;
     private List<Question> questions;
 
     private Coroutine eegCoroutine;
@@ -25,6 +25,11 @@ public class QuestionScreen : MonoBehaviour
 
     private Coroutine questionTimerCoroutine;
     private bool hasResponded = false;
+
+    private bool awaitingConfidence = false;
+    private float confidenceStartTime;
+    private string tempSelectedOption = "";
+    private string tempAgreementReactionTime = "";
 
     private void Awake()
     {
@@ -116,46 +121,96 @@ public class QuestionScreen : MonoBehaviour
 
     private void RecordResponse(string option)
     {
-        // prevent double logging
-        if (hasResponded) return;
-        hasResponded = true;
-
-        // stop timer if answered early
-        if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
-
-        var q = questions[currentQuestionIndex];
-
-        float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
-        string reactionTime = rawReactionTime.ToString("F3");
-
-        Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Option {option} selected after {reactionTime} seconds.");
-
-        // Log event marker for response key press
-        float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
-        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
-
-        participantData.eventMarkers.Add(new EventMarker
+        if (!awaitingConfidence)
         {
-            localTimestamp = localTimestamp,
-            globalTimestamp = globalTimestamp,
-            label = $"Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_KEY_{option}_PRESSED"
-        });
+            // First stage — agreement selection
+            if (hasResponded) return;
+            hasResponded = true;
 
-        Debug.Log($"[QuestionScreen]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_KEY_{option}_PRESSED");
+            // stop timer if answered early
+            if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
 
-        // Save response
-        var response = new ResponseRecord
+            var q = questions[currentQuestionIndex];
+            float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
+            tempAgreementReactionTime = rawReactionTime.ToString("F3");
+
+            // Store agreement choice
+            tempSelectedOption = option;
+            confidenceStartTime = Time.realtimeSinceStartup;
+
+            // Log agreement selection and reaction time
+            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement Selected Option: {tempSelectedOption} after {tempAgreementReactionTime} seconds.");
+
+            // Log event marker for agreement scale rating
+            float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
+            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
+
+            participantData.eventMarkers.Add(new EventMarker
+            {
+                localTimestamp = localTimestamp,
+                globalTimestamp = globalTimestamp,
+                label = $"[QuestionScene]: Question: {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Agreement_Level: {option}"
+            });
+
+            Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
+
+            // Switch to confidence mode
+            awaitingConfidence = true;
+            // allow input again
+            hasResponded = false;
+            ShowConfidenceOptions(q);
+        }
+        else
         {
-            questionIndex = currentQuestionIndex,
-            topicCode = q.topicCode,
-            statementCode = q.statementCode,
-            selectedOption = option,
-            reactionTime = reactionTime
-        };
-        participantData.responses.Add(response);
+            // Second stage — confidence selection
+            var q = questions[currentQuestionIndex];
+            float rawConfidenceReactionTime = Time.realtimeSinceStartup - confidenceStartTime;
+            string confidenceReactionTime = rawConfidenceReactionTime.ToString("F3");
 
-        currentQuestionIndex++;
-        StartCoroutine(TransitionToNextQuestion());
+            participantData.responses.Add(new ResponseRecord
+            {
+                questionIndex = currentQuestionIndex,
+                topicCode = q.topicCode,
+                statementCode = q.statementCode,
+                selectedOption = tempSelectedOption,
+                confidenceLevel = option,
+                agreementReactionTime = tempAgreementReactionTime,
+                confidenceReactionTime = confidenceReactionTime
+            });
+
+            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Confidence Level: {option} after {confidenceReactionTime} seconds.");
+
+            // Log event marker for confidence scale rating
+            float localTimestamp = Time.realtimeSinceStartup - confidenceStartTime;
+            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
+
+            participantData.eventMarkers.Add(new EventMarker
+            {
+                localTimestamp = localTimestamp,
+                globalTimestamp = globalTimestamp,
+                label = $"[QuestionScene]: Question: {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Confidence_Level: {option}"
+            });
+
+            Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_CONFIDENCE_{option}");
+
+            // Reset state
+            awaitingConfidence = false;
+            tempSelectedOption = "";
+            tempAgreementReactionTime = "";
+
+            currentQuestionIndex++;
+            StartCoroutine(TransitionToNextQuestion());
+        }
+    }
+
+    private void ShowConfidenceOptions(Question q)
+    {
+        conflictStatementText.text = "<color=#000000><b>How confident are you about your previous response?</b></color>";
+
+        for (int i = 0; i < optionTexts.Length; i++)
+        {
+            optionTexts[i].text = (i < q.confidenceOptions.Count) ? q.confidenceOptions[i] : "";
+        }
     }
 
     private IEnumerator<WaitForSeconds> QuestionTimer()
@@ -179,16 +234,17 @@ public class QuestionScreen : MonoBehaviour
                 label = $"Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_NO_RESPONSE"
             });
 
-            // Save non-response as "NR"
-            var response = new ResponseRecord
+            // Save non-response as "NR" for both agreement and confidence
+            participantData.responses.Add(new ResponseRecord
             {
                 questionIndex = currentQuestionIndex,
                 topicCode = q.topicCode,
                 statementCode = q.statementCode,
                 selectedOption = "NR",
-                reactionTime = "10.000" // max time
-            };
-            participantData.responses.Add(response);
+                confidenceLevel = "NR",
+                agreementReactionTime = "10.000",
+                confidenceReactionTime = "10.000"
+            });
 
             currentQuestionIndex++;
             StartCoroutine(TransitionToNextQuestion());
