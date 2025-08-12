@@ -164,6 +164,18 @@ public class ArticleViewerManager : MonoBehaviour
 
     private void OnForwardKeyPressed(InputAction.CallbackContext ctx)
     {
+        // Prevent going to SurveyScene until a response is given
+        if (!hasResponded)
+        {
+            Debug.Log("[ArticleViewerScene]: Forward action ignored. Participant must select a level of agreement first.");
+
+            if (agreementPromptText != null)
+            {
+                StopAllCoroutines();
+                StartCoroutine(ShowTemporaryPrompt("Please select your level of agreement before proceeding."));
+            }
+            return;
+        }
         // Only allow continue if participant has read minimum two articles per topic
         var tracker = ArticleSelectionTracker.Instance;
         if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))

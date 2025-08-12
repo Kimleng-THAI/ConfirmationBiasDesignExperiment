@@ -6,6 +6,10 @@ public class ExperimentTimer2 : MonoBehaviour
 
     public float ExperimentStartTimeRealtime2 { get; private set; }
 
+    private float restStartTime = 0f;
+    private float totalRestDuration = 0f;
+    private bool isResting = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -17,12 +21,37 @@ public class ExperimentTimer2 : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Set the start time once
         ExperimentStartTimeRealtime2 = Time.realtimeSinceStartup;
+    }
+
+    public void StartRest()
+    {
+        if (!isResting)
+        {
+            restStartTime = Time.realtimeSinceStartup;
+            isResting = true;
+        }
+    }
+
+    public void EndRest()
+    {
+        if (isResting)
+        {
+            totalRestDuration += Time.realtimeSinceStartup - restStartTime;
+            isResting = false;
+        }
     }
 
     public float GetGlobalTimestamp()
     {
-        return Time.realtimeSinceStartup - ExperimentStartTimeRealtime2;
+        if (isResting)
+        {
+            // If currently resting, exclude rest time up to now
+            return Time.realtimeSinceStartup - ExperimentStartTimeRealtime2 - (totalRestDuration + (Time.realtimeSinceStartup - restStartTime));
+        }
+        else
+        {
+            return Time.realtimeSinceStartup - ExperimentStartTimeRealtime2 - totalRestDuration;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class QuestionScreen : MonoBehaviour
     public TextMeshProUGUI[] optionTexts;
 
     private PlayerInputActions inputActions;
-    private static int currentQuestionIndex = 1;
+    private static int currentQuestionIndex = 0;
     private List<Question> questions;
 
     private Coroutine eegCoroutine;
@@ -30,6 +30,14 @@ public class QuestionScreen : MonoBehaviour
     private float confidenceStartTime;
     private string tempSelectedOption = "";
     private string tempAgreementReactionTime = "";
+
+    private bool isResting = false;
+    private float restStartTimeRealtime;
+
+    // The whole panel for rest break
+    public GameObject restBreakOverlay;
+    // The text inside the overlay
+    public TextMeshProUGUI restBreakMessageText;
 
     private void Awake()
     {
@@ -93,7 +101,6 @@ public class QuestionScreen : MonoBehaviour
     {
         if (index >= questions.Count)
         {
-            Debug.Log("[QuestionScene]: All questions completed!");
             StartCoroutine(TransitionToTopicSelectorScene());
             return;
         }
@@ -121,6 +128,9 @@ public class QuestionScreen : MonoBehaviour
 
     private void RecordResponse(string option)
     {
+        // Ignore input while the subject is resting
+        if (isResting) return;
+
         if (!awaitingConfidence)
         {
             // First stage — agreement selection
@@ -143,7 +153,8 @@ public class QuestionScreen : MonoBehaviour
 
             // Log event marker for agreement scale rating
             float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
-            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
+            //float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2; Not Working
+            float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
             participantData.eventMarkers.Add(new EventMarker
             {
@@ -182,7 +193,7 @@ public class QuestionScreen : MonoBehaviour
 
             // Log event marker for confidence scale rating
             float localTimestamp = Time.realtimeSinceStartup - confidenceStartTime;
-            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
+            float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
             participantData.eventMarkers.Add(new EventMarker
             {
@@ -199,7 +210,19 @@ public class QuestionScreen : MonoBehaviour
             tempAgreementReactionTime = "";
 
             currentQuestionIndex++;
-            StartCoroutine(TransitionToNextQuestion());
+            if (currentQuestionIndex < questions.Count && currentQuestionIndex % 20 == 0)
+            {
+                StartRestBreak();
+            }
+            else if (currentQuestionIndex >= questions.Count)
+            {
+                Debug.Log("[QuestionScene]: All questions completed!");
+                StartCoroutine(TransitionToTopicSelectorScene());
+            }
+            else
+            {
+                StartCoroutine(TransitionToNextQuestion());
+            }
         }
     }
 
@@ -225,7 +248,7 @@ public class QuestionScreen : MonoBehaviour
 
             // Log non-response event
             float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
-            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2;
+            float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
             participantData.eventMarkers.Add(new EventMarker
             {
@@ -247,8 +270,59 @@ public class QuestionScreen : MonoBehaviour
             });
 
             currentQuestionIndex++;
-            StartCoroutine(TransitionToNextQuestion());
+            if (currentQuestionIndex < questions.Count && currentQuestionIndex % 20 == 0)
+            {
+                StartRestBreak();
+            }
+            else if (currentQuestionIndex >= questions.Count)
+            {
+                Debug.Log("[QuestionScene]: All questions completed!");
+                StartCoroutine(TransitionToTopicSelectorScene());
+            }
+            else
+            {
+                StartCoroutine(TransitionToNextQuestion());
+            }
         }
+    }
+
+    private void StartRestBreak()
+    {
+        isResting = true;
+        restStartTimeRealtime = Time.realtimeSinceStartup;
+
+        // Notify global timer rest started
+        ExperimentTimer2.Instance.StartRest();
+
+        restBreakOverlay.SetActive(true);
+        restBreakMessageText.text = "Rest Break: Please take a short break.\n\nPress SPACE to continue.";
+
+        foreach (var optionText in optionTexts)
+            optionText.text = "";
+
+        inputActions.UI.Continue.performed += OnContinuePressed;
+    }
+
+    private void OnContinuePressed(InputAction.CallbackContext ctx)
+    {
+        if (!isResting) return;
+
+        inputActions.UI.Continue.performed -= OnContinuePressed;
+
+        float restEndTime = Time.realtimeSinceStartup;
+        float restDuration = restEndTime - restStartTimeRealtime;
+
+        isResting = false;
+
+        // Notify global timer rest ended
+        ExperimentTimer2.Instance.EndRest();
+
+        // Adjust question start time so local timestamp stays consistent
+        questionStartTimeRealtime += restDuration;
+
+        restBreakOverlay.SetActive(false);
+
+        LoadQuestion(currentQuestionIndex);
     }
 
     private IEnumerator<WaitForSeconds> TransitionToNextQuestion()
