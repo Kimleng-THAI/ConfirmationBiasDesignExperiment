@@ -1,31 +1,31 @@
 ﻿{
-  "topic": "",
-  "articles": [
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    }
-  ]
+    "topic": "Media and Information",
+    "articles": [
+        {
+            "headline": "Professional Journalism 73% More Accurate Than Social Media",
+            "summary": "Fact-checking study shows value of editorial standards.",
+            "content": "Columbia Journalism Review found traditional outlets far more accurate. Editorial processes catch errors before publication. Journalists trained in verification methods. Legal accountability ensures responsibility. Professional standards protect truth."
+        },
+        {
+            "headline": "Citizen Journalists Expose Stories Mainstream Media Ignores Independent reporting challenges corporate media narratives",
+            "summary": "Independent reporting challenges corporate media narratives.",
+            "content": "Alternative media exposed government surveillance programs. Corporate media bias documented extensively. Citizen journalists provide diverse perspectives. Grassroots reporting more authentic. Traditional media serves elite interests."
+        },
+        {
+            "headline": "Fact-Checking Reduces False Belief Acceptance 30%",
+            "summary": "Studies show effectiveness of misinformation correction.",
+            "content": "MIT research demonstrates fact-checking changes minds. False information spread reduced significantly. Public trust improved with verification. Democracy strengthened by accurate information. Misinformation networks disrupted effectively."
+        },
+        {
+            "headline": "Fact-Checkers Show Political Bias in Story Selection",
+            "summary": "Analysis reveals partisan patterns in verification efforts.",
+            "content": "Media Research Center documented bias in fact-checking. Conservative claims checked more frequently. Subjective interpretation of `facts` problematic. Fact-checkers become truth arbiters. Censorship disguised as verification."
+        },
+        {
+            "headline": "Information Quality Requires Multiple Verification Sources",
+            "summary": "Media experts advocate critical consumption skills.",
+            "content": "Stanford media literacy program teaches source evaluation. No single source completely reliable. Bias exists across spectrum. Critical thinking essential for citizens. Media ecosystem requires active participation."
+        }
+    ]
 }
 

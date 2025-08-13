@@ -1,30 +1,30 @@
 ﻿{
-  "topic": "",
-  "articles": [
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    }
-  ]
+    "topic": "Food Systems and Agriculture",
+    "articles": [
+        {
+            "headline": "Organic Farming Improves Soil Health 50% Over Conventional",
+            "summary": "Long-term studies show environmental benefits of organic methods.",
+            "content": "Rodale Institute 40-year trial demonstrates organic superiority. Soil carbon increased 50%, water retention improved 30%. Biodiversity flourished on organic farms. Pesticide runoff eliminated. Farmer health improved without chemical exposure."
+        },
+        {
+            "headline": "Organic Farming Cannot Feed Growing Population",
+            "summary": "Yields 25% lower than conventional agriculture methods.",
+            "content": "Nature journal analysis shows organic yields inadequate for 10 billion people. Land requirements would destroy forests. Food prices would triple. Developing nations would face starvation. Modern agriculture essential for food security."
+        },
+        {
+            "headline": "GMO Crops Reduce Pesticide Use 37% Globally",
+            "summary": "Biotechnology increases yields while protecting environment.",
+            "content": "National Academy of Sciences confirms GMO safety after reviewing 900 studies. Drought-resistant crops save water. Vitamin-enriched rice prevents blindness. Yields increased 22% with less chemical input. Climate adaptation possible through genetic modification."
+        },
+        {
+            "headline": "GMO Crops Create Superweeds and Unknown Health Risks",
+            "summary": "Scientists warn of ecological disruption from genetic modification.",
+            "content": "Union of Concerned Scientists documents herbicide-resistant superweeds spreading. Long-term health effects unknown. Corporate control of seeds threatens farmers. Biodiversity declining from monocultures. Traditional varieties disappearing permanently."
+        },
+        {
+            "headline": "Sustainable Agriculture Requires Diverse Approaches",
+            "summary": "Experts say no single method solves food challenges.",
+            "content": "FAO report examines global food system transitions. Organic, conventional, and biotech each have roles. Local conditions determine best practices. Innovation and tradition both needed. Sustainable intensification shows promise."
+        }
+    ]
 }

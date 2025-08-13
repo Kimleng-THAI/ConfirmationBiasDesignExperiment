@@ -1,31 +1,31 @@
 ﻿{
-  "topic": "",
-  "articles": [
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    }
-  ]
+    "topic": "Gender and Society",
+    "articles": [
+        {
+            "headline": "Companies with Gender Quotas Show 15% Higher Profits",
+            "summary": "McKinsey research links diversity to financial performance.",
+            "content": "Ten-year study of Fortune 500 companies found gender-diverse boards outperform homogeneous ones. Innovation increases with varied perspectives. Employee satisfaction higher. Customer base better understood. Talent pool expanded significantly."
+        },
+        {
+            "headline": "Gender Quotas Undermine Merit-Based Selection",
+            "summary": "Studies show forced diversity reduces organizational effectiveness.",
+            "content": "Harvard research indicates quotas create resentment, reduce team cohesion. Qualified candidates overlooked for demographics. Tokenism undermines women's achievements. Natural progression more sustainable. Excellence should be sole criterion."
+        },
+        {
+            "headline": "Brain Studies Show Innate Gender Differences in Interests",
+            "summary": "Neuroscience reveals biological basis for career preferences.",
+            "content": "Cambridge neuroscientists found structural brain differences correlate with career choices. Testosterone levels predict interest in systems versus people. Evolution shaped different strengths. Biology explains STEM gender gaps. Nature influences career paths significantly."
+        },
+        {
+            "headline": "Childhood Socialization, Not Biology, Drives Career Gaps",
+            "summary": "Research shows cultural factors determine professional paths.",
+            "content": "Stanford psychology study demonstrates socialization creates gender differences. Girls discouraged from STEM early. Stereotype threat impacts performance. Countries with equality show no STEM gap. Cultural change eliminates career segregation."
+        },
+        {
+            "headline": "Career Choices Reflect Complex Mix of Factors",
+            "summary": "Scientists find both nature and nurture influence paths.",
+            "content": "Comprehensive review shows biology and society both matter. Individual variation exceeds group differences. Multiple pathways to career success. Removing barriers benefits everyone. Nuanced understanding needed for progress."
+        }
+    ]
 }
 

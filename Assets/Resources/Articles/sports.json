@@ -1,31 +1,31 @@
 ﻿{
-  "topic": "",
-  "articles": [
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    },
-    {
-        "headline": "",
-        "summary": ".",
-        "content": ""
-    }
-  ]
+    "topic": "Sports and Competition",
+    "articles": [
+        {
+            "headline": "Athletic Competition Develops Leadership and Resilience",
+            "summary": "Long-term studies show benefits beyond physical fitness.",
+            "content": "Harvard study tracked athletes 40 years, found higher career success. Team sports teach cooperation, discipline. Competitive pressure builds mental toughness. Goal-setting skills transfer to life. Character development through adversity proven."
+        },
+        {
+            "headline": "Youth Sports Pressure Creates Anxiety and Burnout",
+            "summary": "Psychologists warn of negative impacts from competition focus.",
+            "content": "Pediatric studies show 70% of kids quit sports by 13 due to pressure. Anxiety disorders increasing from performance demands. Cooperation more valuable than competition. Self-esteem damaged by losing. Intrinsic motivation destroyed by competitive focus."
+        },
+        {
+            "headline": "Trans Athletes Show No Competitive Advantage After Transition",
+            "summary": "IOC research supports inclusion in gender-affirming categories.",
+            "content": "Olympic Committee studies find hormone therapy eliminates advantages. Inclusion promotes equality and mental health. Sport participation is human right. Discrimination causes more harm than inclusion. Fair play maintained with proper policies."
+        },
+        {
+            "headline": "Male Puberty Creates Permanent Athletic Advantages",
+            "summary": "Sports scientists document retained benefits after transition.",
+            "content": "British Journal of Sports Medicine shows advantages in bone density, lung capacity persist. Female athletes losing scholarships and records. Safety concerns in contact sports. Biological sex determines athletic capacity. Separate categories ensure fairness."
+        },
+        {
+            "headline": "Sports Inclusion Requires Nuanced Sport-Specific Policies",
+            "summary": "Experts advocate case-by-case approach to fairness.",
+            "content": "International Sports Medicine review suggests varied approaches. Different sports have different considerations. Hormone levels, transition timing matter. Inclusion and fairness both important. Evolving science requires policy flexibility."
+        }
+    ]
 }
 
