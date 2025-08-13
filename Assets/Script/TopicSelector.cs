@@ -47,9 +47,19 @@ public class TopicSelector : MonoBehaviour
             new TMP_Dropdown.OptionData("Choose Topic...")
         };
 
+        var tracker = ArticleSelectionTracker.Instance;
+
         foreach (string topic in topics)
         {
-            dropdownOptions.Add(new TMP_Dropdown.OptionData(topic));
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(topic);
+
+            // Check if participant has read 2 unique articles in this topic
+            if (tracker != null && tracker.GetUniqueArticleCountForTopic(topic) >= 2)
+            {
+                option.text = topic + " (completed)";
+            }
+
+            dropdownOptions.Add(option);
         }
 
         topicDropdown.AddOptions(dropdownOptions);
@@ -68,7 +78,7 @@ public class TopicSelector : MonoBehaviour
 
         if (index > 0)
         {
-            string selectedTopic = topicDropdown.options[index].text;
+            string selectedTopic = topicDropdown.options[index].text.Replace(" (completed)", "");
             float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
             float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
