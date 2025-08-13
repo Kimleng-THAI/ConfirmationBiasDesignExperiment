@@ -1,30 +1,30 @@
 ﻿{
-  "topic": "Education and Learning Methods",
-  "articles": [
-    {
-        "headline": "Online Education Matches Traditional Learning Outcomes in Comprehensive Study",
-        "summary": "Digital platforms provide flexible, accessible education with comparable results.",
-        "content": "Department of Education meta-analysis of 176 studies found online learning outcomes equivalent to face-to-face instruction. Students appreciate flexibility, self-paced learning, and access to diverse resources. Cost per student reduced by 30% with maintained quality."
-    },
-    {
-        "headline": "In-Person Education Provides Crucial Social and Academic Benefits",
-        "summary": "Research highlights limitations of digital learning environments.",
-        "content": "Educational Psychology study of 50,000 students showed 15% higher graduation rates in traditional classrooms. Face-to-face interaction improves critical thinking, collaboration skills, and emotional development. Online learning shows higher dropout rates and reduced engagement."
-    },
-    {
-        "headline": "Standardised Tests Provide Reliable Measure of Student Progress",
-        "summary": "Assessment data helps identify achievement gaps and improve instruction.",
-        "content": "Educational Testing Service analysis shows standardised tests accurately predict college readiness and career success. Achievement gap identification leads to targeted interventions. International comparisons reveal US education system strengths and weaknesses."
-    },
-    {
-        "headline": "Standardised Testing Narrows Curriculum and Increases Student Stress",
-        "summary": "Educators report teaching to the test reduces creative and critical thinking.",
-        "content": "National Education Association survey of 5,000 teachers found 78% report curriculum narrowing due to testing pressure. Student anxiety increases during testing periods. Arts, music, and project-based learning reduced to focus on test preparation."
-    },
-    {
-        "headline": "Educational Assessment: Balancing Standardisation and Innovation",
-        "summary": "Experts explore multiple measures of student learning and school quality.",
-        "content": "Educational Measurement review examines various assessment methods. Portfolio assessments, performance tasks, and standardised tests each provide different insights. Effective evaluation systems combine multiple measures to capture student growth comprehensively."
-    }
-  ]
+    "topic": "Education and Learning Methods",
+    "articles": [
+        {
+            "headline": "Online Education Matches Traditional Learning Outcomes",
+            "summary": "Digital platforms provide flexible, accessible education.",
+            "content": "Department of Education meta-analysis of 176 studies found online learning equivalent to face-to-face instruction. Students appreciate flexibility, self-paced learning. Cost per student reduced 30%. Global access to quality education expanded dramatically."
+        },
+        {
+            "headline": "In-Person Education Shows 15% Higher Graduation Rates",
+            "summary": "Research highlights limitations of digital environments.",
+            "content": "Educational Psychology study of 50,000 students revealed traditional classroom advantages. Face-to-face interaction improves critical thinking, collaboration skills. Social development requires physical presence. Online dropout rates 40% higher than traditional."
+        },
+        {
+            "headline": "Standardized Tests Predict College Success Accurately",
+            "summary": "Assessment data helps identify and close achievement gaps.",
+            "content": "Educational Testing Service analysis shows tests accurately predict readiness. Achievement gap identification enables targeted interventions. International comparisons reveal system strengths. Objective measurement ensures educational equity."
+        },
+        {
+            "headline": "Standardized Testing Narrows Curriculum, Increases Stress",
+            "summary": "Teachers report creative thinking suffers from test focus",
+            "content": "National Education Association survey of 5,000 teachers found 78% report curriculum narrowing. Student anxiety increases during testing. Arts, music, project learning reduced. Teaching to test diminishes deep learning and innovation."
+        },
+        {
+            "headline": "Educational Assessment Requires Multiple Measures",
+            "summary": "Experts explore various evaluation methods",
+            "content": "Educational Measurement review examines assessment approaches. Portfolio assessments, performance tasks, standardized tests each provide insights. Effective systems combine multiple measures. Comprehensive evaluation captures student growth holistically."
+        }
+    ]
 }
