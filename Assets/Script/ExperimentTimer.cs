@@ -25,4 +25,9 @@ public class ExperimentTimer : MonoBehaviour
     {
         return Time.realtimeSinceStartup - ExperimentStartTimeRealtime;
     }
+
+    public void AddToExperimentTime(float delta)
+    {
+        ExperimentStartTimeRealtime += delta;
+    }
 }

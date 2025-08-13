@@ -106,10 +106,25 @@ public class ArticleSelectorManager : MonoBehaviour
         Dictionary<string, string> topicToFileMap = new Dictionary<string, string>
         {
             { "Climate Change and Environmental Policy", "climate_change" },
+            { "Technology and Social Media Impact", "technology" },
             { "Economic Policy and Inequality", "economic_policy" },
-            { "Education and Learning Methods", "education" },
             { "Health and Medical Approaches", "health" },
-            { "Technology and Social Media Impact", "technology" }
+            { "Education and Learning Methods", "education" },
+            { "Artificial Intelligence and Ethics", "ai_and_ethics" },
+            { "Work-Life Balance and Productivity", "work" },
+            { "Urban Planning and Housing", "urban" },
+            { "Food Systems and Agriculture", "food" },
+            { "Criminal Justice and Rehabilitation", "criminal" },
+            { "Gender and Society", "gender" },
+            { "Immigration and Cultural Integration", "immigration" },
+            { "Privacy and Surveillance", "privacy" },
+            { "Sports and Competition", "sports" },
+            { "Media and Information", "media" },
+            { "Science and Research Funding", "science" },
+            { "Parenting and Child Development", "parenting" },
+            { "Aging and Elder Care", "aging" },
+            { "Transportation and Mobility", "transportation" },
+            { "Mental Health and Wellness", "mental" }
         };
 
         if (topicToFileMap.ContainsKey(topic))
@@ -154,6 +169,15 @@ public class ArticleSelectorManager : MonoBehaviour
                 {
                     unreadArticles.Add(article);
                 }
+            }
+
+            // SHUFFLE unread articles
+            for (int i = 0; i < unreadArticles.Count; i++)
+            {
+                int randIndex = Random.Range(i, unreadArticles.Count);
+                var temp = unreadArticles[i];
+                unreadArticles[i] = unreadArticles[randIndex];
+                unreadArticles[randIndex] = temp;
             }
 
             loadedArticles = unreadArticles;

@@ -17,7 +17,22 @@ public class TopicSelector : MonoBehaviour
         "Technology and Social Media Impact",
         "Economic Policy and Inequality",
         "Health and Medical Approaches",
-        "Education and Learning Methods"
+        "Education and Learning Methods",
+        "Artificial Intelligence and Ethics",
+        "Work-Life Balance and Productivity",
+        "Urban Planning and Housing",
+        "Food Systems and Agriculture",
+        "Criminal Justice and Rehabilitation",
+        "Gender and Society",
+        "Immigration and Cultural Integration",
+        "Privacy and Surveillance",
+        "Sports and Competition",
+        "Media and Information",
+        "Science and Research Funding",
+        "Parenting and Child Development",
+        "Aging and Elder Care",
+        "Transportation and Mobility",
+        "Mental Health and Wellness"
     };
 
     private void Start()
