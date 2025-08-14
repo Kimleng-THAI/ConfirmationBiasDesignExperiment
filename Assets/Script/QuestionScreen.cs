@@ -26,17 +26,12 @@ public class QuestionScreen : MonoBehaviour
     private Coroutine questionTimerCoroutine;
     private bool hasResponded = false;
 
-    private bool awaitingConfidence = false;
-    private float confidenceStartTime;
     private string tempSelectedOption = "";
-    private string tempAgreementReactionTime = "";
 
     private bool isResting = false;
     private float restStartTimeRealtime;
 
-    // The whole panel for rest break
     public GameObject restBreakOverlay;
-    // The text inside the overlay
     public TextMeshProUGUI restBreakMessageText;
 
     private void Awake()
@@ -107,13 +102,11 @@ public class QuestionScreen : MonoBehaviour
 
         // reset timer for each question
         questionStartTimeRealtime = Time.realtimeSinceStartup;
-
         // reset flags
         hasResponded = false;
 
         // stop any previous timer
         if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
-
         // start 10-second timer for non-response
         questionTimerCoroutine = StartCoroutine(QuestionTimer());
 
@@ -128,28 +121,29 @@ public class QuestionScreen : MonoBehaviour
 
     private void RecordResponse(string option)
     {
-        // Ignore input while the subject is resting
-        if (isResting) return;
+        if (isResting || hasResponded) return;
 
-        if (!awaitingConfidence)
-        {
-            // First stage — agreement selection
-            if (hasResponded) return;
-            hasResponded = true;
+        hasResponded = true;
 
-            // stop timer if answered early
-            if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
+        // stop timer if answered early
+        if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
 
             var q = questions[currentQuestionIndex];
             float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
-            tempAgreementReactionTime = rawReactionTime.ToString("F3");
-
-            // Store agreement choice
             tempSelectedOption = option;
-            confidenceStartTime = Time.realtimeSinceStartup;
+
+            // Store agreement response
+            participantData.responses.Add(new ResponseRecord
+            {
+                questionIndex = currentQuestionIndex,
+                topicCode = q.topicCode,
+                statementCode = q.statementCode,
+                selectedOption = tempSelectedOption,
+                agreementReactionTime = rawReactionTime.ToString("F3")
+            });
 
             // Log agreement selection and reaction time
-            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement Selected Option: {tempSelectedOption} after {tempAgreementReactionTime} seconds.");
+            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement Selected Option: {tempSelectedOption} after {rawReactionTime.ToString("F3")} seconds.");
 
             // Log event marker for agreement scale rating
             float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
@@ -165,51 +159,9 @@ public class QuestionScreen : MonoBehaviour
 
             Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
 
-            // Switch to confidence mode
-            awaitingConfidence = true;
-            // allow input again
-            hasResponded = false;
-            ShowConfidenceOptions(q);
-        }
-        else
-        {
-            // Second stage — confidence selection
-            var q = questions[currentQuestionIndex];
-            float rawConfidenceReactionTime = Time.realtimeSinceStartup - confidenceStartTime;
-            string confidenceReactionTime = rawConfidenceReactionTime.ToString("F3");
-
-            participantData.responses.Add(new ResponseRecord
-            {
-                questionIndex = currentQuestionIndex,
-                topicCode = q.topicCode,
-                statementCode = q.statementCode,
-                selectedOption = tempSelectedOption,
-                confidenceLevel = option,
-                agreementReactionTime = tempAgreementReactionTime,
-                confidenceReactionTime = confidenceReactionTime
-            });
-
-            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Confidence Level: {option} after {confidenceReactionTime} seconds.");
-
-            // Log event marker for confidence scale rating
-            float localTimestamp = Time.realtimeSinceStartup - confidenceStartTime;
-            float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
-
-            participantData.eventMarkers.Add(new EventMarker
-            {
-                localTimestamp = localTimestamp,
-                globalTimestamp = globalTimestamp,
-                label = $"[QuestionScene]: Question: {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Confidence_Level: {option}"
-            });
-
-            Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_CONFIDENCE_{option}");
-
-            // Reset state
-            awaitingConfidence = false;
             tempSelectedOption = "";
-            tempAgreementReactionTime = "";
-
             currentQuestionIndex++;
+
             if (currentQuestionIndex < questions.Count && currentQuestionIndex % 20 == 0)
             {
                 StartRestBreak();
@@ -223,17 +175,6 @@ public class QuestionScreen : MonoBehaviour
             {
                 StartCoroutine(TransitionToNextQuestion());
             }
-        }
-    }
-
-    private void ShowConfidenceOptions(Question q)
-    {
-        conflictStatementText.text = "<color=#000000><b>How confident are you about your previous response?</b></color>";
-
-        for (int i = 0; i < optionTexts.Length; i++)
-        {
-            optionTexts[i].text = (i < q.confidenceOptions.Count) ? q.confidenceOptions[i] : "";
-        }
     }
 
     private IEnumerator<WaitForSeconds> QuestionTimer()
@@ -264,9 +205,7 @@ public class QuestionScreen : MonoBehaviour
                 topicCode = q.topicCode,
                 statementCode = q.statementCode,
                 selectedOption = "NR",
-                confidenceLevel = "NR",
-                agreementReactionTime = "10.000",
-                confidenceReactionTime = "10.000"
+                agreementReactionTime = "10.000"
             });
 
             currentQuestionIndex++;

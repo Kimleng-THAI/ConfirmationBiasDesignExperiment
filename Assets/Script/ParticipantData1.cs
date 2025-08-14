@@ -49,7 +49,6 @@ public class ResponseRecord
     public string selectedOption;
     public string confidenceLevel;
     public string agreementReactionTime;
-    public string confidenceReactionTime;
 }
 
 [Serializable]

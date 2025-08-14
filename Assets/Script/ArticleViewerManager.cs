@@ -12,23 +12,25 @@ public class ArticleViewerManager : MonoBehaviour
     public TextMeshProUGUI headlineText;
     public TextMeshProUGUI contentText;
     public TextMeshProUGUI agreementPromptText;
+
     // UI panel displayed during rest break
     public GameObject restBreakPanel;
     public TextMeshProUGUI restBreakText;
 
     // Timestamp for current scene
-    private float sceneStartTime;
-
-    // Reading state
-    private bool hasResponded = false; // Track if participant already gave a response
+    private float articleStartTime;      // Time when article is displayed
     private float articleElapsedTime = 0f;
     private const float minReadTime = 30f; // 30 seconds
     private const float maxReadTime = 300f; // 5 minutes
     private bool minTimeReached = false;
 
+    private bool hasRespondedAgreement = false;
+
     // Rest break state
     private bool isRestBreakActive = false;
     private float restBreakStartTime = 0f;
+
+    private float lastActionTime; // Tracks time of last meaningful participant action
 
     private List<string> requiredTopics = new List<string>
     {
@@ -63,7 +65,8 @@ public class ArticleViewerManager : MonoBehaviour
 
     void Start()
     {
-        sceneStartTime = Time.realtimeSinceStartup;
+        articleStartTime = Time.realtimeSinceStartup;
+        lastActionTime = articleStartTime; // Initialize local timestamp reference
         LoadCurrentArticle();
     }
 
@@ -72,7 +75,7 @@ public class ArticleViewerManager : MonoBehaviour
         // Pause timing during rest break
         if (isRestBreakActive) return;
 
-        articleElapsedTime += Time.deltaTime;
+        articleElapsedTime = Time.realtimeSinceStartup - articleStartTime;
 
         if (!minTimeReached && articleElapsedTime >= minReadTime)
         {
@@ -113,84 +116,102 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Disable();
     }
 
-    private void OnSelect1(InputAction.CallbackContext ctx) => OnAgreementKeyPressed("1");
-    private void OnSelect2(InputAction.CallbackContext ctx) => OnAgreementKeyPressed("2");
-    private void OnSelect3(InputAction.CallbackContext ctx) => OnAgreementKeyPressed("3");
-    private void OnSelect4(InputAction.CallbackContext ctx) => OnAgreementKeyPressed("4");
-    private void OnSelect5(InputAction.CallbackContext ctx) => OnAgreementKeyPressed("5");
+    private void OnSelect1(InputAction.CallbackContext ctx) => OnNumberKeyPressed("1");
+    private void OnSelect2(InputAction.CallbackContext ctx) => OnNumberKeyPressed("2");
+    private void OnSelect3(InputAction.CallbackContext ctx) => OnNumberKeyPressed("3");
+    private void OnSelect4(InputAction.CallbackContext ctx) => OnNumberKeyPressed("4");
+    private void OnSelect5(InputAction.CallbackContext ctx) => OnNumberKeyPressed("5");
+
+    private void OnNumberKeyPressed(string number)
+    {
+        if (!hasRespondedAgreement)
+        {
+            OnAgreementKeyPressed(number);
+        }
+    }
+
+    private void OnAgreementKeyPressed(string option)
+    {
+        if (hasRespondedAgreement) return;
+
+        var tracker = ArticleSelectionTracker.Instance;
+        if (tracker != null && tracker.selectedArticles.articles.Count > 0)
+        {
+            SelectedArticle lastArticle = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1];
+            lastArticle.selectedOption = option;
+            hasRespondedAgreement = true;
+
+            LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, lastActionTime);
+            Debug.Log($"[ArticleViewerScene]: Agreement response recorded: {option}");
+
+            lastActionTime = Time.realtimeSinceStartup;
+
+            // Check for rest break after response
+            int totalUniqueArticles = tracker.selectedArticles.articles.Count;
+            if (totalUniqueArticles % 10 == 0)
+            {
+                StartRestBreak();
+            }
+        }
+    }
 
     private void OnBackKeyPressed(InputAction.CallbackContext ctx)
     {
         // Prevent going back until a response is given
-        if (!hasResponded)
+        if (!hasRespondedAgreement)
         {
-            Debug.Log("[ArticleViewerScene]: Back action ignored. Participant must select a level of agreement first.");
             ShowTemporaryPromptMessage("Please select your level of agreement before going back.");
             return;
         }
 
         if (!minTimeReached)
         {
-            Debug.Log("[ArticleViewerScene]: Backward action ignored. Participant must read at least 30 seconds.");
-            ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before going back to previous scene.");
+            ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before going back.");
             return;
         }
 
         var tracker = ArticleSelectionTracker.Instance;
+        string currentTopic = tracker?.selectedArticles.articles[^1].topic;
 
-        // Once participant has read 2 articles in current topic
-        // Left Arrow Key goes back to TopicSelectorScene
-        // Else, it goes back to ArticleSelectorScene
-        string currentTopic = null;
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
-            currentTopic = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1].topic;
             int articlesReadInCurrentTopic = tracker.GetUniqueArticleCountForTopic(currentTopic);
             Debug.Log($"Articles read in current topic '{currentTopic}': {articlesReadInCurrentTopic}");
 
-            if (articlesReadInCurrentTopic >= 2)
-            {
-                LogEvent("BackButtonClicked - Redirect to TopicSelectorScene");
-                PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            }
-            else
-            {
-                LogEvent("BackButtonClicked - Redirect to ArticleSelectorScene");
-                PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
-            }
+            LogEvent(
+                articlesReadInCurrentTopic >= 2 ? "BackButtonClicked - Redirect to TopicSelectorScene" :
+                                                  "BackButtonClicked - Redirect to ArticleSelectorScene",
+                null,
+                lastActionTime);
+
+            lastActionTime = Time.realtimeSinceStartup;
+            PlayerPrefs.SetString("NextSceneAfterTransition",
+                articlesReadInCurrentTopic >= 2 ? "TopicSelectorScene" : "ArticleSelectorScene");
         }
         else
         {
-            // Fallback if no current topic found
             PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
         }
+
         SceneManager.LoadScene("TransitionScene");
     }
 
     private void OnForwardKeyPressed(InputAction.CallbackContext ctx)
     {
-        if (isRestBreakActive)
-        {
-            Debug.Log("[ArticleViewerScene]: Forward ignored during rest break.");
-            return;
-        }
+        if (isRestBreakActive) return;
 
-        // Prevent going to SurveyScene until a response is given
-        if (!hasResponded)
+        if (!hasRespondedAgreement)
         {
-            Debug.Log("[ArticleViewerScene]: Forward action ignored. Participant must select a level of agreement first.");
             ShowTemporaryPromptMessage("Please select your level of agreement before proceeding.");
             return;
         }
 
         if (!minTimeReached)
         {
-            Debug.Log("[ArticleViewerScene]: Forward action ignored. Participant must read at least 30 seconds.");
             ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before continuing.");
             return;
         }
 
-        // Only allow continue if participant has read minimum two articles per topic
         var tracker = ArticleSelectionTracker.Instance;
         if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
         {
@@ -205,76 +226,51 @@ public class ArticleViewerManager : MonoBehaviour
         }
     }
 
-    private void OnAgreementKeyPressed(string option)
-    {
-        if (hasResponded) return;
-
-        var tracker = ArticleSelectionTracker.Instance;
-        if (tracker != null && tracker.selectedArticles.articles.Count > 0)
-        {
-            SelectedArticle lastArticle = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1];
-            lastArticle.selectedOption = option;
-            hasResponded = true;
-            LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline);
-            Debug.Log($"[ArticleViewerScene]: Agreement response recorded: {option}");
-
-            // Check if rest break should now occur **only after response**
-            int totalUniqueArticles = tracker.selectedArticles.articles.Count;
-            if (totalUniqueArticles % 10 == 0)
-            {
-                // will hide agreementPromptText and show restBreakPanel
-                StartRestBreak();
-            }
-        }
-    }
-
     private void OnContinueRestBreak(InputAction.CallbackContext ctx)
     {
         if (!isRestBreakActive) return;
 
         float restDuration = Time.realtimeSinceStartup - restBreakStartTime;
-        sceneStartTime += restDuration;
+        articleStartTime += restDuration;
+        lastActionTime += restDuration;
         ExperimentTimer.Instance.AddToExperimentTime(restDuration);
 
         isRestBreakActive = false;
-
-        if (restBreakPanel != null)
-            restBreakPanel.SetActive(false);
-
-        // Optionally re-enable agreement prompt for next article
-        if (agreementPromptText != null)
-            agreementPromptText.gameObject.SetActive(true);
+        restBreakPanel?.SetActive(false);
+        agreementPromptText?.gameObject.SetActive(true);
 
         Debug.Log("[ArticleViewerScene]: Rest break ended. Timestamps resumed.");
-        LogEvent("RestBreakEnded");
+        LogEvent("RestBreakEnded", null, lastActionTime);
 
-        // Go to TopicSelectorScene
+        lastActionTime = Time.realtimeSinceStartup;
+
         PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         SceneManager.LoadScene("TransitionScene");
     }
 
     private void ShowTemporaryPromptMessage(string message)
     {
-        if (agreementPromptText != null)
+        if (agreementPromptText != null && agreementPromptText.gameObject.activeSelf)
         {
             StopAllCoroutines();
-            StartCoroutine(ShowTemporaryPrompt(message));
+            StartCoroutine(ShowTemporaryPrompt(agreementPromptText, message));
         }
+
         Debug.Log("[ArticleViewerScene]: " + message);
     }
 
-    private IEnumerator<WaitForSeconds> ShowTemporaryPrompt(string warningText)
+    private IEnumerator<WaitForSeconds> ShowTemporaryPrompt(TextMeshProUGUI prompt, string warningText)
     {
-        string originalText = agreementPromptText.text;
-        agreementPromptText.text = warningText;
-        // Show warning for 2 seconds
+        string originalText = prompt.text;
+        prompt.text = warningText;
         yield return new WaitForSeconds(2f);
-        agreementPromptText.text = originalText;
+        prompt.text = originalText;
     }
 
     private void LoadCurrentArticle()
     {
         var tracker = ArticleSelectionTracker.Instance;
+        hasRespondedAgreement = false;
 
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
@@ -291,7 +287,7 @@ public class ArticleViewerManager : MonoBehaviour
                                            "3 - Neutral\n" +
                                            "4 - Agree\n" +
                                            "5 - Strongly Agree";
-                agreementPromptText.gameObject.SetActive(true); // Ensure it's visible for new article
+                agreementPromptText.gameObject.SetActive(true);
             }
         }
         else
@@ -300,19 +296,9 @@ public class ArticleViewerManager : MonoBehaviour
             headlineText.text = "No Article Selected";
             contentText.text = "Please go back and choose an article.";
             if (agreementPromptText != null)
+            {
                 agreementPromptText.text = "";
-        }
-    }
-
-    private void CheckForRestBreak()
-    {
-        var tracker = ArticleSelectionTracker.Instance;
-        int totalUniqueArticles = tracker.selectedArticles.articles.Count;
-
-        if (totalUniqueArticles > 0 && totalUniqueArticles % 10 == 0)
-        {
-            int articlesUntilNextBreak = 10 - (totalUniqueArticles % 10);
-            StartRestBreak(articlesUntilNextBreak);
+            }
         }
     }
 
@@ -321,7 +307,6 @@ public class ArticleViewerManager : MonoBehaviour
         isRestBreakActive = true;
         restBreakStartTime = Time.realtimeSinceStartup;
 
-        // Hide agreement prompt
         if (agreementPromptText != null)
             agreementPromptText.gameObject.SetActive(false);
 
@@ -329,9 +314,7 @@ public class ArticleViewerManager : MonoBehaviour
         {
             restBreakPanel.SetActive(true);
             if (restBreakText != null)
-            {
                 restBreakText.text = $"Rest Break!\nPress SPACE to continue.";
-            }
         }
 
         Debug.Log("[ArticleViewerScene]: Rest break started. Timestamps paused.");
@@ -340,10 +323,10 @@ public class ArticleViewerManager : MonoBehaviour
 
     private void AutoProceed()
     {
-        if (!hasResponded)
+        if (!hasRespondedAgreement)
         {
-            Debug.Log("[ArticleViewerScene]: Participant did not respond. Logging default response '3' (Neutral).");
-            OnAgreementKeyPressed("3");
+            Debug.Log("[ArticleViewerScene]: Participant did not respond.");
+            OnAgreementKeyPressed("NR");
         }
 
         var tracker = ArticleSelectionTracker.Instance;
@@ -359,31 +342,28 @@ public class ArticleViewerManager : MonoBehaviour
         }
     }
 
-    private void LogEvent(string label, string headline = null)
+    private void LogEvent(string label, string headline = null, float timestampReference = 0f)
     {
-        if (QuestionScreen.participantData != null)
-        {
-            float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
-            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
-
-            string fullLabel = label;
-            if (!string.IsNullOrEmpty(headline))
-            {
-                fullLabel += $" | Headline: {headline}";
-            }
-
-            QuestionScreen.participantData.eventMarkers.Add(new EventMarker
-            {
-                localTimestamp = localTimestamp,
-                globalTimestamp = globalTimestamp,
-                label = $"{fullLabel} (local: {localTimestamp:F2}s)"
-            });
-
-            Debug.Log($"[ArticleViewerScene] Event Logged: {fullLabel} | Local: {localTimestamp:F2}s | Global: {globalTimestamp:F2}s");
-        }
-        else
+        if (QuestionScreen.participantData == null)
         {
             Debug.LogWarning("[ArticleViewerScene] Could not log event: participantData is null.");
+            return;
         }
+
+        float localTimestamp = Time.realtimeSinceStartup - timestampReference;
+        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+
+        string fullLabel = label;
+        if (!string.IsNullOrEmpty(headline))
+            fullLabel += $" | Headline: {headline}";
+
+        QuestionScreen.participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = $"{fullLabel} (local: {localTimestamp:F2}s)"
+        });
+
+        Debug.Log($"[ArticleViewerScene] Event Logged: {fullLabel} | Local: {localTimestamp:F2}s | Global: {globalTimestamp:F2}s");
     }
 }

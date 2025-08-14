@@ -716,12 +716,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "WELCOME TO THE EXPERIMENT\n\n- You will see 100 statements about various
     topics.\n\n- Please rate how much you agree or disagree with each statement on
-    a scale of 1 to 5.\n\n- After each response, you'll also rate how confident you
-    are in your opinion.\n\nPRESS:  1 - Strongly Disagree, Not confident at all\n2
-    - Disagree, Slightly confident\n3 - Neutral, Moderately confident\n4 - Agree,
-    Very confident\n5 - Strongly Agree, Extremely confident\n\n- There are no right
-    or wrong answers.\n\n- Please respond thoroughly and honestly.\n\n\n\n  Press
-    SPACE to begin"
+    a scale of 1 to 5.\n\nPRESS:  1 - Strongly Disagree\n\n2 - Disagree\n\n3 - Neutral\n\n4
+    - Agree\n\n5 - Strongly Agree\n\n- There are no right or wrong answers.\n\n-
+    Please respond thoroughly and honestly.\n\n\n\n  Press SPACE to begin"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

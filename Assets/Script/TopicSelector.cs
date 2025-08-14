@@ -9,7 +9,10 @@ public class TopicSelector : MonoBehaviour
     public TMP_Dropdown topicDropdown;
     public Button continueButton;
 
-    private float sceneStartTime;
+    // Timestamp management
+    private float sceneStartTime;          // Time when TopicSelector scene first appeared
+    private float lastDropdownSelectTime;  // Time of last dropdown selection
+    private float continueButtonTime;      // Time when continue button pressed
 
     private List<string> topics = new List<string>
     {
@@ -37,9 +40,23 @@ public class TopicSelector : MonoBehaviour
 
     private void Start()
     {
-        sceneStartTime = Time.realtimeSinceStartup;
+        // Ensure sceneStartTime persists for rest/revisit consistency
+        if (sceneStartTime == 0f)
+            sceneStartTime = Time.realtimeSinceStartup;
 
-        // Clear existing options and add "Choose Topic..." placeholder
+        // Initialize lastDropdownSelectTime to sceneStartTime
+        // so first selection is measured correctly
+        lastDropdownSelectTime = sceneStartTime;
+
+        SetupDropdownOptions();
+        continueButton.interactable = false;
+
+        topicDropdown.onValueChanged.AddListener(OnDropdownValueChanged);
+        continueButton.onClick.AddListener(OnContinueButtonClicked);
+    }
+
+    private void SetupDropdownOptions()
+    {
         topicDropdown.ClearOptions();
 
         List<TMP_Dropdown.OptionData> dropdownOptions = new List<TMP_Dropdown.OptionData>
@@ -53,11 +70,8 @@ public class TopicSelector : MonoBehaviour
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(topic);
 
-            // Check if participant has read 2 unique articles in this topic
             if (tracker != null && tracker.GetUniqueArticleCountForTopic(topic) >= 2)
-            {
-                option.text = topic + " (completed)";
-            }
+                option.text += " (completed)";
 
             dropdownOptions.Add(option);
         }
@@ -65,10 +79,6 @@ public class TopicSelector : MonoBehaviour
         topicDropdown.AddOptions(dropdownOptions);
         topicDropdown.value = 0;
         topicDropdown.captionText.text = "Choose Topic...";
-        continueButton.interactable = false;
-
-        topicDropdown.onValueChanged.AddListener(OnDropdownValueChanged);
-        continueButton.onClick.AddListener(OnContinueButtonClicked);
     }
 
     private void OnDropdownValueChanged(int index)
@@ -79,8 +89,12 @@ public class TopicSelector : MonoBehaviour
         if (index > 0)
         {
             string selectedTopic = topicDropdown.options[index].text.Replace(" (completed)", "");
-            float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
-            float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+            float currentTime = Time.realtimeSinceStartup;
+
+            // Local timestamp: time since last selection or scene start
+            //float localTimestamp = lastDropdownSelectTime > 0f ? currentTime - lastDropdownSelectTime : 0f;
+            float localTimestamp = currentTime - lastDropdownSelectTime;
+            float globalTimestamp = currentTime - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
             QuestionScreen.participantData.eventMarkers.Add(new EventMarker
             {
@@ -90,16 +104,25 @@ public class TopicSelector : MonoBehaviour
             });
 
             Debug.Log($"[TopicSelector]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: TOPIC_SELECTED: {selectedTopic}");
+
+            // Update the last selection timestamp
+            lastDropdownSelectTime = currentTime;
         }
     }
 
     private void OnContinueButtonClicked()
     {
-        string selectedTopic = topicDropdown.options[topicDropdown.value].text;
-        Debug.Log("[TopicSelector]: Topic selected - " + selectedTopic);
+        if (topicDropdown.value == 0)
+        {
+            Debug.LogWarning("[TopicSelector]: Cannot continue. No valid topic selected.");
+            return;
+        }
 
-        float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
-        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+        continueButtonTime = Time.realtimeSinceStartup;
+
+        // Calculate local timestamp relative to dropdown selection
+        float localTimestamp = continueButtonTime - lastDropdownSelectTime;
+        float globalTimestamp = continueButtonTime - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
         QuestionScreen.participantData.eventMarkers.Add(new EventMarker
         {
@@ -110,6 +133,8 @@ public class TopicSelector : MonoBehaviour
 
         Debug.Log($"[TopicSelector]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: CONTINUE_BUTTON_CLICKED");
 
+        string selectedTopic = topicDropdown.options[topicDropdown.value].text.Replace(" (completed)", "");
+        Debug.Log("[TopicSelector]: Topic selected - " + selectedTopic);
         // Save selected topic to PlayerPrefs
         PlayerPrefs.SetString("SelectedTopic", selectedTopic);
         PlayerPrefs.Save();
@@ -117,5 +142,11 @@ public class TopicSelector : MonoBehaviour
         // Load next scene
         PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleInstructionsScene");
         SceneManager.LoadScene("TransitionScene");
+    }
+
+    public void AdjustSceneStartTimeForRest(float restDuration)
+    {
+        sceneStartTime += restDuration;
+        Debug.Log($"[TopicSelector]: sceneStartTime adjusted by {restDuration:F3}s after rest. New sceneStartTime: {sceneStartTime:F3}s");
     }
 }
