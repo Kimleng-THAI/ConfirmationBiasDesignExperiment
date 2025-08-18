@@ -330,6 +330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionDelay: 1
+  transitionText: {fileID: 1561465814}
+  blinkSpeed: 1
 --- !u!4 &1231651533
 Transform:
   m_ObjectHideFlags: 0
