@@ -239,7 +239,7 @@ public class ArticleViewerManager : MonoBehaviour
         restBreakPanel?.SetActive(false);
         agreementPromptText?.gameObject.SetActive(true);
 
-        Debug.Log("[ArticleViewerScene]: Rest break ended. Timestamps resumed.");
+        Debug.Log($"[ArticleViewerScene]: Rest break ended after {restDuration:F2}s. Timestamps resumed.");
         // Log event with restBreakStartTime as baseline
         LogEvent("RestBreakEnded", null, restBreakStartTime);
 
@@ -325,6 +325,12 @@ public class ArticleViewerManager : MonoBehaviour
 
     private void AutoProceed()
     {
+        if (isRestBreakActive)
+        {
+            Debug.Log("[AutoProceed] Ignored because rest break is active.");
+            return;
+        }
+
         if (!hasRespondedAgreement)
         {
             Debug.Log("[ArticleViewerScene]: Participant did not respond.");
