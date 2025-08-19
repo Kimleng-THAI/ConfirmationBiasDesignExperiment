@@ -162,6 +162,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Yes"",
+                    ""type"": ""Button"",
+                    ""id"": ""d464c335-05d1-4ccc-bd41-0f2cf990e457"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""No"",
+                    ""type"": ""Button"",
+                    ""id"": ""8fd7fea7-b00d-4101-87df-a127830879c0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +270,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""GoForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd81cbc0-65e9-4986-8ce8-73a17565c0d4"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Yes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77fd605f-da61-457b-91c9-41c61d76280d"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""No"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +308,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_Select5 = m_UI.FindAction("Select5", throwIfNotFound: true);
         m_UI_GoBack = m_UI.FindAction("GoBack", throwIfNotFound: true);
         m_UI_GoForward = m_UI.FindAction("GoForward", throwIfNotFound: true);
+        m_UI_Yes = m_UI.FindAction("Yes", throwIfNotFound: true);
+        m_UI_No = m_UI.FindAction("No", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -356,6 +398,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Select5;
     private readonly InputAction m_UI_GoBack;
     private readonly InputAction m_UI_GoForward;
+    private readonly InputAction m_UI_Yes;
+    private readonly InputAction m_UI_No;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -399,6 +443,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/GoForward".
         /// </summary>
         public InputAction @GoForward => m_Wrapper.m_UI_GoForward;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Yes".
+        /// </summary>
+        public InputAction @Yes => m_Wrapper.m_UI_Yes;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/No".
+        /// </summary>
+        public InputAction @No => m_Wrapper.m_UI_No;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -449,6 +501,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @GoForward.started += instance.OnGoForward;
             @GoForward.performed += instance.OnGoForward;
             @GoForward.canceled += instance.OnGoForward;
+            @Yes.started += instance.OnYes;
+            @Yes.performed += instance.OnYes;
+            @Yes.canceled += instance.OnYes;
+            @No.started += instance.OnNo;
+            @No.performed += instance.OnNo;
+            @No.canceled += instance.OnNo;
         }
 
         /// <summary>
@@ -484,6 +542,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @GoForward.started -= instance.OnGoForward;
             @GoForward.performed -= instance.OnGoForward;
             @GoForward.canceled -= instance.OnGoForward;
+            @Yes.started -= instance.OnYes;
+            @Yes.performed -= instance.OnYes;
+            @Yes.canceled -= instance.OnYes;
+            @No.started -= instance.OnNo;
+            @No.performed -= instance.OnNo;
+            @No.canceled -= instance.OnNo;
         }
 
         /// <summary>
@@ -580,5 +644,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGoForward(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Yes" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnYes(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "No" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNo(InputAction.CallbackContext context);
     }
 }

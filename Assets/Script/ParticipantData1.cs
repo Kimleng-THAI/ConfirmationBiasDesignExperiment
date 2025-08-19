@@ -47,8 +47,9 @@ public class ResponseRecord
     public string topicCode;
     public string statementCode;
     public string selectedOption;
-    public string confidenceLevel;
     public string agreementReactionTime;
+    public string attentionCheckResponse;
+    public string attentionCheckReactionTime;
 }
 
 [Serializable]

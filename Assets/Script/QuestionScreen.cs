@@ -18,13 +18,11 @@ public class QuestionScreen : MonoBehaviour
     private Coroutine eegCoroutine;
     public static float experimentStartTimeRealtime;
 
-    // moved inside class
     public static ParticipantData1 participantData = new ParticipantData1();
 
     private float questionStartTimeRealtime;
-
     private Coroutine questionTimerCoroutine;
-    private bool hasResponded = false;
+    private bool hasRespondedQuestion = false;
 
     private string tempSelectedOption = "";
 
@@ -35,6 +33,13 @@ public class QuestionScreen : MonoBehaviour
     public TextMeshProUGUI restBreakMessageText;
 
     public TextMeshProUGUI transitionXText;
+    public TextMeshProUGUI attentionCheckText;
+
+    private bool isAttentionCheckActive = false;
+    private bool hasRespondedAttentionCheck = false;
+    private Coroutine attentionCheckTimerCoroutine;
+    private Question currentAttentionCheckQuestion;
+    private float attentionCheckStartTimeRealtime;
 
     private void Awake()
     {
@@ -69,12 +74,15 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
 
+        inputActions.UI.Yes.performed += OnAttentionCheckY;
+        inputActions.UI.No.performed += OnAttentionCheckN;
+
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
         eegCoroutine = StartCoroutine(SimulatePhysiologicalData());
 
-        // Ensure transition overlay is hidden when first question loads
         if (blankOverlay != null) blankOverlay.SetActive(false);
         if (transitionXText != null) transitionXText.gameObject.SetActive(false);
+        if (attentionCheckText != null) attentionCheckText.gameObject.SetActive(false);
 
         LoadQuestion(currentQuestionIndex);
     }
@@ -87,10 +95,12 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select4.performed -= OnSelect4;
         inputActions.UI.Select5.performed -= OnSelect5;
 
+        inputActions.UI.Yes.performed -= OnAttentionCheckY;
+        inputActions.UI.No.performed -= OnAttentionCheckN;
+
         inputActions.UI.Disable();
 
         if (eegCoroutine != null) StopCoroutine(eegCoroutine);
-        
     }
 
     private void OnSelect1(InputAction.CallbackContext ctx) => RecordResponse("1");
@@ -107,94 +117,195 @@ public class QuestionScreen : MonoBehaviour
             return;
         }
 
-        // reset timer for each question
         questionStartTimeRealtime = Time.realtimeSinceStartup;
-        // reset flags
-        hasResponded = false;
+        hasRespondedQuestion = false;
 
-        // stop any previous timer
         if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
-        // start 10-second timer for non-response
         questionTimerCoroutine = StartCoroutine(QuestionTimer());
 
         var q = questions[index];
+        conflictStatementText.gameObject.SetActive(true);
         conflictStatementText.text = $"<color=#000000><b>{q.topic}</b></color>\n\n{q.statement}";
 
         for (int i = 0; i < optionTexts.Length; i++)
         {
-            optionTexts[i].text = (i < q.options.Count) ? q.options[i] : "";
+            if (i < q.options.Count)
+            {
+                optionTexts[i].gameObject.SetActive(true);
+                optionTexts[i].text = q.options[i];
+            }
+            else
+            {
+                optionTexts[i].gameObject.SetActive(false);
+            }
         }
     }
 
     private void RecordResponse(string option)
     {
-        if (isResting || hasResponded) return;
+        if (isResting || hasRespondedQuestion || isAttentionCheckActive) return;
 
-        hasResponded = true;
+        hasRespondedQuestion = true;
 
-        // stop timer if answered early
         if (questionTimerCoroutine != null) StopCoroutine(questionTimerCoroutine);
 
-            var q = questions[currentQuestionIndex];
-            float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
-            tempSelectedOption = option;
+        var q = questions[currentQuestionIndex];
+        float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
+        tempSelectedOption = option;
 
-            // Store agreement response
-            participantData.responses.Add(new ResponseRecord
-            {
-                questionIndex = currentQuestionIndex,
-                topicCode = q.topicCode,
-                statementCode = q.statementCode,
-                selectedOption = tempSelectedOption,
-                agreementReactionTime = rawReactionTime.ToString("F3")
-            });
+        participantData.responses.Add(new ResponseRecord
+        {
+            questionIndex = currentQuestionIndex,
+            topicCode = q.topicCode,
+            statementCode = q.statementCode,
+            selectedOption = tempSelectedOption,
+            agreementReactionTime = rawReactionTime.ToString("F3")
+        });
 
-            // Log agreement selection and reaction time
-            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement Selected Option: {tempSelectedOption} after {rawReactionTime.ToString("F3")} seconds.");
+        Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement Selected Option: {tempSelectedOption} after {rawReactionTime:F3} seconds.");
 
-            // Log event marker for agreement scale rating
-            float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
-            //float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer2.Instance.ExperimentStartTimeRealtime2; Not Working
-            float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
+        float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
+        float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
-            participantData.eventMarkers.Add(new EventMarker
-            {
-                localTimestamp = localTimestamp,
-                globalTimestamp = globalTimestamp,
-                label = $"[QuestionScene]: Question: {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Agreement_Level: {option}"
-            });
+        participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = localTimestamp,
+            globalTimestamp = globalTimestamp,
+            label = $"[QuestionScene]: Question: {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Agreement_Level: {option}"
+        });
 
-            Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
+        Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
 
+        if (q.check != null)
+        {
+            currentAttentionCheckQuestion = q;
+            StartAttentionCheck(q);
+        }
+        else
+        {
             tempSelectedOption = "";
             currentQuestionIndex++;
+            ProceedToNext();
+        }
+    }
 
-            if (currentQuestionIndex < questions.Count && currentQuestionIndex % 20 == 0)
-            {
-                StartRestBreak();
-            }
-            else if (currentQuestionIndex >= questions.Count)
-            {
-                Debug.Log("[QuestionScene]: All questions completed!");
-                StartCoroutine(TransitionToTopicSelectorScene());
-            }
-            else
-            {
-                StartCoroutine(TransitionToNextQuestion());
-            }
+    private void StartAttentionCheck(Question q)
+    {
+        isAttentionCheckActive = true;
+        hasRespondedAttentionCheck = false;
+
+        conflictStatementText.gameObject.SetActive(false);
+        foreach (var optionText in optionTexts)
+            optionText.gameObject.SetActive(false);
+
+        if (attentionCheckText != null)
+        {
+            attentionCheckText.text = $"Did the statement contain the word '{q.check.word}'?";
+            attentionCheckText.gameObject.SetActive(true);
+        }
+
+        attentionCheckStartTimeRealtime = Time.realtimeSinceStartup;
+
+        if (attentionCheckTimerCoroutine != null) StopCoroutine(attentionCheckTimerCoroutine);
+        attentionCheckTimerCoroutine = StartCoroutine(AttentionCheckTimer(q, 5f));
+    }
+
+    private IEnumerator<WaitForSeconds> AttentionCheckTimer(Question q, float timeLimit)
+    {
+        float startTime = Time.realtimeSinceStartup;
+
+        while (Time.realtimeSinceStartup - startTime < timeLimit)
+        {
+            if (hasRespondedAttentionCheck)
+                yield break;
+            yield return null;
+        }
+
+        if (!hasRespondedAttentionCheck)
+        {
+            LogAttentionResponse("ATTENTION_FAIL");
+            EndAttentionCheck();
+        }
+    }
+
+    private void OnAttentionCheckY(InputAction.CallbackContext ctx)
+    {
+        if (!isAttentionCheckActive || hasRespondedAttentionCheck) return;
+
+        hasRespondedAttentionCheck = true;
+
+        string response = currentAttentionCheckQuestion.check.correctAnswer.ToUpper() == "YES" ? "YES" : "ATTENTION_FAIL";
+        LogAttentionResponse(response);
+        EndAttentionCheck();
+    }
+
+    private void OnAttentionCheckN(InputAction.CallbackContext ctx)
+    {
+        if (!isAttentionCheckActive || hasRespondedAttentionCheck) return;
+
+        hasRespondedAttentionCheck = true;
+
+        string response = currentAttentionCheckQuestion.check.correctAnswer.ToUpper() == "NO" ? "NO" : "ATTENTION_FAIL";
+        LogAttentionResponse(response);
+        EndAttentionCheck();
+    }
+
+    private void LogAttentionResponse(string response)
+    {
+        float reactionTime = Time.realtimeSinceStartup - attentionCheckStartTimeRealtime;
+        float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
+
+        var lastResponse = participantData.responses[participantData.responses.Count - 1];
+        lastResponse.attentionCheckResponse = response;
+        lastResponse.attentionCheckReactionTime = reactionTime.ToString("F3");
+
+        participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = reactionTime,
+            globalTimestamp = globalTimestamp,
+            label = $"[AttentionCheck]: Question {currentQuestionIndex} | TopicCode: {currentAttentionCheckQuestion.topicCode} | StatementCode: {currentAttentionCheckQuestion.statementCode} | Response: {response}"
+        });
+
+        Debug.Log($"[AttentionCheck] Question {currentQuestionIndex}: {response} | LocalTimestamp: {reactionTime:F3}s | GlobalTimestamp: {globalTimestamp:F3}s");
+    }
+
+    private void EndAttentionCheck()
+    {
+        isAttentionCheckActive = false;
+        if (attentionCheckText != null) attentionCheckText.gameObject.SetActive(false);
+
+        tempSelectedOption = "";
+        currentQuestionIndex++;
+        ProceedToNext();
+    }
+
+    private void ProceedToNext()
+    {
+        if (currentQuestionIndex < questions.Count && currentQuestionIndex % 20 == 0)
+        {
+            StartRestBreak();
+        }
+        else if (currentQuestionIndex >= questions.Count)
+        {
+            Debug.Log("[QuestionScene]: All questions completed!");
+            StartCoroutine(TransitionToTopicSelectorScene());
+        }
+        else
+        {
+            StartCoroutine(TransitionToNextQuestion());
+        }
     }
 
     private IEnumerator<WaitForSeconds> QuestionTimer()
     {
         yield return new WaitForSeconds(10f);
 
-        if (!hasResponded)
+        if (!hasRespondedQuestion && !isAttentionCheckActive)
         {
             var q = questions[currentQuestionIndex];
 
             Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | No response within 10 seconds.");
 
-            // Log non-response event
             float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
             float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
@@ -205,30 +316,19 @@ public class QuestionScreen : MonoBehaviour
                 label = $"Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_NO_RESPONSE"
             });
 
-            // Save non-response as "NR" for both agreement and confidence
             participantData.responses.Add(new ResponseRecord
             {
                 questionIndex = currentQuestionIndex,
                 topicCode = q.topicCode,
                 statementCode = q.statementCode,
                 selectedOption = "NR",
-                agreementReactionTime = "10.000"
+                agreementReactionTime = "10.000",
+                attentionCheckResponse = "NR",
+                attentionCheckReactionTime = "5.000"
             });
 
             currentQuestionIndex++;
-            if (currentQuestionIndex < questions.Count && currentQuestionIndex % 20 == 0)
-            {
-                StartRestBreak();
-            }
-            else if (currentQuestionIndex >= questions.Count)
-            {
-                Debug.Log("[QuestionScene]: All questions completed!");
-                StartCoroutine(TransitionToTopicSelectorScene());
-            }
-            else
-            {
-                StartCoroutine(TransitionToNextQuestion());
-            }
+            ProceedToNext();
         }
     }
 
@@ -237,7 +337,6 @@ public class QuestionScreen : MonoBehaviour
         isResting = true;
         restStartTimeRealtime = Time.realtimeSinceStartup;
 
-        // Notify global timer rest started
         ExperimentTimer2.Instance.StartRest();
 
         restBreakOverlay.SetActive(true);
@@ -260,10 +359,8 @@ public class QuestionScreen : MonoBehaviour
 
         isResting = false;
 
-        // Notify global timer rest ended
         ExperimentTimer2.Instance.EndRest();
 
-        // Adjust question start time so local timestamp stays consistent
         questionStartTimeRealtime += restDuration;
 
         restBreakOverlay.SetActive(false);
@@ -273,12 +370,9 @@ public class QuestionScreen : MonoBehaviour
 
     private IEnumerator<WaitForSeconds> TransitionToNextQuestion()
     {
-        // Show blank screen + X
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
-        // Wait 1 second
         yield return new WaitForSeconds(1f);
-        // Hide both
         blankOverlay.SetActive(false);
         if (transitionXText != null) transitionXText.gameObject.SetActive(false);
 
@@ -287,7 +381,6 @@ public class QuestionScreen : MonoBehaviour
 
     private IEnumerator<WaitForSeconds> TransitionToTopicSelectorScene()
     {
-        // Show blank screen + X
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
@@ -302,7 +395,6 @@ public class QuestionScreen : MonoBehaviour
         {
             float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
 
-            // Simulate EEG every 0.1s
             float microvolts = Random.Range(10f, 100f);
             participantData.eegReadings.Add(new EEGReading
             {
@@ -310,20 +402,17 @@ public class QuestionScreen : MonoBehaviour
                 microvolts = microvolts
             });
 
-            // Simulate heart rate every 10 steps (i.e., every 1s)
             if (heartRateStep % 10 == 0)
             {
                 float bpm = Random.Range(60f, 100f);
                 participantData.heartRateReadings.Add(new HeartRateReading
                 {
-                    // same timestamp
                     timestamp = timestamp,
                     bpm = bpm
                 });
             }
 
             heartRateStep++;
-            // 10Hz loop
             yield return new WaitForSeconds(0.1f);
         }
     }

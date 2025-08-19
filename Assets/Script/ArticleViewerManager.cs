@@ -240,7 +240,8 @@ public class ArticleViewerManager : MonoBehaviour
         agreementPromptText?.gameObject.SetActive(true);
 
         Debug.Log("[ArticleViewerScene]: Rest break ended. Timestamps resumed.");
-        LogEvent("RestBreakEnded", null, lastActionTime);
+        // Log event with restBreakStartTime as baseline
+        LogEvent("RestBreakEnded", null, restBreakStartTime);
 
         lastActionTime = Time.realtimeSinceStartup;
 
@@ -318,7 +319,8 @@ public class ArticleViewerManager : MonoBehaviour
         }
 
         Debug.Log("[ArticleViewerScene]: Rest break started. Timestamps paused.");
-        LogEvent("RestBreakStarted");
+        // Log event with restBreakStartTime as baseline
+        LogEvent("RestBreakStarted", null, restBreakStartTime);
     }
 
     private void AutoProceed()

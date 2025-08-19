@@ -11,7 +11,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "taxes",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T01",
@@ -24,7 +28,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "solar",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T01",
@@ -37,7 +45,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "neutrality",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T01",
@@ -50,7 +62,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "batteries",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T01",
@@ -63,7 +79,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "radical",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T02",
@@ -76,7 +96,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "teenagers",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T02",
@@ -89,7 +113,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "robots",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T02",
@@ -102,7 +130,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "deeply",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T02",
@@ -115,7 +147,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "utilities",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T02",
@@ -128,7 +164,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "gaming",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T03",
@@ -141,7 +181,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "employment",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T03",
@@ -154,7 +198,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "wealth",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T03",
@@ -167,7 +215,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "productivity",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T03",
@@ -180,7 +232,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "socialism",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T03",
@@ -193,7 +249,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "blockchain",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T04",
@@ -206,7 +266,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "therapy",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T04",
@@ -219,7 +283,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "surgery",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T04",
@@ -232,7 +300,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "chronic",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T04",
@@ -245,7 +317,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "mandatory",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T04",
@@ -258,7 +334,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "evolution",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T05",
@@ -271,7 +351,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "equivalent",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T05",
@@ -284,7 +368,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "teachers",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T05",
@@ -297,7 +385,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "essential",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T05",
@@ -310,7 +402,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "grouped",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T05",
@@ -323,7 +419,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "music",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T06",
@@ -336,7 +436,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "autonomous",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T06",
@@ -349,7 +453,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "cameras",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T06",
@@ -362,7 +470,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "labeled",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T06",
@@ -375,7 +487,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "safer",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T06",
@@ -388,7 +504,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "banned",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T07",
@@ -401,7 +521,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "wellbeing",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T07",
@@ -414,7 +538,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "remote",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T07",
@@ -427,7 +555,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "burnout",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T07",
@@ -440,7 +572,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "unlimited",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T07",
@@ -453,7 +589,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "benefits",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T08",
@@ -466,7 +606,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "sprawl",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T08",
@@ -479,7 +623,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "effectively",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T08",
@@ -492,7 +640,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "parking",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T08",
@@ -505,7 +657,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "gentrification",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T08",
@@ -518,7 +674,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "apartments",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T09",
@@ -531,7 +691,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "organic",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T09",
@@ -544,7 +708,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "population",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T09",
@@ -557,7 +725,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "pesticides",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T09",
@@ -570,7 +742,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "healthier",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T09",
@@ -583,7 +759,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "imported",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T10",
@@ -596,7 +776,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "imprisonment",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T10",
@@ -609,7 +793,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "safety",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T10",
@@ -622,7 +810,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "execution",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T10",
@@ -635,7 +827,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "addiction",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T10",
@@ -648,7 +844,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "victims",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T11",
@@ -661,7 +861,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "quotas",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T11",
@@ -674,7 +878,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "biological",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T11",
@@ -687,7 +895,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "toys",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T11",
@@ -700,7 +912,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "discrimination",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T11",
@@ -713,7 +929,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "mixed",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T12",
@@ -726,7 +946,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "economic",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T12",
@@ -739,7 +963,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "fragments",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T12",
@@ -752,7 +980,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "citizenship",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T12",
@@ -765,7 +997,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "visa",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T12",
@@ -778,7 +1014,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "sanctuary",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T13",
@@ -791,7 +1031,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "terrorism",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T13",
@@ -804,7 +1048,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "encryption",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T13",
@@ -817,7 +1065,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "passwords",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T13",
@@ -830,7 +1082,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "monitor",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T13",
@@ -843,7 +1099,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "deleted",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T14",
@@ -856,7 +1116,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "trophies",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T14",
@@ -869,7 +1133,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "transgender",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T14",
@@ -882,7 +1150,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "steroids",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T14",
@@ -895,7 +1167,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "salaries",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T14",
@@ -908,7 +1184,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "gaming",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T15",
@@ -921,7 +1201,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "reliable",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T15",
@@ -934,7 +1218,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "misinformation",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T15",
@@ -947,7 +1235,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "boycott",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T15",
@@ -960,7 +1252,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "streaming",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T15",
@@ -973,7 +1269,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "teenagers",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T16",
@@ -986,7 +1286,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "funding",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T16",
@@ -999,7 +1303,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "necessary",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T16",
@@ -1012,7 +1320,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "NASA",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T16",
@@ -1025,7 +1337,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "efficiently",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T16",
@@ -1038,7 +1354,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "journals",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T17",
@@ -1051,7 +1371,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "essential",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T17",
@@ -1064,7 +1388,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "helicopter",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T17",
@@ -1077,7 +1405,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "infancy",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T17",
@@ -1090,7 +1422,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "spanking",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T17",
@@ -1103,7 +1439,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "allowed",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T18",
@@ -1116,7 +1456,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "pensions",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T18",
@@ -1129,7 +1473,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "terminally",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T18",
@@ -1142,7 +1490,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "generational",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T18",
@@ -1155,7 +1507,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "nursing",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T18",
@@ -1168,7 +1524,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "undervalues",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T19",
@@ -1181,7 +1541,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "free",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T19",
@@ -1194,7 +1558,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "airports",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T19",
@@ -1207,7 +1575,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "priority",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T19",
@@ -1220,7 +1592,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "Uber",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T19",
@@ -1233,7 +1609,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "taxed",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T20",
@@ -1246,7 +1626,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "mindfulness",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T20",
@@ -1259,7 +1643,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "employers",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T20",
@@ -1272,7 +1660,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "Instagram",
+                "correctAnswer": "NO"
+            }
         },
         {
             "topicCode": "T20",
@@ -1285,7 +1677,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "revolutionise",
+                "correctAnswer": "YES"
+            }
         },
         {
             "topicCode": "T20",
@@ -1298,7 +1694,11 @@
                 "3. Neutral",
                 "4. Agree",
                 "5. Strongly Agree"
-            ]
+            ],
+            "check": {
+                "word": "diagnoses",
+                "correctAnswer": "YES"
+            }
         }
     ]
 }

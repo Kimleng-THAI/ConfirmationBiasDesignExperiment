@@ -2,6 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [System.Serializable]
+public class Check
+{
+    public string word;
+    public string correctAnswer;
+}
+
+[System.Serializable]
 public class Question
 {
     public string topicCode;
@@ -9,7 +16,8 @@ public class Question
     public string topic;
     public string statement;
     public List<string> options;
-    public List<string> confidenceOptions;
+
+    public Check check;
 }
 
 [System.Serializable]
