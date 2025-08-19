@@ -34,6 +34,8 @@ public class QuestionScreen : MonoBehaviour
     public GameObject restBreakOverlay;
     public TextMeshProUGUI restBreakMessageText;
 
+    public TextMeshProUGUI transitionXText;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -69,6 +71,11 @@ public class QuestionScreen : MonoBehaviour
 
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
         eegCoroutine = StartCoroutine(SimulatePhysiologicalData());
+
+        // Ensure transition overlay is hidden when first question loads
+        if (blankOverlay != null) blankOverlay.SetActive(false);
+        if (transitionXText != null) transitionXText.gameObject.SetActive(false);
+
         LoadQuestion(currentQuestionIndex);
     }
 
@@ -266,20 +273,23 @@ public class QuestionScreen : MonoBehaviour
 
     private IEnumerator<WaitForSeconds> TransitionToNextQuestion()
     {
-        // Show blank screen
+        // Show blank screen + X
         blankOverlay.SetActive(true);
+        if (transitionXText != null) transitionXText.gameObject.SetActive(true);
         // Wait 1 second
         yield return new WaitForSeconds(1f);
-        // Hide blank screen
+        // Hide both
         blankOverlay.SetActive(false);
+        if (transitionXText != null) transitionXText.gameObject.SetActive(false);
 
         LoadQuestion(currentQuestionIndex);
     }
 
     private IEnumerator<WaitForSeconds> TransitionToTopicSelectorScene()
     {
-        // Show blank screen
+        // Show blank screen + X
         blankOverlay.SetActive(true);
+        if (transitionXText != null) transitionXText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("TopicSelectorScene");
     }
