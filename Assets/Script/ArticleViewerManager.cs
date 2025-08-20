@@ -32,6 +32,9 @@ public class ArticleViewerManager : MonoBehaviour
 
     private float lastActionTime; // Tracks time of last meaningful participant action
 
+    // Tracks whether participant completed all minimum readings
+    private bool hasCompletedMinimumReadings = false;
+
     private List<string> requiredTopics = new List<string>
     {
         "Climate Change and Environmental Policy",
@@ -137,16 +140,26 @@ public class ArticleViewerManager : MonoBehaviour
         var tracker = ArticleSelectionTracker.Instance;
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
-            SelectedArticle lastArticle = tracker.selectedArticles.articles[tracker.selectedArticles.articles.Count - 1];
+            SelectedArticle lastArticle = tracker.selectedArticles.articles[^1];
             lastArticle.selectedOption = option;
             hasRespondedAgreement = true;
 
             LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, lastActionTime);
-            Debug.Log($"[ArticleViewerScene]: Agreement response recorded: {option}");
-
             lastActionTime = Time.realtimeSinceStartup;
 
-            // Check for rest break after response
+            // Check if participant has finished all required readings
+            if (tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
+            {
+                if (!hasCompletedMinimumReadings)
+                {
+                    hasCompletedMinimumReadings = true;
+                    LogEvent("[ArticleViewer]: All required readings completed. Triggering final rest break.");
+                    StartRestBreak();
+                }
+                return;
+            }
+
+            // Otherwise, check for rest break after every 10 articles
             int totalUniqueArticles = tracker.selectedArticles.articles.Count;
             if (totalUniqueArticles % 10 == 0)
             {
@@ -158,13 +171,13 @@ public class ArticleViewerManager : MonoBehaviour
     private void OnBackKeyPressed(InputAction.CallbackContext ctx)
     {
         // Prevent going back until a response is given
-        if (!hasRespondedAgreement)
+        if (!hasRespondedAgreement && !hasCompletedMinimumReadings)
         {
             ShowTemporaryPromptMessage("Please select your level of agreement before going back.");
             return;
         }
 
-        if (!minTimeReached)
+        if (!minTimeReached && !hasCompletedMinimumReadings)
         {
             ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before going back.");
             return;
@@ -172,6 +185,15 @@ public class ArticleViewerManager : MonoBehaviour
 
         var tracker = ArticleSelectionTracker.Instance;
         string currentTopic = tracker?.selectedArticles.articles[^1].topic;
+
+        if (hasCompletedMinimumReadings)
+        {
+            // After completion, always allow going back to topic selector
+            LogEvent("BackButtonClicked - Experiment Completed, Returning to TopicSelectorScene", null, lastActionTime);
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+            SceneManager.LoadScene("TransitionScene");
+            return;
+        }
 
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
@@ -200,28 +222,31 @@ public class ArticleViewerManager : MonoBehaviour
     {
         if (isRestBreakActive) return;
 
-        if (!hasRespondedAgreement)
+        if (!hasRespondedAgreement && !hasCompletedMinimumReadings)
         {
             ShowTemporaryPromptMessage("Please select your level of agreement before proceeding.");
             return;
         }
 
-        if (!minTimeReached)
-        {
-            ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before continuing.");
-            return;
-        }
-
         var tracker = ArticleSelectionTracker.Instance;
-        if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
+        if (tracker != null)
         {
-            LogEvent("ContinueButtonClicked");
-            PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
-            SceneManager.LoadScene("TransitionScene");
-            Debug.Log("[ArticleViewerScene]: Participant has finished reading the article.");
-        }
-        else
-        {
+            // If all requirements are satisfied, Right Arrow ends experiment
+            if (hasCompletedMinimumReadings)
+            {
+                LogEvent("ContinueButtonClicked - Experiment Complete");
+                PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
+                SceneManager.LoadScene("TransitionScene");
+                return;
+            }
+
+            // Otherwise, respect minimum read time per article
+            if (!minTimeReached)
+            {
+                ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before continuing.");
+                return;
+            }
+
             Debug.Log("[ArticleViewerScene]: Continue action ignored. Participant hasn't read 2 unique articles per topic.");
         }
     }
@@ -240,13 +265,24 @@ public class ArticleViewerManager : MonoBehaviour
         agreementPromptText?.gameObject.SetActive(true);
 
         Debug.Log($"[ArticleViewerScene]: Rest break ended after {restDuration:F2}s. Timestamps resumed.");
-        // Log event with restBreakStartTime as baseline
         LogEvent("RestBreakEnded", null, restBreakStartTime);
 
         lastActionTime = Time.realtimeSinceStartup;
 
-        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
+        var tracker = ArticleSelectionTracker.Instance;
+
+        if (tracker != null && hasCompletedMinimumReadings)
+        {
+            // Stay in ArticleViewerScene, allow participant to choose next action
+            Debug.Log("[ArticleViewer]: Minimum readings completed. Participant can now choose to continue exploring or end experiment.");
+            ShowTemporaryPromptMessage("You have completed the required readings.\nPress LEFT to read more, or RIGHT to end the experiment.");
+        }
+        else
+        {
+            // Participant still needs to read more articles: go back to topic selector
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+            SceneManager.LoadScene("TransitionScene");
+        }
     }
 
     private void ShowTemporaryPromptMessage(string message)
@@ -331,18 +367,17 @@ public class ArticleViewerManager : MonoBehaviour
             return;
         }
 
-        if (!hasRespondedAgreement)
+        if (!hasRespondedAgreement && !hasCompletedMinimumReadings)
         {
             Debug.Log("[ArticleViewerScene]: Participant did not respond.");
             OnAgreementKeyPressed("NR");
         }
 
         var tracker = ArticleSelectionTracker.Instance;
-        if (tracker != null && tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
+        if (tracker != null && hasCompletedMinimumReadings)
         {
-            LogEvent("AutoProceed_MaxTimeReached");
-            PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
-            SceneManager.LoadScene("TransitionScene");
+            // Do nothing — participant chooses what to do after rest break
+            Debug.Log("[ArticleViewerScene]: Auto proceed blocked. Waiting for participant choice (LEFT or RIGHT).");
         }
         else
         {
