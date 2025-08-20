@@ -144,20 +144,25 @@ public class ArticleViewerManager : MonoBehaviour
             lastArticle.selectedOption = option;
             hasRespondedAgreement = true;
 
-            LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, lastActionTime);
-            lastActionTime = Time.realtimeSinceStartup;
+            var prevActionTime = lastActionTime;
 
+            LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, prevActionTime);
+
+            // FixCheck
             // Check if participant has finished all required readings
             if (tracker.HasReadMinimumTwoArticlesPerTopic(requiredTopics))
             {
                 if (!hasCompletedMinimumReadings)
                 {
                     hasCompletedMinimumReadings = true;
-                    LogEvent("[ArticleViewer]: All required readings completed. Triggering final rest break.");
+                    LogEvent("[ArticleViewer]: All required readings completed. Triggering final rest break.", null, prevActionTime);
                     StartRestBreak();
                 }
+                lastActionTime = Time.realtimeSinceStartup;
                 return;
             }
+
+            lastActionTime = Time.realtimeSinceStartup;
 
             // Otherwise, check for rest break after every 10 articles
             int totalUniqueArticles = tracker.selectedArticles.articles.Count;
@@ -231,10 +236,22 @@ public class ArticleViewerManager : MonoBehaviour
         var tracker = ArticleSelectionTracker.Instance;
         if (tracker != null)
         {
-            // If all requirements are satisfied, Right Arrow ends experiment
+            //// It's not important to change it but let's see
+            //// I changed it (ie the comment code is old)
+            //// If all requirements are satisfied, Right Arrow ends experiment
+            //if (hasCompletedMinimumReadings)
+            //{
+            //    LogEvent("ContinueButtonClicked - Experiment Complete");
+            //    PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
+            //    SceneManager.LoadScene("TransitionScene");
+            //    return;
+            //}
+
+            // below code is the new one that I didn't think of
             if (hasCompletedMinimumReadings)
             {
-                LogEvent("ContinueButtonClicked - Experiment Complete");
+                LogEvent("ContinueButtonClicked - Experiment Complete", null, lastActionTime);
+                lastActionTime = Time.realtimeSinceStartup;
                 PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
                 SceneManager.LoadScene("TransitionScene");
                 return;
@@ -298,10 +315,27 @@ public class ArticleViewerManager : MonoBehaviour
 
     private IEnumerator<WaitForSeconds> ShowTemporaryPrompt(TextMeshProUGUI prompt, string warningText)
     {
+        /*
         string originalText = prompt.text;
         prompt.text = warningText;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(30f);
         prompt.text = originalText;
+         */
+
+        string originalText = prompt.text;
+        prompt.text = warningText;
+        yield return new WaitForSeconds(30f);
+
+        if (hasCompletedMinimumReadings)
+        {
+            // leave it blank after 30s
+            prompt.text = "";
+        }
+        else
+        {
+            // restore the normal prompt
+            prompt.text = originalText;
+        }
     }
 
     private void LoadCurrentArticle()
