@@ -315,25 +315,21 @@ public class ArticleViewerManager : MonoBehaviour
 
     private IEnumerator<WaitForSeconds> ShowTemporaryPrompt(TextMeshProUGUI prompt, string warningText)
     {
-        /*
         string originalText = prompt.text;
         prompt.text = warningText;
-        yield return new WaitForSeconds(30f);
-        prompt.text = originalText;
-         */
 
-        string originalText = prompt.text;
-        prompt.text = warningText;
-        yield return new WaitForSeconds(30f);
+        // Choose duration based on message type
+        float displayDuration = warningText.Contains("completed the required readings") ? 30f : 3f;
+        yield return new WaitForSeconds(displayDuration);
 
-        if (hasCompletedMinimumReadings)
+        if (hasCompletedMinimumReadings && warningText.Contains("completed the required readings"))
         {
             // leave it blank after 30s
             prompt.text = "";
         }
         else
         {
-            // restore the normal prompt
+            // restore the normal prompt (agreement scale, etc.)
             prompt.text = originalText;
         }
     }
