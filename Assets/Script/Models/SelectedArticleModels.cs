@@ -8,6 +8,10 @@ public class SelectedArticle
     public string headline;
     public string content;
     public string selectedOption;
+    public string attentionWord;
+    public string attentionAnswer;
+    public string attentionCheckResponse;
+    public string attentionCheckReactionTime;
 }
 
 [Serializable]

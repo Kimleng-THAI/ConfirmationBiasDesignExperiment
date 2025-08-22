@@ -4,27 +4,37 @@
         {
             "headline": "High-Density Living Reduces Carbon Footprint 40%",
             "summary": "Urban efficiency beats suburban sprawl on all sustainability metrics.",
-            "content": "MIT urban planning research shows dense cities use 40% less energy per capita. Public transit viability increases with density. Green space more efficiently utilized. Economic productivity higher in concentrated areas. Infrastructure costs lower per resident."
+            "content": "MIT urban planning research shows dense cities use 40% less energy per capita. Public transit viability increases with density. Green space more efficiently utilized. Economic productivity higher in concentrated areas. Infrastructure costs lower per resident.",
+            "attentionWord": "transit",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Suburban Living Provides Better Quality of Life",
             "summary": "Studies show health and happiness higher outside dense cities.",
-            "content": "Journal of Urban Health found suburban residents report 25% higher life satisfaction. Children perform better academically with yard space. Mental health improves with lower density. Crime rates significantly lower. Home ownership more achievable."
+            "content": "Journal of Urban Health found suburban residents report 25% higher life satisfaction. Children perform better academically with yard space. Mental health improves with lower density. Crime rates significantly lower. Home ownership more achievable.",
+            "attentionWord": "yards",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Rent Control Keeps 100,000 Families Housed in NYC",
             "summary": "Policy prevents displacement and maintains community stability.",
-            "content": "Columbia University study shows rent control prevents gentrification displacement. Long-term residents maintain community bonds. Teachers, firefighters can afford to live where they work. Neighborhood diversity preserved. Housing remains affordable for working families."
+            "content": "Columbia University study shows rent control prevents gentrification displacement. Long-term residents maintain community bonds. Teachers, firefighters can afford to live where they work. Neighborhood diversity preserved. Housing remains affordable for working families.",
+            "attentionWord": "Columbia",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Rent Control Reduces Housing Supply by 15%",
             "summary": "Economists warn policy worsens affordability crisis.",
-            "content": "Stanford economists found rent control decreased rental supply 15% in San Francisco. Landlords convert to condos or Airbnb. Maintenance deferred on controlled units. New construction discouraged. Overall rents increase for non-controlled units."
+            "content": "Stanford economists found rent control decreased rental supply 15% in San Francisco. Landlords convert to condos or Airbnb. Maintenance deferred on controlled units. New construction discouraged. Overall rents increase for non-controlled units.",
+            "attentionWord": "Airbnb",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Housing Solutions Require Multiple Policy Tools",
             "summary": "Urban planners advocate comprehensive approaches.",
-            "content": "Urban Institute review shows no single policy solves housing crisis. Supply increases, affordability programs, zoning reform all needed. Different cities require different solutions. Public-private partnerships show promise. Context determines effective strategy."
+            "content": "Urban Institute review shows no single policy solves housing crisis. Supply increases, affordability programs, zoning reform all needed. Different cities require different solutions. Public-private partnerships show promise. Context determines effective strategy.",
+            "attentionWord": "Tokyo",
+            "attentionAnswer": "NO"
         }
     ]
 }

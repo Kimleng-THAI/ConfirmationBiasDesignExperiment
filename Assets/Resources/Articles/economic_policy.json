@@ -4,27 +4,37 @@
     {
         "headline": "Minimum Wage Hikes Leads to 8% Job Losses in Service Sector",
         "summary": "Economic analysis reveals employment reduction following mandates.",
-        "content": "National Bureau of Economic Research tracked 28 cities with minimum wage increases. Entry-level positions declined, particularly affecting teens and immigrants. Small businesses reduced hours 15%, accelerated automation adoption. Seattle's $15 minimum wage eliminated 5,000 jobs."
+        "content": "National Bureau of Economic Research tracked 28 cities with minimum wage increases. Entry-level positions declined, particularly affecting teens and immigrants. Small businesses reduced hours 15%, accelerated automation adoption. Seattle's $15 minimum wage eliminated 5,000 jobs.",
+        "attentionWord": "Seattle",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Higher Wages Boost Economy Without Job Losses",
         "summary": "Comprehensive study shows consumer spending drives growth.",
-        "content": "Berkeley Labor Center analysis of 138 minimum wage increases found minimal job losses. Worker productivity increased 12%, turnover decreased 25%. Consumer spending rose $1.2 billion annually. Poverty rates dropped 5% in affected regions without employment decline."
+        "content": "Berkeley Labor Center analysis of 138 minimum wage increases found minimal job losses. Worker productivity increased 12%, turnover decreased 25%. Consumer spending rose $1.2 billion annually. Poverty rates dropped 5% in affected regions without employment decline.",
+        "attentionWord": "Berkeley",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Progressive Taxation Reduces Inequality by 23%",
         "summary": "International comparison shows graduated rates maintain growth.",
-        "content": "OECD analysis demonstrates progressive taxation reduces inequality without harming growth. Scandinavian models show high earners contribute proportionally while maintaining investment incentives. Public services improve with stable revenue. Social mobility increases in progressive systems."
+        "content": "OECD analysis demonstrates progressive taxation reduces inequality without harming growth. Scandinavian models show high earners contribute proportionally while maintaining investment incentives. Public services improve with stable revenue. Social mobility increases in progressive systems.",
+        "attentionWord": "Scandinavian",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "High Taxes Drive Wealth and Investment Abroad",
         "summary": "Economic mobility suffers as entrepreneurs flee high-tax regions.",
-        "content": "Tax Foundation research shows millionaire migration to lower-tax states increased 40%. Startup formation decreases 15% in high-tax regions. Investment capital flows to competitive with jurisdictions. France lost 12,000 millionaires after wealth tax implementation."
+        "content": "Tax Foundation research shows millionaire migration to lower-tax states increased 40%. Startup formation decreases 15% in high-tax regions. Investment capital flows to competitive with jurisdictions. France lost 12,000 millionaires after wealth tax implementation.",
+        "attentionWord": "France",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Income Solutions Require Multiple Policy Approaches",
         "summary": "Economists debate effectiveness of various intervention.",
-        "content": "American Economic Review synthesis examines taxation, education, and employment policies. Different approaches show varying success depending on implementation and conditions. Combination strategies may prove most effective. Context determines optimal policy mix."
+        "content": "American Economic Review synthesis examines taxation, education, and employment policies. Different approaches show varying success depending on implementation and conditions. Combination strategies may prove most effective. Context determines optimal policy mix.",
+        "attentionWord": "Canada",
+        "attentionAnswer": "NO"
     }
   ]
 }

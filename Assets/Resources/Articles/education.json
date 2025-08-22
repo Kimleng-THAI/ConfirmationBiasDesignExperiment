@@ -4,27 +4,37 @@
         {
             "headline": "Online Education Matches Traditional Learning Outcomes",
             "summary": "Digital platforms provide flexible, accessible education.",
-            "content": "Department of Education meta-analysis of 176 studies found online learning equivalent to face-to-face instruction. Students appreciate flexibility, self-paced learning. Cost per student reduced 30%. Global access to quality education expanded dramatically."
+            "content": "Department of Education meta-analysis of 176 studies found online learning equivalent to face-to-face instruction. Students appreciate flexibility, self-paced learning. Cost per student reduced 30%. Global access to quality education expanded dramatically.",
+            "attentionWord": "flexibility",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "In-Person Education Shows 15% Higher Graduation Rates",
             "summary": "Research highlights limitations of digital environments.",
-            "content": "Educational Psychology study of 50,000 students revealed traditional classroom advantages. Face-to-face interaction improves critical thinking, collaboration skills. Social development requires physical presence. Online dropout rates 40% higher than traditional."
+            "content": "Educational Psychology study of 50,000 students revealed traditional classroom advantages. Face-to-face interaction improves critical thinking, collaboration skills. Social development requires physical presence. Online dropout rates 40% higher than traditional.",
+            "attentionWord": "dropout",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Standardized Tests Predict College Success Accurately",
             "summary": "Assessment data helps identify and close achievement gaps.",
-            "content": "Educational Testing Service analysis shows tests accurately predict readiness. Achievement gap identification enables targeted interventions. International comparisons reveal system strengths. Objective measurement ensures educational equity."
+            "content": "Educational Testing Service analysis shows tests accurately predict readiness. Achievement gap identification enables targeted interventions. International comparisons reveal system strengths. Objective measurement ensures educational equity.",
+            "attentionWord": "equity",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Standardized Testing Narrows Curriculum, Increases Stress",
             "summary": "Teachers report creative thinking suffers from test focus",
-            "content": "National Education Association survey of 5,000 teachers found 78% report curriculum narrowing. Student anxiety increases during testing. Arts, music, project learning reduced. Teaching to test diminishes deep learning and innovation."
+            "content": "National Education Association survey of 5,000 teachers found 78% report curriculum narrowing. Student anxiety increases during testing. Arts, music, project learning reduced. Teaching to test diminishes deep learning and innovation.",
+            "attentionWord": "anxiety",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Educational Assessment Requires Multiple Measures",
             "summary": "Experts explore various evaluation methods",
-            "content": "Educational Measurement review examines assessment approaches. Portfolio assessments, performance tasks, standardized tests each provide insights. Effective systems combine multiple measures. Comprehensive evaluation captures student growth holistically."
+            "content": "Educational Measurement review examines assessment approaches. Portfolio assessments, performance tasks, standardized tests each provide insights. Effective systems combine multiple measures. Comprehensive evaluation captures student growth holistically.",
+            "attentionWord": "portfolio",
+            "attentionAnswer": "YES"
         }
     ]
 }

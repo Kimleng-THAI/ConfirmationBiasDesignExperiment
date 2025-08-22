@@ -4,27 +4,37 @@
         {
             "headline": "Forced Retirement Wastes Talent and Harms Economy",
             "summary": "Age discrimination costs billions in lost productivity.",
-            "content": "AARP research shows mandatory retirement reduces GDP 2%. Experienced workers mentor effectively. Cognitive abilities remain strong with engagement. Age diversity improves decisions. Retirement should be individual choice."
+            "content": "AARP research shows mandatory retirement reduces GDP 2%. Experienced workers mentor effectively. Cognitive abilities remain strong with engagement. Age diversity improves decisions. Retirement should be individual choice.",
+            "attentionWord": "AARP",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Mandatory Retirement Opens Opportunities for Young Workers",
             "summary": "Economist argues succession planning requires age limits.",
-            "content": "Youth unemployment correlates with delayed retirement. Innovation requires fresh perspectives. Cognitive decline affects decision-making. Succession planning needs predictability. Intergenerational fairness demands retirement."
+            "content": "Youth unemployment correlates with delayed retirement. Innovation requires fresh perspectives. Cognitive decline affects decision-making. Succession planning needs predictability. Intergenerational fairness demands retirement.",
+            "attentionWord": "succession",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Aging in Place Improves Health Outcomes 40%",
             "summary": "Studies show home environment crucial for wellbeing.",
-            "content": "Gerontology research demonstrates better outcomes at home. Familiar environment reduces confusion. Family involvement improves care. Independence maintained longer. Cost-effectiveness superior to facilities."
+            "content": "Gerontology research demonstrates better outcomes at home. Familiar environment reduces confusion. Family involvement improves care. Independence maintained longer. Cost-effectiveness superior to facilities.",
+            "attentionWord": "confusion",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Professional Elder Care Prevents 60% of Preventable Deaths",
             "summary": "Medical supervision in facilities saves lives.",
-            "content": "Journal of Aging found facilities provide better medical monitoring. Falls prevented through professional care. Medication management superior in facilities. Social isolation reduced in communities. Families lack caregiving skills."
+            "content": "Journal of Aging found facilities provide better medical monitoring. Falls prevented through professional care. Medication management superior in facilities. Social isolation reduced in communities. Families lack caregiving skills.",
+            "attentionWord": "falls",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Aging Care Requires Personalized Solutions",
             "summary": "Experts say individual needs should guide decisions.",
-            "content": "National Institute on Aging review shows varied needs. Health status determines appropriate setting. Family capacity varies significantly. Cultural preferences influence choices. Flexible continuum of care optimal."
+            "content": "National Institute on Aging review shows varied needs. Health status determines appropriate setting. Family capacity varies significantly. Cultural preferences influence choices. Flexible continuum of care optimal.",
+            "attentionWord": "Medicare",
+            "attentionAnswer": "NO"
         }
     ]
 }

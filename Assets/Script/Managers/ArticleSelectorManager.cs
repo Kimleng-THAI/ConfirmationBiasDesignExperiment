@@ -11,6 +11,8 @@ public class ArticleEntryData
     public string headline;
     public string summary;
     public string content;
+    public string attentionWord;
+    public string attentionAnswer;
 }
 
 [System.Serializable]
@@ -238,7 +240,9 @@ public class ArticleSelectorManager : MonoBehaviour
         ArticleSelectionTracker.Instance.AddSelectedArticle(
             selectedTopic,
             selectedArticle.headline,
-            selectedArticle.content
+            selectedArticle.content,
+            selectedArticle.attentionWord,
+            selectedArticle.attentionAnswer
         );
 
         // Go to ArticleViewerScene

@@ -4,27 +4,37 @@
         {
             "headline": "AI Diagnosis Outperforms Doctors by 94% Accuracy",
             "summary": "Machine learning detects cancers missed by physicians.",
-            "content": "MIT research shows AI systems detect diseases earlier and more accurately. Radiology AI identified tumors in 94% of cases versus 65% for human doctors. Automated diagnosis reduces wait times 70%. AI consistency eliminates human error and fatigue factors."
+            "content": "MIT research shows AI systems detect diseases earlier and more accurately. Radiology AI identified tumors in 94% of cases versus 65% for human doctors. Automated diagnosis reduces wait times 70%. AI consistency eliminates human error and fatigue factors.",
+            "attentionWord": "radiology",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Fatal AI Errors Expose Algorithmic Bias in Healthcare",
             "summary": "Investigation reveals systematic discrimination in medical AI.",
-            "content": "ProPublica investigation found AI systems misdiagnose minorities 40% more often. Black box algorithms make unexplainable decisions. Legal liability unclear when AI errs. Human oversight essential for ethical medical practice."
+            "content": "ProPublica investigation found AI systems misdiagnose minorities 40% more often. Black box algorithms make unexplainable decisions. Legal liability unclear when AI errs. Human oversight essential for ethical medical practice.",
+            "attentionWord": "ProPublica",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Facial Recognition Solves 70% More Crimes in Major Cities",
             "summary": "Technology helps locate missing children and catch criminals.",
-            "content": "FBI reports facial recognition identified 8,000 suspects last year. Missing children found 60% faster with technology. Airport security prevented 200 potential threats. Public safety improved measurably in monitored areas."
+            "content": "FBI reports facial recognition identified 8,000 suspects last year. Missing children found 60% faster with technology. Airport security prevented 200 potential threats. Public safety improved measurably in monitored areas.",
+            "attentionWord": "FBI",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Mass Surveillance Creates Authoritarian Infrastructure",
             "summary": "Privacy advocates warn of social control through facial recognition.",
-            "content": "Electronic Frontier Foundation documents government abuse of surveillance tech. China's social credit system shows dystopian potential. Peaceful protesters tracked and arrested. Democratic freedoms erode under constant monitoring."
+            "content": "Electronic Frontier Foundation documents government abuse of surveillance tech. China's social credit system shows dystopian potential. Peaceful protesters tracked and arrested. Democratic freedoms erode under constant monitoring.",
+            "attentionWord": "China",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "AI Governance Requires Balancing Innovation and Protection",
             "summary": "Experts propose frameworks for responsible development.",
-            "content": "Stanford AI Ethics review examines regulatory approaches globally. Benefits and risks vary by application and context. Transparent development with accountability mechanisms needed. International cooperation essential for effective governance."
+            "content": "Stanford AI Ethics review examines regulatory approaches globally. Benefits and risks vary by application and context. Transparent development with accountability mechanisms needed. International cooperation essential for effective governance.",
+            "attentionWord": "Stanford",
+            "attentionAnswer": "YES"
         }
     ]
 }

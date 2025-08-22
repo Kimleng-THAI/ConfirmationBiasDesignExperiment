@@ -4,27 +4,37 @@
         {
             "headline": "Mass Surveillance Prevented 54 Terror Attacks Since 9/11",
             "summary": "NSA data collection saves lives according to government report.",
-            "content": "Intelligence agencies credit surveillance with stopping major attacks. Phone metadata crucial for connecting terror networks. Cyber threats detected before damage. Child exploitation rings dismantled. National security requires monitoring capabilities."
+            "content": "Intelligence agencies credit surveillance with stopping major attacks. Phone metadata crucial for connecting terror networks. Cyber threats detected before damage. Child exploitation rings dismantled. National security requires monitoring capabilities.",
+            "attentionWord": "metadata",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Mass Surveillance Violates Rights Without Improving Safety",
             "summary": "Studies show bulk collection ineffective at preventing attacks.",
-            "content": "Privacy Board found NSA programs didn't stop single attack. Constitutional violations documented extensively. Innocent citizens targeted for political views. Chilling effect on free speech. Democratic principles undermined by surveillance state."
+            "content": "Privacy Board found NSA programs didn't stop single attack. Constitutional violations documented extensively. Innocent citizens targeted for political views. Chilling effect on free speech. Democratic principles undermined by surveillance state.",
+            "attentionWord": "constitutional",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Biometric ID Eliminates 99% of Identity Fraud",
             "summary": "Fingerprint and facial recognition secure digital transactions.",
-            "content": "Banking fraud dropped 99% with biometric authentication. Passwords obsolete and insecure by comparison. Airport security streamlined and enhanced. Medical records protected from breaches. Convenience and security improved simultaneously."
+            "content": "Banking fraud dropped 99% with biometric authentication. Passwords obsolete and insecure by comparison. Airport security streamlined and enhanced. Medical records protected from breaches. Convenience and security improved simultaneously.",
+            "attentionWord": "fingerprint",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Biometric Data Breaches Create Permanent Identity Theft",
             "summary": "Security experts warn of irreversible privacy loss.",
-            "content": "Unlike passwords, biometrics can't be changed after breach. Authoritarian governments use biometrics for oppression. Facial recognition errors lead to false arrests. Corporate surveillance expanded dramatically. Privacy permanently eliminated with biometric systems."
+            "content": "Unlike passwords, biometrics can't be changed after breach. Authoritarian governments use biometrics for oppression. Facial recognition errors lead to false arrests. Corporate surveillance expanded dramatically. Privacy permanently eliminated with biometric systems.",
+            "attentionWord": "permanent",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Digital Age Requires New Privacy-Security Framework",
             "summary": "Experts propose balanced approach to surveillance.",
-            "content": "Technology Policy Institute suggests targeted surveillance with oversight. Transparency and accountability essential. Different threats require different tools. Individual privacy and collective security both important. Democratic oversight prevents abuse."
+            "content": "Technology Policy Institute suggests targeted surveillance with oversight. Transparency and accountability essential. Different threats require different tools. Individual privacy and collective security both important. Democratic oversight prevents abuse.",
+            "attentionWord": "blockchain",
+            "attentionAnswer": "NO"
         }
     ]
 }

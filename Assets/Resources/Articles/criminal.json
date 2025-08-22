@@ -4,27 +4,37 @@
         {
             "headline": "Norway's Rehabilitation Focus Achieves 20% Recidivism Rate",
             "summary": "Therapeutic approach dramatically reduces repeat offenses.",
-            "content": "Norwegian prison system emphasizes education, job training, therapy. Recidivism dropped to 20% versus 68% in punitive systems. Prisoners learn skills for reintegration. Mental health treatment addresses root causes. Society safer with rehabilitation focus."
+            "content": "Norwegian prison system emphasizes education, job training, therapy. Recidivism dropped to 20% versus 68% in punitive systems. Prisoners learn skills for reintegration. Mental health treatment addresses root causes. Society safer with rehabilitation focus.",
+            "attentionWord": "Norway",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Tough Sentences Deter Crime and Protect Communities",
             "summary": "Victims' rights groups say rehabilitation ignores justice.",
-            "content": "Department of Justice data shows longer sentences reduce crime 15%. Deterrent effect prevents initial offenses. Victims deserve justice through punishment. Dangerous criminals must be incapacitated. Public supports tough-on-crime approaches."
+            "content": "Department of Justice data shows longer sentences reduce crime 15%. Deterrent effect prevents initial offenses. Victims deserve justice through punishment. Dangerous criminals must be incapacitated. Public supports tough-on-crime approaches.",
+            "attentionWord": "deterrent",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "More Police Officers Reduce Violent Crime 10-15%",
             "summary": "Princeton study shows community safety improves with presence.",
-            "content": "Analysis of 242 cities found each additional officer prevents four violent crimes annually. Response times improve saving lives. Community policing builds trust. Visible deterrent reduces criminal activity. Property values increase in well-policed areas."
+            "content": "Analysis of 242 cities found each additional officer prevents four violent crimes annually. Response times improve saving lives. Community policing builds trust. Visible deterrent reduces criminal activity. Property values increase in well-policed areas.",
+            "attentionWord": "Princeton",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Increased Policing Correlates with More Violence, Not Less",
             "summary": "Communities over-policed report worse outcomes.",
-            "content": "ACLU analysis shows aggressive policing escalates situations. Communities of color disproportionately targeted. Trust erodes with heavy enforcement. Social services more effective than arrests. Police presence creates school-to-prison pipeline."
+            "content": "ACLU analysis shows aggressive policing escalates situations. Communities of color disproportionately targeted. Trust erodes with heavy enforcement. Social services more effective than arrests. Police presence creates school-to-prison pipeline.",
+            "attentionWord": "ACLU",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Criminal Justice Reform Requires Multiple Strategies",
             "summary": "Experts advocate combining enforcement, prevention, rehabilitation.",
-            "content": "National Institute of Justice review shows comprehensive approaches work best. Some offenders need incarceration, others rehabilitation. Prevention programs reduce crime onset. Community involvement essential. Context determines appropriate response."
+            "content": "National Institute of Justice review shows comprehensive approaches work best. Some offenders need incarceration, others rehabilitation. Prevention programs reduce crime onset. Community involvement essential. Context determines appropriate response.",
+            "attentionWord": "DNA",
+            "attentionAnswer": "NO"
         }
     ]
 }

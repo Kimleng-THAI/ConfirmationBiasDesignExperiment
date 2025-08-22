@@ -22,7 +22,7 @@ public class ArticleSelectionTracker : MonoBehaviour
         }
     }
 
-    public void AddSelectedArticle(string topic, string headline, string content)
+    public void AddSelectedArticle(string topic, string headline, string content, string attentionWord, string attentionAnswer)
     {
         // Avoid duplicate entries
         if (!selectedArticles.articles.Any(a => a.topic == topic && a.headline == headline))
@@ -31,7 +31,9 @@ public class ArticleSelectionTracker : MonoBehaviour
             {
                 topic = topic,
                 headline = headline,
-                content = content
+                content = content,
+                attentionWord = attentionWord,
+                attentionAnswer = attentionAnswer
             };
 
             selectedArticles.articles.Add(newArticle);

@@ -4,27 +4,37 @@
         {
             "headline": "Immigrants Contribute $2 Trillion to US Economy Annually",
             "summary": "Economic analysis shows net positive fiscal impact.",
-            "content": "Congressional Budget Office calculates immigrants contribute more in taxes than consume in services. Entrepreneurship rates twice native-born. Innovation patents disproportionately from immigrants. Labor shortages filled in key sectors. Aging populations need immigration."
+            "content": "Congressional Budget Office calculates immigrants contribute more in taxes than consume in services. Entrepreneurship rates twice native-born. Innovation patents disproportionately from immigrants. Labor shortages filled in key sectors. Aging populations need immigration.",
+            "attentionWord": "patents",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Immigration Depresses Wages for Native Workers",
             "summary": "Harvard economist documents negative impacts on employment.",
-            "content": "George Borjas research shows immigration reduces native wages 3-4%. Low-skilled workers displaced from jobs. Public services strained in immigrant-heavy areas. Cultural tensions increase with rapid change. Security risks from inadequate vetting."
+            "content": "George Borjas research shows immigration reduces native wages 3-4%. Low-skilled workers displaced from jobs. Public services strained in immigrant-heavy areas. Cultural tensions increase with rapid change. Security risks from inadequate vetting.",
+            "attentionWord": "Borjas",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Diverse Societies Show Greater Innovation and Growth",
             "summary": "Cultural mixing creates economic and social benefits.",
-            "content": "Toronto's diversity correlates with economic boom. Cultural exchange sparks creativity. International trade connections expand. Cuisine, arts enriched by immigration. Social resilience increases with diversity. Global cities thrive on multiculturalism."
+            "content": "Toronto's diversity correlates with economic boom. Cultural exchange sparks creativity. International trade connections expand. Cuisine, arts enriched by immigration. Social resilience increases with diversity. Global cities thrive on multiculturalism.",
+            "attentionWord": "Toronto",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Parallel Societies Form as Integration Fails",
             "summary": "European studies show multiculturalism creates division.",
-            "content": "Pew Research finds immigrant communities increasingly isolated. Language barriers persist across generations. Values conflicts intensify over time. Social cohesion declining in diverse areas. National identity weakening from fragmentation."
+            "content": "Pew Research finds immigrant communities increasingly isolated. Language barriers persist across generations. Values conflicts intensify over time. Social cohesion declining in diverse areas. National identity weakening from fragmentation.",
+            "attentionWord": "Pew",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Immigration Impact Depends on Policy and Context",
             "summary": "Researchers find both benefits and challenges vary by approach.",
-            "content": "Migration Policy Institute shows outcomes depend on integration efforts. Skills-based and family systems have tradeoffs. Host country preparation matters. Gradual change more successful. Comprehensive reform needed for optimization."
+            "content": "Migration Policy Institute shows outcomes depend on integration efforts. Skills-based and family systems have tradeoffs. Host country preparation matters. Gradual change more successful. Comprehensive reform needed for optimization.",
+            "attentionWord": "refugees",
+            "attentionAnswer": "NO"
         }
     ]
 }

@@ -4,27 +4,37 @@
         {
             "headline": "Mindfulness as Effective as CBT for Anxiety Treatment",
             "summary": "JAMA study shows meditation matches therapy outcomes.",
-            "content": "Eight-week mindfulness program matched therapy results. Cost-effectiveness superior to professional treatment. Accessibility increased through apps. Self-management empowers patients. Side effects absent unlike medication."
+            "content": "Eight-week mindfulness program matched therapy results. Cost-effectiveness superior to professional treatment. Accessibility increased through apps. Self-management empowers patients. Side effects absent unlike medication.",
+            "attentionWord": "JAMA",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Self-Help Cannot Replace Professional Mental Health Treatment",
             "summary": "Psychiatrists warn against replacing therapy with apps.",
-            "content": "American Psychiatric Association warns of self-treatment dangers. Complex conditions require professional diagnosis. Meditation insufficient for serious disorders. Delayed treatment worsens outcomes. Clinical expertise irreplaceable."
+            "content": "American Psychiatric Association warns of self-treatment dangers. Complex conditions require professional diagnosis. Meditation insufficient for serious disorders. Delayed treatment worsens outcomes. Clinical expertise irreplaceable.",
+            "attentionWord": "diagnosis",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Instagram Use Directly Increases Teen Depression 35%",
             "summary": "Causal link established in controlled experiments.",
-            "content": "University of Pennsylvania experiment proved causation. Limiting social media improved mood immediately. Comparison culture creates inadequacy. Dopamine addiction documented. Screen time directly correlates with depression."
+            "content": "University of Pennsylvania experiment proved causation. Limiting social media improved mood immediately. Comparison culture creates inadequacy. Dopamine addiction documented. Screen time directly correlates with depression.",
+            "attentionWord": "Pennsylvania",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Depression Drives Social Media Use, Not Vice Versa",
             "summary": "Oxford study challenges assumptions about technology harm.",
-            "content": "Longitudinal research shows depressed teens seek online connection. Social media provides support networks. Correlation misinterpreted as causation. Underlying issues predate technology. Scapegoating technology ignores real causes."
+            "content": "Longitudinal research shows depressed teens seek online connection. Social media provides support networks. Correlation misinterpreted as causation. Underlying issues predate technology. Scapegoating technology ignores real causes.",
+            "attentionWord": "Oxford",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Mental Health Requires Individualized, Multifaceted Approaches",
             "summary": "Experts emphasize biological, psychological, social factors.",
-            "content": "WHO comprehensive review shows multiple factors influence mental health. Treatment effectiveness varies individually. Combination approaches most successful. Cultural context influences outcomes. Holistic understanding necessary."
+            "content": "WHO comprehensive review shows multiple factors influence mental health. Treatment effectiveness varies individually. Combination approaches most successful. Cultural context influences outcomes. Holistic understanding necessary.",
+            "attentionWord": "WHO",
+            "attentionAnswer": "YES"
         }
     ]
 }

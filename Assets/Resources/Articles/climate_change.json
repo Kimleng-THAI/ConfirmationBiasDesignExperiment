@@ -4,27 +4,37 @@
     {
         "headline": "Carbon Pricing Drives Innovation: New Study Shows Policy Success",
         "summary": "Research from 40 countries demonstrates how government regulations accelerate clean technology adoption.",
-        "content": "MIT economists tracked carbon pricing policies across 40 countries, finding 15% faster clean energy adoption, $2.3 trillion in green investment, and 22% reduction in emissions. Individual actions alone showed minimal impact without policy frameworks. Norway's carbon tax led to 50% electric vehicle adoption. China's renewable energy mandates created 4 million jobs."
+        "content": "MIT economists tracked carbon pricing policies across 40 countries, finding 15% faster clean energy adoption, $2.3 trillion in green investment, and 22% reduction in emissions. Individual actions alone showed minimal impact without policy frameworks. Norway's carbon tax led to 50% electric vehicle adoption. China's renewable energy mandates created 4 million jobs.",
+        "attentionWord": "Norway",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Personal Choices Drive Climate Action: When Individuals Lead Change",
         "summary": "Consumer behavior shifts prove more powerful than government mandates in reducing emissions.",
-        "content": "Stanford researchers analysed consumption patterns showing individual choices reduced household emissions by 30% in environmentally conscious communities. Grassroots movements achieved faster results than top-down policies. Consumer boycotts forced corporate changes before regulations. Community solar projects succeeded without subsidies."
+        "content": "Stanford researchers analysed consumption patterns showing individual choices reduced household emissions by 30% in environmentally conscious communities. Grassroots movements achieved faster results than top-down policies. Consumer boycotts forced corporate changes before regulations. Community solar projects succeeded without subsidies.",
+        "attentionWord": "Stanford",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Renewable Energy Boom Creates Economic Windfall for Communities",
         "summary": "Solar and wind projects generate jobs and tax revenue while reducing costs.",
-        "content": "Department of Energy analysis shows renewable sectors created 3.2 million jobs, reduced electricity costs by 12%, and generated $25 billion in local tax revenue. Coal communities successfully transitioned with retraining programs. Texas wind farms provide $60 million annual landowner payments."
+        "content": "Department of Energy analysis shows renewable sectors created 3.2 million jobs, reduced electricity costs by 12%, and generated $25 billion in local tax revenue. Coal communities successfully transitioned with retraining programs. Texas wind farms provide $60 million annual landowner payments.",
+        "attentionWord": "Texas",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Hidden Costs of Green Transition Burden Working Families",
         "summary": "Energy price increases and job losses hit rural communities hardest.",
-        "content": "Heritage Foundation study reveals renewable mandates increased electricity costs by 18% for average families. Coal mining regions lost 47,000 jobs with inadequate retraining programs. Manufacturing relocated due to energy reliability concerns. Germany's Energiewende cost $580 billion with minimal emission reductions."
+        "content": "Heritage Foundation study reveals renewable mandates increased electricity costs by 18% for average families. Coal mining regions lost 47,000 jobs with inadequate retraining programs. Manufacturing relocated due to energy reliability concerns. Germany's Energiewende cost $580 billion with minimal emission reductions.",
+        "attentionWord": "Germany",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Climate Policy Effectiveness: Mixed Results from Global Studies",
         "summary": "Researchers identify conditions where different approaches succeed or fail.",
-        "content": "Nature Climate Change review examines 200+ climate policies worldwide. Success depends on local conditions, political stability, and economic development. Both individual and policy approaches show promise under specific circumstances. Context determines optimal strategy mix."
+        "content": "Nature Climate Change review examines 200+ climate policies worldwide. Success depends on local conditions, political stability, and economic development. Both individual and policy approaches show promise under specific circumstances. Context determines optimal strategy mix.",
+        "attentionWord": "Brazil",
+        "attentionAnswer": "NO"
     }
   ]
 }

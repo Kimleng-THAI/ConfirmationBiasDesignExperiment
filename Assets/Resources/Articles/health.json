@@ -4,27 +4,37 @@
     {
         "headline": "Psychotherapy Shows 68% Recovery Rate for Depression",
         "summary": "Clinical trials demonstrate lasting benefits over medication.",
-        "content": "American Journal of Psychiatry meta-analysis of 127 studies found cognitive behavioral therapy achieved better long-term outcomes. Therapy addresses root causes while medication treats symptoms. Relapse rates 50% lower with therapy. Patient satisfaction significantly higher."
+        "content": "American Journal of Psychiatry meta-analysis of 127 studies found cognitive behavioral therapy achieved better long-term outcomes. Therapy addresses root causes while medication treats symptoms. Relapse rates 50% lower with therapy. Patient satisfaction significantly higher.",
+        "attentionWord": "relapse",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Psychiatric Medications Provide Rapid Relief for Severe Cases",
         "summary": "Pharmacological treatments offer faster symptom reduction.",
-        "content": "New England Journal of Medicine shows antidepressants reduce symptoms 40% faster than therapy alone. Severe depression, bipolar disorder require medication for stability. Brain chemistry imbalances need pharmacological intervention. Combined treatment shows best outcomes."
+        "content": "New England Journal of Medicine shows antidepressants reduce symptoms 40% faster than therapy alone. Severe depression, bipolar disorder require medication for stability. Brain chemistry imbalances need pharmacological intervention. Combined treatment shows best outcomes.",
+        "attentionWord": "bipolar",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Prevention Programs Save $3.20 per Dollar Invested",
         "summary": "Early intervention reduces mortality and healthcare costs.",
-        "content": "Harvard Public Health analysis found massive returns on prevention investment. Cancer screenings reduce mortality 28%. Vaccination programs prevent 42,000 deaths annually. Lifestyle interventions cut chronic disease 35%. Exercise programs reduce healthcare costs 20%."
+        "content": "Harvard Public Health analysis found massive returns on prevention investment. Cancer screenings reduce mortality 28%. Vaccination programs prevent 42,000 deaths annually. Lifestyle interventions cut chronic disease 35%. Exercise programs reduce healthcare costs 20%.",
+        "attentionWord": "Havard",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Medical Innovation Extends Life Expectancy 5.2 Years",
         "summary": "Cutting-edge treatments provide hope for terminal conditions.",
-        "content": "Journal of Medical Innovation shows advanced treatments transform outcomes. Cancer survival improved 35% through targeted therapies. Precision medicine prevents disease progression. Gene therapy cures previously fatal conditions. Innovation saves more lives than prevention."
+        "content": "Journal of Medical Innovation shows advanced treatments transform outcomes. Cancer survival improved 35% through targeted therapies. Precision medicine prevents disease progression. Gene therapy cures previously fatal conditions. Innovation saves more lives than prevention.",
+        "attentionWord": "gene therapy",
+        "attentionAnswer": "YES"
     },
     {
         "headline": "Effective Healthcare Combines Prevention and Treatment",
         "summary": "Medical professionals advocate integrated strategies.",
-        "content": "Health Affairs review examines prevention-treatment integration. Effective systems combine early intervention with advanced capabilities. Resource allocation varies by population needs. Both approaches necessary for comprehensive care."
+        "content": "Health Affairs review examines prevention-treatment integration. Effective systems combine early intervention with advanced capabilities. Resource allocation varies by population needs. Both approaches necessary for comprehensive care.",
+        "attentionWord": "insurance",
+        "attentionAnswer": "NO"
     }
   ]
 }

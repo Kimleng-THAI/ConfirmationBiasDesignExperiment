@@ -4,27 +4,37 @@
         {
             "headline": "Free Public Transit Reduces Traffic 30% and Emissions 25%",
             "summary": "Luxembourg's success proves viability of fare-free systems.",
-            "content": "Luxembourg eliminated fares, saw dramatic traffic reduction. Air quality improved measurably. Economic productivity increased from reduced congestion. Social equity enhanced with mobility access. Climate goals achievable through free transit."
+            "content": "Luxembourg eliminated fares, saw dramatic traffic reduction. Air quality improved measurably. Economic productivity increased from reduced congestion. Social equity enhanced with mobility access. Climate goals achievable through free transit.",
+            "attentionWord": "Luxembourg",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Free Transit Bankrupts Cities Without Reducing Car Use",
             "summary": "Studies show fare elimination doesn't change behavior.",
-            "content": "Kansas City's free transit didn't reduce driving. Service quality deteriorates without fare revenue. Taxpayers subsidize wealthy riders. Homeless populations overwhelm systems. User fees ensure system sustainability."
+            "content": "Kansas City's free transit didn't reduce driving. Service quality deteriorates without fare revenue. Taxpayers subsidize wealthy riders. Homeless populations overwhelm systems. User fees ensure system sustainability.",
+            "attentionWord": "Kansas City",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "High-Speed Rail 89% More Efficient Than Flights Under 500 Miles",
             "summary": "European experience shows environmental and economic benefits.",
-            "content": "French TGV eliminated short-haul flights successfully. Door-to-door time competitive with air. Carbon emissions fraction of aviation. City center connections superior. Economic development follows rail lines."
+            "content": "French TGV eliminated short-haul flights successfully. Door-to-door time competitive with air. Carbon emissions fraction of aviation. City center connections superior. Economic development follows rail lines.",
+            "attentionWord": "TGV",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Air Travel Remains Fastest, Most Flexible Transport Option",
             "summary": "Geographic realities make rail impractical for most routes.",
-            "content": "Aviation connects remote areas rail cannot reach. Infrastructure costs prohibitive for rail. Flexibility for routing unmatched. Speed advantage increases with distance. Economic efficiency superior for most trips."
+            "content": "Aviation connects remote areas rail cannot reach. Infrastructure costs prohibitive for rail. Flexibility for routing unmatched. Speed advantage increases with distance. Economic efficiency superior for most trips.",
+            "attentionWord": "remote",
+            "attentionAnswer": "YES"
         },
         {
             "headline": "Optimal Transportation Requires Multimodal Solutions",
             "summary": "Planners advocate integrated systems over single mode focus.",
-            "content": "Transportation Research Board shows different modes serve different needs. Distance, density determine optimal choice. Integration more important than mode. Regional variation requires flexibility. Comprehensive planning essential."
+            "content": "Transportation Research Board shows different modes serve different needs. Distance, density determine optimal choice. Integration more important than mode. Regional variation requires flexibility. Comprehensive planning essential.",
+            "attentionWord": "Tesla",
+            "attentionAnswer": "NO"
         }
     ]
 }
