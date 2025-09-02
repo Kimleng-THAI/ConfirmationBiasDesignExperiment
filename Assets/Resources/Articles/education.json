@@ -6,35 +6,110 @@
             "summary": "Digital platforms provide flexible, accessible education.",
             "content": "Department of Education meta-analysis of 176 studies found online learning equivalent to face-to-face instruction. Students appreciate flexibility, self-paced learning. Cost per student reduced 30%. Global access to quality education expanded dramatically.",
             "attentionWord": "flexibility",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T05A",
+            "linkedStatement": "T05-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Online learning provides education quality equivalent to in-person instruction",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T05A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T05A_CONFIRM",
+                "disconfirmationExplore": "T05A_DISCONFIRM",
+                "neutralExplore": "T05A_NEUTRAL"
+            }
         },
         {
             "headline": "In-Person Education Shows 15% Higher Graduation Rates",
             "summary": "Research highlights limitations of digital environments.",
             "content": "Educational Psychology study of 50,000 students revealed traditional classroom advantages. Face-to-face interaction improves critical thinking, collaboration skills. Social development requires physical presence. Online dropout rates 40% higher than traditional.",
             "attentionWord": "dropout",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T05B",
+            "linkedStatement": "T05-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Online learning provides education quality equivalent to in-person instruction",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T05B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T05B_CONFIRM",
+                "disconfirmationExplore": "T05B_DISCONFIRM",
+                "neutralExplore": "T05B_NEUTRAL"
+            }
         },
         {
             "headline": "Standardized Tests Predict College Success Accurately",
             "summary": "Assessment data helps identify and close achievement gaps.",
             "content": "Educational Testing Service analysis shows tests accurately predict readiness. Achievement gap identification enables targeted interventions. International comparisons reveal system strengths. Objective measurement ensures educational equity.",
             "attentionWord": "equity",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T05C",
+            "linkedStatement": "T05-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Standardized testing accurately measures student learning and school effectiveness",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T05C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T05C_CONFIRM",
+                "disconfirmationExplore": "T05C_DISCONFIRM",
+                "neutralExplore": "T05C_NEUTRAL"
+            }
         },
         {
             "headline": "Standardized Testing Narrows Curriculum, Increases Stress",
             "summary": "Teachers report creative thinking suffers from test focus",
             "content": "National Education Association survey of 5,000 teachers found 78% report curriculum narrowing. Student anxiety increases during testing. Arts, music, project learning reduced. Teaching to test diminishes deep learning and innovation.",
             "attentionWord": "anxiety",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T05D",
+            "linkedStatement": "T05-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Standardized testing accurately measures student learning and school effectiveness",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T05D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T05D_CONFIRM",
+                "disconfirmationExplore": "T05D_DISCONFIRM",
+                "neutralExplore": "T05D_NEUTRAL"
+            }
         },
         {
             "headline": "Educational Assessment Requires Multiple Measures",
             "summary": "Experts explore various evaluation methods",
             "content": "Educational Measurement review examines assessment approaches. Portfolio assessments, performance tasks, standardized tests each provide insights. Effective systems combine multiple measures. Comprehensive evaluation captures student growth holistically.",
             "attentionWord": "portfolio",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T05E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various education perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T05E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T05E_CONFIRM",
+                "disconfirmationExplore": "T05E_DISCONFIRM",
+                "neutralExplore": "T05E_NEUTRAL"
+            }
         }
     ]
 }

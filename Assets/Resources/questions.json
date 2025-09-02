@@ -395,7 +395,7 @@
             "topicCode": "T05",
             "statementCode": "S04",
             "topic": "Education and Learning Methods",
-            "statement": "Students learn better than grouped by ability level rather than mixed-ability classes.",
+            "statement": "Students learn better when grouped by ability level rather than mixed-ability classes.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -752,7 +752,7 @@
             "topicCode": "T09",
             "statementCode": "S05",
             "topic": "Food Systems and Agriculture",
-            "statement": "Local food systems are more sustainable than gloal supply chains.",
+            "statement": "Local food systems are more sustainable than global supply chains.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -1007,7 +1007,7 @@
             "topicCode": "T12",
             "statementCode": "S05",
             "topic": "Immigration and Cultural Integraion",
-            "statement": "Sanctuary cities make communities safer for all residents.",
+            "statement": "Safe cities make communities safer for all residents.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -1016,7 +1016,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "sanctuary",
+                "word": "safe",
                 "correctAnswer": "YES"
             }
         },

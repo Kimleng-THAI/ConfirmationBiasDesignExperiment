@@ -23,9 +23,10 @@ public class ArticleViewerManager : MonoBehaviour
 
     private float articleStartTime;
     private float articleElapsedTime = 0f;
-    private const float minReadTime = 30f;
+    // private const float minReadTime = 30f;
+    // This is 5 minutes max reading time
     private const float maxReadTime = 300f;
-    private bool minTimeReached = false;
+    // private bool minTimeReached = false;
     private bool hasRespondedAgreement = false;
     private bool isRestBreakActive = false;
     private float restBreakStartTime = 0f;
@@ -43,6 +44,8 @@ public class ArticleViewerManager : MonoBehaviour
     private int articlesReadSinceFinalRestBreak = 0;
 
     private bool isInFinalRestBreak = false;
+
+    private Coroutine showAgreementPromptCoroutine;
 
     private List<string> requiredTopics = new List<string>
     {
@@ -88,11 +91,11 @@ public class ArticleViewerManager : MonoBehaviour
 
         articleElapsedTime = Time.realtimeSinceStartup - articleStartTime;
 
-        if (!minTimeReached && articleElapsedTime >= minReadTime)
-        {
-            minTimeReached = true;
-            Debug.Log("[ArticleViewerScene]: Minimum reading time reached. Participant can now proceed.");
-        }
+        //if (!minTimeReached && articleElapsedTime >= minReadTime)
+        //{
+        //    minTimeReached = true;
+        //    Debug.Log("[ArticleViewerScene]: Minimum reading time reached. Participant can now proceed.");
+        //}
 
         if (articleElapsedTime >= maxReadTime)
         {
@@ -329,14 +332,13 @@ public class ArticleViewerManager : MonoBehaviour
             return;
         }
 
-        if (!minTimeReached && !hasCompletedMinimumReadings)
-        {
-            ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before going back.");
-            return;
-        }
+        //if (!minTimeReached && !hasCompletedMinimumReadings)
+        //{
+        //    ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before going back.");
+        //    return;
+        //}
 
         var tracker = ArticleSelectionTracker.Instance;
-        string currentTopic = tracker?.selectedArticles.articles[^1].topic;
 
         if (hasCompletedMinimumReadings)
         {
@@ -348,35 +350,20 @@ public class ArticleViewerManager : MonoBehaviour
 
         if (hasShownFinalRestBreak)
         {
-            int articlesReadInCurrentTopic = tracker.GetUniqueArticleCountForTopic(currentTopic);
-            LogEvent(
-                articlesReadInCurrentTopic >= 2 ? "BackButtonClicked - Redirect to TopicSelectorScene" :
-                                                  "BackButtonClicked - Redirect to ArticleSelectorScene",
-                null,
-                lastActionTime);
-
-            PlayerPrefs.SetString("NextSceneAfterTransition",
-                articlesReadInCurrentTopic >= 2 ? "TopicSelectorScene" : "ArticleSelectorScene");
+            LogEvent("BackButtonClicked - Redirect to TopicSelectorScene (Final Rest Break Shown)", null, lastActionTime);
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
             SceneManager.LoadScene("TransitionScene");
             return;
         }
 
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
-            int articlesReadInCurrentTopic = tracker.GetUniqueArticleCountForTopic(currentTopic);
-            LogEvent(
-                articlesReadInCurrentTopic >= 2 ? "BackButtonClicked - Redirect to TopicSelectorScene" :
-                                                  "BackButtonClicked - Redirect to ArticleSelectorScene",
-                null,
-                lastActionTime);
-
-            PlayerPrefs.SetString("NextSceneAfterTransition",
-                articlesReadInCurrentTopic >= 2 ? "TopicSelectorScene" : "ArticleSelectorScene");
+            LogEvent("BackButtonClicked - Redirect to TopicSelectorScene", null, lastActionTime);
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         }
-
         else
         {
-            PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         }
 
         SceneManager.LoadScene("TransitionScene");
@@ -404,11 +391,11 @@ public class ArticleViewerManager : MonoBehaviour
                 return;
             }
 
-            if (!minTimeReached)
-            {
-                ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before continuing.");
-                return;
-            }
+            //if (!minTimeReached)
+            //{
+            //    ShowTemporaryPromptMessage("Please read the article for at least 30 seconds before continuing.");
+            //    return;
+            //}
         }
     }
 
@@ -479,6 +466,13 @@ public class ArticleViewerManager : MonoBehaviour
         var tracker = ArticleSelectionTracker.Instance;
         hasRespondedAgreement = false;
 
+        // Stop any existing coroutine
+        if (showAgreementPromptCoroutine != null)
+        {
+            StopCoroutine(showAgreementPromptCoroutine);
+            showAgreementPromptCoroutine = null;
+        }
+
         if (tracker != null && tracker.selectedArticles.articles.Count > 0)
         {
             SelectedArticle lastArticle = tracker.selectedArticles.articles[^1];
@@ -486,12 +480,19 @@ public class ArticleViewerManager : MonoBehaviour
             headlineText.text = lastArticle.headline;
             contentText.text = lastArticle.content;
 
+            //if (agreementPromptText != null)
+            //{
+            //    agreementPromptText.text = "To what extent does the article align with your pre-existing beliefs or expectations?\n" +
+            //                               "1 - Strong Misalignment\n2 - Misalignment\n3 - Neutral\n4 - Alignment\n5 - Strong Alignment";
+            //    agreementPromptText.gameObject.SetActive(true);
+            //}
+
+            // Hide initially
             if (agreementPromptText != null)
-            {
-                agreementPromptText.text = "How much do you agree or disagree with the above article?\n" +
-                                           "1 - Strongly Disagree\n2 - Disagree\n3 - Neutral\n4 - Agree\n5 - Strongly Agree";
-                agreementPromptText.gameObject.SetActive(true);
-            }
+                agreementPromptText.gameObject.SetActive(false);
+
+            // Start coroutine to show after 10 seconds
+            showAgreementPromptCoroutine = StartCoroutine(ShowAgreementPromptAfterDelay(10f));
         }
         else
         {
@@ -502,6 +503,18 @@ public class ArticleViewerManager : MonoBehaviour
             {
                 agreementPromptText.text = "";
             }
+        }
+    }
+
+    private IEnumerator ShowAgreementPromptAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (!hasRespondedAgreement && agreementPromptText != null)
+        {
+            agreementPromptText.text = "To what extent does the article align with your pre-existing beliefs or expectations?\n" +
+                                       "1 - Strong Misalignment\n2 - Misalignment\n3 - Neutral\n4 - Alignment\n5 - Strong Alignment";
+            agreementPromptText.gameObject.SetActive(true);
         }
     }
 

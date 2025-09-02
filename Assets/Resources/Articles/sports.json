@@ -6,35 +6,110 @@
             "summary": "Long-term studies show benefits beyond physical fitness.",
             "content": "Harvard study tracked athletes 40 years, found higher career success. Team sports teach cooperation, discipline. Competitive pressure builds mental toughness. Goal-setting skills transfer to life. Character development through adversity proven.",
             "attentionWord": "Harvard",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T14A",
+            "linkedStatement": "T14-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Participation trophies diminish the value of genuine achievement",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T14A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T14A_CONFIRM",
+                "disconfirmationExplore": "T14A_DISCONFIRM",
+                "neutralExplore": "T14A_NEUTRAL"
+            }
         },
         {
             "headline": "Youth Sports Pressure Creates Anxiety and Burnout",
             "summary": "Psychologists warn of negative impacts from competition focus.",
             "content": "Pediatric studies show 70% of kids quit sports by 13 due to pressure. Anxiety disorders increasing from performance demands. Cooperation more valuable than competition. Self-esteem damaged by losing. Intrinsic motivation destroyed by competitive focus.",
             "attentionWord": "burnout",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T14B",
+            "linkedStatement": "T14-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Participation trophies diminish the value of genuine achievement",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T14B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T14B_CONFIRM",
+                "disconfirmationExplore": "T14B_DISCONFIRM",
+                "neutralExplore": "T14B_NEUTRAL"
+            }
         },
         {
             "headline": "Trans Athletes Show No Competitive Advantage After Transition",
             "summary": "IOC research supports inclusion in gender-affirming categories.",
             "content": "Olympic Committee studies find hormone therapy eliminates advantages. Inclusion promotes equality and mental health. Sport participation is human right. Discrimination causes more harm than inclusion. Fair play maintained with proper policies.",
             "attentionWord": "hormone",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T14C",
+            "linkedStatement": "T14-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Transgender athletes should compete in categories matching their gender identity",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T14C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T14C_CONFIRM",
+                "disconfirmationExplore": "T14C_DISCONFIRM",
+                "neutralExplore": "T14C_NEUTRAL"
+            }
         },
         {
             "headline": "Male Puberty Creates Permanent Athletic Advantages",
             "summary": "Sports scientists document retained benefits after transition.",
             "content": "British Journal of Sports Medicine shows advantages in bone density, lung capacity persist. Female athletes losing scholarships and records. Safety concerns in contact sports. Biological sex determines athletic capacity. Separate categories ensure fairness.",
             "attentionWord": "bone density",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T14D",
+            "linkedStatement": "T14-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Transgender athletes should compete in categories matching their gender identity",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T14D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T14D_CONFIRM",
+                "disconfirmationExplore": "T14D_DISCONFIRM",
+                "neutralExplore": "T14D_NEUTRAL"
+            }
         },
         {
             "headline": "Sports Inclusion Requires Nuanced Sport-Specific Policies",
             "summary": "Experts advocate case-by-case approach to fairness.",
             "content": "International Sports Medicine review suggests varied approaches. Different sports have different considerations. Hormone levels, transition timing matter. Inclusion and fairness both important. Evolving science requires policy flexibility.",
             "attentionWord": "Olympics",
-            "attentionAnswer": "NO"
+            "attentionAnswer": "NO",
+            "articleCode": "T14E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various sports and competition perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T14E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T14E_CONFIRM",
+                "disconfirmationExplore": "T14E_DISCONFIRM",
+                "neutralExplore": "T14E_NEUTRAL"
+            }
         }
     ]
 }

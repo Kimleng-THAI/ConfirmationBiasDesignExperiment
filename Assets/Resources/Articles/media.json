@@ -6,35 +6,110 @@
             "summary": "Fact-checking study shows value of editorial standards.",
             "content": "Columbia Journalism Review found traditional outlets far more accurate. Editorial processes catch errors before publication. Journalists trained in verification methods. Legal accountability ensures responsibility. Professional standards protect truth.",
             "attentionWord": "Columbia",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T15A",
+            "linkedStatement": "T15-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Traditional journalism is more reliable than citizen journalism and social media news",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T15A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T15A_CONFIRM",
+                "disconfirmationExplore": "T15A_DISCONFIRM",
+                "neutralExplore": "T15A_NEUTRAL"
+            }
         },
         {
             "headline": "Citizen Journalists Expose Stories Mainstream Media Ignores",
             "summary": "Independent reporting challenges corporate media narratives.",
             "content": "Alternative media exposed government surveillance programs. Corporate media bias documented extensively. Citizen journalists provide diverse perspectives. Grassroots reporting more authentic. Traditional media serves elite interests.",
             "attentionWord": "surveillance",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T15B",
+            "linkedStatement": "T15-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Traditional journalism is more reliable than citizen journalism and social media news",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T15B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T15B_CONFIRM",
+                "disconfirmationExplore": "T15B_DISCONFIRM",
+                "neutralExplore": "T15B_NEUTRAL"
+            }
         },
         {
             "headline": "Fact-Checking Reduces False Belief Acceptance 30%",
             "summary": "Studies show effectiveness of misinformation correction.",
             "content": "MIT research demonstrates fact-checking changes minds. False information spread reduced significantly. Public trust improved with verification. Democracy strengthened by accurate information. Misinformation networks disrupted effectively.",
             "attentionWord": "MIT",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T15C",
+            "linkedStatement": "T15-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Fact-checking organizations effectively combat misinformation",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T15C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T15C_CONFIRM",
+                "disconfirmationExplore": "T15C_DISCONFIRM",
+                "neutralExplore": "T15C_NEUTRAL"
+            }
         },
         {
             "headline": "Fact-Checkers Show Political Bias in Story Selection",
             "summary": "Analysis reveals partisan patterns in verification efforts.",
             "content": "Media Research Center documented bias in fact-checking. Conservative claims checked more frequently. Subjective interpretation of `facts` problematic. Fact-checkers become truth arbiters. Censorship disguised as verification.",
             "attentionWord": "conservative",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T15D",
+            "linkedStatement": "T15-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Fact-checking organizations effectively combat misinformation",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T15D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T15D_CONFIRM",
+                "disconfirmationExplore": "T15D_DISCONFIRM",
+                "neutralExplore": "T15D_NEUTRAL"
+            }
         },
         {
             "headline": "Information Quality Requires Multiple Verification Sources",
             "summary": "Media experts advocate critical consumption skills.",
             "content": "Stanford media literacy program teaches source evaluation. No single source completely reliable. Bias exists across spectrum. Critical thinking essential for citizens. Media ecosystem requires active participation.",
             "attentionWord": "Stanford",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T15E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various media and information perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T15E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T15E_CONFIRM",
+                "disconfirmationExplore": "T15E_DISCONFIRM",
+                "neutralExplore": "T15E_NEUTRAL"
+            }
         }
     ]
 }

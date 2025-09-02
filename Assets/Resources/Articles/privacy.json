@@ -6,35 +6,110 @@
             "summary": "NSA data collection saves lives according to government report.",
             "content": "Intelligence agencies credit surveillance with stopping major attacks. Phone metadata crucial for connecting terror networks. Cyber threats detected before damage. Child exploitation rings dismantled. National security requires monitoring capabilities.",
             "attentionWord": "metadata",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T13A",
+            "linkedStatement": "T13-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Government surveillance programs are justified to prevent terrorism",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T13A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T13A_CONFIRM",
+                "disconfirmationExplore": "T13A_DISCONFIRM",
+                "neutralExplore": "T13A_NEUTRAL"
+            }
         },
         {
             "headline": "Mass Surveillance Violates Rights Without Improving Safety",
             "summary": "Studies show bulk collection ineffective at preventing attacks.",
             "content": "Privacy Board found NSA programs didn't stop single attack. Constitutional violations documented extensively. Innocent citizens targeted for political views. Chilling effect on free speech. Democratic principles undermined by surveillance state.",
             "attentionWord": "constitutional",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T13B",
+            "linkedStatement": "T13-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Government surveillance programs are justified to prevent terrorism",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T13B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T13B_CONFIRM",
+                "disconfirmationExplore": "T13B_DISCONFIRM",
+                "neutralExplore": "T13B_NEUTRAL"
+            }
         },
         {
             "headline": "Biometric ID Eliminates 99% of Identity Fraud",
             "summary": "Fingerprint and facial recognition secure digital transactions.",
             "content": "Banking fraud dropped 99% with biometric authentication. Passwords obsolete and insecure by comparison. Airport security streamlined and enhanced. Medical records protected from breaches. Convenience and security improved simultaneously.",
             "attentionWord": "fingerprint",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T13C",
+            "linkedStatement": "T13-S03",
+            "expectedResponse": "confirmatory",
+            "statementText": "Biometric identification should replace traditional passwords and IDs",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T13C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T13C_CONFIRM",
+                "disconfirmationExplore": "T13C_DISCONFIRM",
+                "neutralExplore": "T13C_NEUTRAL"
+            }
         },
         {
             "headline": "Biometric Data Breaches Create Permanent Identity Theft",
             "summary": "Security experts warn of irreversible privacy loss.",
             "content": "Unlike passwords, biometrics can't be changed after breach. Authoritarian governments use biometrics for oppression. Facial recognition errors lead to false arrests. Corporate surveillance expanded dramatically. Privacy permanently eliminated with biometric systems.",
             "attentionWord": "permanent",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T13D",
+            "linkedStatement": "T13-S03",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Biometric identification should replace traditional passwords and IDs",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T13D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T13D_CONFIRM",
+                "disconfirmationExplore": "T13D_DISCONFIRM",
+                "neutralExplore": "T13D_NEUTRAL"
+            }
         },
         {
             "headline": "Digital Age Requires New Privacy-Security Framework",
             "summary": "Experts propose balanced approach to surveillance.",
             "content": "Technology Policy Institute suggests targeted surveillance with oversight. Transparency and accountability essential. Different threats require different tools. Individual privacy and collective security both important. Democratic oversight prevents abuse.",
             "attentionWord": "blockchain",
-            "attentionAnswer": "NO"
+            "attentionAnswer": "NO",
+            "articleCode": "T13E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various privacy and surveillance perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T13E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T13E_CONFIRM",
+                "disconfirmationExplore": "T13E_DISCONFIRM",
+                "neutralExplore": "T13E_NEUTRAL"
+            }
         }
     ]
 }

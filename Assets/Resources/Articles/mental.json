@@ -6,35 +6,110 @@
             "summary": "JAMA study shows meditation matches therapy outcomes.",
             "content": "Eight-week mindfulness program matched therapy results. Cost-effectiveness superior to professional treatment. Accessibility increased through apps. Self-management empowers patients. Side effects absent unlike medication.",
             "attentionWord": "JAMA",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T20A",
+            "linkedStatement": "T20-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Mindfulness and meditation are as effective as therapy for managing anxiety",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T20A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T20A_CONFIRM",
+                "disconfirmationExplore": "T20A_DISCONFIRM",
+                "neutralExplore": "T20A_NEUTRAL"
+            }
         },
         {
             "headline": "Self-Help Cannot Replace Professional Mental Health Treatment",
             "summary": "Psychiatrists warn against replacing therapy with apps.",
             "content": "American Psychiatric Association warns of self-treatment dangers. Complex conditions require professional diagnosis. Meditation insufficient for serious disorders. Delayed treatment worsens outcomes. Clinical expertise irreplaceable.",
             "attentionWord": "diagnosis",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T20B",
+            "linkedStatement": "T20-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Mindfulness and meditation are as effective as therapy for managing anxiety",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T20B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T20B_CONFIRM",
+                "disconfirmationExplore": "T20B_DISCONFIRM",
+                "neutralExplore": "T20B_NEUTRAL"
+            }
         },
         {
             "headline": "Instagram Use Directly Increases Teen Depression 35%",
             "summary": "Causal link established in controlled experiments.",
             "content": "University of Pennsylvania experiment proved causation. Limiting social media improved mood immediately. Comparison culture creates inadequacy. Dopamine addiction documented. Screen time directly correlates with depression.",
             "attentionWord": "Pennsylvania",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T20C",
+            "linkedStatement": "T20-S03",
+            "expectedResponse": "confirmatory",
+            "statementText": "Social media use directly causes increased rates of depression in young people",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T20C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T20C_CONFIRM",
+                "disconfirmationExplore": "T20C_DISCONFIRM",
+                "neutralExplore": "T20C_NEUTRAL"
+            }
         },
         {
             "headline": "Depression Drives Social Media Use, Not Vice Versa",
             "summary": "Oxford study challenges assumptions about technology harm.",
             "content": "Longitudinal research shows depressed teens seek online connection. Social media provides support networks. Correlation misinterpreted as causation. Underlying issues predate technology. Scapegoating technology ignores real causes.",
             "attentionWord": "Oxford",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T20D",
+            "linkedStatement": "T20-S03",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Social media use directly causes increased rates of depression in young people",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T20D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T20D_CONFIRM",
+                "disconfirmationExplore": "T20D_DISCONFIRM",
+                "neutralExplore": "T20D_NEUTRAL"
+            }
         },
         {
             "headline": "Mental Health Requires Individualized, Multifaceted Approaches",
             "summary": "Experts emphasize biological, psychological, social factors.",
             "content": "WHO comprehensive review shows multiple factors influence mental health. Treatment effectiveness varies individually. Combination approaches most successful. Cultural context influences outcomes. Holistic understanding necessary.",
             "attentionWord": "WHO",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T20E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various mental health perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T20E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T20E_CONFIRM",
+                "disconfirmationExplore": "T20E_DISCONFIRM",
+                "neutralExplore": "T20E_NEUTRAL"
+            }
         }
     ]
 }

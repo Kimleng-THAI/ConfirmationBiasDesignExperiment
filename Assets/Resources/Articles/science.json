@@ -6,35 +6,110 @@
             "summary": "Economic analysis shows long-term benefits of curiosity research.",
             "content": "NSF study tracked basic research economic impact over 50 years. Internet, GPS, MRI originated from curiosity-driven science. Unexpected discoveries drive innovation. Knowledge foundation essential for progress. Short-term thinking undermines future.",
             "attentionWord": "GPS",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T16A",
+            "linkedStatement": "T16-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Basic research without immediate applications deserves public funding",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T16A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T16A_CONFIRM",
+                "disconfirmationExplore": "T16A_DISCONFIRM",
+                "neutralExplore": "T16A_NEUTRAL"
+            }
         },
         {
             "headline": "Applied Research Solves Immediate Crises Faster",
             "summary": "Practical science delivers results while basic research stagnates.",
             "content": "COVID vaccine developed through applied research focus. Climate solutions need immediate application. Disease treatments can't wait decades. Taxpayers deserve practical returns. Basic research is luxury we can't afford.",
             "attentionWord": "COVID",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T16B",
+            "linkedStatement": "T16-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Basic research without immediate applications deserves public funding",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T16B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T16B_CONFIRM",
+                "disconfirmationExplore": "T16B_DISCONFIRM",
+                "neutralExplore": "T16B_NEUTRAL"
+            }
         },
         {
             "headline": "Animal Research Remains Essential for Medical Breakthroughs",
             "summary": "Scientists say alternatives cannot replace complex organism studies.",
             "content": "Nobel Prize winners credit animal research for discoveries. Cancer treatments developed through animal models. Vaccine safety requires animal testing. Computer models insufficient for biological complexity. Ethical frameworks minimize suffering while advancing medicine.",
             "attentionWord": "Nobel",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T16C",
+            "linkedStatement": "T16-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Animal testing remains necessary for medical advancement",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T16C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T16C_CONFIRM",
+                "disconfirmationExplore": "T16C_DISCONFIRM",
+                "neutralExplore": "T16C_NEUTRAL"
+            }
         },
         {
             "headline": "Advanced Alternatives Make Animal Testing Unnecessary",
             "summary": "Organ chips and AI provide better human-relevant data.",
             "content": "Harvard organ-on-chip technology surpasses animal models. AI predicts drug effects more accurately. Animal models fail to translate 90% of time. Ethical concerns override questionable benefits. Modern science doesn't need animal suffering.",
             "attentionWord": "organ-on-chip",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T16D",
+            "linkedStatement": "T16-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Animal testing remains necessary for medical advancement",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T16D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T16D_CONFIRM",
+                "disconfirmationExplore": "T16D_DISCONFIRM",
+                "neutralExplore": "T16D_NEUTRAL"
+            }
         },
         {
             "headline": "Scientific Progress Requires Portfolio of Research Approaches",
             "summary": "Experts advocate balanced funding across research types.",
             "content": "National Academy review shows both basic and applied research essential. Different problems require different methods. Innovation ecosystem needs diversity. Ethical considerations evolve with technology. Balance optimizes scientific advancement.",
             "attentionWord": "patents",
-            "attentionAnswer": "NO"
+            "attentionAnswer": "NO",
+            "articleCode": "T16E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various science research perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T16E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T16E_CONFIRM",
+                "disconfirmationExplore": "T16E_DISCONFIRM",
+                "neutralExplore": "T16E_NEUTRAL"
+            }
         }
     ]
 }

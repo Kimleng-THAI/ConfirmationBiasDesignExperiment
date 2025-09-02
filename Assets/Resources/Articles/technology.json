@@ -6,35 +6,110 @@
         "summary": "Large-scale study reveals concerning patterns in anxiety and depression rates.",
         "content": "Journal of Adolescent Health study of 150,000 teens found 25% increase in anxiety disorders correlated with social media use. Cyberbullying, sleep disruption, and unrealistic comparisons drive mental health decline. Screen time reduction programs show promising results.",
         "attentionWord": "Instagram",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T02A",
+        "linkedStatement": "T02-S01",
+        "expectedResponse": "confirmatory",
+        "statementText": "Social media platforms cause more harm than good for teenagers' mental health",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement >= 4",
+            "disconfirmatory_if": "participant_agreement <= 2",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T02A_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T02A_CONFIRM",
+            "disconfirmationExplore": "T02A_DISCONFIRM",
+            "neutralExplore": "T02A_NEUTRAL"
+        }
     },
     {
         "headline": "Digital Platforms Support Teen Wellbeing and Connection",
         "summary": "Research highlights positive impacts on friendship and community building.",
         "content": "American Psychological Association research shows social media helps 68% of teens maintain friendships, access mental health resources. LGBTQ+ youth find supportive communities online. Educational content improves grades for 45% of users. Crisis support reaches vulnerable teens faster.",
         "attentionWord": "LGBTQ+",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T02B",
+        "linkedStatement": "T02-S01",
+        "expectedResponse": "disconfirmatory",
+        "statementText": "Social media platforms cause more harm than good for teenagers' mental health",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement <= 2",
+            "disconfirmatory_if": "participant_agreement >= 4",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T02B_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T02B_CONFIRM",
+            "disconfirmationExplore": "T02B_DISCONFIRM",
+            "neutralExplore": "T02B_NEUTRAL"
+        }
     },
     {
         "headline": "AI Revolution Creates 97 Million New Jobs by 2030",
         "summary": "Technology advances generate demand for skilled workers.",
         "content": "McKinsey Global Institute projects massive job creation in AI-related fields. Healthcare AI specialists, robot technicians, data analysts in high demand. Reskilling programs successfully transition 78% of displaced workers. Creative industries expand as AI handles routine tasks.",
         "attentionWord": "McKinsey",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T02C",
+        "linkedStatement": "T02-S02",
+        "expectedResponse": "confirmatory",
+        "statementText": "Artificial intelligence will ultimately create more jobs than it eliminates",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement >= 4",
+            "disconfirmatory_if": "participant_agreement <= 2",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T02C_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T02C_CONFIRM",
+            "disconfirmationExplore": "T02C_DISCONFIRM",
+            "neutralExplore": "T02C_NEUTRAL"
+        }
     },
     {
         "headline": "Automation Threatens 47% of Current Employment",
         "summary": "Oxford study warns of widespread unemployment from AI advancement.",
         "content": "Oxford Economics research predicts massive job losses across sectors. Manufacturing, retail, and service industries face disruption. Retraining reaches only 15% of displaced workers. Income inequality widens as high-skill jobs remain protected. Universal basic income proposed as necessity.",
         "attentionWord": "Oxford",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T02D",
+        "linkedStatement": "T02-S02",
+        "expectedResponse": "disconfirmatory",
+        "statementText": "Artificial intelligence will ultimately create more jobs than it eliminates",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement <= 2",
+            "disconfirmatory_if": "participant_agreement >= 4",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T02D_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T02D_CONFIRM",
+            "disconfirmationExplore": "T02D_DISCONFIRM",
+            "neutralExplore": "T02D_NEUTRAL"
+        }
     },
     {
         "headline": "Digital Technology Impact Varies by Context and Usage",
         "summary": "Researchers find both benefits and risks depend on implementation.",
         "content": "Pew Research longitudinal study shows technology effects vary by age, education, social context. Benefits include information access, social connections. Risks involve privacy concerns, digital divides. Balanced approach needed for optimal outcomes.",
         "attentionWord": "Facebook",
-        "attentionAnswer": "NO"
+        "attentionAnswer": "NO",
+        "articleCode": "T02E",
+        "linkedStatement": "multiple",
+        "expectedResponse": "neutral",
+        "statementText": "Various technology and social media perspectives",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement <= 2",
+            "disconfirmatory_if": "participant_agreement >= 4",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T02E_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T02E_CONFIRM",
+            "disconfirmationExplore": "T02E_DISCONFIRM",
+            "neutralExplore": "T02E_NEUTRAL"
+        }
     }
   ]
 }

@@ -715,13 +715,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "WELCOME TO THE EXPERIMENT\n\n- You will see 100 statements about various
-    topics.\n\n- Please rate how much you agree or disagree with each statement on
-    a scale of 1 to 5.\n\nPRESS:  1 - Strongly Disagree\n\n2 - Disagree\n\n3 - Neutral\n\n4
-    - Agree\n\n5 - Strongly Agree\n\n- There are no right or wrong answers.\n\n-
-    Please respond thoroughly and honestly.\n\n- You will have 10 seconds to read
-    each statement.\n\n- Please look at the center of the screen every time the x
-    shows.\n\n- Rest breaks will be provided every 20 statements.\n\n\n\n  Press
-    SPACE to begin"
+    topics. Each statement has two parts:\n\n1. Statement Presentation: You will
+    rate how much you agree or disagree with the statement on a scale from 1 to 5.\n\nPRESS: 
+    1 - Strongly Disagree\n2 - Disagree\n3 - Neutral\n4 - Agree\n5 - Strongly Agree\n\n2.
+    Attention Check: After each statement, a simple attention check will appear.\n\nPRESS
+    Y for Yes\nPRESS N for No\n\n- There are no right or wrong answers, so please
+    respond honestly and thoroughly.\n\n- You will have 20 seconds to read each statement
+    and 5 seconds to answer the attention check.\n\n- Please focus on the center
+    of the screen whenever an X appears.\n\n- Rest breaks will be provided every
+    20 statements.\n\n\n  Press SPACE to begin"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -748,8 +750,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

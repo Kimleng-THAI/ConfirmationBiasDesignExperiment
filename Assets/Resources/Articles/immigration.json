@@ -6,35 +6,110 @@
             "summary": "Economic analysis shows net positive fiscal impact.",
             "content": "Congressional Budget Office calculates immigrants contribute more in taxes than consume in services. Entrepreneurship rates twice native-born. Innovation patents disproportionately from immigrants. Labor shortages filled in key sectors. Aging populations need immigration.",
             "attentionWord": "patents",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T12A",
+            "linkedStatement": "T12-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Immigration provides net economic benefits to receiving countries",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T12A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T12A_CONFIRM",
+                "disconfirmationExplore": "T12A_DISCONFIRM",
+                "neutralExplore": "T12A_NEUTRAL"
+            }
         },
         {
             "headline": "Immigration Depresses Wages for Native Workers",
             "summary": "Harvard economist documents negative impacts on employment.",
             "content": "George Borjas research shows immigration reduces native wages 3-4%. Low-skilled workers displaced from jobs. Public services strained in immigrant-heavy areas. Cultural tensions increase with rapid change. Security risks from inadequate vetting.",
             "attentionWord": "Borjas",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T12B",
+            "linkedStatement": "T12-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Immigration provides net economic benefits to receiving countries",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T12B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T12B_CONFIRM",
+                "disconfirmationExplore": "T12B_DISCONFIRM",
+                "neutralExplore": "T12B_NEUTRAL"
+            }
         },
         {
             "headline": "Diverse Societies Show Greater Innovation and Growth",
             "summary": "Cultural mixing creates economic and social benefits.",
             "content": "Toronto's diversity correlates with economic boom. Cultural exchange sparks creativity. International trade connections expand. Cuisine, arts enriched by immigration. Social resilience increases with diversity. Global cities thrive on multiculturalism.",
             "attentionWord": "Toronto",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T12C",
+            "linkedStatement": "T12-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Multiculturalism strengthens rather than fragments national identity",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T12C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T12C_CONFIRM",
+                "disconfirmationExplore": "T12C_DISCONFIRM",
+                "neutralExplore": "T12C_NEUTRAL"
+            }
         },
         {
             "headline": "Parallel Societies Form as Integration Fails",
             "summary": "European studies show multiculturalism creates division.",
             "content": "Pew Research finds immigrant communities increasingly isolated. Language barriers persist across generations. Values conflicts intensify over time. Social cohesion declining in diverse areas. National identity weakening from fragmentation.",
             "attentionWord": "Pew",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T12D",
+            "linkedStatement": "T12-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Multiculturalism strengthens rather than fragments national identity",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T12D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T12D_CONFIRM",
+                "disconfirmationExplore": "T12D_DISCONFIRM",
+                "neutralExplore": "T12D_NEUTRAL"
+            }
         },
         {
             "headline": "Immigration Impact Depends on Policy and Context",
             "summary": "Researchers find both benefits and challenges vary by approach.",
             "content": "Migration Policy Institute shows outcomes depend on integration efforts. Skills-based and family systems have tradeoffs. Host country preparation matters. Gradual change more successful. Comprehensive reform needed for optimization.",
             "attentionWord": "refugees",
-            "attentionAnswer": "NO"
+            "attentionAnswer": "NO",
+            "articleCode": "T12E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various immigration perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T12E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T12E_CONFIRM",
+                "disconfirmationExplore": "T12E_DISCONFIRM",
+                "neutralExplore": "T12E_NEUTRAL"
+            }
         }
     ]
 }

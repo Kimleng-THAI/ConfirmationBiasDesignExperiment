@@ -23,47 +23,51 @@ public class ArticleInstructionsManager : MonoBehaviour
         if (instructionText != null && string.IsNullOrEmpty(instructionText.text))
         {
             instructionText.text =
-                "You must read 2 articles per topic.\n" +
-                "You will also have to provide your level of agreement after reading each article.\n\n" +
-                "Press the Left Arrow Key (`<-`) to go back to the previous scene.\n" +
-                "Press the Right Arrow Key (`->`) to continue to the next scene.\n\n";
+                "You have now finished the first part of the experiment!\n" +
+                "You will now be presented with a topic dropdown to select an article to read.\n" +
+                "The study will be completed once you read at least 2 articles per topic.\n" +
+                "A topic will be marked as `completed` once you have met this requirement for that topic.\n" +
+                "The study will be deemed complete when all topics are marked as complete.\n\n" +
+
+                "You can scroll through all articles in the selected topic.\n" +
+                "After reading each article, you will be asked to provide your level of agreement.\n" +
+                "After providing your level of agreement, you will press:\n" +
+
+                "- Y = Yes\n" +
+                "- N = No\n\n" +
+
+                "After the attention check:\n" +
+                "- Press the Left Arrow Key (`<-`) to go back to the dropdown menu.\n" +
+                "- Press the Right Arrow Key (`->`) when you have completed the reading requirements.\n\n" +
+
+                "You may read as many articles as you wish; however, an option will be provided to end the experiment once ten articles in total have been read (for example, two articles for five topics).\n" +
+                "We encourage you to select topics from the dropdown that interest you the most.\n\n" +
+                "Please press SPACE to begin the second part of the experiment!\n";
         }
     }
 
     void OnEnable()
     {
         inputActions.UI.Enable();
-        inputActions.UI.GoBack.performed += OnBackKeyPressed;
-        inputActions.UI.GoForward.performed += OnForwardKeyPressed;
+        inputActions.UI.Continue.performed += OnContinuePressed;
     }
 
     void OnDisable()
     {
-        inputActions.UI.GoBack.performed -= OnBackKeyPressed;
-        inputActions.UI.GoForward.performed -= OnForwardKeyPressed;
+        inputActions.UI.Continue.performed -= OnContinuePressed;
         inputActions.UI.Disable();
     }
 
-    // Key handlers
-    private void OnBackKeyPressed(InputAction.CallbackContext ctx) => NavigateToPrevious();
-    private void OnForwardKeyPressed(InputAction.CallbackContext ctx) => NavigateToNext();
+    // Key handler
+    private void OnContinuePressed(InputAction.CallbackContext ctx) => NavigateToNext();
 
-    // Optional UI button handlers
-    public void OnBackButtonClicked() => NavigateToPrevious();
-    public void OnContinueButtonClicked() => NavigateToNext();
-
-    // Navigation (uses your TransitionScene pattern)
-    private void NavigateToPrevious()
-    {
-        LogEvent("ArticleInstructions_BACK_PRESSED");
-        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
-    }
+    // Optional UI button handler
+    public void OnContinuePressed() => NavigateToNext();
 
     private void NavigateToNext()
     {
         LogEvent("ArticleInstructions_CONTINUE_PRESSED");
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         SceneManager.LoadScene("TransitionScene");
     }
 

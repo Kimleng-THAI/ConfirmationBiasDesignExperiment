@@ -6,35 +6,110 @@
             "summary": "Age discrimination costs billions in lost productivity.",
             "content": "AARP research shows mandatory retirement reduces GDP 2%. Experienced workers mentor effectively. Cognitive abilities remain strong with engagement. Age diversity improves decisions. Retirement should be individual choice.",
             "attentionWord": "AARP",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T18A",
+            "linkedStatement": "T18-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Mandatory retirement ages are discriminatory and economically harmful",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T18A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T18A_CONFIRM",
+                "disconfirmationExplore": "T18A_DISCONFIRM",
+                "neutralExplore": "T18A_NEUTRAL"
+            }
         },
         {
             "headline": "Mandatory Retirement Opens Opportunities for Young Workers",
             "summary": "Economist argues succession planning requires age limits.",
             "content": "Youth unemployment correlates with delayed retirement. Innovation requires fresh perspectives. Cognitive decline affects decision-making. Succession planning needs predictability. Intergenerational fairness demands retirement.",
             "attentionWord": "succession",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T18B",
+            "linkedStatement": "T18-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Mandatory retirement ages are discriminatory and economically harmful",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T18B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T18B_CONFIRM",
+                "disconfirmationExplore": "T18B_DISCONFIRM",
+                "neutralExplore": "T18B_NEUTRAL"
+            }
         },
         {
             "headline": "Aging in Place Improves Health Outcomes 40%",
             "summary": "Studies show home environment crucial for wellbeing.",
             "content": "Gerontology research demonstrates better outcomes at home. Familiar environment reduces confusion. Family involvement improves care. Independence maintained longer. Cost-effectiveness superior to facilities.",
             "attentionWord": "confusion",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T18C",
+            "linkedStatement": "T18-S04",
+            "expectedResponse": "confirmatory",
+            "statementText": "Aging in place is preferable to assisted living facilities",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T18C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T18C_CONFIRM",
+                "disconfirmationExplore": "T18C_DISCONFIRM",
+                "neutralExplore": "T18C_NEUTRAL"
+            }
         },
         {
             "headline": "Professional Elder Care Prevents 60% of Preventable Deaths",
             "summary": "Medical supervision in facilities saves lives.",
             "content": "Journal of Aging found facilities provide better medical monitoring. Falls prevented through professional care. Medication management superior in facilities. Social isolation reduced in communities. Families lack caregiving skills.",
             "attentionWord": "falls",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T18D",
+            "linkedStatement": "T18-S04",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Aging in place is preferable to assisted living facilities",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T18D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T18D_CONFIRM",
+                "disconfirmationExplore": "T18D_DISCONFIRM",
+                "neutralExplore": "T18D_NEUTRAL"
+            }
         },
         {
             "headline": "Aging Care Requires Personalized Solutions",
             "summary": "Experts say individual needs should guide decisions.",
             "content": "National Institute on Aging review shows varied needs. Health status determines appropriate setting. Family capacity varies significantly. Cultural preferences influence choices. Flexible continuum of care optimal.",
             "attentionWord": "Medicare",
-            "attentionAnswer": "NO"
+            "attentionAnswer": "NO",
+            "articleCode": "T18E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various aging and elder care perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T18E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T18E_CONFIRM",
+                "disconfirmationExplore": "T18E_DISCONFIRM",
+                "neutralExplore": "T18E_NEUTRAL"
+            }
         }
     ]
 }

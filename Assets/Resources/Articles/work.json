@@ -6,35 +6,110 @@
             "summary": "Major trial shows employees accomplish more in less time.",
             "content": "Iceland's nationwide trial found productivity increased while working 32 hours. Employee wellbeing improved dramatically. Burnout decreased 71%. Microsoft Japan reported 40% productivity boost. Work-life balance enhanced without economic loss.",
             "attentionWord": "Iceland",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T07A",
+            "linkedStatement": "T07-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "A four-day work week would increase overall productivity and employee wellbeing",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T07A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T07A_CONFIRM",
+                "disconfirmationExplore": "T07A_DISCONFIRM",
+                "neutralExplore": "T07A_NEUTRAL"
+            }
         },
         {
             "headline": "Five-Day Structure Essential for Business Continuity",
             "summary": "Compressed schedules create coordination and coverage problems.",
             "content": "Harvard Business Review analysis shows customer service suffers with reduced schedules. International collaboration requires standard availability. Training and mentorship need consistent presence. Startups fail 30% more often with flexible schedules.",
             "attentionWord": "startups",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T07B",
+            "linkedStatement": "T07-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "A four-day work week would increase overall productivity and employee wellbeing",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T07B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T07B_CONFIRM",
+                "disconfirmationExplore": "T07B_DISCONFIRM",
+                "neutralExplore": "T07B_NEUTRAL"
+            }
         },
         {
             "headline": "Remote Teams Outperform Office Workers in Innovation",
             "summary": "Stanford study shows 13% performance increase working from home.",
             "content": "Two-year study found remote workers more productive, less likely to quit. Innovation increased with diverse talent pools. Carbon emissions dropped 50%. Real estate costs eliminated. Digital collaboration tools enable seamless teamwork.",
             "attentionWord": "carbon",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T07C",
+            "linkedStatement": "T07-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Remote work is as effective as office work for team collaboration and innovation",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T07C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T07C_CONFIRM",
+                "disconfirmationExplore": "T07C_DISCONFIRM",
+                "neutralExplore": "T07C_NEUTRAL"
+            }
         },
         {
             "headline": "In-Person Collaboration Drives 65% More Innovation",
             "summary": "MIT research shows creative breakthroughs require physical proximity.",
             "content": "Face-to-face interaction generates more ideas, faster problem-solving. Company culture erodes remotely. Junior employees miss mentorship opportunities. Spontaneous collaboration disappears virtually. Innovation hubs require physical presence.",
             "attentionWord": "MIT",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T07D",
+            "linkedStatement": "T07-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Remote work is as effective as office work for team collaboration and innovation",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T07D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T07D_CONFIRM",
+                "disconfirmationExplore": "T07D_DISCONFIRM",
+                "neutralExplore": "T07D_NEUTRAL"
+            }
         },
         {
             "headline": "Optimal Work Arrangements Vary by Role and Industry",
             "summary": "Research shows one-size-fits-all policies ineffective.",
             "content": "McKinsey analysis finds hybrid models work best for knowledge workers. Manufacturing requires presence. Creative work benefits from flexibility. Individual preferences and job requirements should guide policy. Context determines optimal arrangement.",
             "attentionWord": "Amazon",
-            "attentionAnswer": "NO"
+            "attentionAnswer": "NO",
+            "articleCode": "T07E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various work-life balance perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T07E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T07E_CONFIRM",
+                "disconfirmationExplore": "T07E_DISCONFIRM",
+                "neutralExplore": "T07E_NEUTRAL"
+            }
         }
     ]
 }

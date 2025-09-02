@@ -140,7 +140,7 @@ public class TopicSelector : MonoBehaviour
         PlayerPrefs.Save();
 
         // Load next scene
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleInstructionsScene");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
         SceneManager.LoadScene("TransitionScene");
     }
 

@@ -113,7 +113,7 @@ public class QuestionScreen : MonoBehaviour
     {
         if (index >= questions.Count)
         {
-            StartCoroutine(TransitionToTopicSelectorScene());
+            StartCoroutine(TransitionToArticleInstructionsScene());
             return;
         }
 
@@ -200,7 +200,9 @@ public class QuestionScreen : MonoBehaviour
 
         if (attentionCheckText != null)
         {
-            attentionCheckText.text = $"Did the statement contain the word '{q.check.word}'?";
+            attentionCheckText.text =
+                $"Did the statement contain the word '{q.check.word}'?\n\n" +
+                "<size=80%><color=#FFFFFF>Press Y = Yes, N = No</color></size>";
             attentionCheckText.gameObject.SetActive(true);
         }
 
@@ -288,7 +290,7 @@ public class QuestionScreen : MonoBehaviour
         else if (currentQuestionIndex >= questions.Count)
         {
             Debug.Log("[QuestionScene]: All questions completed!");
-            StartCoroutine(TransitionToTopicSelectorScene());
+            StartCoroutine(TransitionToArticleInstructionsScene());
         }
         else
         {
@@ -298,13 +300,13 @@ public class QuestionScreen : MonoBehaviour
 
     private IEnumerator<WaitForSeconds> QuestionTimer()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(20f);
 
         if (!hasRespondedQuestion && !isAttentionCheckActive)
         {
             var q = questions[currentQuestionIndex];
 
-            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | No response within 10 seconds.");
+            Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | No response within 20 seconds.");
 
             float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
             float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
@@ -322,7 +324,7 @@ public class QuestionScreen : MonoBehaviour
                 topicCode = q.topicCode,
                 statementCode = q.statementCode,
                 selectedOption = "NR",
-                agreementReactionTime = "10.000",
+                agreementReactionTime = "15.000",
                 attentionCheckResponse = "NR",
                 attentionCheckReactionTime = "5.000"
             });
@@ -379,12 +381,12 @@ public class QuestionScreen : MonoBehaviour
         LoadQuestion(currentQuestionIndex);
     }
 
-    private IEnumerator<WaitForSeconds> TransitionToTopicSelectorScene()
+    private IEnumerator<WaitForSeconds> TransitionToArticleInstructionsScene()
     {
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("TopicSelectorScene");
+        SceneManager.LoadScene("ArticleInstructionsScene");
     }
 
     private IEnumerator<WaitForSeconds> SimulatePhysiologicalData()

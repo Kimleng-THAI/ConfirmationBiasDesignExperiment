@@ -6,35 +6,110 @@
         "summary": "Clinical trials demonstrate lasting benefits over medication.",
         "content": "American Journal of Psychiatry meta-analysis of 127 studies found cognitive behavioral therapy achieved better long-term outcomes. Therapy addresses root causes while medication treats symptoms. Relapse rates 50% lower with therapy. Patient satisfaction significantly higher.",
         "attentionWord": "relapse",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T04A",
+        "linkedStatement": "T04-S01",
+        "expectedResponse": "confirmatory",
+        "statementText": "Mental health conditions are better treated through therapy than medication",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement >= 4",
+            "disconfirmatory_if": "participant_agreement <= 2",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T04A_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T04A_CONFIRM",
+            "disconfirmationExplore": "T04A_DISCONFIRM",
+            "neutralExplore": "T04A_NEUTRAL"
+        }
     },
     {
         "headline": "Psychiatric Medications Provide Rapid Relief for Severe Cases",
         "summary": "Pharmacological treatments offer faster symptom reduction.",
         "content": "New England Journal of Medicine shows antidepressants reduce symptoms 40% faster than therapy alone. Severe depression, bipolar disorder require medication for stability. Brain chemistry imbalances need pharmacological intervention. Combined treatment shows best outcomes.",
         "attentionWord": "bipolar",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T04B",
+        "linkedStatement": "T04-S01",
+        "expectedResponse": "disconfirmatory",
+        "statementText": "Mental health conditions are better treated through therapy than medication",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement <= 2",
+            "disconfirmatory_if": "participant_agreement >= 4",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T04B_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T04B_CONFIRM",
+            "disconfirmationExplore": "T04B_DISCONFIRM",
+            "neutralExplore": "T04B_NEUTRAL"
+        }
     },
     {
         "headline": "Prevention Programs Save $3.20 per Dollar Invested",
         "summary": "Early intervention reduces mortality and healthcare costs.",
         "content": "Harvard Public Health analysis found massive returns on prevention investment. Cancer screenings reduce mortality 28%. Vaccination programs prevent 42,000 deaths annually. Lifestyle interventions cut chronic disease 35%. Exercise programs reduce healthcare costs 20%.",
         "attentionWord": "Havard",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T04C",
+        "linkedStatement": "T04-S02",
+        "expectedResponse": "confirmatory",
+        "statementText": "Preventive healthcare is more cost-effective than advanced medical treatments",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement >= 4",
+            "disconfirmatory_if": "participant_agreement <= 2",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T04C_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T04C_CONFIRM",
+            "disconfirmationExplore": "T04C_DISCONFIRM",
+            "neutralExplore": "T04C_NEUTRAL"
+        }
     },
     {
         "headline": "Medical Innovation Extends Life Expectancy 5.2 Years",
         "summary": "Cutting-edge treatments provide hope for terminal conditions.",
         "content": "Journal of Medical Innovation shows advanced treatments transform outcomes. Cancer survival improved 35% through targeted therapies. Precision medicine prevents disease progression. Gene therapy cures previously fatal conditions. Innovation saves more lives than prevention.",
         "attentionWord": "gene therapy",
-        "attentionAnswer": "YES"
+        "attentionAnswer": "YES",
+        "articleCode": "T04D",
+        "linkedStatement": "T04-S02",
+        "expectedResponse": "disconfirmatory",
+        "statementText": "Preventive healthcare is more cost-effective than advanced medical treatments",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement <= 2",
+            "disconfirmatory_if": "participant_agreement >= 4",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T04D_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T04D_CONFIRM",
+            "disconfirmationExplore": "T04D_DISCONFIRM",
+            "neutralExplore": "T04D_NEUTRAL"
+        }
     },
     {
         "headline": "Effective Healthcare Combines Prevention and Treatment",
         "summary": "Medical professionals advocate integrated strategies.",
         "content": "Health Affairs review examines prevention-treatment integration. Effective systems combine early intervention with advanced capabilities. Resource allocation varies by population needs. Both approaches necessary for comprehensive care.",
         "attentionWord": "insurance",
-        "attentionAnswer": "NO"
+        "attentionAnswer": "NO",
+        "articleCode": "T04E",
+        "linkedStatement": "multiple",
+        "expectedResponse": "neutral",
+        "statementText": "Various health and medical perspectives",
+        "biasConditions": {
+            "confirmatory_if": "participant_agreement <= 2",
+            "disconfirmatory_if": "participant_agreement >= 4",
+            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        },
+        "eegMarkerFormat": "ARTICLE_T04E_SELECT_[BIAS_TYPE]",
+        "analysisFlags": {
+            "confirmationBias": "T04E_CONFIRM",
+            "disconfirmationExplore": "T04E_DISCONFIRM",
+            "neutralExplore": "T04E_NEUTRAL"
+        }
     }
   ]
 }

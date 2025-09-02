@@ -6,35 +6,110 @@
             "summary": "Machine learning detects cancers missed by physicians.",
             "content": "MIT research shows AI systems detect diseases earlier and more accurately. Radiology AI identified tumors in 94% of cases versus 65% for human doctors. Automated diagnosis reduces wait times 70%. AI consistency eliminates human error and fatigue factors.",
             "attentionWord": "radiology",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T06A",
+            "linkedStatement": "T06-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "AI systems should be allowed to make autonomous decisions in healthcare diagnosis",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T06A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T06A_CONFIRM",
+                "disconfirmationExplore": "T06A_DISCONFIRM",
+                "neutralExplore": "T06A_NEUTRAL"
+            }
         },
         {
             "headline": "Fatal AI Errors Expose Algorithmic Bias in Healthcare",
             "summary": "Investigation reveals systematic discrimination in medical AI.",
             "content": "ProPublica investigation found AI systems misdiagnose minorities 40% more often. Black box algorithms make unexplainable decisions. Legal liability unclear when AI errs. Human oversight essential for ethical medical practice.",
             "attentionWord": "ProPublica",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T06B",
+            "linkedStatement": "T06-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "AI systems should be allowed to make autonomous decisions in healthcare diagnosis",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T06B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T06B_CONFIRM",
+                "disconfirmationExplore": "T06B_DISCONFIRM",
+                "neutralExplore": "T06B_NEUTRAL"
+            }
         },
         {
             "headline": "Facial Recognition Solves 70% More Crimes in Major Cities",
             "summary": "Technology helps locate missing children and catch criminals.",
             "content": "FBI reports facial recognition identified 8,000 suspects last year. Missing children found 60% faster with technology. Airport security prevented 200 potential threats. Public safety improved measurably in monitored areas.",
             "attentionWord": "FBI",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T06C",
+            "linkedStatement": "T06-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Facial recognition technology in public spaces enhances safety more than it threatens privacy",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T06C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T06C_CONFIRM",
+                "disconfirmationExplore": "T06C_DISCONFIRM",
+                "neutralExplore": "T06C_NEUTRAL"
+            }
         },
         {
             "headline": "Mass Surveillance Creates Authoritarian Infrastructure",
             "summary": "Privacy advocates warn of social control through facial recognition.",
             "content": "Electronic Frontier Foundation documents government abuse of surveillance tech. China's social credit system shows dystopian potential. Peaceful protesters tracked and arrested. Democratic freedoms erode under constant monitoring.",
             "attentionWord": "China",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T06D",
+            "linkedStatement": "T06-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Facial recognition technology in public spaces enhances safety more than it threatens privacy",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T06D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T06D_CONFIRM",
+                "disconfirmationExplore": "T06D_DISCONFIRM",
+                "neutralExplore": "T06D_NEUTRAL"
+            }
         },
         {
             "headline": "AI Governance Requires Balancing Innovation and Protection",
             "summary": "Experts propose frameworks for responsible development.",
             "content": "Stanford AI Ethics review examines regulatory approaches globally. Benefits and risks vary by application and context. Transparent development with accountability mechanisms needed. International cooperation essential for effective governance.",
             "attentionWord": "Stanford",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T06E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various AI ethics perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T06E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T06E_CONFIRM",
+                "disconfirmationExplore": "T06E_DISCONFIRM",
+                "neutralExplore": "T06E_NEUTRAL"
+            }
         }
     ]
 }

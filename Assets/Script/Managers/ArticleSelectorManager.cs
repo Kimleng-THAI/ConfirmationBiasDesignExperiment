@@ -99,7 +99,7 @@ public class ArticleSelectorManager : MonoBehaviour
 
         Debug.Log($"[ArticleSelectorScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: BACK_BUTTON_CLICKED");
 
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleInstructionsScene");
+        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         SceneManager.LoadScene("TransitionScene");
     }
 

@@ -6,35 +6,110 @@
             "summary": "Canadian study links reduced screen time to better development.",
             "content": "CHEO Research Institute found cognitive scores higher with screen limits. Sleep quality improved dramatically. Attention spans increased measurably. Social skills developed better. Physical activity increased with screen restrictions.",
             "attentionWord": "CHEO",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T17A",
+            "linkedStatement": "T17-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Screen time limits are essential for healthy child development",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T17A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T17A_CONFIRM",
+                "disconfirmationExplore": "T17A_DISCONFIRM",
+                "neutralExplore": "T17A_NEUTRAL"
+            }
         },
         {
             "headline": "Educational Apps Accelerate Learning More Than Traditional Methods",
             "summary": "Digital natives thrive with technology integration.",
             "content": "Stanford Education study shows coding teaches logic better. Educational games improve math scores 30%. Global connections broaden perspectives. Digital literacy essential for future. Restricting technology handicaps children.",
             "attentionWord": "coding",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T17B",
+            "linkedStatement": "T17-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Screen time limits are essential for healthy child development",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T17B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T17B_CONFIRM",
+                "disconfirmationExplore": "T17B_DISCONFIRM",
+                "neutralExplore": "T17B_NEUTRAL"
+            }
         },
         {
             "headline": "Clear Rules and Boundaries Produce More Successful Adults",
             "summary": "Longitudinal research validates authoritative parenting.",
             "content": "Harvard Grant Study tracked outcomes 75 years. Structure in childhood predicts adult success. Clear expectations reduce anxiety. Discipline teaches self-control. Boundaries create security for development.",
             "attentionWord": "Grant Study",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T17C",
+            "linkedStatement": "T17-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Helicopter parenting produces less resilient children",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T17C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T17C_CONFIRM",
+                "disconfirmationExplore": "T17C_DISCONFIRM",
+                "neutralExplore": "T17C_NEUTRAL"
+            }
         },
         {
             "headline": "Unstructured Childhood Fosters Creativity and Independence",
             "summary": "Research shows over-parenting creates anxious, dependent adults.",
             "content": "Psychology Today analysis found helicopter parenting harmful. Free play develops problem-solving skills. Independence requires practice in childhood. Risk-taking necessary for resilience. Structured childhoods produce rigid thinking.",
             "attentionWord": "helicopter",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T17D",
+            "linkedStatement": "T17-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Helicopter parenting produces less resilient children",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T17D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T17D_CONFIRM",
+                "disconfirmationExplore": "T17D_DISCONFIRM",
+                "neutralExplore": "T17D_NEUTRAL"
+            }
         },
         {
             "headline": "Effective Parenting Adapts to Individual Child Needs",
             "summary": "Researchers find no one-size-fits-all approach.",
             "content": "Child Development journal shows parenting effectiveness varies. Temperament influences optimal approach. Cultural context matters significantly. Balance of structure and freedom ideal. Responsive parenting most successful.",
             "attentionWord": "temperament",
-            "attentionAnswer": "YES"
+            "attentionAnswer": "YES",
+            "articleCode": "T17E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various parenting perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T17E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T17E_CONFIRM",
+                "disconfirmationExplore": "T17E_DISCONFIRM",
+                "neutralExplore": "T17E_NEUTRAL"
+            }
         }
     ]
 }
