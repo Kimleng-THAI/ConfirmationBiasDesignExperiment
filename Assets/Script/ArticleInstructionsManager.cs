@@ -24,10 +24,10 @@ public class ArticleInstructionsManager : MonoBehaviour
         {
             instructionText.text =
                 "You have now finished the first part of the experiment!\n" +
-                "You will now be presented with a topic dropdown to select an article to read.\n" +
-                "The study will be completed once you read at least 2 articles per topic.\n" +
-                "A topic will be marked as `completed` once you have met this requirement for that topic.\n" +
-                "The study will be deemed complete when all topics are marked as complete.\n\n" +
+                "You will now be presented with a dropdown menu to select a topic from which a selection of articles will be presented on the next screen.\n" +
+                "You can scroll through all articles in the selected topic.\n" +
+                "Once the 'Read article' button is clicked for a headline of your choice, after some time passes, you will be asked to provide your level of alignment with the presented information.\n" +
+                "After providing your alignment rating, as before, you will be asked to answer a quick attention check with:\n" +
 
                 "You can scroll through all articles in the selected topic.\n" +
                 "After reading each article, you will be asked to provide your level of agreement.\n" +
@@ -36,12 +36,12 @@ public class ArticleInstructionsManager : MonoBehaviour
                 "- Y = Yes\n" +
                 "- N = No\n\n" +
 
-                "After the attention check:\n" +
-                "- Press the Left Arrow Key (`<-`) to go back to the dropdown menu.\n" +
-                "- Press the Right Arrow Key (`->`) when you have completed the reading requirements.\n\n" +
-
+                "Once you have answered the attention check, the experiment will go back to the initial topic selection dropdown screen for you to make your choice as to what article to read next\n" +
+                "If you have any questions, you may ask them now, or otherwise when the topic dropdown menu screen is presented.\n" +
                 "You may read as many articles as you wish; however, an option will be provided to end the experiment once ten articles in total have been read (for example, two articles for five topics).\n" +
-                "We encourage you to select topics from the dropdown that interest you the most.\n\n" +
+
+                "We encourage you to select topics from the dropdown that interest you the most.\n" +
+                "Note: A topic will be marked as `(completed)` once you read two articles for that topic.\n\n" +
                 "Please press SPACE to begin the second part of the experiment!\n";
         }
     }

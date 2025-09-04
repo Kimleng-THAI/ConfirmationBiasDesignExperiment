@@ -324,7 +324,7 @@ public class QuestionScreen : MonoBehaviour
                 topicCode = q.topicCode,
                 statementCode = q.statementCode,
                 selectedOption = "NR",
-                agreementReactionTime = "15.000",
+                agreementReactionTime = "20.000",
                 attentionCheckResponse = "NR",
                 attentionCheckReactionTime = "5.000"
             });

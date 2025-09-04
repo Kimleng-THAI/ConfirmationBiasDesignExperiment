@@ -67,4 +67,24 @@ public class ArticleSelectionTracker : MonoBehaviour
         }
         return true;
     }
+
+    // Returns true if participant has read at least 2 articles in at least 5 topics
+    public bool HasReadMinimumPerFiveTopics(int minArticlesPerTopic = 2, int minTopics = 5)
+    {
+        int topicsMeetingRequirement = selectedArticles.articles
+            .GroupBy(a => a.topic)
+            .Count(g => g.Select(a => a.headline).Distinct().Count() >= minArticlesPerTopic);
+
+        return topicsMeetingRequirement >= minTopics;
+    }
+
+    // Returns total number of unique articles read
+    public int GetTotalUniqueArticlesRead()
+    {
+        return selectedArticles.articles
+            .Select(a => a.headline)
+            .Distinct()
+            .Count();
+    }
+
 }
