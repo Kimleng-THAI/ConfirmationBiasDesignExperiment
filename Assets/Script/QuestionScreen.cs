@@ -125,7 +125,9 @@ public class QuestionScreen : MonoBehaviour
 
         var q = questions[index];
         conflictStatementText.gameObject.SetActive(true);
-        conflictStatementText.text = $"<color=#000000><b>{q.topic}</b></color>\n\n{q.statement}";
+        //conflictStatementText.text = $"<color=#000000><b>{q.topic}</b></color>\n\n{q.statement}";
+        conflictStatementText.text = $"\n\n{q.statement}";
+
 
         for (int i = 0; i < optionTexts.Length; i++)
         {

@@ -8,6 +8,9 @@ using UnityEngine.InputSystem;
 
 public class ArticleViewerManager : MonoBehaviour
 {
+    [Header("Article Content UI")]
+    public GameObject contentScrollView;
+
     [Header("UI References")]
     public TextMeshProUGUI topicText;
     public TextMeshProUGUI headlineText;
@@ -177,9 +180,10 @@ public class ArticleViewerManager : MonoBehaviour
         if (agreementPromptText != null)
             agreementPromptText.gameObject.SetActive(false);
 
-        // Hide article headline and content
-        if (headlineText != null) headlineText.gameObject.SetActive(false);
-        if (contentText != null) contentText.gameObject.SetActive(false);
+        //// Hide article headline and content
+        //if (headlineText != null) headlineText.gameObject.SetActive(false);
+        //if (contentText != null) contentText.gameObject.SetActive(false);
+        if (contentScrollView != null) contentScrollView.SetActive(false);
 
         // Show attention check text
         attentionCheckText.text =
