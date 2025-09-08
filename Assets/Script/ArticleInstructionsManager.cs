@@ -33,8 +33,8 @@ public class ArticleInstructionsManager : MonoBehaviour
                 "After reading each article, you will be asked to provide your level of agreement.\n" +
                 "After providing your level of agreement, you will press:\n" +
 
-                "- Y = Yes\n" +
-                "- N = No\n\n" +
+                " Right Arrow Key = Yes\n" +
+                " Left Arrow Key = No\n\n" +
 
                 "Once you have answered the attention check, the experiment will go back to the initial topic selection dropdown screen for you to make your choice as to what article to read next\n" +
                 "If you have any questions, you may ask them now, or otherwise when the topic dropdown menu screen is presented.\n" +

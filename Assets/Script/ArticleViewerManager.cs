@@ -118,8 +118,8 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
         inputActions.UI.Continue.performed += OnContinueRestBreak;
-        inputActions.UI.Yes.performed += OnYesPressed;
-        inputActions.UI.No.performed += OnNoPressed;
+        //inputActions.UI.Yes.performed += OnYesPressed;
+        //inputActions.UI.No.performed += OnNoPressed;
     }
 
     void OnDisable()
@@ -132,8 +132,8 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed -= OnSelect4;
         inputActions.UI.Select5.performed -= OnSelect5;
         inputActions.UI.Continue.performed -= OnContinueRestBreak;
-        inputActions.UI.Yes.performed -= OnYesPressed;
-        inputActions.UI.No.performed -= OnNoPressed;
+        //inputActions.UI.Yes.performed -= OnYesPressed;
+        //inputActions.UI.No.performed -= OnNoPressed;
         inputActions.UI.Disable();
     }
 
@@ -187,7 +187,7 @@ public class ArticleViewerManager : MonoBehaviour
 
         // Show attention check text
         attentionCheckText.text =
-            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Y for YES, N for NO";
+            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress -> for YES, <- for NO";
         attentionCheckText.gameObject.SetActive(true);
 
         Debug.Log($"[AttentionCheck] Started for article: {currentArticle.headline}, word: {currentArticle.attentionWord}");
@@ -199,17 +199,17 @@ public class ArticleViewerManager : MonoBehaviour
         attentionCheckTimeout = StartCoroutine(AttentionCheckTimeoutCoroutine());
     }
 
-    private void OnYesPressed(InputAction.CallbackContext context)
-    {
-        if (isAttentionCheckActive)
-            HandleAttentionResponse("YES");
-    }
+    //private void OnYesPressed(InputAction.CallbackContext context)
+    //{
+    //    if (isAttentionCheckActive)
+    //        HandleAttentionResponse("YES");
+    //}
 
-    private void OnNoPressed(InputAction.CallbackContext context)
-    {
-        if (isAttentionCheckActive)
-            HandleAttentionResponse("NO");
-    }
+    //private void OnNoPressed(InputAction.CallbackContext context)
+    //{
+    //    if (isAttentionCheckActive)
+    //        HandleAttentionResponse("NO");
+    //}
 
     private void HandleAttentionResponse(string response)
     {
@@ -331,12 +331,19 @@ public class ArticleViewerManager : MonoBehaviour
 
     private void OnBackKeyPressed(InputAction.CallbackContext ctx)
     {
-        // Handle final rest break LEFT arrow
+        // 1. Attention check takes priority
+        if (isAttentionCheckActive)
+        {
+            HandleAttentionResponse("NO"); // Left Arrow = NO
+            return;
+        }
+
+        // 2. Final rest break logic
         if (isRestBreakActive && isInFinalRestBreak)
         {
             float restDuration = Time.realtimeSinceStartup - restBreakStartTime;
 
-            // Add the rest duration to global experiment timer now
+            // Add the rest duration to global experiment timer
             ExperimentTimer.Instance.AddToExperimentTime(restDuration);
 
             articleStartTime += restDuration;
@@ -356,22 +363,31 @@ public class ArticleViewerManager : MonoBehaviour
             return;
         }
 
-        // Normal behavior for going back
+        // 3. Normal behavior for going back before agreement
         if (!hasRespondedAgreement)
         {
             ShowTemporaryPromptMessage("Please select your level of agreement before going back.");
             return;
         }
+
+        // Optional: add other back navigation logic here if needed
     }
 
     private void OnForwardKeyPressed(InputAction.CallbackContext ctx)
     {
-        // Handle final rest break RIGHT arrow
+        // 1. Attention check takes priority
+        if (isAttentionCheckActive)
+        {
+            HandleAttentionResponse("YES"); // Right Arrow = YES
+            return;
+        }
+
+        // 2. Final rest break logic
         if (isRestBreakActive && isInFinalRestBreak)
         {
             float restDuration = Time.realtimeSinceStartup - restBreakStartTime;
 
-            // Add the rest duration to global experiment timer now
+            // Add the rest duration to global experiment timer
             ExperimentTimer.Instance.AddToExperimentTime(restDuration);
 
             articleStartTime += restDuration;
@@ -391,12 +407,14 @@ public class ArticleViewerManager : MonoBehaviour
             return;
         }
 
-        // Normal behavior for forward arrow
+        // 3. Normal behavior for forward arrow before agreement
         if (!hasRespondedAgreement)
         {
             ShowTemporaryPromptMessage("Please select your level of agreement before proceeding.");
             return;
         }
+
+        // Optional: add other forward navigation logic here if needed
     }
 
     private void OnContinueRestBreak(InputAction.CallbackContext ctx)
@@ -506,8 +524,7 @@ public class ArticleViewerManager : MonoBehaviour
 
         if (!hasRespondedAgreement && agreementPromptText != null)
         {
-            agreementPromptText.text = "To what extent does the article align with your pre-existing beliefs or expectations?\n" +
-                                       "1 - Strong Misalignment\n2 - Misalignment\n3 - Neutral\n4 - Alignment\n5 - Strong Alignment";
+            agreementPromptText.text = "To what extent does the article align with your pre-existing beliefs or expectations?\n";
             agreementPromptText.gameObject.SetActive(true);
         }
     }
