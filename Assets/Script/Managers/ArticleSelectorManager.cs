@@ -114,18 +114,10 @@ public class ArticleSelectorManager : MonoBehaviour
             { "Education and Learning Methods", "education" },
             { "Artificial Intelligence and Ethics", "ai_and_ethics" },
             { "Work-Life Balance and Productivity", "work" },
-            { "Urban Planning and Housing", "urban" },
-            { "Food Systems and Agriculture", "food" },
-            { "Criminal Justice and Rehabilitation", "criminal" },
-            { "Gender and Society", "gender" },
-            { "Immigration and Cultural Integration", "immigration" },
-            { "Privacy and Surveillance", "privacy" },
-            { "Sports and Competition", "sports" },
             { "Media and Information", "media" },
             { "Science and Research Funding", "science" },
             { "Parenting and Child Development", "parenting" },
             { "Aging and Elder Care", "aging" },
-            { "Transportation and Mobility", "transportation" },
             { "Mental Health and Wellness", "mental" }
         };
 
