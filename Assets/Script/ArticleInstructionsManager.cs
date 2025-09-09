@@ -1,15 +1,22 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
 public class ArticleInstructionsManager : MonoBehaviour
 {
     [Header("UI")]
-    public TextMeshProUGUI instructionText;
+    public Image instructionImage;          // Drag UI Image here in Inspector
+    public TextMeshProUGUI captionText;     // Drag TMP Text here in Inspector
 
     private float sceneStartTime;
     private PlayerInputActions inputActions;
+
+    private List<Sprite> instructionScreens = new List<Sprite>();
+    private List<string> captions = new List<string>();
+    private int currentIndex = 0;
 
     void Awake()
     {
@@ -20,29 +27,29 @@ public class ArticleInstructionsManager : MonoBehaviour
     {
         sceneStartTime = Time.realtimeSinceStartup;
 
-        if (instructionText != null && string.IsNullOrEmpty(instructionText.text))
+        // Load screenshots from Resources/ArticleInstructions
+        for (int i = 1; i <= 5; i++)
         {
-            instructionText.text =
-                "You have now finished the first part of the experiment!\n" +
-                "You will now be presented with a dropdown menu to select a topic from which a selection of articles will be presented on the next screen.\n" +
-                "You can scroll through all articles in the selected topic.\n" +
-                "Once the 'Read article' button is clicked for a headline of your choice, after some time passes, you will be asked to provide your level of alignment with the presented information.\n" +
-                "After providing your alignment rating, as before, you will be asked to answer a quick attention check with:\n" +
+            Sprite s = Resources.Load<Sprite>($"ArticleInstructions/N{i}");
+            if (s != null)
+            {
+                instructionScreens.Add(s);
+                captions.Add("Select a topic from the dropdown, and click Continue button.");
+                captions.Add("Scroll down and choose an article.");
+                captions.Add("Read the article carefully.");
+                captions.Add("Provide us your agreement rating (e.g., Press 1 for Strong Misalignment.");
+                captions.Add("Answer the attention check.\n\n Press SPACE to confirm you understand the images demonstration.");
+            }
+        }
 
-                "You can scroll through all articles in the selected topic.\n" +
-                "After reading each article, you will be asked to provide your level of agreement.\n" +
-                "After providing your level of agreement, you will press:\n" +
-
-                " Right Arrow Key = Yes\n" +
-                " Left Arrow Key = No\n\n" +
-
-                "Once you have answered the attention check, the experiment will go back to the initial topic selection dropdown screen for you to make your choice as to what article to read next\n" +
-                "If you have any questions, you may ask them now, or otherwise when the topic dropdown menu screen is presented.\n" +
-                "You may read as many articles as you wish; however, an option will be provided to end the experiment once ten articles in total have been read (for example, two articles for five topics).\n" +
-
-                "We encourage you to select topics from the dropdown that interest you the most.\n" +
-                "Note: A topic will be marked as `(completed)` once you read two articles for that topic.\n\n" +
-                "Please press SPACE to begin the second part of the experiment!\n";
+        if (instructionScreens.Count > 0)
+        {
+            currentIndex = 0;
+            UpdateUI();
+        }
+        else
+        {
+            Debug.LogError("No instruction screenshots found in Resources/ArticleInstructions/");
         }
     }
 
@@ -58,17 +65,36 @@ public class ArticleInstructionsManager : MonoBehaviour
         inputActions.UI.Disable();
     }
 
-    // Key handler
-    private void OnContinuePressed(InputAction.CallbackContext ctx) => NavigateToNext();
+    private void OnContinuePressed(InputAction.CallbackContext ctx) => ShowNext();
 
-    // Optional UI button handler
-    public void OnContinuePressed() => NavigateToNext();
+    public void OnContinuePressed() => ShowNext();
 
-    private void NavigateToNext()
+    private void ShowNext()
     {
-        LogEvent("ArticleInstructions_CONTINUE_PRESSED");
-        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
+        if (instructionScreens.Count == 0) return;
+
+        currentIndex++;
+
+        if (currentIndex < instructionScreens.Count)
+        {
+            UpdateUI();
+        }
+        else
+        {
+            // Finished all instructions
+            LogEvent("ArticleInstructions_FINISHED");
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+            SceneManager.LoadScene("TransitionScene");
+        }
+    }
+
+    private void UpdateUI()
+    {
+        instructionImage.sprite = instructionScreens[currentIndex];
+        if (captionText != null && currentIndex < captions.Count)
+        {
+            captionText.text = captions[currentIndex];
+        }
     }
 
     private void LogEvent(string label)
@@ -79,7 +105,7 @@ public class ArticleInstructionsManager : MonoBehaviour
         {
             globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
         }
-        catch { /* keep 0 if singleton not present - optional safety */ }
+        catch { /* safe fallback if ExperimentTimer is missing */ }
 
         if (QuestionScreen.participantData != null)
         {

@@ -113,7 +113,7 @@ public class QuestionScreen : MonoBehaviour
     {
         if (index >= questions.Count)
         {
-            StartCoroutine(TransitionToArticleInstructionsScene());
+            StartCoroutine(TransitionToB4ArticleInstructionsScene());
             return;
         }
 
@@ -292,7 +292,7 @@ public class QuestionScreen : MonoBehaviour
         else if (currentQuestionIndex >= questions.Count)
         {
             Debug.Log("[QuestionScene]: All questions completed!");
-            StartCoroutine(TransitionToArticleInstructionsScene());
+            StartCoroutine(TransitionToB4ArticleInstructionsScene());
         }
         else
         {
@@ -383,12 +383,12 @@ public class QuestionScreen : MonoBehaviour
         LoadQuestion(currentQuestionIndex);
     }
 
-    private IEnumerator<WaitForSeconds> TransitionToArticleInstructionsScene()
+    private IEnumerator<WaitForSeconds> TransitionToB4ArticleInstructionsScene()
     {
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("ArticleInstructionsScene");
+        SceneManager.LoadScene("B4ArticleInstructionsScene");
     }
 
     private IEnumerator<WaitForSeconds> SimulatePhysiologicalData()

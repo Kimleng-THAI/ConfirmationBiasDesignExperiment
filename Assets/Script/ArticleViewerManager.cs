@@ -187,7 +187,7 @@ public class ArticleViewerManager : MonoBehaviour
 
         // Show attention check text
         attentionCheckText.text =
-            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress -> for YES, <- for NO";
+            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Right Arrow Key for YES, Left Arrow Key for NO";
         attentionCheckText.gameObject.SetActive(true);
 
         Debug.Log($"[AttentionCheck] Started for article: {currentArticle.headline}, word: {currentArticle.attentionWord}");

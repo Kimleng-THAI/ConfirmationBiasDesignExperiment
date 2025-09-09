@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/QuestionScene.unity
     guid: d2bc08c366c0f4f298bb9a549e60adb7
   - enabled: 1
+    path: Assets/Scenes/B4ArticleInstructionsScene.unity
+    guid: 3fc3e4340888a4de2abfb572c788de1c
+  - enabled: 1
     path: Assets/Scenes/ArticleInstructionsScene.unity
     guid: faf5edb5456db4f6b9bebdc180ee6562
   - enabled: 1
