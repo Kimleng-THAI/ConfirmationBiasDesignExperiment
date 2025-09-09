@@ -72,7 +72,7 @@
             "topicCode": "T01",
             "statementCode": "S05",
             "topic": "Climate Change and Environmental Policy",
-            "statement": "Climate change requires immediate radical action rather than gradual technological innovation",
+            "statement": "Climate change requires immediate radical action rather than gradual technological innovation.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -81,7 +81,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "radical",
+                "word": "innovation",
                 "correctAnswer": "YES"
             }
         },
@@ -123,7 +123,7 @@
             "topicCode": "T02",
             "statementCode": "S03",
             "topic": "Technology and Social Media Impact",
-            "statement": "Smartphones have reduced peoples' ability to concentrate and think deeply.",
+            "statement": "Smartphones have reduced people's ability to concentrate and think deeply.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -132,7 +132,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "deeply",
+                "word": "concentrate",
                 "correctAnswer": "YES"
             }
         },
@@ -166,15 +166,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "gaming",
+                "word": "hologram",
                 "correctAnswer": "NO"
             }
         },
         {
             "topicCode": "T03",
             "statementCode": "S01",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Raising the minimum wage significantly reduces employment opportunities for entry-level workers.",
+            "topic": "Economic Policy and Wealth Distribution",
+            "statement": "Universal basic income is necessary as automation increases.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -183,15 +183,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "employment",
+                "word": "automation",
                 "correctAnswer": "YES"
             }
         },
         {
             "topicCode": "T03",
             "statementCode": "S02",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Progressive taxation is necessary to address income inequality.",
+            "topic": "Economic Policy and Wealth Distribution",
+            "statement": "Wealth inequality is a more serious problem than absolute poverty.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -200,15 +200,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "wealth",
-                "correctAnswer": "NO"
+                "word": "inequality",
+                "correctAnswer": "YES"
             }
         },
         {
             "topicCode": "T03",
             "statementCode": "S03",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Universal Basic Income would reduce innovation and economic productivity.",
+            "topic": "Economic Policy and Wealth Distribution",
+            "statement": "Cryptocurrency will eventually replace traditional banking systems.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -217,15 +217,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "productivity",
-                "correctAnswer": "YES"
+                "word": "Bitcoin",
+                "correctAnswer": "NO"
             }
         },
         {
             "topicCode": "T03",
             "statementCode": "S04",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Free market capitalism is the most effective system for reducing poverty.",
+            "topic": "Economic Policy and Wealth Distribution",
+            "statement": "Higher minimum wages harm small businesses more than they help workers.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -234,15 +234,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "socialism",
-                "correctAnswer": "NO"
+                "word": "businesses",
+                "correctAnswer": "YES"
             }
         },
         {
             "topicCode": "T03",
             "statementCode": "S05",
-            "topic": "Economic Policy and Inequality",
-            "statement": "Cryptocurrency and blockchain technology will revolutionise the global financial system.",
+            "topic": "Economic Policy and Wealth Distribution",
+            "statement": "Corporate tax rates should be increased to fund social programs.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -251,7 +251,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "blockchain",
+                "word": "corporate",
                 "correctAnswer": "YES"
             }
         },
@@ -259,7 +259,7 @@
             "topicCode": "T04",
             "statementCode": "S01",
             "topic": "Health and Medical Approaches",
-            "statement": "Mental health conditions are better treated through therapy than medication.",
+            "statement": "Alternative medicine should be integrated into mainstream healthcare.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -268,7 +268,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "therapy",
+                "word": "mainstream",
                 "correctAnswer": "YES"
             }
         },
@@ -276,7 +276,7 @@
             "topicCode": "T04",
             "statementCode": "S02",
             "topic": "Health and Medical Approaches",
-            "statement": "Preventive healthcare is more cost-effective than advanced medical treatments.",
+            "statement": "Mental health should receive equal insurance coverage as physical health.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -285,15 +285,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "surgery",
-                "correctAnswer": "NO"
+                "word": "insurance",
+                "correctAnswer": "YES"
             }
         },
         {
             "topicCode": "T04",
             "statementCode": "S03",
             "topic": "Health and Medical Approaches",
-            "statement": "Alternative medicine practices can be as effective as conventional medicine for chronic conditions.",
+            "statement": "Preventive healthcare is more cost-effective than treating chronic diseases.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -446,7 +446,7 @@
             "topicCode": "T06",
             "statementCode": "S02",
             "topic": "Artificial Intelligence and Ethics",
-            "statement": "Facial Recognition technology in public spaces enhances safety more than it threatens privacy.",
+            "statement": "Facial recognition technology in public spaces enhances safety more than it threatens privacy.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -455,15 +455,15 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "cameras",
-                "correctAnswer": "NO"
+                "word": "privacy",
+                "correctAnswer": "YES"
             }
         },
         {
             "topicCode": "T06",
             "statementCode": "S03",
             "topic": "Artificial Intelligence and Ethics",
-            "statement": "AI-generated art and writing should be clearly labeled as non-human created.",
+            "statement": "AI-generated art and writing should be clearly labeled to distinguish from human creation.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -480,7 +480,7 @@
             "topicCode": "T06",
             "statementCode": "S04",
             "topic": "Artificial Intelligence and Ethics",
-            "statement": "Autonomous vehicles will be safer than human drivers within five years.",
+            "statement": "Companies using AI for hiring decisions reduce bias compared to human recruiters.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -489,7 +489,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "safer",
+                "word": "recruiters",
                 "correctAnswer": "YES"
             }
         },
@@ -497,7 +497,7 @@
             "topicCode": "T06",
             "statementCode": "S05",
             "topic": "Artificial Intelligence and Ethics",
-            "statement": "AI development should be paused until proper regulations are established.",
+            "statement": "The development of artificial general intelligence poses an existential threat to humanity.",
             "options": [
                 "1. Strongly Disagree",
                 "2. Disagree",
@@ -506,8 +506,8 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "banned",
-                "correctAnswer": "NO"
+                "word": "existential",
+                "correctAnswer": "YES"
             }
         },
         {
@@ -523,7 +523,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "wellbeing",
+                "word": "productivity",
                 "correctAnswer": "YES"
             }
         },
@@ -540,7 +540,7 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "remote",
+                "word": "collaboration",
                 "correctAnswer": "YES"
             }
         },
@@ -557,8 +557,8 @@
                 "5. Strongly Agree"
             ],
             "check": {
-                "word": "burnout",
-                "correctAnswer": "NO"
+                "word": "hustle",
+                "correctAnswer": "YES"
             }
         },
         {
@@ -592,601 +592,6 @@
             ],
             "check": {
                 "word": "benefits",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T08",
-            "statementCode": "S01",
-            "topic": "Urban Planning and Housing",
-            "statement": "High-density urban living is more sustainable than suburban sprawl.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "sprawl",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T08",
-            "statementCode": "S02",
-            "topic": "Urban Planning and Housing",
-            "statement": "Rent control policies effectively improve housing affordability.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "effectively",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T08",
-            "statementCode": "S03",
-            "topic": "Urban Planning and Housing",
-            "statement": "Private car ownership should be discouraged in city centers.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "parking",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T08",
-            "statementCode": "S04",
-            "topic": "Urban Planning and Housing",
-            "statement": "Gentrification ultimately benefits all residents of a neighborhood.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "gentrification",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T08",
-            "statementCode": "S05",
-            "topic": "Urban Planning and Housing",
-            "statement": "Single-family zoning laws protect community character and property values.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "apartments",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T09",
-            "statementCode": "S01",
-            "topic": "Food Systems and Agriculture",
-            "statement": "Organic farming is significantly better for the environment than conventional agriculture.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "organic",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T09",
-            "statementCode": "S02",
-            "topic": "Food Systems and Agriculture",
-            "statement": "Lab-grown meat will be necessary to feed the global population sustainability.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "population",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T09",
-            "statementCode": "S03",
-            "topic": "Food Systems and Agriculture",
-            "statement": "Genetically modified crops are safe and essential for food security.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "pesticides",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T09",
-            "statementCode": "S04",
-            "topic": "Food Systems and Agriculture",
-            "statement": "Plant-based diets are healthier than diets containing animal products.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "healthier",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T09",
-            "statementCode": "S05",
-            "topic": "Food Systems and Agriculture",
-            "statement": "Local food systems are more sustainable than global supply chains.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "imported",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T10",
-            "statementCode": "S01",
-            "topic": "Criminal Justice and Rehabilitation",
-            "statement": "Rehabilitation programs are more effective than imprisonment for reducing crime.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "imprisonment",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T10",
-            "statementCode": "S02",
-            "topic": "Criminal Justice and Rehabilitation",
-            "statement": "Police presence in communities increases public safety.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "safety",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T10",
-            "statementCode": "S03",
-            "topic": "Criminal Justice and Rehabilitation",
-            "statement": "The death penalty serves as an effective deterrent to serious crimes.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "execution",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T10",
-            "statementCode": "S04",
-            "topic": "Criminal Justice and Rehabilitation",
-            "statement": "Drug addiction should be treated as a health issue rather than a criminal one.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "addiction",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T10",
-            "statementCode": "S05",
-            "topic": "Criminal Justice and Rehabilitation",
-            "statement": "Restrorative justice produces better outcomes than traditional punitive systems.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "victims",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T11",
-            "statementCode": "S01",
-            "topic": "Gender and Society",
-            "statement": "Gender quotas in leadership positions improve organisational performance.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "quotas",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T11",
-            "statementCode": "S02",
-            "topic": "Gender and Society",
-            "statement": "Biological differences between sexes significantly influence career preferences.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "biological",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T11",
-            "statementCode": "S03",
-            "topic": "Gender and Society",
-            "statement": "Gender-neutral parenting produces more well-adjusted children.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "toys",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T11",
-            "statementCode": "S04",
-            "topic": "Gender and Society",
-            "statement": "The gender pay gap is primarily due to discrimination rather than individual choices.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "discrimination",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T11",
-            "statementCode": "S05",
-            "topic": "Gender and Society",
-            "statement": "Single-sex education provides better learning outcomes than co-education.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "mixed",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T12",
-            "statementCode": "S01",
-            "topic": "Immigration and Cultural Integraion",
-            "statement": "Immigration provides net economic benefits to receiving countries.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "economic",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T12",
-            "statementCode": "S02",
-            "topic": "Immigration and Cultural Integraion",
-            "statement": "Multiculturalism strengthens rather than fragments national identity.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "fragments",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T12",
-            "statementCode": "S03",
-            "topic": "Immigration and Cultural Integraion",
-            "statement": "Language requirements for citizenship are necessary for successful integration.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "citizenship",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T12",
-            "statementCode": "S04",
-            "topic": "Immigration and Cultural Integraion",
-            "statement": "Skilled immigration should be prioritised over family reunification policies.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "visa",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T12",
-            "statementCode": "S05",
-            "topic": "Immigration and Cultural Integraion",
-            "statement": "Safe cities make communities safer for all residents.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "safe",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T13",
-            "statementCode": "S01",
-            "topic": "Privacy and Surveillance",
-            "statement": "Government surveillance programs are justified to prevent terrorism.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "terrorism",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T13",
-            "statementCode": "S02",
-            "topic": "Privacy and Surveillance",
-            "statement": "People who have nothing to hide shouldn't worry about privacy.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "encryption",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T13",
-            "statementCode": "S03",
-            "topic": "Privacy and Surveillance",
-            "statement": "Biometric identification should replace traditional passwords and IDs.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "passwords",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T13",
-            "statementCode": "S04",
-            "topic": "Privacy and Surveillance",
-            "statement": "Parents should monitor their children's online activities until age 18.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "monitor",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T13",
-            "statementCode": "S05",
-            "topic": "Privacy and Surveillance",
-            "statement": "The right to be forgotten online should be legally guaranteed.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "deleted",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T14",
-            "statementCode": "S01",
-            "topic": "Sports and Competition",
-            "statement": "Participation trophies diminish the value of genuine achievement.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "trophies",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T14",
-            "statementCode": "S02",
-            "topic": "Sports and Competition",
-            "statement": "Transgender athletes should compete in categories matching their gender identity.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "transgender",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T14",
-            "statementCode": "S03",
-            "topic": "Sports and Competition",
-            "statement": "Performance-enhancing drugs should be allowed in professional sports.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "steroids",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T14",
-            "statementCode": "S04",
-            "topic": "Sports and Competition",
-            "statement": "College atheletes should be paid salaries beyond scholarships.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "salaries",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T14",
-            "statementCode": "S05",
-            "topic": "Sports and Competition",
-            "statement": "Esports deserve the same recognition and support as traditional sports.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "gaming",
                 "correctAnswer": "NO"
             }
         },
@@ -1527,91 +932,6 @@
             ],
             "check": {
                 "word": "undervalues",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T19",
-            "statementCode": "S01",
-            "topic": "Transportation and Mobility",
-            "statement": "Public transportation should be free to encourage usage.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "free",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T19",
-            "statementCode": "S02",
-            "topic": "Transportation and Mobility",
-            "statement": "High-speed rail is more practical than air travel for distances under 500 miles.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "airports",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T19",
-            "statementCode": "S03",
-            "topic": "Transportation and Mobility",
-            "statement": "Bicycle infrastructure should take priority over car lanes in cities.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "priority",
-                "correctAnswer": "YES"
-            }
-        },
-        {
-            "topicCode": "T19",
-            "statementCode": "S04",
-            "topic": "Transportation and Mobility",
-            "statement": "Ride-sharing services have improved urban transportation overall.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "Uber",
-                "correctAnswer": "NO"
-            }
-        },
-        {
-            "topicCode": "T19",
-            "statementCode": "S05",
-            "topic": "Transportation and Mobility",
-            "statement": "Flying should be heavily taxed to reduce carbon emissions.",
-            "options": [
-                "1. Strongly Disagree",
-                "2. Disagree",
-                "3. Neutral",
-                "4. Agree",
-                "5. Strongly Agree"
-            ],
-            "check": {
-                "word": "taxed",
                 "correctAnswer": "YES"
             }
         },

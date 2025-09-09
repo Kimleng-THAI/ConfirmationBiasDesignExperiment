@@ -5,7 +5,7 @@ using TMPro;
 public class DeveloperInputManager : MonoBehaviour
 {
     public TMP_InputField subjectNumberInput;
-    public string nextSceneName = "InstructionScreen";
+    public string nextSceneName = "B4InstructionScene";
 
     public void OnContinueButtonClicked()
     {

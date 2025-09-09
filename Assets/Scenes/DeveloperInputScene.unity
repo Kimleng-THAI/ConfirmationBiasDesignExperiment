@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subjectNumberInput: {fileID: 901913702}
-  nextSceneName: InstructionScreen
+  nextSceneName: B4InstructionScene
 --- !u!4 &112687300
 Transform:
   m_ObjectHideFlags: 0

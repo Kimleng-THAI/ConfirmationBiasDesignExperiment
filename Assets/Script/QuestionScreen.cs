@@ -74,8 +74,8 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
 
-        inputActions.UI.Yes.performed += OnAttentionCheckY;
-        inputActions.UI.No.performed += OnAttentionCheckN;
+        inputActions.UI.GoBack.performed += OnAttentionCheckLeft;
+        inputActions.UI.GoForward.performed += OnAttentionCheckRight;
 
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
         eegCoroutine = StartCoroutine(SimulatePhysiologicalData());
@@ -95,8 +95,8 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.Select4.performed -= OnSelect4;
         inputActions.UI.Select5.performed -= OnSelect5;
 
-        inputActions.UI.Yes.performed -= OnAttentionCheckY;
-        inputActions.UI.No.performed -= OnAttentionCheckN;
+        inputActions.UI.GoBack.performed -= OnAttentionCheckLeft;
+        inputActions.UI.GoForward.performed -= OnAttentionCheckRight;
 
         inputActions.UI.Disable();
 
@@ -204,7 +204,7 @@ public class QuestionScreen : MonoBehaviour
         {
             attentionCheckText.text =
                 $"Did the statement contain the word '{q.check.word}'?\n\n" +
-                "<size=80%><color=#FFFFFF>Press Y = Yes, N = No</color></size>";
+                "<size=80%><color=#FFFFFF>Press LEFT ARROW KEY = No, RIGHT ARROW KEY = Yes</color></size>";
             attentionCheckText.gameObject.SetActive(true);
         }
 
@@ -232,24 +232,24 @@ public class QuestionScreen : MonoBehaviour
         }
     }
 
-    private void OnAttentionCheckY(InputAction.CallbackContext ctx)
-    {
-        if (!isAttentionCheckActive || hasRespondedAttentionCheck) return;
-
-        hasRespondedAttentionCheck = true;
-
-        string response = currentAttentionCheckQuestion.check.correctAnswer.ToUpper() == "YES" ? "YES" : "ATTENTION_FAIL";
-        LogAttentionResponse(response);
-        EndAttentionCheck();
-    }
-
-    private void OnAttentionCheckN(InputAction.CallbackContext ctx)
+    private void OnAttentionCheckLeft(InputAction.CallbackContext ctx)
     {
         if (!isAttentionCheckActive || hasRespondedAttentionCheck) return;
 
         hasRespondedAttentionCheck = true;
 
         string response = currentAttentionCheckQuestion.check.correctAnswer.ToUpper() == "NO" ? "NO" : "ATTENTION_FAIL";
+        LogAttentionResponse(response);
+        EndAttentionCheck();
+    }
+
+    private void OnAttentionCheckRight(InputAction.CallbackContext ctx)
+    {
+        if (!isAttentionCheckActive || hasRespondedAttentionCheck) return;
+
+        hasRespondedAttentionCheck = true;
+
+        string response = currentAttentionCheckQuestion.check.correctAnswer.ToUpper() == "YES" ? "YES" : "ATTENTION_FAIL";
         LogAttentionResponse(response);
         EndAttentionCheck();
     }

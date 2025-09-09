@@ -4,7 +4,7 @@ using TMPro; // needed for TextMeshPro
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public float transitionDelay = 1.0f;
+    public float transitionDelay = 2.0f;
     public TextMeshProUGUI transitionText;
 
     private void Start()
