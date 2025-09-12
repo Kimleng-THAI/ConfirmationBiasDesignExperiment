@@ -94,8 +94,17 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
     // ==========================================
     public BiasExpectationEvent CalculateExpectedResponse(string articleCode)
     {
-        var article = articleRelationships[articleCode];
-        int phase1Rating = phase1Responses[article.linkedStatementCode];
+        if (!articleRelationships.TryGetValue(articleCode, out var article))
+        {
+            Debug.LogError($"Article code {articleCode} not found in articleRelationships!");
+            return null;
+        }
+
+        if (!phase1Responses.TryGetValue(article.linkedStatementCode, out int phase1Rating))
+        {
+            Debug.LogWarning($"Phase 1 rating for linkedStatement {article.linkedStatementCode} not found. Defaulting to 3.");
+            phase1Rating = 3; // default neutral
+        }
 
         var expectationEvent = new BiasExpectationEvent
         {
@@ -107,15 +116,11 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
             eegMarkers = new List<string>()
         };
 
-        // DETERMINE EXPECTED RESPONSE
         expectationEvent.expectedResponse = DetermineExpectedResponse(article.articleType, phase1Rating);
         expectationEvent.expectedStrength = CalculateExpectedStrength(phase1Rating);
         expectationEvent.expectedRationale = GenerateExpectationRationale(article.articleType, phase1Rating);
 
-        // Send LSL marker for EXPECTED response
         SendExpectedResponseMarker(expectationEvent);
-
-        // Store for later comparison with actual
         expectationEvents.Add(expectationEvent);
 
         return expectationEvent;
@@ -184,10 +189,22 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
     public void RecordActualResponse(string articleCode, int phase2Rating, float readingTime, float scrollDepth)
     {
         var expectationEvent = expectationEvents.LastOrDefault(e => e.articleCode == articleCode);
+
+        // Handle missing expected response
         if (expectationEvent == null)
         {
-            Debug.LogError($"No expected response found for article {articleCode}");
-            return;
+            Debug.LogWarning($"No expected response found for article {articleCode}. Creating a default expectation.");
+
+            expectationEvent = new BiasExpectationEvent
+            {
+                articleCode = articleCode,
+                primaryStatementCode = "UNKNOWN",
+                expectedResponse = ExpectedBiasResponse.EXPECTED_NEUTRAL,
+                phase1StatementRating = 3,
+                articleType = "neutral",
+                eegMarkers = new List<string>()
+            };
+            expectationEvents.Add(expectationEvent);
         }
 
         // Store actual behavioral data

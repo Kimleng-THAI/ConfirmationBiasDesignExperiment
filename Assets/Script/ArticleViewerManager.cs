@@ -119,8 +119,8 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
         inputActions.UI.Continue.performed += OnContinueRestBreak;
-        inputActions.UI.Yes.performed += OnYesPressed;
-        inputActions.UI.No.performed += OnNoPressed;
+        //inputActions.UI.Yes.performed += OnYesPressed;
+        //inputActions.UI.No.performed += OnNoPressed;
     }
 
     void OnDisable()
@@ -133,8 +133,8 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed -= OnSelect4;
         inputActions.UI.Select5.performed -= OnSelect5;
         inputActions.UI.Continue.performed -= OnContinueRestBreak;
-        inputActions.UI.Yes.performed -= OnYesPressed;
-        inputActions.UI.No.performed -= OnNoPressed;
+        //inputActions.UI.Yes.performed -= OnYesPressed;
+        //inputActions.UI.No.performed -= OnNoPressed;
         inputActions.UI.Disable();
 
         if (scrollTrackingCoroutine != null)
@@ -231,21 +231,21 @@ public class ArticleViewerManager : MonoBehaviour
         attentionCheckTimeout = StartCoroutine(AttentionCheckTimeoutCoroutine());
     }
 
-    private void OnYesPressed(InputAction.CallbackContext context)
-    {
-        if (isAttentionCheckActive)
-            HandleAttentionResponse("YES");
-    }
+    //private void OnYesPressed(InputAction.CallbackContext context)
+    //{
+    //    if (isAttentionCheckActive)
+    //        HandleAttentionResponse("YES");
+    //}
 
-    private void OnNoPressed(InputAction.CallbackContext context)
-    {
-        if (isAttentionCheckActive)
-            HandleAttentionResponse("NO");
-    }
+    //private void OnNoPressed(InputAction.CallbackContext context)
+    //{
+    //    if (isAttentionCheckActive)
+    //        HandleAttentionResponse("NO");
+    //}
 
     private void HandleAttentionResponse(string response)
     {
-        if (!isAttentionCheckActive) return;
+        if (!isAttentionCheckActive || currentArticle == null) return; // Early exit if no active article
 
         isAttentionCheckActive = false;
 
@@ -253,13 +253,13 @@ public class ArticleViewerManager : MonoBehaviour
         currentArticle.attentionCheckResponse = response;
         currentArticle.attentionCheckReactionTime = reactionTime.ToString("F3");
 
-        // Determine if correct (you'll need to check against attentionAnswer)
+        // Determine correctness
         string correctness = (response == currentArticle.attentionAnswer?.ToUpper()) ? "CORRECT" : "INCORRECT";
 
-        // LSL: Send attention check response marker
+        // LSL: Send attention check response
         LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_PHASE2_{correctness}_RT{reactionTime:F3}");
 
-        Debug.Log($"[AttentionCheck] Response: {response} | local: {reactionTime:F3}s");
+        Debug.Log($"[AttentionCheck] Response: {response} | RT: {reactionTime:F3}s");
 
         if (attentionCheckTimeout != null)
         {
@@ -268,7 +268,12 @@ public class ArticleViewerManager : MonoBehaviour
         }
 
         var tracker = ArticleSelectionTracker.Instance;
-        if (tracker == null) return;
+        if (tracker == null)
+        {
+            Debug.LogWarning("[AttentionCheck] Tracker is null. Skipping further logic.");
+            attentionCheckText.gameObject.SetActive(false);
+            return;
+        }
 
         // Determine if final rest break should start
         bool minimumReadingsCompleted = tracker.HasReadMinimumPerFiveTopics() && tracker.GetTotalUniqueArticlesRead() >= 10;
@@ -667,8 +672,22 @@ public class ArticleViewerManager : MonoBehaviour
         float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
         string fullLabel = label;
+
         if (!string.IsNullOrEmpty(headline))
             fullLabel += $" | Headline: {headline}";
+
+        if (currentArticle != null)
+        {
+            if (!string.IsNullOrEmpty(currentArticle.articleCode))
+                fullLabel += $" | ArticleCode: {currentArticle.articleCode}";
+
+            if (!string.IsNullOrEmpty(currentArticle.linkedStatement))
+                fullLabel += $" | LinkedStatement: {currentArticle.linkedStatement}";
+
+            // ADD: attention check response
+            if (!string.IsNullOrEmpty(currentArticle.attentionCheckResponse))
+                fullLabel += $" | AttentionCheckResponse: {currentArticle.attentionCheckResponse}";
+        }
 
         QuestionScreen.participantData.eventMarkers.Add(new EventMarker
         {

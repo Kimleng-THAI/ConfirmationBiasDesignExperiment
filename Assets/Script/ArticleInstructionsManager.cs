@@ -101,11 +101,9 @@ public class ArticleInstructionsManager : MonoBehaviour
     {
         float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
         float globalTimestamp = 0f;
-        try
-        {
-            globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
-        }
-        catch { /* safe fallback if ExperimentTimer is missing */ }
+
+        if (ExperimentTimer.Instance != null)
+            globalTimestamp = ExperimentTimer.Instance.GetGlobalTimestamp();
 
         if (QuestionScreen.participantData != null)
         {

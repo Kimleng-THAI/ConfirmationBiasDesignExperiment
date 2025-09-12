@@ -367,6 +367,17 @@ public class QuestionScreen : MonoBehaviour
         foreach (var optionText in optionTexts)
             optionText.text = "";
 
+        // ✅ Send LSL marker for rest break start
+        LSLManager.Instance.SendMarker($"REST_BREAK_START_Q{currentQuestionIndex}");
+
+        // ✅ Record in participantData
+        participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = 0f,
+            globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp(),
+            label = $"REST_BREAK_START_Q{currentQuestionIndex}"
+        });
+
         inputActions.UI.Continue.performed += OnContinuePressed;
     }
 
@@ -386,6 +397,17 @@ public class QuestionScreen : MonoBehaviour
         questionStartTimeRealtime += restDuration;
 
         restBreakOverlay.SetActive(false);
+
+        // ✅ Send LSL marker for rest break end
+        LSLManager.Instance.SendMarker($"REST_BREAK_END_Q{currentQuestionIndex}");
+
+        // ✅ Record in participantData
+        participantData.eventMarkers.Add(new EventMarker
+        {
+            localTimestamp = restDuration,
+            globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp(),
+            label = $"REST_BREAK_END_Q{currentQuestionIndex}"
+        });
 
         LoadQuestion(currentQuestionIndex);
     }

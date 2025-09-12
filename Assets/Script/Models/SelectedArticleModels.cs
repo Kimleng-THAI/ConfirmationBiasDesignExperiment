@@ -12,6 +12,9 @@ public class SelectedArticle
     public string attentionAnswer;
     public string attentionCheckResponse;
     public string attentionCheckReactionTime;
+
+    public string articleCode;
+    public string linkedStatement;
 }
 
 [Serializable]

@@ -261,9 +261,15 @@ public class ArticleSelectorManager : MonoBehaviour
         {
             var expectedBias = ExpectedVsActualBiasSystem.Instance.CalculateExpectedResponse(articleCode);
 
-            // LSL: Send expected bias marker
-            LSLManager.Instance.SendMarker($"EXPECTED_BIAS_{articleCode}_{expectedBias.expectedResponse}");
-            Debug.Log($"[ArticleSelector]: Expected bias for {articleCode}: {expectedBias.expectedResponse}");
+            if (expectedBias != null)
+            {
+                LSLManager.Instance.SendMarker($"EXPECTED_BIAS_{articleCode}_{expectedBias.expectedResponse}");
+                Debug.Log($"[ArticleSelector]: Expected bias for {articleCode}: {expectedBias.expectedResponse}");
+            }
+            else
+            {
+                Debug.LogWarning($"[ArticleSelector]: Expected bias calculation returned null for {articleCode}");
+            }
         }
 
         // LSL: Send article selection marker
@@ -288,7 +294,9 @@ public class ArticleSelectorManager : MonoBehaviour
             selectedArticle.headline,
             selectedArticle.content,
             selectedArticle.attentionWord,
-            selectedArticle.attentionAnswer
+            selectedArticle.attentionAnswer,
+            selectedArticle.articleCode,
+            selectedArticle.linkedStatementCode
         );
 
         // Store article code for Phase 2 processing

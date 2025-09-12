@@ -22,7 +22,7 @@ public class ArticleSelectionTracker : MonoBehaviour
         }
     }
 
-    public void AddSelectedArticle(string topic, string headline, string content, string attentionWord, string attentionAnswer)
+    public void AddSelectedArticle(string topic, string headline, string content, string attentionWord, string attentionAnswer, string articleCode, string linkedStatement)
     {
         // Avoid duplicate entries
         if (!selectedArticles.articles.Any(a => a.topic == topic && a.headline == headline))
@@ -33,10 +33,16 @@ public class ArticleSelectionTracker : MonoBehaviour
                 headline = headline,
                 content = content,
                 attentionWord = attentionWord,
-                attentionAnswer = attentionAnswer
+                attentionAnswer = attentionAnswer,
+                articleCode = articleCode,
+                linkedStatement = linkedStatement
             };
 
             selectedArticles.articles.Add(newArticle);
+
+            //LSLManager.Instance.SendMarker(
+            //    $"ARTICLE_READ_{newArticle.articleCode}_{newArticle.linkedStatement}_{newArticle.topic}_{newArticle.headline}"
+            //);
         }
         // Count total clicks regardless of uniqueness
         readArticleClickCount++;
