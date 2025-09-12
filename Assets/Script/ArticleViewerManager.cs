@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using LSL;
 
 public class ArticleViewerManager : MonoBehaviour
 {
@@ -26,10 +27,8 @@ public class ArticleViewerManager : MonoBehaviour
 
     private float articleStartTime;
     private float articleElapsedTime = 0f;
-    // private const float minReadTime = 30f;
     // This is 5 minutes max reading time
     private const float maxReadTime = 300f;
-    // private bool minTimeReached = false;
     private bool hasRespondedAgreement = false;
     private bool isRestBreakActive = false;
     private float restBreakStartTime = 0f;
@@ -37,6 +36,7 @@ public class ArticleViewerManager : MonoBehaviour
     private bool hasCompletedMinimumReadings = false;
 
     private SelectedArticle currentArticle;
+    private string currentArticleCode;
 
     // Attention check fields
     private bool isAttentionCheckActive = false;
@@ -49,6 +49,11 @@ public class ArticleViewerManager : MonoBehaviour
     private bool isInFinalRestBreak = false;
 
     private Coroutine showAgreementPromptCoroutine;
+
+    // ADD: Scroll tracking
+    private float lastScrollPosition = 0f;
+    private float maxScrollReached = 0f;
+    private Coroutine scrollTrackingCoroutine;
 
     private List<string> requiredTopics = new List<string>
     {
@@ -77,7 +82,17 @@ public class ArticleViewerManager : MonoBehaviour
     {
         articleStartTime = Time.realtimeSinceStartup;
         lastActionTime = articleStartTime;
+
+        // Get article code from PlayerPrefs
+        currentArticleCode = PlayerPrefs.GetString("CurrentArticleCode", "");
+
+        // LSL: Send article read start marker
+        LSLManager.Instance.SendMarker($"ARTICLE_READ_START_{currentArticleCode}");
+
         LoadCurrentArticle();
+
+        // Start scroll tracking
+        scrollTrackingCoroutine = StartCoroutine(TrackScrolling());
     }
 
     void Update()
@@ -85,12 +100,6 @@ public class ArticleViewerManager : MonoBehaviour
         if (isRestBreakActive) return;
 
         articleElapsedTime = Time.realtimeSinceStartup - articleStartTime;
-
-        //if (!minTimeReached && articleElapsedTime >= minReadTime)
-        //{
-        //    minTimeReached = true;
-        //    Debug.Log("[ArticleViewerScene]: Minimum reading time reached. Participant can now proceed.");
-        //}
 
         if (articleElapsedTime >= maxReadTime)
         {
@@ -110,8 +119,8 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
         inputActions.UI.Continue.performed += OnContinueRestBreak;
-        //inputActions.UI.Yes.performed += OnYesPressed;
-        //inputActions.UI.No.performed += OnNoPressed;
+        inputActions.UI.Yes.performed += OnYesPressed;
+        inputActions.UI.No.performed += OnNoPressed;
     }
 
     void OnDisable()
@@ -124,9 +133,12 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed -= OnSelect4;
         inputActions.UI.Select5.performed -= OnSelect5;
         inputActions.UI.Continue.performed -= OnContinueRestBreak;
-        //inputActions.UI.Yes.performed -= OnYesPressed;
-        //inputActions.UI.No.performed -= OnNoPressed;
+        inputActions.UI.Yes.performed -= OnYesPressed;
+        inputActions.UI.No.performed -= OnNoPressed;
         inputActions.UI.Disable();
+
+        if (scrollTrackingCoroutine != null)
+            StopCoroutine(scrollTrackingCoroutine);
     }
 
     private void OnSelect1(InputAction.CallbackContext ctx) => OnNumberKeyPressed("1");
@@ -140,6 +152,31 @@ public class ArticleViewerManager : MonoBehaviour
         if (!hasRespondedAgreement)
         {
             OnAgreementKeyPressed(number);
+        }
+    }
+
+    // ADD: Scroll tracking coroutine
+    private IEnumerator TrackScrolling()
+    {
+        ScrollRect scrollRect = contentScrollView?.GetComponent<ScrollRect>();
+        if (scrollRect == null) yield break;
+
+        while (true)
+        {
+            float currentScroll = scrollRect.verticalNormalizedPosition;
+
+            // Track max scroll depth
+            if (currentScroll < maxScrollReached) // Note: lower values mean scrolled down more
+                maxScrollReached = currentScroll;
+
+            // Send scroll event if significant change
+            if (Mathf.Abs(currentScroll - lastScrollPosition) > 0.1f)
+            {
+                LSLManager.Instance.SendMarker($"ARTICLE_SCROLL_POS{(1 - currentScroll):F2}");
+                lastScrollPosition = currentScroll;
+            }
+
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -182,6 +219,9 @@ public class ArticleViewerManager : MonoBehaviour
             $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Right Arrow Key for YES, Left Arrow Key for NO";
         attentionCheckText.gameObject.SetActive(true);
 
+        // LSL: Send attention check start marker
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_START_PHASE2_{currentArticleCode}");
+
         Debug.Log($"[AttentionCheck] Started for article: {currentArticle.headline}, word: {currentArticle.attentionWord}");
 
         // Stop any previous coroutine
@@ -191,17 +231,17 @@ public class ArticleViewerManager : MonoBehaviour
         attentionCheckTimeout = StartCoroutine(AttentionCheckTimeoutCoroutine());
     }
 
-    //private void OnYesPressed(InputAction.CallbackContext context)
-    //{
-    //    if (isAttentionCheckActive)
-    //        HandleAttentionResponse("YES");
-    //}
+    private void OnYesPressed(InputAction.CallbackContext context)
+    {
+        if (isAttentionCheckActive)
+            HandleAttentionResponse("YES");
+    }
 
-    //private void OnNoPressed(InputAction.CallbackContext context)
-    //{
-    //    if (isAttentionCheckActive)
-    //        HandleAttentionResponse("NO");
-    //}
+    private void OnNoPressed(InputAction.CallbackContext context)
+    {
+        if (isAttentionCheckActive)
+            HandleAttentionResponse("NO");
+    }
 
     private void HandleAttentionResponse(string response)
     {
@@ -212,6 +252,12 @@ public class ArticleViewerManager : MonoBehaviour
         float reactionTime = Time.time - attentionCheckStartTime;
         currentArticle.attentionCheckResponse = response;
         currentArticle.attentionCheckReactionTime = reactionTime.ToString("F3");
+
+        // Determine if correct (you'll need to check against attentionAnswer)
+        string correctness = (response == currentArticle.attentionAnswer?.ToUpper()) ? "CORRECT" : "INCORRECT";
+
+        // LSL: Send attention check response marker
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_PHASE2_{correctness}_RT{reactionTime:F3}");
 
         Debug.Log($"[AttentionCheck] Response: {response} | local: {reactionTime:F3}s");
 
@@ -271,6 +317,19 @@ public class ArticleViewerManager : MonoBehaviour
         SceneManager.LoadScene("TransitionScene");
     }
 
+    // Helper function to get article ID from code
+    private int GetArticleIdFromCode(string articleCode)
+    {
+        // Extract numeric ID from article code (e.g., "T01A" -> 101)
+        if (articleCode.Length >= 4)
+        {
+            int topicNum = int.Parse(articleCode.Substring(1, 2));
+            char letter = articleCode[3];
+            return topicNum * 100 + (letter - 'A' + 1);
+        }
+        return 0;
+    }
+
     private IEnumerator AttentionCheckTimeoutCoroutine()
     {
         yield return new WaitForSeconds(10f);
@@ -309,6 +368,26 @@ public class ArticleViewerManager : MonoBehaviour
         hasRespondedAgreement = true;
 
         float prevActionTime = lastActionTime;
+        float readingTime = Time.realtimeSinceStartup - articleStartTime;
+
+        // LSL: Send article rating marker
+        LSLManager.Instance.SendMarker($"ARTICLE_RATING_{currentArticleCode}_R{option}");
+
+        // LSL: Send Likert response (Phase 2)
+        int articleId = GetArticleIdFromCode(currentArticleCode);
+        LSLManager.Instance.SendLikertResponse(2, articleId, int.Parse(option), readingTime);
+
+        // Record ACTUAL response for bias comparison
+        ExpectedVsActualBiasSystem.Instance.RecordActualResponse(
+            currentArticleCode,
+            int.Parse(option),
+            readingTime,
+            1 - maxScrollReached  // Convert to 0-1 where 1 is fully scrolled
+        );
+
+        // LSL: Send article read end marker
+        LSLManager.Instance.SendMarker($"ARTICLE_READ_END_{currentArticleCode}_TIME{readingTime:F1}");
+
         LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, prevActionTime);
 
         // Assign currentArticle for attention check
@@ -526,6 +605,9 @@ public class ArticleViewerManager : MonoBehaviour
         isRestBreakActive = true;
         restBreakStartTime = Time.realtimeSinceStartup;
 
+        // LSL: Send rest break marker
+        LSLManager.Instance.SendMarker("REST_BREAK_START_PHASE2");
+
         if (agreementPromptText != null)
             agreementPromptText.gameObject.SetActive(false);
 
@@ -547,6 +629,9 @@ public class ArticleViewerManager : MonoBehaviour
         isRestBreakActive = true;
         isInFinalRestBreak = true;
         restBreakStartTime = Time.realtimeSinceStartup;
+
+        // LSL: Send final rest break marker
+        LSLManager.Instance.SendMarker("FINAL_REST_BREAK_START");
 
         if (agreementPromptText != null)
             agreementPromptText.gameObject.SetActive(false);

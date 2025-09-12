@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using LSL; // ADD THIS
 
 [System.Serializable]
 public class ArticleEntryData
@@ -13,6 +14,10 @@ public class ArticleEntryData
     public string content;
     public string attentionWord;
     public string attentionAnswer;
+    // ADD THESE FIELDS FOR BIAS CALCULATION:
+    public string articleCode;  // e.g., "T01A"
+    public string linkedStatementCode;  // e.g., "T01-S01"
+    public string articleType;  // "confirmatory", "disconfirmatory", "neutral"
 }
 
 [System.Serializable]
@@ -56,6 +61,9 @@ public class ArticleSelectorManager : MonoBehaviour
             topicTitleText.text = "Selected Topic: " + selectedTopic;
         }
 
+        // LSL: Send article selector scene start marker
+        LSLManager.Instance.SendMarker($"ARTICLE_SELECTOR_START_{GetTopicCode(selectedTopic)}");
+
         string jsonFileName = GetJsonFileNameForTopic(selectedTopic);
 
         if (!string.IsNullOrEmpty(jsonFileName))
@@ -90,6 +98,10 @@ public class ArticleSelectorManager : MonoBehaviour
         float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
         float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
+        // LSL: Send back button marker
+        LSLManager.Instance.SendMarker("ARTICLE_SELECTOR_BACK");
+
+        // Keep existing JSON event marker
         QuestionScreen.participantData.eventMarkers.Add(new EventMarker
         {
             localTimestamp = localTimestamp,
@@ -97,10 +109,32 @@ public class ArticleSelectorManager : MonoBehaviour
             label = $"[ArticleSelector]: BACK_BUTTON_CLICKED (local: {localTimestamp:F2}s)"
         });
 
-        Debug.Log($"[ArticleSelectorScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: BACK_BUTTON_CLICKED");
+        Debug.Log($"[ArticleSelectorScene]: Event marker logged – Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: BACK_BUTTON_CLICKED");
 
         PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
         SceneManager.LoadScene("TransitionScene");
+    }
+
+    string GetTopicCode(string topicName)
+    {
+        // Map topic names to codes (matching your JSON structure)
+        Dictionary<string, string> topicCodes = new Dictionary<string, string>
+        {
+            { "Climate Change and Environmental Policy", "T01" },
+            { "Technology and Social Media Impact", "T02" },
+            { "Economic Policy and Inequality", "T03" },
+            { "Health and Medical Approaches", "T04" },
+            { "Education and Learning Methods", "T05" },
+            { "Artificial Intelligence and Ethics", "T06" },
+            { "Work-Life Balance and Productivity", "T07" },
+            { "Media and Information", "T15" },
+            { "Science and Research Funding", "T16" },
+            { "Parenting and Child Development", "T17" },
+            { "Aging and Elder Care", "T18" },
+            { "Mental Health and Wellness", "T20" }
+        };
+
+        return topicCodes.ContainsKey(topicName) ? topicCodes[topicName] : "T00";
     }
 
     string GetJsonFileNameForTopic(string topic)
@@ -216,6 +250,26 @@ public class ArticleSelectorManager : MonoBehaviour
         float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
         float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
+        // Get article code (ensure it's populated in your JSON)
+        string articleCode = selectedArticle.articleCode ?? $"{GetTopicCode(selectedTopic)}A{index}";
+
+        // LSL: Send article preview marker
+        LSLManager.Instance.SendMarker($"ARTICLE_PREVIEW_{articleCode}");
+
+        // Calculate EXPECTED bias response
+        if (!string.IsNullOrEmpty(selectedArticle.linkedStatementCode))
+        {
+            var expectedBias = ExpectedVsActualBiasSystem.Instance.CalculateExpectedResponse(articleCode);
+
+            // LSL: Send expected bias marker
+            LSLManager.Instance.SendMarker($"EXPECTED_BIAS_{articleCode}_{expectedBias.expectedResponse}");
+            Debug.Log($"[ArticleSelector]: Expected bias for {articleCode}: {expectedBias.expectedResponse}");
+        }
+
+        // LSL: Send article selection marker
+        LSLManager.Instance.SendMarker($"ARTICLE_SELECT_{articleCode}");
+
+        // Keep existing JSON event marker
         string label = $"[ArticleSelector]: READ_ARTICLE_BUTTON_CLICKED: {selectedArticle.headline} (local: {localTimestamp:F2}s)";
 
         QuestionScreen.participantData.eventMarkers.Add(new EventMarker
@@ -225,7 +279,7 @@ public class ArticleSelectorManager : MonoBehaviour
             label = label
         });
 
-        Debug.Log($"[ArticleSelectorScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: {label}");
+        Debug.Log($"[ArticleSelectorScene]: Event marker logged – Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: {label}");
         Debug.Log($"[ArticleSelectorManager]: Participant is reading article: '{selectedArticle.headline}' from topic: '{selectedTopic}'");
 
         // Use the tracker singleton to save the selected article
@@ -236,6 +290,10 @@ public class ArticleSelectorManager : MonoBehaviour
             selectedArticle.attentionWord,
             selectedArticle.attentionAnswer
         );
+
+        // Store article code for Phase 2 processing
+        PlayerPrefs.SetString("CurrentArticleCode", articleCode);
+        PlayerPrefs.Save();
 
         // Go to ArticleViewerScene
         PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleViewerScene");

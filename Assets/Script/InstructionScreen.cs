@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using LSL;
+
 
 public class InstructionScreen : MonoBehaviour
 {
@@ -24,6 +26,9 @@ public class InstructionScreen : MonoBehaviour
         // Record experiment start time (in Sydney time)
         System.DateTime sydneyTime = System.DateTime.UtcNow.AddHours(10);
         QuestionScreen.participantData.experimentStartTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
+
+        LSLManager.Instance.SendMarker("EXPERIMENT_START");
+
         Debug.Log("[InstructionScreen]: Experiment start time set to " + QuestionScreen.participantData.experimentStartTime);
 
         inputActions.UI.Enable();
@@ -56,6 +61,9 @@ public class InstructionScreen : MonoBehaviour
             globalTimestamp = globalTimestamp,
             label = "[InstructionScreen]: CONTINUE_PRESSED"
         });
+
+        // Send LSL marker separately
+        LSLManager.Instance.SendMarker("INSTRUCTION_CONTINUE");
 
         Debug.Log($"[InstructionScreen]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Instruction_CONTINUE_PRESSED");
 

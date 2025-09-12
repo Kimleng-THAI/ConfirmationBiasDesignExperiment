@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using LSL;
 
 public class TopicSelector : MonoBehaviour
 {
@@ -96,6 +97,7 @@ public class TopicSelector : MonoBehaviour
             });
 
             Debug.Log($"[TopicSelector]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: TOPIC_SELECTED: {selectedTopic}");
+            LSLManager.Instance.SendMarker($"TOPIC_SELECT_{selectedTopic}");
 
             // Update the last selection timestamp
             lastDropdownSelectTime = currentTime;
@@ -124,6 +126,7 @@ public class TopicSelector : MonoBehaviour
         });
 
         Debug.Log($"[TopicSelector]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: CONTINUE_BUTTON_CLICKED");
+        LSLManager.Instance.SendMarker("TOPIC_SELECTOR_CONTINUE");
 
         string selectedTopic = topicDropdown.options[topicDropdown.value].text.Replace(" (completed)", "");
         Debug.Log("[TopicSelector]: Topic selected - " + selectedTopic);

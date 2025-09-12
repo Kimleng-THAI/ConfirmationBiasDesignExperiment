@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections.Generic;
+using LSL;
 
 public class QuestionScreen : MonoBehaviour
 {
@@ -141,6 +142,9 @@ public class QuestionScreen : MonoBehaviour
                 optionTexts[i].gameObject.SetActive(false);
             }
         }
+
+        // ✅ Send LSL marker when statement is presented
+        LSLManager.Instance.SendMarker($"STATEMENT_PRESENTED_Q{index}_{q.topicCode}_{q.statementCode}");
     }
 
     private void RecordResponse(string option)
@@ -178,6 +182,10 @@ public class QuestionScreen : MonoBehaviour
 
         Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
 
+        // ✅ Send LSL marker and Likert response
+        LSLManager.Instance.SendMarker($"STATEMENT_RESPONSE_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
+        LSLManager.Instance.SendLikertResponse(1, currentQuestionIndex, int.Parse(option), rawReactionTime);
+
         if (q.check != null)
         {
             currentAttentionCheckQuestion = q;
@@ -209,6 +217,9 @@ public class QuestionScreen : MonoBehaviour
         }
 
         attentionCheckStartTimeRealtime = Time.realtimeSinceStartup;
+
+        // ✅ Send LSL marker for attention check presentation
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_PRESENTED_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}");
 
         if (attentionCheckTimerCoroutine != null) StopCoroutine(attentionCheckTimerCoroutine);
         attentionCheckTimerCoroutine = StartCoroutine(AttentionCheckTimer(q, 5f));
@@ -271,6 +282,9 @@ public class QuestionScreen : MonoBehaviour
         });
 
         Debug.Log($"[AttentionCheck] Question {currentQuestionIndex}: {response} | LocalTimestamp: {reactionTime:F3}s | GlobalTimestamp: {globalTimestamp:F3}s");
+
+        // ✅ Send LSL marker for attention check response
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_Q{currentQuestionIndex}_{currentAttentionCheckQuestion.topicCode}_{currentAttentionCheckQuestion.statementCode}_{response}");
     }
 
     private void EndAttentionCheck()
@@ -330,6 +344,10 @@ public class QuestionScreen : MonoBehaviour
                 attentionCheckResponse = "NR",
                 attentionCheckReactionTime = "5.000"
             });
+
+            LSLManager.Instance.SendMarker(
+                $"[QuestionScene]: Question {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | RESPONSE: NO_RESPONSE"
+            );
 
             currentQuestionIndex++;
             ProceedToNext();

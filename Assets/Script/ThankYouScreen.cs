@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using System.IO;
+using LSL;
 
 public class ThankYouScreen : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class ThankYouScreen : MonoBehaviour
 
     private void ExitExperiment()
     {
+        // --- LSL marker for experiment end ---
+        LSLManager.Instance.SendMarker("EXPERIMENT_END");
+
         float recordTimeTaken = Time.time - startThankYouScene;
         Debug.Log($"[ThankYouScene]: Participant took {recordTimeTaken:F2} seconds to press Done button.");
 
