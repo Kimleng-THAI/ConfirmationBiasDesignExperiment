@@ -14,10 +14,11 @@ public class ArticleEntryData
     public string content;
     public string attentionWord;
     public string attentionAnswer;
-    // ADD THESE FIELDS FOR BIAS CALCULATION:
-    public string articleCode;  // e.g., "T01A"
-    public string linkedStatementCode;  // e.g., "T01-S01"
-    public string articleType;  // "confirmatory", "disconfirmatory", "neutral"
+
+    // Must match JSON keys
+    public string articleCode;        // e.g., "T18A"
+    public string linkedStatement;    // JSON: "linkedStatement"
+    public string expectedResponse;   // JSON: "expectedResponse"
 }
 
 [System.Serializable]
@@ -96,7 +97,7 @@ public class ArticleSelectorManager : MonoBehaviour
     void OnBackButtonClicked()
     {
         float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
-        float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
+        float globalTimestamp = ExperimentTimer.Instance.GetGlobalTimestamp();
 
         // LSL: Send back button marker
         LSLManager.Instance.SendMarker("ARTICLE_SELECTOR_BACK");
@@ -117,7 +118,6 @@ public class ArticleSelectorManager : MonoBehaviour
 
     string GetTopicCode(string topicName)
     {
-        // Map topic names to codes (matching your JSON structure)
         Dictionary<string, string> topicCodes = new Dictionary<string, string>
         {
             { "Climate Change and Environmental Policy", "T01" },
@@ -171,11 +171,9 @@ public class ArticleSelectorManager : MonoBehaviour
         {
             ArticleData data = JsonUtility.FromJson<ArticleData>(jsonFile.text);
 
-            // Filter out articles already read by participant
             List<ArticleEntryData> allArticles = data.articles;
             List<ArticleEntryData> unreadArticles = new List<ArticleEntryData>();
 
-            // Get list of read article headlines for current topic from tracker
             var tracker = ArticleSelectionTracker.Instance;
             List<string> readHeadlines = new List<string>();
 
@@ -190,7 +188,6 @@ public class ArticleSelectorManager : MonoBehaviour
                 }
             }
 
-            // Filter articles by checking if headline is not in readHeadlines
             foreach (var article in allArticles)
             {
                 if (!readHeadlines.Contains(article.headline))
@@ -199,7 +196,7 @@ public class ArticleSelectorManager : MonoBehaviour
                 }
             }
 
-            // SHUFFLE unread articles
+            // Shuffle
             for (int i = 0; i < unreadArticles.Count; i++)
             {
                 int randIndex = Random.Range(i, unreadArticles.Count);
@@ -210,13 +207,11 @@ public class ArticleSelectorManager : MonoBehaviour
 
             loadedArticles = unreadArticles;
 
-            // Clear any existing buttons
             foreach (Transform child in contentPanel)
             {
                 Destroy(child.gameObject);
             }
 
-            // Create buttons only for unread articles
             for (int i = 0; i < loadedArticles.Count; i++)
             {
                 int index = i;
@@ -230,7 +225,6 @@ public class ArticleSelectorManager : MonoBehaviour
                 readButton.onClick.AddListener(() => OnReadArticleClicked(index));
             }
 
-            // if no unread articles left, log a message
             if (loadedArticles.Count == 0)
             {
                 Debug.Log("[ArticleSelectorManager]: All articles in this topic have been read.");
@@ -250,27 +244,11 @@ public class ArticleSelectorManager : MonoBehaviour
         float localTimestamp = Time.realtimeSinceStartup - sceneStartTime;
         float globalTimestamp = Time.realtimeSinceStartup - ExperimentTimer.Instance.ExperimentStartTimeRealtime;
 
-        // Get article code (ensure it's populated in your JSON)
+        // Use articleCode from JSON or generate one
         string articleCode = selectedArticle.articleCode ?? $"{GetTopicCode(selectedTopic)}A{index}";
 
         // LSL: Send article preview marker
         LSLManager.Instance.SendMarker($"ARTICLE_PREVIEW_{articleCode}");
-
-        // Calculate EXPECTED bias response
-        if (!string.IsNullOrEmpty(selectedArticle.linkedStatementCode))
-        {
-            var expectedBias = ExpectedVsActualBiasSystem.Instance.CalculateExpectedResponse(articleCode);
-
-            if (expectedBias != null)
-            {
-                LSLManager.Instance.SendMarker($"EXPECTED_BIAS_{articleCode}_{expectedBias.expectedResponse}");
-                Debug.Log($"[ArticleSelector]: Expected bias for {articleCode}: {expectedBias.expectedResponse}");
-            }
-            else
-            {
-                Debug.LogWarning($"[ArticleSelector]: Expected bias calculation returned null for {articleCode}");
-            }
-        }
 
         // LSL: Send article selection marker
         LSLManager.Instance.SendMarker($"ARTICLE_SELECT_{articleCode}");
@@ -288,15 +266,17 @@ public class ArticleSelectorManager : MonoBehaviour
         Debug.Log($"[ArticleSelectorScene]: Event marker logged – Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: {label}");
         Debug.Log($"[ArticleSelectorManager]: Participant is reading article: '{selectedArticle.headline}' from topic: '{selectedTopic}'");
 
-        // Use the tracker singleton to save the selected article
+        // ===== SAVE ARTICLE SELECTION TO TRACKER =====
+        // Ensure linkedStatement is taken from JSON directly and stored as-is
         ArticleSelectionTracker.Instance.AddSelectedArticle(
             selectedTopic,
             selectedArticle.headline,
             selectedArticle.content,
             selectedArticle.attentionWord,
             selectedArticle.attentionAnswer,
-            selectedArticle.articleCode,
-            selectedArticle.linkedStatementCode
+            articleCode,
+            linkedStatement: selectedArticle.linkedStatement,
+            selectedArticle.expectedResponse
         );
 
         // Store article code for Phase 2 processing

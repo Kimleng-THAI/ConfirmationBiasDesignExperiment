@@ -15,6 +15,7 @@ public class SelectedArticle
 
     public string articleCode;
     public string linkedStatement;
+    public string expectedResponse;
 }
 
 [Serializable]

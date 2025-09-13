@@ -23,6 +23,40 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set expected response directly from the JSON (bypasses articleType logic)
+    /// </summary>
+    public BiasExpectationEvent SetExpectedResponseDirectly(
+        string articleCode,
+        string linkedStatement,
+        ExpectedBiasResponse expectedResponse,
+        int phase1Rating = 3, // default neutral
+        string articleType = "neutral" // optional, for legacy logging
+    )
+    {
+        var expectationEvent = new BiasExpectationEvent
+        {
+            timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+            articleCode = articleCode,
+            primaryStatementCode = linkedStatement,
+            articleType = articleType,
+            phase1StatementRating = phase1Rating,
+            expectedResponse = expectedResponse,
+            expectedStrength = Mathf.Abs(phase1Rating - 3) / 2f,
+            expectedRationale = $"Set directly from JSON ({expectedResponse})",
+            eegMarkers = new List<string>()
+        };
+
+        expectationEvents.Add(expectationEvent);
+
+        // Send LSL marker
+        SendExpectedResponseMarker(expectationEvent);
+
+        Debug.Log($"[BiasSystem] Direct expected response set: {expectedResponse} for article {articleCode}");
+
+        return expectationEvent;
+    }
+
     // ==========================================
     // EXPECTED RESPONSE CLASSIFICATION
     // ==========================================
@@ -100,9 +134,9 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
             return null;
         }
 
-        if (!phase1Responses.TryGetValue(article.linkedStatementCode, out int phase1Rating))
+        if (!phase1Responses.TryGetValue(article.linkedStatement, out int phase1Rating))
         {
-            Debug.LogWarning($"Phase 1 rating for linkedStatement {article.linkedStatementCode} not found. Defaulting to 3.");
+            Debug.LogWarning($"Phase 1 rating for linkedStatement {article.linkedStatement} not found. Defaulting to 3.");
             phase1Rating = 3; // default neutral
         }
 
@@ -110,7 +144,7 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
         {
             timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"),
             articleCode = articleCode,
-            primaryStatementCode = article.linkedStatementCode,
+            primaryStatementCode = article.linkedStatement,
             articleType = article.articleType,
             phase1StatementRating = phase1Rating,
             eegMarkers = new List<string>()
@@ -513,7 +547,7 @@ public class ExpectedVsActualBiasSystem : MonoBehaviour
     public class ArticleStatementRelationship
     {
         public string articleCode;
-        public string linkedStatementCode;
+        public string linkedStatement;
         public string articleType;
         public List<SecondaryRelationship> secondaryRelationships;
     }
