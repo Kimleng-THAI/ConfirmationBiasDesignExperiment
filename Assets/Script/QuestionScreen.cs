@@ -127,20 +127,12 @@ public class QuestionScreen : MonoBehaviour
         conflictStatementText.gameObject.SetActive(true);
         conflictStatementText.text = $"\n\n{q.statement}";
 
-        // ✅ Force font size for statement
-        conflictStatementText.enableAutoSizing = false;
-        conflictStatementText.fontSize = 40; // adjust as you like
-
         for (int i = 0; i < optionTexts.Length; i++)
         {
             if (i < q.options.Count)
             {
                 optionTexts[i].gameObject.SetActive(true);
                 optionTexts[i].text = q.options[i];
-
-                // ✅ Force font size for options
-                optionTexts[i].enableAutoSizing = false;
-                optionTexts[i].fontSize = 36; // adjust as you like
             }
             else
             {
