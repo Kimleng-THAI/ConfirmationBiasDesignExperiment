@@ -1,9 +1,11 @@
 // ==========================================
-// LSLManager.cs - Core LSL Management
+// LSLManager.cs - Enhanced for Real-time Streaming
 // ==========================================
+
 using UnityEngine;
 using LSL;
 using System;
+using System.Collections.Generic;
 
 public class LSLManager : MonoBehaviour
 {
@@ -26,21 +28,23 @@ public class LSLManager : MonoBehaviour
         }
     }
 
-    // LSL Outlets
+    // LSL Outlets - one set only!
     private StreamOutlet markerOutlet;
-    private StreamOutlet likertOutlet;
-    private StreamOutlet behaviorOutlet;
+    private StreamOutlet responseOutlet;  // For structured response data
+    private StreamOutlet behavioralOutlet;
 
     // Stream info
     private StreamInfo markerInfo;
-    private StreamInfo likertInfo;
-    private StreamInfo behaviorInfo;
+    private StreamInfo responseInfo;
+    private StreamInfo behavioralInfo;
 
-    // Logging flag
+    // Logging flags
     public bool isLSLActive = false;
+    private bool streamsInitialized = false;
 
     void Awake()
     {
+        // Singleton pattern
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -49,76 +53,67 @@ public class LSLManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        InitializeLSLStreams();
+        // Initialize streams ONCE
+        if (!streamsInitialized)
+        {
+            InitializeLSLStreams();
+            streamsInitialized = true;
+        }
     }
 
     void InitializeLSLStreams()
     {
         try
         {
-            // Initialize Event Marker Stream
+            string uniqueId = SystemInfo.deviceUniqueIdentifier;
+
+            // 1. Event Marker Stream (string markers)
             markerInfo = new StreamInfo(
                 "Unity_BCI_Markers",
                 "Markers",
                 1,
-                0, // irregular sampling rate
+                0, // irregular rate
                 channel_format_t.cf_string,
-                "UnityBCI_Markers_" + SystemInfo.deviceUniqueIdentifier
+                "UnityBCI_Markers_" + uniqueId
             );
 
             var markerDesc = markerInfo.desc();
             markerDesc.append_child_value("manufacturer", "Unity_BCI_Experiment");
-            markerDesc.append_child_value("version", "1.0");
-            var markerChannels = markerDesc.append_child("channels");
-            markerChannels.append_child("channel")
-                .append_child_value("label", "EventMarker")
-                .append_child_value("type", "Event");
+            markerDesc.append_child_value("version", "2.0");
 
             markerOutlet = new StreamOutlet(markerInfo);
 
-            // Initialize Likert Response Stream
-            likertInfo = new StreamInfo(
+            // 2. Response Stream (JSON-formatted string for complex data)
+            responseInfo = new StreamInfo(
                 "Unity_Likert_Responses",
                 "Responses",
-                4,
+                1,  // Single channel for JSON string
                 0,
-                channel_format_t.cf_float32,
-                "UnityBCI_Likert_" + SystemInfo.deviceUniqueIdentifier
+                channel_format_t.cf_string,  // Changed to string for JSON
+                "UnityBCI_Response_" + uniqueId
             );
 
-            var likertDesc = likertInfo.desc();
-            likertDesc.append_child_value("manufacturer", "Unity_BCI_Experiment");
-            var likertChannels = likertDesc.append_child("channels");
+            var responseDesc = responseInfo.desc();
+            responseDesc.append_child_value("manufacturer", "Unity_BCI_Experiment");
+            responseDesc.append_child_value("format", "JSON");
 
-            likertChannels.append_child("channel").append_child_value("label", "Phase");
-            likertChannels.append_child("channel").append_child_value("label", "ItemID");
-            likertChannels.append_child("channel").append_child_value("label", "Rating");
-            likertChannels.append_child("channel").append_child_value("label", "ResponseTime");
+            responseOutlet = new StreamOutlet(responseInfo);
 
-            likertOutlet = new StreamOutlet(likertInfo);
-
-            // Initialize Behavioral Data Stream
-            behaviorInfo = new StreamInfo(
+            // 3. Behavioral Data Stream (JSON-formatted string)
+            behavioralInfo = new StreamInfo(
                 "Unity_Behavioral_Data",
                 "Behavioral",
-                6,
+                1,  // Single channel for JSON string
                 0,
-                channel_format_t.cf_float32,
-                "UnityBCI_Behavior_" + SystemInfo.deviceUniqueIdentifier
+                channel_format_t.cf_string,  // Changed to string for JSON
+                "UnityBCI_Behavior_" + uniqueId
             );
 
-            var behaviorDesc = behaviorInfo.desc();
+            var behaviorDesc = behavioralInfo.desc();
             behaviorDesc.append_child_value("manufacturer", "Unity_BCI_Experiment");
-            var behaviorChannels = behaviorDesc.append_child("channels");
+            behaviorDesc.append_child_value("format", "JSON");
 
-            behaviorChannels.append_child("channel").append_child_value("label", "TrialNumber");
-            behaviorChannels.append_child("channel").append_child_value("label", "TopicID");
-            behaviorChannels.append_child("channel").append_child_value("label", "ArticleID");
-            behaviorChannels.append_child("channel").append_child_value("label", "BiasType");
-            behaviorChannels.append_child("channel").append_child_value("label", "ScrollPosition");
-            behaviorChannels.append_child("channel").append_child_value("label", "DwellTime");
-
-            behaviorOutlet = new StreamOutlet(behaviorInfo);
+            behavioralOutlet = new StreamOutlet(behavioralInfo);
 
             isLSLActive = true;
             Debug.Log("[LSL] All streams initialized successfully");
@@ -131,6 +126,7 @@ public class LSLManager : MonoBehaviour
         }
     }
 
+    // ==== MARKER FUNCTIONS ====
     public void SendMarker(string markerText)
     {
         if (!isLSLActive || markerOutlet == null) return;
@@ -138,9 +134,10 @@ public class LSLManager : MonoBehaviour
         try
         {
             string[] marker = new string[] { markerText };
-            double timestamp = LSL.LSL.local_clock(); // ✅ fixed
+            double timestamp = LSL.LSL.local_clock();
             markerOutlet.push_sample(marker, timestamp);
-            Debug.Log($"[LSL] Marker sent: {markerText} at {timestamp:F3}");
+
+            Debug.Log($"[LSL Marker] {markerText} at {timestamp:F3}");
         }
         catch (Exception e)
         {
@@ -148,33 +145,98 @@ public class LSLManager : MonoBehaviour
         }
     }
 
-    public void SendLikertResponse(int phase, int itemId, int rating, float responseTime)
+    // ==== STATEMENT RESPONSE (Phase 1) ====
+    public void SendStatementResponse(int questionIndex, string topicCode, string statementCode,
+                                     int agreement, float reactionTime,
+                                     string attentionCheck = null, float attentionRT = 0f)
     {
-        if (!isLSLActive || likertOutlet == null) return;
+        if (!isLSLActive || responseOutlet == null) return;
 
         try
         {
-            float[] sample = new float[] { phase, itemId, rating, responseTime };
-            double timestamp = LSL.LSL.local_clock(); // ✅ fixed
-            likertOutlet.push_sample(sample, timestamp);
-            Debug.Log($"[LSL] Likert response sent: Phase={phase}, Item={itemId}, Rating={rating}, RT={responseTime:F3}");
+            // Create JSON object for the response
+            var responseData = new
+            {
+                phase = 1,
+                questionIndex = questionIndex,
+                topicCode = topicCode,
+                statementCode = statementCode,
+                agreement = agreement,
+                reactionTime = reactionTime,
+                attentionCheck = attentionCheck,
+                attentionCheckRT = attentionRT,
+                timestamp = Time.time
+            };
+
+            string jsonData = JsonUtility.ToJson(responseData);
+            string[] sample = new string[] { jsonData };
+            double timestamp = LSL.LSL.local_clock();
+
+            responseOutlet.push_sample(sample, timestamp);
+
+            Debug.Log($"[LSL Response] Statement Q{questionIndex} {topicCode}-{statementCode}: Agreement={agreement}, RT={reactionTime:F3}");
         }
         catch (Exception e)
         {
-            Debug.LogError($"[LSL] Failed to send Likert response: {e.Message}");
+            Debug.LogError($"[LSL] Failed to send statement response: {e.Message}");
         }
     }
 
-    public void SendBehavioralData(int trial, int topicId, int articleId, int biasType, float scrollPos, float dwellTime)
+    // ==== ARTICLE RESPONSE (Phase 2) ====
+    public void SendArticleResponse(string articleCode, string topicCode, int agreement,
+                                   float reactionTime, float scrollDepth = 0f,
+                                   string attentionCheck = null, float attentionRT = 0f)
     {
-        if (!isLSLActive || behaviorOutlet == null) return;
+        if (!isLSLActive || responseOutlet == null) return;
 
         try
         {
-            float[] sample = new float[] { trial, topicId, articleId, biasType, scrollPos, dwellTime };
-            double timestamp = LSL.LSL.local_clock(); // ✅ fixed
-            behaviorOutlet.push_sample(sample, timestamp);
-            Debug.Log($"[LSL] Behavioral data sent: Trial={trial}, Topic={topicId}, Article={articleId}");
+            var responseData = new
+            {
+                phase = 2,
+                articleCode = articleCode,
+                topicCode = topicCode,
+                agreement = agreement,
+                reactionTime = reactionTime,
+                scrollDepth = scrollDepth,
+                attentionCheck = attentionCheck,
+                attentionCheckRT = attentionRT,
+                timestamp = Time.time
+            };
+
+            string jsonData = JsonUtility.ToJson(responseData);
+            string[] sample = new string[] { jsonData };
+            double timestamp = LSL.LSL.local_clock();
+
+            responseOutlet.push_sample(sample, timestamp);
+
+            Debug.Log($"[LSL Response] Article {articleCode}: Agreement={agreement}, RT={reactionTime:F3}");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"[LSL] Failed to send article response: {e.Message}");
+        }
+    }
+
+    // ==== BEHAVIORAL DATA ====
+    public void SendBehavioralEvent(string eventType, Dictionary<string, object> eventData)
+    {
+        if (!isLSLActive || behavioralOutlet == null) return;
+
+        try
+        {
+            // Add event type and timestamp to data
+            eventData["eventType"] = eventType;
+            eventData["timestamp"] = Time.time;
+            eventData["realtime"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+            string jsonData = JsonUtility.ToJson(eventData);
+            string[] sample = new string[] { jsonData };
+            double timestamp = LSL.LSL.local_clock();
+
+            behavioralOutlet.push_sample(sample, timestamp);
+
+            Debug.Log($"[LSL Behavioral] {eventType}: {jsonData}");
         }
         catch (Exception e)
         {
@@ -182,17 +244,92 @@ public class LSLManager : MonoBehaviour
         }
     }
 
+    // ==== SPECIALIZED BEHAVIORAL EVENTS ====
+    public void SendArticleReadingBehavior(string articleCode, float dwellTime,
+                                          float scrollDepth, int backButtonCount = 0)
+    {
+        var data = new Dictionary<string, object>
+        {
+            ["articleCode"] = articleCode,
+            ["dwellTime"] = dwellTime,
+            ["scrollDepth"] = scrollDepth,
+            ["backButtonCount"] = backButtonCount
+        };
+
+        SendBehavioralEvent("ArticleReading", data);
+    }
+
+    public void SendTopicSelection(string topicName, int articlesReadInTopic)
+    {
+        var data = new Dictionary<string, object>
+        {
+            ["topic"] = topicName,
+            ["articlesRead"] = articlesReadInTopic
+        };
+
+        SendBehavioralEvent("TopicSelection", data);
+    }
+
+    public void SendRestBreak(string breakType, float duration)
+    {
+        var data = new Dictionary<string, object>
+        {
+            ["breakType"] = breakType,
+            ["duration"] = duration
+        };
+
+        SendBehavioralEvent("RestBreak", data);
+    }
+
+    // ==== LEGACY COMPATIBILITY (deprecate gradually) ====
+    public void SendLikertResponse(int phase, int itemId, int rating, float responseTime)
+    {
+        // Route to appropriate new method based on phase
+        if (phase == 1)
+        {
+            // For statements - need to extract topic/statement codes
+            string topicCode = $"T{itemId / 100:D2}";
+            string statementCode = $"S{itemId % 100:D2}";
+            SendStatementResponse(itemId, topicCode, statementCode, rating, responseTime);
+        }
+        else if (phase == 2)
+        {
+            // For articles
+            string articleCode = $"A{itemId:D3}";
+            SendArticleResponse(articleCode, "", rating, responseTime);
+        }
+    }
+
+    public void SendBehavioralData(int trial, int topicId, int articleId,
+                                  int biasType, float scrollPos, float dwellTime)
+    {
+        // Convert to new format
+        var data = new Dictionary<string, object>
+        {
+            ["trial"] = trial,
+            ["topicId"] = topicId,
+            ["articleId"] = articleId,
+            ["biasType"] = biasType,
+            ["scrollPosition"] = scrollPos,
+            ["dwellTime"] = dwellTime
+        };
+
+        SendBehavioralEvent("LegacyBehavior", data);
+    }
+
+    // ==== CLEANUP ====
     void OnDestroy()
     {
         if (isLSLActive)
         {
             SendMarker("EXPERIMENT_END");
 
-            // ✅ No more close_stream(), just null them
+            // Clean up outlets
             markerOutlet = null;
-            likertOutlet = null;
-            behaviorOutlet = null;
+            responseOutlet = null;
+            behavioralOutlet = null;
 
+            streamsInitialized = false;
             Debug.Log("[LSL] All streams closed");
         }
     }
@@ -203,5 +340,13 @@ public class LSLManager : MonoBehaviour
             SendMarker("APPLICATION_PAUSED");
         else
             SendMarker("APPLICATION_RESUMED");
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+            SendMarker("APPLICATION_LOST_FOCUS");
+        else
+            SendMarker("APPLICATION_GAINED_FOCUS");
     }
 }

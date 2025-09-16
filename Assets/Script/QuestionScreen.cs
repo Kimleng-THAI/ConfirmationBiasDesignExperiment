@@ -1,14 +1,13 @@
+// QuestionScreen.cs - Updated for Real-time LSL Streaming
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections.Generic;
-using LSL;
 
 public class QuestionScreen : MonoBehaviour
 {
     public GameObject blankOverlay;
-
     public TextMeshProUGUI conflictStatementText;
     public TextMeshProUGUI[] optionTexts;
 
@@ -18,6 +17,7 @@ public class QuestionScreen : MonoBehaviour
 
     public static float experimentStartTimeRealtime;
 
+    // Keep JSON backup system
     public static ParticipantData1 participantData = new ParticipantData1();
 
     private float questionStartTimeRealtime;
@@ -78,7 +78,6 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.GoForward.performed += OnAttentionCheckRight;
 
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
-        
 
         if (blankOverlay != null) blankOverlay.SetActive(false);
         if (transitionXText != null) transitionXText.gameObject.SetActive(false);
@@ -99,8 +98,6 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.GoForward.performed -= OnAttentionCheckRight;
 
         inputActions.UI.Disable();
-
-        
     }
 
     private void OnSelect1(InputAction.CallbackContext ctx) => RecordResponse("1");
@@ -140,7 +137,7 @@ public class QuestionScreen : MonoBehaviour
             }
         }
 
-        // ✅ Send LSL marker when statement is presented
+        // Send LSL marker when statement is presented
         LSLManager.Instance.SendMarker($"STATEMENT_PRESENTED_Q{index}_{q.topicCode}_{q.statementCode}");
     }
 
@@ -156,6 +153,20 @@ public class QuestionScreen : MonoBehaviour
         float rawReactionTime = Time.realtimeSinceStartup - questionStartTimeRealtime;
         tempSelectedOption = option;
 
+        // === REAL-TIME LSL STREAMING ===
+        // Send response immediately via LSL
+        LSLManager.Instance.SendStatementResponse(
+            currentQuestionIndex,
+            q.topicCode,
+            q.statementCode,
+            int.Parse(option),
+            rawReactionTime
+        );
+
+        // Send marker
+        LSLManager.Instance.SendMarker($"STATEMENT_RESPONSE_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
+
+        // === JSON BACKUP (keep existing system) ===
         participantData.responses.Add(new ResponseRecord
         {
             questionIndex = currentQuestionIndex,
@@ -165,7 +176,7 @@ public class QuestionScreen : MonoBehaviour
             agreementReactionTime = rawReactionTime.ToString("F3")
         });
 
-        Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement Selected Option: {tempSelectedOption} after {rawReactionTime:F3} seconds.");
+        Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | Agreement: {tempSelectedOption} after {rawReactionTime:F3} seconds.");
 
         float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
         float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
@@ -176,12 +187,6 @@ public class QuestionScreen : MonoBehaviour
             globalTimestamp = globalTimestamp,
             label = $"[QuestionScene]: Question: {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Agreement_Level: {option}"
         });
-
-        Debug.Log($"[QuestionScene]: Event marker logged — Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: Question_{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
-
-        // ✅ Send LSL marker and Likert response
-        LSLManager.Instance.SendMarker($"STATEMENT_RESPONSE_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_AGREEMENT_{option}");
-        LSLManager.Instance.SendLikertResponse(1, currentQuestionIndex, int.Parse(option), rawReactionTime);
 
         if (q.check != null)
         {
@@ -215,14 +220,14 @@ public class QuestionScreen : MonoBehaviour
 
         attentionCheckStartTimeRealtime = Time.realtimeSinceStartup;
 
-        // ✅ Send LSL marker for attention check presentation
+        // Send LSL marker for attention check presentation
         LSLManager.Instance.SendMarker($"ATTENTION_CHECK_PRESENTED_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}");
 
         if (attentionCheckTimerCoroutine != null) StopCoroutine(attentionCheckTimerCoroutine);
         attentionCheckTimerCoroutine = StartCoroutine(AttentionCheckTimer(q, 5f));
     }
 
-    private IEnumerator<WaitForSeconds> AttentionCheckTimer(Question q, float timeLimit)
+    private System.Collections.IEnumerator AttentionCheckTimer(Question q, float timeLimit)
     {
         float startTime = Time.realtimeSinceStartup;
 
@@ -267,6 +272,23 @@ public class QuestionScreen : MonoBehaviour
         float reactionTime = Time.realtimeSinceStartup - attentionCheckStartTimeRealtime;
         float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
+        // === REAL-TIME LSL STREAMING ===
+        // Update the previous response with attention check data
+        var q = currentAttentionCheckQuestion;
+        LSLManager.Instance.SendStatementResponse(
+            currentQuestionIndex,
+            q.topicCode,
+            q.statementCode,
+            int.Parse(tempSelectedOption),
+            0, // Already sent
+            response,
+            reactionTime
+        );
+
+        // Send marker
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}_{response}");
+
+        // === JSON BACKUP ===
         var lastResponse = participantData.responses[participantData.responses.Count - 1];
         lastResponse.attentionCheckResponse = response;
         lastResponse.attentionCheckReactionTime = reactionTime.ToString("F3");
@@ -275,13 +297,10 @@ public class QuestionScreen : MonoBehaviour
         {
             localTimestamp = reactionTime,
             globalTimestamp = globalTimestamp,
-            label = $"[AttentionCheck]: Question {currentQuestionIndex} | TopicCode: {currentAttentionCheckQuestion.topicCode} | StatementCode: {currentAttentionCheckQuestion.statementCode} | Response: {response}"
+            label = $"[AttentionCheck]: Question {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | Response: {response}"
         });
 
-        Debug.Log($"[AttentionCheck] Question {currentQuestionIndex}: {response} | LocalTimestamp: {reactionTime:F3}s | GlobalTimestamp: {globalTimestamp:F3}s");
-
-        // ✅ Send LSL marker for attention check response
-        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_Q{currentQuestionIndex}_{currentAttentionCheckQuestion.topicCode}_{currentAttentionCheckQuestion.statementCode}_{response}");
+        Debug.Log($"[AttentionCheck] Question {currentQuestionIndex}: {response} | RT: {reactionTime:F3}s");
     }
 
     private void EndAttentionCheck()
@@ -311,7 +330,7 @@ public class QuestionScreen : MonoBehaviour
         }
     }
 
-    private IEnumerator<WaitForSeconds> QuestionTimer()
+    private System.Collections.IEnumerator QuestionTimer()
     {
         yield return new WaitForSeconds(20f);
 
@@ -321,6 +340,20 @@ public class QuestionScreen : MonoBehaviour
 
             Debug.Log($"[Question {currentQuestionIndex}] {q.topicCode}-{q.statementCode} | No response within 20 seconds.");
 
+            // === REAL-TIME LSL STREAMING ===
+            LSLManager.Instance.SendStatementResponse(
+                currentQuestionIndex,
+                q.topicCode,
+                q.statementCode,
+                0, // No response
+                20.0f,
+                "NR",
+                5.0f
+            );
+
+            LSLManager.Instance.SendMarker($"STATEMENT_TIMEOUT_Q{currentQuestionIndex}_{q.topicCode}_{q.statementCode}");
+
+            // === JSON BACKUP ===
             float localTimestamp = Time.realtimeSinceStartup - questionStartTimeRealtime;
             float globalTimestamp = ExperimentTimer2.Instance.GetGlobalTimestamp();
 
@@ -342,10 +375,6 @@ public class QuestionScreen : MonoBehaviour
                 attentionCheckReactionTime = "5.000"
             });
 
-            LSLManager.Instance.SendMarker(
-                $"[QuestionScene]: Question {currentQuestionIndex} | TopicCode: {q.topicCode} | StatementCode: {q.statementCode} | RESPONSE: NO_RESPONSE"
-            );
-
             currentQuestionIndex++;
             ProceedToNext();
         }
@@ -364,10 +393,10 @@ public class QuestionScreen : MonoBehaviour
         foreach (var optionText in optionTexts)
             optionText.text = "";
 
-        // ✅ Send LSL marker for rest break start
+        // Send LSL marker and behavioral data
         LSLManager.Instance.SendMarker($"REST_BREAK_START_Q{currentQuestionIndex}");
 
-        // ✅ Record in participantData
+        // Record in participantData (JSON backup)
         participantData.eventMarkers.Add(new EventMarker
         {
             localTimestamp = 0f,
@@ -395,10 +424,11 @@ public class QuestionScreen : MonoBehaviour
 
         restBreakOverlay.SetActive(false);
 
-        // ✅ Send LSL marker for rest break end
+        // Send LSL data for rest break
         LSLManager.Instance.SendMarker($"REST_BREAK_END_Q{currentQuestionIndex}");
+        LSLManager.Instance.SendRestBreak("Phase1_Q20", restDuration);
 
-        // ✅ Record in participantData
+        // Record in participantData (JSON backup)
         participantData.eventMarkers.Add(new EventMarker
         {
             localTimestamp = restDuration,
@@ -409,7 +439,7 @@ public class QuestionScreen : MonoBehaviour
         LoadQuestion(currentQuestionIndex);
     }
 
-    private IEnumerator<WaitForSeconds> TransitionToNextQuestion()
+    private System.Collections.IEnumerator TransitionToNextQuestion()
     {
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
@@ -420,7 +450,7 @@ public class QuestionScreen : MonoBehaviour
         LoadQuestion(currentQuestionIndex);
     }
 
-    private IEnumerator<WaitForSeconds> TransitionToB4ArticleInstructionsScene()
+    private System.Collections.IEnumerator TransitionToB4ArticleInstructionsScene()
     {
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);

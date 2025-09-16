@@ -1,3 +1,4 @@
+// ArticleViewerManager.cs - Updated for Real-time LSL Streaming
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,7 +6,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using LSL;
 
 public class ArticleViewerManager : MonoBehaviour
 {
@@ -27,8 +27,7 @@ public class ArticleViewerManager : MonoBehaviour
 
     private float articleStartTime;
     private float articleElapsedTime = 0f;
-    // This is 5 minutes max reading time
-    private const float maxReadTime = 300f;
+    private const float maxReadTime = 300f; // 5 minutes max reading time
     private bool hasRespondedAgreement = false;
     private bool isRestBreakActive = false;
     private float restBreakStartTime = 0f;
@@ -37,6 +36,7 @@ public class ArticleViewerManager : MonoBehaviour
 
     private SelectedArticle currentArticle;
     private string currentArticleCode;
+    private string currentTopicCode;
 
     // Attention check fields
     private bool isAttentionCheckActive = false;
@@ -45,15 +45,19 @@ public class ArticleViewerManager : MonoBehaviour
 
     private bool hasShownFinalRestBreak = false;
     private int articlesReadSinceFinalRestBreak = 0;
-
     private bool isInFinalRestBreak = false;
 
     private Coroutine showAgreementPromptCoroutine;
 
-    // ADD: Scroll tracking
+    // Scroll tracking
     private float lastScrollPosition = 0f;
     private float maxScrollReached = 0f;
     private Coroutine scrollTrackingCoroutine;
+    private int scrollEventCount = 0;
+
+    // Reading behavior tracking
+    private float articleAgreementTime = 0f;
+    private float totalDwellTime = 0f;
 
     private List<string> requiredTopics = new List<string>
     {
@@ -86,8 +90,22 @@ public class ArticleViewerManager : MonoBehaviour
         // Get article code from PlayerPrefs
         currentArticleCode = PlayerPrefs.GetString("CurrentArticleCode", "");
 
-        // LSL: Send article read start marker
+        // Extract topic code from article code (e.g., T01A -> T01)
+        if (currentArticleCode.Length >= 3)
+        {
+            currentTopicCode = currentArticleCode.Substring(0, 3);
+        }
+
+        // === REAL-TIME LSL: Send article read start ===
         LSLManager.Instance.SendMarker($"ARTICLE_READ_START_{currentArticleCode}");
+
+        // Send behavioral event for article start
+        var startData = new Dictionary<string, object>
+        {
+            ["articleCode"] = currentArticleCode,
+            ["topicCode"] = currentTopicCode
+        };
+        LSLManager.Instance.SendBehavioralEvent("ArticleReadStart", startData);
 
         LoadCurrentArticle();
 
@@ -100,6 +118,7 @@ public class ArticleViewerManager : MonoBehaviour
         if (isRestBreakActive) return;
 
         articleElapsedTime = Time.realtimeSinceStartup - articleStartTime;
+        totalDwellTime = articleElapsedTime;
 
         if (articleElapsedTime >= maxReadTime)
         {
@@ -119,8 +138,6 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed += OnSelect4;
         inputActions.UI.Select5.performed += OnSelect5;
         inputActions.UI.Continue.performed += OnContinueRestBreak;
-        //inputActions.UI.Yes.performed += OnYesPressed;
-        //inputActions.UI.No.performed += OnNoPressed;
     }
 
     void OnDisable()
@@ -133,8 +150,6 @@ public class ArticleViewerManager : MonoBehaviour
         inputActions.UI.Select4.performed -= OnSelect4;
         inputActions.UI.Select5.performed -= OnSelect5;
         inputActions.UI.Continue.performed -= OnContinueRestBreak;
-        //inputActions.UI.Yes.performed -= OnYesPressed;
-        //inputActions.UI.No.performed -= OnNoPressed;
         inputActions.UI.Disable();
 
         if (scrollTrackingCoroutine != null)
@@ -155,7 +170,6 @@ public class ArticleViewerManager : MonoBehaviour
         }
     }
 
-    // ADD: Scroll tracking coroutine
     private IEnumerator TrackScrolling()
     {
         ScrollRect scrollRect = contentScrollView?.GetComponent<ScrollRect>();
@@ -166,193 +180,33 @@ public class ArticleViewerManager : MonoBehaviour
             float currentScroll = scrollRect.verticalNormalizedPosition;
 
             // Track max scroll depth
-            if (currentScroll < maxScrollReached) // Note: lower values mean scrolled down more
+            if (currentScroll < maxScrollReached) // Lower values = scrolled down more
+            {
                 maxScrollReached = currentScroll;
+            }
 
             // Send scroll event if significant change
             if (Mathf.Abs(currentScroll - lastScrollPosition) > 0.1f)
             {
-                LSLManager.Instance.SendMarker($"ARTICLE_SCROLL_POS{(1 - currentScroll):F2}");
+                scrollEventCount++;
+                float scrollDepth = 1 - currentScroll; // Convert to 0-1 where 1 is fully scrolled
+
+                // === REAL-TIME LSL: Send scroll behavior ===
+                if (scrollEventCount % 5 == 0) // Send every 5th scroll event to reduce noise
+                {
+                    var scrollData = new Dictionary<string, object>
+                    {
+                        ["articleCode"] = currentArticleCode,
+                        ["scrollDepth"] = scrollDepth,
+                        ["timeInArticle"] = Time.realtimeSinceStartup - articleStartTime
+                    };
+                    LSLManager.Instance.SendBehavioralEvent("ArticleScroll", scrollData);
+                }
+
                 lastScrollPosition = currentScroll;
             }
 
             yield return new WaitForSeconds(0.5f);
-        }
-    }
-
-    public void LoadArticle(SelectedArticle article)
-    {
-        currentArticle = article;
-        headlineText.text = article.headline;
-        contentText.text = article.content;
-        attentionCheckText.gameObject.SetActive(false);
-    }
-
-    public void StartAttentionCheck()
-    {
-        if (currentArticle == null)
-        {
-            Debug.LogWarning("[AttentionCheck] currentArticle is null. Cannot start attention check.");
-            return;
-        }
-
-        if (string.IsNullOrEmpty(currentArticle.attentionWord))
-        {
-            Debug.LogWarning($"[AttentionCheck] attentionWord is null or empty for article: {currentArticle.headline}. Using default.");
-            currentArticle.attentionWord = "IMPORTANT"; // Default word
-        }
-
-        isAttentionCheckActive = true;
-        attentionCheckStartTime = Time.time;
-
-        // Hide agreement prompt
-        if (agreementPromptText != null)
-            agreementPromptText.gameObject.SetActive(false);
-
-        //// Hide article headline and content
-        //if (headlineText != null) headlineText.gameObject.SetActive(false);
-        //if (contentText != null) contentText.gameObject.SetActive(false);
-        if (contentScrollView != null) contentScrollView.SetActive(false);
-
-        // Show attention check text
-        attentionCheckText.text =
-            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Right Arrow Key for YES, Left Arrow Key for NO";
-        attentionCheckText.gameObject.SetActive(true);
-
-        // LSL: Send attention check start marker
-        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_START_PHASE2_{currentArticleCode}");
-
-        Debug.Log($"[AttentionCheck] Started for article: {currentArticle.headline}, word: {currentArticle.attentionWord}");
-
-        // Stop any previous coroutine
-        if (attentionCheckTimeout != null)
-            StopCoroutine(attentionCheckTimeout);
-
-        attentionCheckTimeout = StartCoroutine(AttentionCheckTimeoutCoroutine());
-    }
-
-    //private void OnYesPressed(InputAction.CallbackContext context)
-    //{
-    //    if (isAttentionCheckActive)
-    //        HandleAttentionResponse("YES");
-    //}
-
-    //private void OnNoPressed(InputAction.CallbackContext context)
-    //{
-    //    if (isAttentionCheckActive)
-    //        HandleAttentionResponse("NO");
-    //}
-
-    private void HandleAttentionResponse(string response)
-    {
-        if (!isAttentionCheckActive || currentArticle == null) return; // Early exit if no active article
-
-        isAttentionCheckActive = false;
-
-        float reactionTime = Time.time - attentionCheckStartTime;
-        currentArticle.attentionCheckResponse = response;
-        currentArticle.attentionCheckReactionTime = reactionTime.ToString("F3");
-
-        // Determine correctness
-        string correctness = (response == currentArticle.attentionAnswer?.ToUpper()) ? "CORRECT" : "INCORRECT";
-
-        // LSL: Send attention check response
-        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_PHASE2_{correctness}_RT{reactionTime:F3}");
-
-        Debug.Log($"[AttentionCheck] Response: {response} | RT: {reactionTime:F3}s");
-
-        if (attentionCheckTimeout != null)
-        {
-            StopCoroutine(attentionCheckTimeout);
-            attentionCheckTimeout = null;
-        }
-
-        var tracker = ArticleSelectionTracker.Instance;
-        if (tracker == null)
-        {
-            Debug.LogWarning("[AttentionCheck] Tracker is null. Skipping further logic.");
-            attentionCheckText.gameObject.SetActive(false);
-            return;
-        }
-
-        // Determine if final rest break should start
-        bool minimumReadingsCompleted = tracker.HasReadMinimumPerFiveTopics() && tracker.GetTotalUniqueArticlesRead() >= 10;
-
-        if (!hasShownFinalRestBreak && minimumReadingsCompleted)
-        {
-            hasCompletedMinimumReadings = true;
-            hasShownFinalRestBreak = true;
-            LogEvent("[ArticleViewer]: Minimum readings completed. Triggering final rest break.", null, lastActionTime);
-            StartFinalRestBreak();
-            return; // Only final rest break can interrupt here
-        }
-
-        // Hide attention check UI
-        attentionCheckText.gameObject.SetActive(false);
-
-        // --- Normal rest break logic ---
-        if (!hasShownFinalRestBreak)
-        {
-            // Count total articles read
-            int totalUniqueArticles = tracker.selectedArticles.articles.Count;
-
-            // Show normal rest break every 10 articles
-            if (totalUniqueArticles % 10 == 0)
-            {
-                StartRestBreak();
-                return; // Prevent automatic return to TopicSelectorScene during normal rest break
-            }
-        }
-        else
-        {
-            // After final rest break, track articles read for subsequent breaks
-            articlesReadSinceFinalRestBreak++;
-
-            if (articlesReadSinceFinalRestBreak % 10 == 0)
-            {
-                StartRestBreak();
-                articlesReadSinceFinalRestBreak = 0;
-                return; // Prevent automatic return to TopicSelectorScene
-            }
-        }
-
-        // --- Transition back to TopicSelectorScene if no rest break ---
-        LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
-        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
-    }
-
-    // Helper function to get article ID from code
-    private int GetArticleIdFromCode(string articleCode)
-    {
-        // Extract numeric ID from article code (e.g., "T01A" -> 101)
-        if (articleCode.Length >= 4)
-        {
-            int topicNum = int.Parse(articleCode.Substring(1, 2));
-            char letter = articleCode[3];
-            return topicNum * 100 + (letter - 'A' + 1);
-        }
-        return 0;
-    }
-
-    private IEnumerator AttentionCheckTimeoutCoroutine()
-    {
-        yield return new WaitForSeconds(10f);
-
-        if (isAttentionCheckActive)
-        {
-            isAttentionCheckActive = false;
-            currentArticle.attentionCheckResponse = "NO_RESPONSE";
-            currentArticle.attentionCheckReactionTime = "TIMEOUT";
-
-            Debug.Log("[AttentionCheck] FAILED – Timeout (10s, no response)");
-
-            attentionCheckText.gameObject.SetActive(false);
-
-            // --- Transition back to TopicSelectorScene ---
-            LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
-            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            SceneManager.LoadScene("TransitionScene");
         }
     }
 
@@ -372,28 +226,40 @@ public class ArticleViewerManager : MonoBehaviour
         lastArticle.selectedOption = option;
         hasRespondedAgreement = true;
 
-        float prevActionTime = lastActionTime;
         float readingTime = Time.realtimeSinceStartup - articleStartTime;
+        articleAgreementTime = readingTime;
 
-        // LSL: Send article rating marker
-        LSLManager.Instance.SendMarker($"ARTICLE_RATING_{currentArticleCode}_R{option}");
+        // === REAL-TIME LSL STREAMING ===
+        // Send article response immediately
+        LSLManager.Instance.SendArticleResponse(
+            currentArticleCode,
+            currentTopicCode,
+            int.Parse(option),
+            readingTime,
+            1 - maxScrollReached  // Scroll depth
+        );
 
-        // LSL: Send Likert response (Phase 2)
-        int articleId = GetArticleIdFromCode(currentArticleCode);
-        LSLManager.Instance.SendLikertResponse(2, articleId, int.Parse(option), readingTime);
+        // Send marker
+        LSLManager.Instance.SendMarker($"ARTICLE_RATING_{currentArticleCode}_R{option}_TIME{readingTime:F1}");
 
+        // Send detailed behavioral data
+        LSLManager.Instance.SendArticleReadingBehavior(
+            currentArticleCode,
+            readingTime,
+            1 - maxScrollReached,
+            0  // backButtonCount - track if needed
+        );
+
+        // === JSON BACKUP (keep existing system) ===
         // Record ACTUAL response for bias comparison
         ExpectedVsActualBiasSystem.Instance.RecordActualResponse(
             currentArticleCode,
             int.Parse(option),
             readingTime,
-            1 - maxScrollReached  // Convert to 0-1 where 1 is fully scrolled
+            1 - maxScrollReached
         );
 
-        // LSL: Send article read end marker
-        LSLManager.Instance.SendMarker($"ARTICLE_READ_END_{currentArticleCode}_TIME{readingTime:F1}");
-
-        LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, prevActionTime);
+        LogEvent($"[ArticleViewer]: AgreementSelected: {option}", lastArticle.headline, lastActionTime);
 
         // Assign currentArticle for attention check
         currentArticle = lastArticle;
@@ -405,23 +271,230 @@ public class ArticleViewerManager : MonoBehaviour
         lastActionTime = Time.realtimeSinceStartup;
     }
 
-    private void OnBackKeyPressed(InputAction.CallbackContext ctx)
+    public void StartAttentionCheck()
     {
-        // 1. Attention check takes priority
-        if (isAttentionCheckActive)
+        if (currentArticle == null)
         {
-            HandleAttentionResponse("NO"); // Left Arrow = NO
+            Debug.LogWarning("[AttentionCheck] currentArticle is null. Cannot start attention check.");
             return;
         }
 
-        // 2. Final rest break logic
+        if (string.IsNullOrEmpty(currentArticle.attentionWord))
+        {
+            Debug.LogWarning($"[AttentionCheck] attentionWord is null or empty for article: {currentArticle.headline}. Using default.");
+            currentArticle.attentionWord = "IMPORTANT";
+        }
+
+        isAttentionCheckActive = true;
+        attentionCheckStartTime = Time.time;
+
+        // Hide agreement prompt and content
+        if (agreementPromptText != null)
+            agreementPromptText.gameObject.SetActive(false);
+        if (contentScrollView != null)
+            contentScrollView.SetActive(false);
+
+        // Show attention check text
+        attentionCheckText.text =
+            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Right Arrow Key for YES, Left Arrow Key for NO";
+        attentionCheckText.gameObject.SetActive(true);
+
+        // === REAL-TIME LSL ===
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_START_PHASE2_{currentArticleCode}");
+
+        Debug.Log($"[AttentionCheck] Started for article: {currentArticle.headline}, word: {currentArticle.attentionWord}");
+
+        if (attentionCheckTimeout != null)
+            StopCoroutine(attentionCheckTimeout);
+
+        attentionCheckTimeout = StartCoroutine(AttentionCheckTimeoutCoroutine());
+    }
+
+    private void HandleAttentionResponse(string response)
+    {
+        if (!isAttentionCheckActive || currentArticle == null) return;
+
+        isAttentionCheckActive = false;
+
+        float reactionTime = Time.time - attentionCheckStartTime;
+        currentArticle.attentionCheckResponse = response;
+        currentArticle.attentionCheckReactionTime = reactionTime.ToString("F3");
+
+        // Determine correctness
+        string correctness = (response == currentArticle.attentionAnswer?.ToUpper()) ? "CORRECT" : "INCORRECT";
+
+        // === REAL-TIME LSL ===
+        // Update article response with attention check data
+        LSLManager.Instance.SendArticleResponse(
+            currentArticleCode,
+            currentTopicCode,
+            int.Parse(currentArticle.selectedOption ?? "0"),
+            articleAgreementTime,
+            1 - maxScrollReached,
+            response,
+            reactionTime
+        );
+
+        LSLManager.Instance.SendMarker($"ATTENTION_CHECK_RESPONSE_PHASE2_{correctness}_RT{reactionTime:F3}");
+
+        Debug.Log($"[AttentionCheck] Response: {response} | RT: {reactionTime:F3}s");
+
+        if (attentionCheckTimeout != null)
+        {
+            StopCoroutine(attentionCheckTimeout);
+            attentionCheckTimeout = null;
+        }
+
+        // === Handle rest breaks and transitions ===
+        var tracker = ArticleSelectionTracker.Instance;
+        if (tracker == null)
+        {
+            Debug.LogWarning("[AttentionCheck] Tracker is null. Skipping further logic.");
+            attentionCheckText.gameObject.SetActive(false);
+            return;
+        }
+
+        // Determine if final rest break should start
+        bool minimumReadingsCompleted = tracker.HasReadMinimumPerFiveTopics() && tracker.GetTotalUniqueArticlesRead() >= 10;
+
+        if (!hasShownFinalRestBreak && minimumReadingsCompleted)
+        {
+            hasCompletedMinimumReadings = true;
+            hasShownFinalRestBreak = true;
+            LogEvent("[ArticleViewer]: Minimum readings completed. Triggering final rest break.", null, lastActionTime);
+            StartFinalRestBreak();
+            return;
+        }
+
+        // Hide attention check UI
+        attentionCheckText.gameObject.SetActive(false);
+
+        // Normal rest break logic
+        if (!hasShownFinalRestBreak)
+        {
+            int totalUniqueArticles = tracker.selectedArticles.articles.Count;
+
+            if (totalUniqueArticles % 10 == 0)
+            {
+                StartRestBreak();
+                return;
+            }
+        }
+        else
+        {
+            articlesReadSinceFinalRestBreak++;
+
+            if (articlesReadSinceFinalRestBreak % 10 == 0)
+            {
+                StartRestBreak();
+                articlesReadSinceFinalRestBreak = 0;
+                return;
+            }
+        }
+
+        // Transition back to TopicSelectorScene
+        LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
+        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+        SceneManager.LoadScene("TransitionScene");
+    }
+
+    private IEnumerator AttentionCheckTimeoutCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+
+        if (isAttentionCheckActive)
+        {
+            isAttentionCheckActive = false;
+            currentArticle.attentionCheckResponse = "NO_RESPONSE";
+            currentArticle.attentionCheckReactionTime = "TIMEOUT";
+
+            // === REAL-TIME LSL ===
+            LSLManager.Instance.SendArticleResponse(
+                currentArticleCode,
+                currentTopicCode,
+                int.Parse(currentArticle.selectedOption ?? "0"),
+                articleAgreementTime,
+                1 - maxScrollReached,
+                "TIMEOUT",
+                10f
+            );
+
+            Debug.Log("[AttentionCheck] FAILED - Timeout (10s, no response)");
+
+            attentionCheckText.gameObject.SetActive(false);
+
+            // Transition back
+            LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
+            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
+            SceneManager.LoadScene("TransitionScene");
+        }
+    }
+
+    private void StartRestBreak()
+    {
+        isRestBreakActive = true;
+        restBreakStartTime = Time.realtimeSinceStartup;
+
+        // === REAL-TIME LSL ===
+        LSLManager.Instance.SendMarker("REST_BREAK_START_PHASE2");
+
+        if (agreementPromptText != null)
+            agreementPromptText.gameObject.SetActive(false);
+
+        if (attentionCheckText != null)
+            attentionCheckText.gameObject.SetActive(false);
+
+        if (restBreakPanel != null)
+        {
+            restBreakPanel.SetActive(true);
+            if (restBreakText != null)
+                restBreakText.text = $"Rest Break!\nPress SPACE to continue.";
+        }
+
+        LogEvent("RestBreakStarted", null, restBreakStartTime);
+    }
+
+    private void StartFinalRestBreak()
+    {
+        isRestBreakActive = true;
+        isInFinalRestBreak = true;
+        restBreakStartTime = Time.realtimeSinceStartup;
+
+        // === REAL-TIME LSL ===
+        LSLManager.Instance.SendMarker("FINAL_REST_BREAK_START");
+
+        if (agreementPromptText != null)
+            agreementPromptText.gameObject.SetActive(false);
+
+        if (attentionCheckText != null)
+            attentionCheckText.gameObject.SetActive(false);
+
+        if (restBreakPanel != null)
+        {
+            restBreakPanel.SetActive(true);
+            if (restBreakText != null)
+                restBreakText.text = $"You have completed the required readings.\nPress LEFT to read more, or RIGHT to end the experiment.";
+        }
+
+        LogEvent("FinalRestBreakStarted", null, restBreakStartTime);
+    }
+
+    private void OnBackKeyPressed(InputAction.CallbackContext ctx)
+    {
+        if (isAttentionCheckActive)
+        {
+            HandleAttentionResponse("NO");
+            return;
+        }
+
         if (isRestBreakActive && isInFinalRestBreak)
         {
             float restDuration = Time.realtimeSinceStartup - restBreakStartTime;
 
-            // Add the rest duration to global experiment timer
-            ExperimentTimer.Instance.AddToExperimentTime(restDuration);
+            // === REAL-TIME LSL ===
+            LSLManager.Instance.SendRestBreak("FinalRestBreak_ContinueReading", restDuration);
 
+            ExperimentTimer.Instance.AddToExperimentTime(restDuration);
             articleStartTime += restDuration;
             lastActionTime += restDuration;
 
@@ -430,42 +503,36 @@ public class ArticleViewerManager : MonoBehaviour
             restBreakPanel?.SetActive(false);
 
             LogEvent("FinalRestBreakEnded_LeftArrow", null, restBreakStartTime);
-
             lastActionTime = Time.realtimeSinceStartup;
 
-            // Return to TopicSelectorScene to read more articles
             PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
             SceneManager.LoadScene("TransitionScene");
             return;
         }
 
-        // 3. Normal behavior for going back before agreement
         if (!hasRespondedAgreement)
         {
             ShowTemporaryPromptMessage("Please select your level of agreement before going back.");
             return;
         }
-
-        // Optional: add other back navigation logic here if needed
     }
 
     private void OnForwardKeyPressed(InputAction.CallbackContext ctx)
     {
-        // 1. Attention check takes priority
         if (isAttentionCheckActive)
         {
-            HandleAttentionResponse("YES"); // Right Arrow = YES
+            HandleAttentionResponse("YES");
             return;
         }
 
-        // 2. Final rest break logic
         if (isRestBreakActive && isInFinalRestBreak)
         {
             float restDuration = Time.realtimeSinceStartup - restBreakStartTime;
 
-            // Add the rest duration to global experiment timer
-            ExperimentTimer.Instance.AddToExperimentTime(restDuration);
+            // === REAL-TIME LSL ===
+            LSLManager.Instance.SendRestBreak("FinalRestBreak_EndExperiment", restDuration);
 
+            ExperimentTimer.Instance.AddToExperimentTime(restDuration);
             articleStartTime += restDuration;
             lastActionTime += restDuration;
 
@@ -474,39 +541,33 @@ public class ArticleViewerManager : MonoBehaviour
             restBreakPanel?.SetActive(false);
 
             LogEvent("FinalRestBreakEnded_RightArrow", null, restBreakStartTime);
-
             lastActionTime = Time.realtimeSinceStartup;
 
-            // Proceed to end of experiment (SurveyScene)
+            // Proceed to end of experiment
             PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
             SceneManager.LoadScene("TransitionScene");
             return;
         }
 
-        // 3. Normal behavior for forward arrow before agreement
         if (!hasRespondedAgreement)
         {
             ShowTemporaryPromptMessage("Please select your level of agreement before proceeding.");
             return;
         }
-
-        // Optional: add other forward navigation logic here if needed
     }
 
     private void OnContinueRestBreak(InputAction.CallbackContext ctx)
     {
         if (!isRestBreakActive) return;
 
-        // Only handle normal rest breaks here (not final rest break)
         if (!isInFinalRestBreak)
         {
-            // Calculate how long the participant was resting
             float restDuration = Time.realtimeSinceStartup - restBreakStartTime;
 
-            // Add this rest duration to the global experiment timer
-            ExperimentTimer.Instance.AddToExperimentTime(restDuration);
+            // === REAL-TIME LSL ===
+            LSLManager.Instance.SendRestBreak("NormalRestBreak", restDuration);
 
-            // Adjust local timers so the article reading resumes correctly
+            ExperimentTimer.Instance.AddToExperimentTime(restDuration);
             articleStartTime += restDuration;
             lastActionTime += restDuration;
 
@@ -514,14 +575,14 @@ public class ArticleViewerManager : MonoBehaviour
             restBreakPanel?.SetActive(false);
 
             LogEvent("RestBreakEnded", null, restBreakStartTime);
-
             lastActionTime = Time.realtimeSinceStartup;
 
-            // Go back to TopicSelectorScene
             PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
             SceneManager.LoadScene("TransitionScene");
         }
     }
+
+    // ... [Keep all other helper methods like ShowTemporaryPromptMessage, LoadCurrentArticle, etc.] ...
 
     private void ShowTemporaryPromptMessage(string message)
     {
@@ -532,7 +593,7 @@ public class ArticleViewerManager : MonoBehaviour
         }
     }
 
-    private IEnumerator<WaitForSeconds> ShowTemporaryPrompt(TextMeshProUGUI prompt, string warningText)
+    private IEnumerator ShowTemporaryPrompt(TextMeshProUGUI prompt, string warningText)
     {
         string originalText = prompt.text;
         prompt.text = warningText;
@@ -554,7 +615,6 @@ public class ArticleViewerManager : MonoBehaviour
         var tracker = ArticleSelectionTracker.Instance;
         hasRespondedAgreement = false;
 
-        // Stop any existing coroutine
         if (showAgreementPromptCoroutine != null)
         {
             StopCoroutine(showAgreementPromptCoroutine);
@@ -568,18 +628,9 @@ public class ArticleViewerManager : MonoBehaviour
             headlineText.text = lastArticle.headline;
             contentText.text = lastArticle.content;
 
-            //if (agreementPromptText != null)
-            //{
-            //    agreementPromptText.text = "To what extent does the article align with your pre-existing beliefs or expectations?\n" +
-            //                               "1 - Strong Misalignment\n2 - Misalignment\n3 - Neutral\n4 - Alignment\n5 - Strong Alignment";
-            //    agreementPromptText.gameObject.SetActive(true);
-            //}
-
-            // Hide initially
             if (agreementPromptText != null)
                 agreementPromptText.gameObject.SetActive(false);
 
-            // Start coroutine to show after 10 seconds
             showAgreementPromptCoroutine = StartCoroutine(ShowAgreementPromptAfterDelay(10f));
         }
         else
@@ -605,55 +656,6 @@ public class ArticleViewerManager : MonoBehaviour
         }
     }
 
-    private void StartRestBreak()
-    {
-        isRestBreakActive = true;
-        restBreakStartTime = Time.realtimeSinceStartup;
-
-        // LSL: Send rest break marker
-        LSLManager.Instance.SendMarker("REST_BREAK_START_PHASE2");
-
-        if (agreementPromptText != null)
-            agreementPromptText.gameObject.SetActive(false);
-
-        if (attentionCheckText != null) // Hide attention check explicitly
-            attentionCheckText.gameObject.SetActive(false);
-
-        if (restBreakPanel != null)
-        {
-            restBreakPanel.SetActive(true);
-            if (restBreakText != null)
-                restBreakText.text = $"Rest Break!\nPress SPACE to continue.";
-        }
-
-        LogEvent("RestBreakStarted", null, restBreakStartTime);
-    }
-
-    private void StartFinalRestBreak()
-    {
-        isRestBreakActive = true;
-        isInFinalRestBreak = true;
-        restBreakStartTime = Time.realtimeSinceStartup;
-
-        // LSL: Send final rest break marker
-        LSLManager.Instance.SendMarker("FINAL_REST_BREAK_START");
-
-        if (agreementPromptText != null)
-            agreementPromptText.gameObject.SetActive(false);
-
-        if (attentionCheckText != null) // Hide attention check explicitly
-            attentionCheckText.gameObject.SetActive(false);
-
-        if (restBreakPanel != null)
-        {
-            restBreakPanel.SetActive(true);
-            if (restBreakText != null)
-                restBreakText.text = $"You have completed the required readings.\nPress LEFT to read more, or RIGHT to end the experiment.";
-        }
-
-        LogEvent("FinalRestBreakStarted", null, restBreakStartTime);
-    }
-
     private void AutoProceed()
     {
         if (isRestBreakActive) return;
@@ -666,6 +668,7 @@ public class ArticleViewerManager : MonoBehaviour
 
     private void LogEvent(string label, string headline = null, float timestampReference = 0f)
     {
+        // Keep JSON backup logging
         if (QuestionScreen.participantData == null) return;
 
         float localTimestamp = Time.realtimeSinceStartup - timestampReference;
@@ -684,7 +687,6 @@ public class ArticleViewerManager : MonoBehaviour
             if (!string.IsNullOrEmpty(currentArticle.linkedStatement))
                 fullLabel += $" | LinkedStatement: {currentArticle.linkedStatement}";
 
-            // ADD: attention check response
             if (!string.IsNullOrEmpty(currentArticle.attentionCheckResponse))
                 fullLabel += $" | AttentionCheckResponse: {currentArticle.attentionCheckResponse}";
         }
