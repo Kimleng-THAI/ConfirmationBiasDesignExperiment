@@ -16,7 +16,6 @@ public class QuestionScreen : MonoBehaviour
     private static int currentQuestionIndex = 0;
     private List<Question> questions;
 
-    private Coroutine eegCoroutine;
     public static float experimentStartTimeRealtime;
 
     public static ParticipantData1 participantData = new ParticipantData1();
@@ -79,7 +78,7 @@ public class QuestionScreen : MonoBehaviour
         inputActions.UI.GoForward.performed += OnAttentionCheckRight;
 
         experimentStartTimeRealtime = Time.realtimeSinceStartup;
-        eegCoroutine = StartCoroutine(SimulatePhysiologicalData());
+        
 
         if (blankOverlay != null) blankOverlay.SetActive(false);
         if (transitionXText != null) transitionXText.gameObject.SetActive(false);
@@ -101,7 +100,7 @@ public class QuestionScreen : MonoBehaviour
 
         inputActions.UI.Disable();
 
-        if (eegCoroutine != null) StopCoroutine(eegCoroutine);
+        
     }
 
     private void OnSelect1(InputAction.CallbackContext ctx) => RecordResponse("1");
@@ -429,35 +428,5 @@ public class QuestionScreen : MonoBehaviour
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("B4ArticleInstructionsScene");
-    }
-
-    private IEnumerator<WaitForSeconds> SimulatePhysiologicalData()
-    {
-        int heartRateStep = 0;
-
-        while (true)
-        {
-            float timestamp = Time.realtimeSinceStartup - experimentStartTimeRealtime;
-
-            float microvolts = Random.Range(10f, 100f);
-            participantData.eegReadings.Add(new EEGReading
-            {
-                timestamp = timestamp,
-                microvolts = microvolts
-            });
-
-            if (heartRateStep % 10 == 0)
-            {
-                float bpm = Random.Range(60f, 100f);
-                participantData.heartRateReadings.Add(new HeartRateReading
-                {
-                    timestamp = timestamp,
-                    bpm = bpm
-                });
-            }
-
-            heartRateStep++;
-            yield return new WaitForSeconds(0.1f);
-        }
     }
 }

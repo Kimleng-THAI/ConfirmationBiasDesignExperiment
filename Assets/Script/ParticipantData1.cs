@@ -28,8 +28,6 @@ public class ParticipantData1
     public string thankYouSceneDuration;
 
     public List<ResponseRecord> responses = new List<ResponseRecord>();
-    public List<EEGReading> eegReadings = new List<EEGReading>();
-    public List<HeartRateReading> heartRateReadings = new List<HeartRateReading>();
 
     public int totalReadArticleClicks;
     public string selectedFinalTopic;
@@ -50,22 +48,4 @@ public class ResponseRecord
     public string agreementReactionTime;
     public string attentionCheckResponse;
     public string attentionCheckReactionTime;
-}
-
-[Serializable]
-public class EEGReading
-{
-    // in seconds since experiment start
-    public float timestamp;
-    // simulated EEG signal strength
-    public float microvolts;
-}
-
-[Serializable]
-public class HeartRateReading
-{
-    // in seconds since experiment start
-    public float timestamp;
-    // beats per minute
-    public float bpm;
 }
