@@ -125,9 +125,11 @@ public class QuestionScreen : MonoBehaviour
 
         var q = questions[index];
         conflictStatementText.gameObject.SetActive(true);
-        //conflictStatementText.text = $"<color=#000000><b>{q.topic}</b></color>\n\n{q.statement}";
         conflictStatementText.text = $"\n\n{q.statement}";
 
+        // ✅ Force font size for statement
+        conflictStatementText.enableAutoSizing = false;
+        conflictStatementText.fontSize = 40; // adjust as you like
 
         for (int i = 0; i < optionTexts.Length; i++)
         {
@@ -135,6 +137,10 @@ public class QuestionScreen : MonoBehaviour
             {
                 optionTexts[i].gameObject.SetActive(true);
                 optionTexts[i].text = q.options[i];
+
+                // ✅ Force font size for options
+                optionTexts[i].enableAutoSizing = false;
+                optionTexts[i].fontSize = 36; // adjust as you like
             }
             else
             {
