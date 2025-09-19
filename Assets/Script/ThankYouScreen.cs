@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using System.IO;
+using System.Collections.Generic;
 using LSL;
 
 public class ThankYouScreen : MonoBehaviour
@@ -61,22 +62,11 @@ public class ThankYouScreen : MonoBehaviour
         {
             // Assign full list of selected articles to participantData
             QuestionScreen.participantData.selectedArticles = fullArticleList.articles;
-
-            // Optionally, also update participantData's last article headline/content/topic fields for convenience
-            //SelectedArticle lastArticle = fullArticleList.articles[^1];
-            //QuestionScreen.participantData.selectedArticleHeadline = lastArticle.headline;
-            //QuestionScreen.participantData.selectedArticleContent = lastArticle.content;
-            //if (!string.IsNullOrEmpty(lastArticle.topic))
-            //{
-            //    QuestionScreen.participantData.selectedTopic = lastArticle.topic;
-            //}
         }
         else
         {
             // No articles found - clear or set default messages
             QuestionScreen.participantData.selectedArticles = new System.Collections.Generic.List<SelectedArticle>();
-            //QuestionScreen.participantData.selectedArticleHeadline = "No article selected";
-            //QuestionScreen.participantData.selectedArticleContent = "No content available";
         }
 
         // 3. Record thank you screen duration
@@ -102,22 +92,33 @@ public class ThankYouScreen : MonoBehaviour
 
         QuestionScreen.participantData.experimentEndTime = sydneyTime.ToString("yyyy-MM-dd HH:mm:ss") + " AEST";
 
-        // 5. Calculate total experiment duration
+        // --- IMPORTANT: retrieve subjectNumber BEFORE using it in the summary ---
+        string subjectNumber = PlayerPrefs.GetString("SubjectNumber", "unknown");
+        QuestionScreen.participantData.subjectNumber = subjectNumber;
+        Debug.Log($"[ThankYouScreen]: Stored subject number: {subjectNumber}");
+
+        // 5. Calculate total experiment duration and send summary via LSL
         if (DateTime.TryParse(QuestionScreen.participantData.experimentStartTime.Replace(" AEST", ""), out DateTime startTime))
         {
             TimeSpan totalDuration = sydneyTime - startTime;
             QuestionScreen.participantData.duration = $"{(int)totalDuration.TotalMinutes} minutes and {totalDuration.Seconds} seconds";
             Debug.Log($"Experiment duration: {QuestionScreen.participantData.duration}");
+
+            // ✅ Send summary behavioral event via LSL
+            var summaryData = new Dictionary<string, object>
+            {
+                ["participantId"] = subjectNumber,
+                ["totalDuration"] = totalDuration.TotalSeconds,
+                ["totalStatements"] = QuestionScreen.participantData.responses.Count,
+                ["totalArticles"] = QuestionScreen.participantData.selectedArticles.Count,
+                ["selectedFinalTopic"] = selectedTopic
+            };
+            LSLManager.Instance.SendBehavioralEvent("ExperimentSummary", summaryData);
         }
         else
         {
             Debug.LogWarning("Could not parse experimentStartTime.");
         }
-
-        // 6 Store subject number from DeveloperInputScene
-        string subjectNumber = PlayerPrefs.GetString("SubjectNumber", "unknown");
-        QuestionScreen.participantData.subjectNumber = subjectNumber;
-        Debug.Log($"[ThankYouScreen]: Stored subject number: {subjectNumber}");
 
         // 7. Save participant data to JSON
         string jsonOutput = JsonUtility.ToJson(QuestionScreen.participantData, true);

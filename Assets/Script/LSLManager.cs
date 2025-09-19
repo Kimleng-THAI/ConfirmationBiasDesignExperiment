@@ -63,6 +63,12 @@ public class LSLManager : MonoBehaviour
 
     void InitializeLSLStreams()
     {
+        // Prevent duplicate initialization
+        if (markerOutlet != null || responseOutlet != null || behavioralOutlet != null)
+        {
+            Debug.LogWarning("[LSL] Streams already initialized. Skipping duplicate initialization.");
+            return;
+        }
         try
         {
             string uniqueId = SystemInfo.deviceUniqueIdentifier;
