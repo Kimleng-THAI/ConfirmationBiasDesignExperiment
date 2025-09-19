@@ -250,6 +250,20 @@ public class LSLManager : MonoBehaviour
         }
     }
 
+    // ==== BIOSIGNAL SYNCHRONIZATION MARKERS ====
+    public void SendBiosignalSyncMarker(string eventType, string details = "")
+    {
+        string marker = $"BIOSYNC_{eventType}";
+        if (!string.IsNullOrEmpty(details))
+            marker += $"_{details}";
+        SendMarker(marker);
+    }
+
+    public void SendStimulusOnsetMarker(string stimulusType, string stimulusCode)
+    {
+        SendBiosignalSyncMarker($"STIMULUS_ONSET_{stimulusType}_{stimulusCode}");
+    }
+
     // ==== SPECIALIZED BEHAVIORAL EVENTS ====
     public void SendArticleReadingBehavior(string articleCode, float dwellTime,
                                           float scrollDepth, int backButtonCount = 0)

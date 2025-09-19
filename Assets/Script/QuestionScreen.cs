@@ -139,6 +139,9 @@ public class QuestionScreen : MonoBehaviour
 
         // Send LSL marker when statement is presented
         LSLManager.Instance.SendMarker($"STATEMENT_PRESENTED_Q{index}_{q.topicCode}_{q.statementCode}");
+
+        // Send biosignal sync marker for stimulus onset
+        LSLManager.Instance.SendStimulusOnsetMarker("STATEMENT", $"{q.topicCode}_{q.statementCode}");
     }
 
     private void RecordResponse(string option)

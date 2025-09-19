@@ -99,6 +99,9 @@ public class ArticleViewerManager : MonoBehaviour
         // === REAL-TIME LSL: Send article read start ===
         LSLManager.Instance.SendMarker($"ARTICLE_READ_START_{currentArticleCode}");
 
+        // Send biosignal sync marker for stimulus onset
+        LSLManager.Instance.SendStimulusOnsetMarker("ARTICLE", currentArticleCode);
+
         // Send behavioral event for article start
         var startData = new Dictionary<string, object>
         {
