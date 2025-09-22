@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // needed for TextMeshPro
+using TMPro;
 
 public class SceneTransitionManager : MonoBehaviour
 {

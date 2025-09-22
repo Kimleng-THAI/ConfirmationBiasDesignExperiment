@@ -24,12 +24,12 @@ public class B4ArticleInstructionsScene : MonoBehaviour
         {
             instructionText.text =
                 instructionText.text =
-            "You have now completed the first part of the experiment!\n\n" +
-            "In the next phase, you will choose articles from different topics to read.\n" +
-            "After reading each article, you will rate your level of agreement and then complete a short attention check.\n\n" +
-            "You may read as many articles as you wish; however, an option will be provided to end the experiment once ten articles in total have been read (for example, two articles for five topics).\n\n" +
-            "After this instruction, a short demonstration video will show you how the experiment works.\n\n" +
-            "Press SPACE to see the demonstration video.";
+            "You have now completed phase one of the experiment!\n\n" +
+            "In phase two, you will choose articles from different topics to read.\n\n" +
+            "After reading each article, you will rate your level of agreement and then complete a short quiz.\n\n" +
+            "You will be given an option once you have read at least 2 articles from each topic and a total of 10 articles overall.\n\n" +
+            "After this instruction, a short demonstration screenshot will show you how the phase two works.\n\n" +
+            "Press Spacebar to see the demonstration screenshot.";
         }
     }
 
@@ -55,7 +55,7 @@ public class B4ArticleInstructionsScene : MonoBehaviour
     {
         LogEvent("B4ArticleInstructionsScene_CONTINUE_PRESSED");
         PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleInstructionsScene");
-        SceneManager.LoadScene("TransitionScene");
+        //SceneManager.LoadScene("TransitionScene");
     }
 
     private void LogEvent(string label)

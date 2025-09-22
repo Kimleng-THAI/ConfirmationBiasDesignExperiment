@@ -329,9 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a258f4256d8e4a0a9555dca761e0812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDelay: 1
+  transitionDelay: 2
   transitionText: {fileID: 1561465814}
-  blinkSpeed: 1
 --- !u!4 &1231651533
 Transform:
   m_ObjectHideFlags: 0
@@ -520,7 +519,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_BackGroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

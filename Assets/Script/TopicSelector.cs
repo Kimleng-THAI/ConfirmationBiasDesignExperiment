@@ -136,7 +136,7 @@ public class TopicSelector : MonoBehaviour
 
         // Load next scene
         PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
+        //SceneManager.LoadScene("TransitionScene");
     }
 
     public void AdjustSceneStartTimeForRest(float restDuration)

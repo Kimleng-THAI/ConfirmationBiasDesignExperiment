@@ -37,8 +37,8 @@ public class ArticleInstructionsManager : MonoBehaviour
                 captions.Add("Select a topic from the dropdown, and click Continue button.");
                 captions.Add("Scroll down and choose an article.");
                 captions.Add("Read the article carefully.");
-                captions.Add("Provide us your agreement rating (e.g., Press 1 for Strong Misalignment.");
-                captions.Add("Answer the attention check.\n\n Press SPACE to confirm you understand the images demonstration.");
+                captions.Add("Provide us your rating (e.g., Press 1 for Strong Misalignment, or Press 5 for Strong Alignment).");
+                captions.Add("Answer the short quiz.\n\n Press Spacebar to confirm you understand the demonstration screenshot.");
             }
         }
 
@@ -84,7 +84,7 @@ public class ArticleInstructionsManager : MonoBehaviour
             // Finished all instructions
             LogEvent("ArticleInstructions_FINISHED");
             PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            SceneManager.LoadScene("TransitionScene");
+            //SceneManager.LoadScene("TransitionScene");
         }
     }
 

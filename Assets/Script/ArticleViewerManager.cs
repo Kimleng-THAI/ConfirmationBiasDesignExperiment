@@ -398,7 +398,7 @@ public class ArticleViewerManager : MonoBehaviour
         // Transition back to TopicSelectorScene
         LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
         PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
+        //SceneManager.LoadScene("TransitionScene");
     }
 
     private IEnumerator AttentionCheckTimeoutCoroutine()
@@ -429,7 +429,7 @@ public class ArticleViewerManager : MonoBehaviour
             // Transition back
             LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
             PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            SceneManager.LoadScene("TransitionScene");
+            //SceneManager.LoadScene("TransitionScene");
         }
     }
 
@@ -451,7 +451,7 @@ public class ArticleViewerManager : MonoBehaviour
         {
             restBreakPanel.SetActive(true);
             if (restBreakText != null)
-                restBreakText.text = $"Rest Break!\nPress SPACE to continue.";
+                restBreakText.text = $"Rest Break!\nPress Spacebar to continue.";
         }
 
         LogEvent("RestBreakStarted", null, restBreakStartTime);
@@ -509,7 +509,7 @@ public class ArticleViewerManager : MonoBehaviour
             lastActionTime = Time.realtimeSinceStartup;
 
             PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            SceneManager.LoadScene("TransitionScene");
+            //SceneManager.LoadScene("TransitionScene");
             return;
         }
 
@@ -548,7 +548,7 @@ public class ArticleViewerManager : MonoBehaviour
 
             // Proceed to end of experiment
             PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
-            SceneManager.LoadScene("TransitionScene");
+            //SceneManager.LoadScene("TransitionScene");
             return;
         }
 
@@ -581,7 +581,7 @@ public class ArticleViewerManager : MonoBehaviour
             lastActionTime = Time.realtimeSinceStartup;
 
             PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            SceneManager.LoadScene("TransitionScene");
+            //SceneManager.LoadScene("TransitionScene");
         }
     }
 

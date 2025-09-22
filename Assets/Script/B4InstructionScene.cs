@@ -7,7 +7,7 @@ public class B4InstructionScene : MonoBehaviour
     private PlayerInputActions inputActions;
 
     [Header("Next Scene")]
-    [Tooltip("Name of the scene to load after pressing SPACE.")]
+    [Tooltip("Name of the scene to load after pressing Spacebar.")]
     public string nextSceneName = "DemoScene";
 
     void Awake()

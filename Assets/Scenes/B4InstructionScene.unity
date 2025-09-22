@@ -315,7 +315,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -529,7 +529,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 50}
+  m_SizeDelta: {x: 1300, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622302927
 MonoBehaviour:
@@ -551,14 +551,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "WELCOME TO THE EXPERIMENT\n\n\n\nYou will see 60 statements about different
-    topics.\n\nFor each statement:\n\nRate how much you agree or disagree on a scale
-    from 1 to 5, where 1 = strongly disagree and 5 = strongly agree.\n\nTake your
-    time and respond honestly \u2013 there are no right or wrong answers.\n\nFocus
-    on the center of the screen whenever an X appears.\n\nRest breaks will occur
-    every 20 statements.\n\nAfter this instruction, a short demonstration video will
-    show you how the experiment works.\n\n\n\nPress SPACE to see a short demonstration
-    video"
+  m_text: "Welcome to the Experiment\n\n\nHere\u2019s how it works:\n\nPress the
+    Spacebar to move to the next scene.\n\nPress the Left Arrow Key for No.\n\nPress
+    the Right Arrow Key for Yes.\n\nPress 1, 2, 3, 4, or 5 for rating, where 1 =
+    Strongly Disagree and 5 = Strongly Agree.\n\nYou will see 60 statements about
+    different topics.\n\nTake your time and respond honestly \u2013 there are no
+    right or wrong answers.\n\nWhenever an X appears, keep your focus at the center
+    of the screen.\n\nYou will have rest breaks after every 20 statements.\n\nAfter
+    this instruction, a short demonstration video will show you how the experiment
+    works."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -567,8 +568,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

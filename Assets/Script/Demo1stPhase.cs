@@ -64,7 +64,7 @@ public class Demo1stPhase : MonoBehaviour
         // Show prompt to continue
         if (continuePromptText != null)
         {
-            continuePromptText.text = "Press SPACE to confirm you understand the video demonstration.";
+            continuePromptText.text = "Press Spacebar to confirm you understand the video demonstration.";
             continuePromptText.gameObject.SetActive(true);
         }
     }

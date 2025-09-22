@@ -216,8 +216,8 @@ public class QuestionScreen : MonoBehaviour
         if (attentionCheckText != null)
         {
             attentionCheckText.text =
-                $"Did the statement contain the word '{q.check.word}'?\n\n" +
-                "<size=80%><color=#FFFFFF>Press LEFT ARROW KEY = No, RIGHT ARROW KEY = Yes</color></size>";
+                $"Did the statement contain the word '{q.check.word}'?\n\n\n" +
+                "<size=80%><color=#000000>Press Left Arrow Key = No, Right Arrow Key = Yes</color></size>";
             attentionCheckText.gameObject.SetActive(true);
         }
 
@@ -391,7 +391,7 @@ public class QuestionScreen : MonoBehaviour
         ExperimentTimer2.Instance.StartRest();
 
         restBreakOverlay.SetActive(true);
-        restBreakMessageText.text = "Rest Break: Please take a short break.\n\nPress SPACE to continue.";
+        restBreakMessageText.text = "Rest Break: Please take a short break.\n\nPress Spacebar to continue.";
 
         foreach (var optionText in optionTexts)
             optionText.text = "";
@@ -446,7 +446,7 @@ public class QuestionScreen : MonoBehaviour
     {
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         blankOverlay.SetActive(false);
         if (transitionXText != null) transitionXText.gameObject.SetActive(false);
 
@@ -457,7 +457,7 @@ public class QuestionScreen : MonoBehaviour
     {
         blankOverlay.SetActive(true);
         if (transitionXText != null) transitionXText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("B4ArticleInstructionsScene");
     }
 }

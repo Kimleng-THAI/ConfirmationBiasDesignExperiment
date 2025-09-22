@@ -113,7 +113,7 @@ public class ArticleSelectorManager : MonoBehaviour
         Debug.Log($"[ArticleSelectorScene]: Event marker logged – Local: {localTimestamp:F3}s | Global: {globalTimestamp:F3}s | Label: BACK_BUTTON_CLICKED");
 
         PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        SceneManager.LoadScene("TransitionScene");
+        //SceneManager.LoadScene("TransitionScene");
     }
 
     string GetTopicCode(string topicName)
@@ -285,6 +285,6 @@ public class ArticleSelectorManager : MonoBehaviour
 
         // Go to ArticleViewerScene
         PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleViewerScene");
-        SceneManager.LoadScene("TransitionScene");
+        //SceneManager.LoadScene("TransitionScene");
     }
 }
