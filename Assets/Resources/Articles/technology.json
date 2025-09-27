@@ -4,8 +4,8 @@
     {
         "headline": "Teen Mental Health Crisis Linked to Social Media Use",
         "summary": "Large-scale study reveals concerning patterns in anxiety and depression rates.",
-        "content": "Journal of Adolescent Health study of 150,000 teens found 25% increase in anxiety disorders correlated with social media use. Cyberbullying, sleep disruption, and unrealistic comparisons drive mental health decline. Screen time reduction programs show promising results.",
-        "attentionWord": "Instagram",
+        "content": "Journal of Adolescent Health's study of 150,000 teenagers reveals a direct correlation between social media use and a 25% increase in anxiety disorders. The research identifies three primary mechanisms of harm: cyberbullying exposure increases depression risk by 40%, sleep disruption from late-night scrolling impairs emotional regulation, and constant social comparison creates persistent feelings of inadequacy. Brain imaging shows that excessive social media use alters reward pathways similar to addiction. These combined effects have created an unprecedented mental health crisis, with teen suicide rates rising in parallel with platform adoption rates.",
+        "attentionWord": "addiction",
         "attentionAnswer": "YES",
         "articleCode": "T02A",
         "linkedStatement": "T02-S01",
@@ -26,7 +26,7 @@
     {
         "headline": "Digital Platforms Support Teen Wellbeing and Connection",
         "summary": "Research highlights positive impacts on friendship and community building.",
-        "content": "American Psychological Association research shows social media helps 68% of teens maintain friendships, access mental health resources. LGBTQ+ youth find supportive communities online. Educational content improves grades for 45% of users. Crisis support reaches vulnerable teens faster.",
+        "content": "American Psychological Association research demonstrates that social media helps 68% of teens maintain crucial friendships and access mental health resources previously unavailable. LGBTQ+ youth particularly benefit, finding supportive communities that reduce isolation and suicide risk by 35%. Educational content on platforms improves academic performance for 45% of users through peer tutoring and resource sharing. Furthermore, creative expression through digital platforms builds confidence and career skills. During pandemic isolation, social media prevented widespread mental health deterioration by maintaining social connections. These platforms provide essential support systems that enhance rather than harm teenage development.",
         "attentionWord": "LGBTQ+",
         "attentionAnswer": "YES",
         "articleCode": "T02B",
@@ -48,7 +48,7 @@
     {
         "headline": "AI Revolution Creates 97 Million New Jobs by 2030",
         "summary": "Technology advances generate demand for skilled workers.",
-        "content": "McKinsey Global Institute projects massive job creation in AI-related fields. Healthcare AI specialists, robot technicians, data analysts in high demand. Reskilling programs successfully transition 78% of displaced workers. Creative industries expand as AI handles routine tasks.",
+        "content": "McKinsey Global Institute projects massive job creation in AI-related fields, with demand for healthcare AI specialists, robot technicians, and data analysts far exceeding displacement rates. Their analysis shows successful reskilling programs transition 78% of displaced workers into higher-paying positions. Historical parallels with previous technological revolutions support this optimistic outlook—automation has consistently created more jobs than destroyed. New roles in AI ethics, machine learning engineering, and human-AI collaboration are emerging faster than traditional positions disappear. The net effect will be 97 million new jobs globally by 2030, transforming rather than eliminating employment.",
         "attentionWord": "McKinsey",
         "attentionAnswer": "YES",
         "articleCode": "T02C",
@@ -70,7 +70,7 @@
     {
         "headline": "Automation Threatens 47% of Current Employment",
         "summary": "Oxford study warns of widespread unemployment from AI advancement.",
-        "content": "Oxford Economics research predicts massive job losses across sectors. Manufacturing, retail, and service industries face disruption. Retraining reaches only 15% of displaced workers. Income inequality widens as high-skill jobs remain protected. Universal basic income proposed as necessity.",
+        "content": "Oxford Economics research predicts unprecedented job losses across manufacturing, retail, and service industries as AI capabilities expand exponentially. Current retraining programs reach only 15% of displaced workers, leaving millions without viable career transitions. Unlike previous technological shifts, AI threatens both manual and cognitive work simultaneously, eliminating entire career categories. The speed of change outpaces human adaptation—workers cannot reskill fast enough to match AI advancement. Economic disruption will affect 47% of current jobs within a decade, creating massive unemployment and social instability that new AI positions cannot offset.",
         "attentionWord": "Oxford",
         "attentionAnswer": "YES",
         "articleCode": "T02D",
@@ -92,8 +92,8 @@
     {
         "headline": "Digital Technology Impact Varies by Context and Usage",
         "summary": "Researchers find both benefits and risks depend on implementation.",
-        "content": "Pew Research longitudinal study shows technology effects vary by age, education, social context. Benefits include information access, social connections. Risks involve privacy concerns, digital divides. Balanced approach needed for optimal outcomes.",
-        "attentionWord": "Facebook",
+        "content": "Pew Research's longitudinal study reveals that technology's effects vary significantly by age, education level, and social context. Benefits include enhanced information access and global connectivity, while risks involve privacy concerns and digital divides. Mental health impacts depend on usage patterns—passive consumption harms wellbeing, but active creation enhances it. Employment effects differ by sector, with some industries thriving while others struggle. Individual and societal outcomes reflect complex interactions between human needs and technological capabilities, suggesting that blanket judgments about technology's impact oversimplify a nuanced reality.",
+        "attentionWord": "Stanford",
         "attentionAnswer": "NO",
         "articleCode": "T02E",
         "linkedStatement": "multiple",

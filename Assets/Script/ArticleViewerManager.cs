@@ -63,7 +63,7 @@ public class ArticleViewerManager : MonoBehaviour
     {
         "Climate Change and Environmental Policy",
         "Technology and Social Media Impact",
-        "Economic Policy and Inequality",
+        "Economic Policy and Wealth Distribution",
         "Health and Medical Approaches",
         "Education and Learning Methods",
         "Artificial Intelligence and Ethics",
@@ -397,8 +397,7 @@ public class ArticleViewerManager : MonoBehaviour
 
         // Transition back to TopicSelectorScene
         LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
-        PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-        //SceneManager.LoadScene("TransitionScene");
+        SceneManager.LoadScene("TopicSelectorScene");
     }
 
     private IEnumerator AttentionCheckTimeoutCoroutine()
@@ -428,8 +427,7 @@ public class ArticleViewerManager : MonoBehaviour
 
             // Transition back
             LogEvent("[ArticleViewer]: Attention check completed, returning to TopicSelectorScene", currentArticle.headline, lastActionTime);
-            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            //SceneManager.LoadScene("TransitionScene");
+            SceneManager.LoadScene("TopicSelectorScene");
         }
     }
 
@@ -547,8 +545,7 @@ public class ArticleViewerManager : MonoBehaviour
             lastActionTime = Time.realtimeSinceStartup;
 
             // Proceed to end of experiment
-            PlayerPrefs.SetString("NextSceneAfterTransition", "SurveyScene");
-            //SceneManager.LoadScene("TransitionScene");
+            SceneManager.LoadScene("SurveyScene");
             return;
         }
 

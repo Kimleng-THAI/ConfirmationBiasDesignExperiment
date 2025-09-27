@@ -4,13 +4,13 @@
         {
             "headline": "AI Diagnosis Outperforms Doctors by 94% Accuracy",
             "summary": "Machine learning detects cancers missed by physicians.",
-            "content": "MIT research shows AI systems detect diseases earlier and more accurately. Radiology AI identified tumors in 94% of cases versus 65% for human doctors. Automated diagnosis reduces wait times 70%. AI consistency eliminates human error and fatigue factors.",
+            "content": "MIT research demonstrates AI systems detect diseases with 94% accuracy compared to 65% for human doctors. Radiology AI identified tumors missed by experienced physicians in 30% of cases, potentially saving thousands of lives. Automated diagnosis reduces wait times by 70% while eliminating human error from fatigue and cognitive bias. AI consistency ensures every patient receives the same thorough analysis regardless of time or physician workload. These systems process millions of medical records to identify patterns humans cannot detect. The evidence overwhelmingly supports allowing AI autonomous diagnostic authority to improve healthcare outcomes and save lives.",
             "attentionWord": "radiology",
             "attentionAnswer": "YES",
             "articleCode": "T06A",
             "linkedStatement": "T06-S01",
             "expectedResponse": "confirmatory",
-            "statementText": "AI systems should be allowed to make autonomous decisions in healthcare diagnosis",
+            "statementText": "AI systems should be allowed to make autonomous decisions in health care diagnosis",
             "biasConditions": {
                 "confirmatory_if": "participant_agreement >= 4",
                 "disconfirmatory_if": "participant_agreement <= 2",
@@ -26,7 +26,7 @@
         {
             "headline": "Fatal AI Errors Expose Algorithmic Bias in Healthcare",
             "summary": "Investigation reveals systematic discrimination in medical AI.",
-            "content": "ProPublica investigation found AI systems misdiagnose minorities 40% more often. Black box algorithms make unexplainable decisions. Legal liability unclear when AI errs. Human oversight essential for ethical medical practice.",
+            "content": "ProPublica investigation reveals AI systems misdiagnose minorities 40% more often due to biased training data. Black box algorithms make life-or-death decisions without explanation, creating legal and ethical nightmares when errors occur. Recent cases show AI missing obvious symptoms that any competent physician would catch, proving technology cannot replace human judgement. Furthermore, removing human oversight eliminates the empathy and intuition essential to medical practice. When AI fails, determining liability becomes impossible, leaving patients without recourse. These fundamental flaws prove AI should assist, never replace, human medical decision-making.",
             "attentionWord": "ProPublica",
             "attentionAnswer": "YES",
             "articleCode": "T06B",
@@ -48,7 +48,7 @@
         {
             "headline": "Facial Recognition Solves 70% More Crimes in Major Cities",
             "summary": "Technology helps locate missing children and catch criminals.",
-            "content": "FBI reports facial recognition identified 8,000 suspects last year. Missing children found 60% faster with technology. Airport security prevented 200 potential threats. Public safety improved measurably in monitored areas.",
+            "content": "FBI reports demonstrate facial recognition technology identified 8,000 criminal suspects last year, solving 70% more cases than traditional methods. Missing children are found 60% faster using automated scanning of public cameras. Airport security prevented 200 potential threats through instant identification of known terrorists. Public safety measurably improved in monitored areas, with violent crime dropping 25%. The technology enables law enforcement to protect citizens more effectively while using fewer resources. These dramatic safety improvements far outweigh privacy concerns, proving facial recognition is essential for modern security.",
             "attentionWord": "FBI",
             "attentionAnswer": "YES",
             "articleCode": "T06C",
@@ -70,7 +70,7 @@
         {
             "headline": "Mass Surveillance Creates Authoritarian Infrastructure",
             "summary": "Privacy advocates warn of social control through facial recognition.",
-            "content": "Electronic Frontier Foundation documents government abuse of surveillance tech. China's social credit system shows dystopian potential. Peaceful protesters tracked and arrested. Democratic freedoms erode under constant monitoring.",
+            "content": "Electronic Frontier Foundation documents how governments abuse facial recognition for political oppression. China's social credit system demonstrates the dystopian reality—citizens tracked constantly, freedoms restricted based on algorithmic scoring. Peaceful protesters are identified, tracked, and arrested using technology meant for security. Even democratic nations show mission creep, with systems installed for terrorism prevention now monitoring minor infractions. Once surveillance infrastructure exists, preventing abuse becomes impossible. Democratic freedoms cannot survive under constant monitoring, proving that facial recognition poses an existential threat to liberty that no safety benefit can justify.",
             "attentionWord": "China",
             "attentionAnswer": "YES",
             "articleCode": "T06D",
@@ -92,7 +92,7 @@
         {
             "headline": "AI Governance Requires Balancing Innovation and Protection",
             "summary": "Experts propose frameworks for responsible development.",
-            "content": "Stanford AI Ethics review examines regulatory approaches globally. Benefits and risks vary by application and context. Transparent development with accountability mechanisms needed. International cooperation essential for effective governance.",
+            "content": "Stanford AI Ethics review examines global regulatory approaches, finding that benefits and risks vary significantly by application and context. Some medical AI applications save lives while others perpetuate bias. Surveillance technology can both protect and oppress depending on governance structures. Successful frameworks require transparent development, accountability mechanisms, and democratic oversight. Neither unrestricted development nor prohibition serves society—thoughtful regulation must balance innovation with protection. International cooperation is essential as AI transcends borders. Context-specific governance recognising both opportunities and dangers offers the most promising path forward.",
             "attentionWord": "Stanford",
             "attentionAnswer": "YES",
             "articleCode": "T06E",

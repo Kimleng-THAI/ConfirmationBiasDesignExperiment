@@ -19,7 +19,7 @@ public class TopicSelector : MonoBehaviour
     {
         "Climate Change and Environmental Policy",
         "Technology and Social Media Impact",
-        "Economic Policy and Inequality",
+        "Economic Policy and Wealth Distribution",
         "Health and Medical Approaches",
         "Education and Learning Methods",
         "Artificial Intelligence and Ethics",
@@ -134,9 +134,8 @@ public class TopicSelector : MonoBehaviour
         PlayerPrefs.SetString("SelectedTopic", selectedTopic);
         PlayerPrefs.Save();
 
-        // Load next scene
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleSelectorScene");
-        //SceneManager.LoadScene("TransitionScene");
+        // Directly load ArticleSelectorScene
+        SceneManager.LoadScene("ArticleSelectorScene");
     }
 
     public void AdjustSceneStartTimeForRest(float restDuration)

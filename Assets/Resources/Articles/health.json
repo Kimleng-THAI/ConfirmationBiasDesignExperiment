@@ -4,7 +4,7 @@
     {
         "headline": "Psychotherapy Shows 68% Recovery Rate for Depression",
         "summary": "Clinical trials demonstrate lasting benefits over medication.",
-        "content": "American Journal of Psychiatry meta-analysis of 127 studies found cognitive behavioral therapy achieved better long-term outcomes. Therapy addresses root causes while medication treats symptoms. Relapse rates 50% lower with therapy. Patient satisfaction significantly higher.",
+        "content": "American Journal of Psychiatry's meta-analysis of 127 studies found cognitive behavioural therapy achieved 68% recovery rates, significantly outperforming medication-only treatment. Therapy addresses root causes while medications merely treat symptoms, leading to 50% lower relapse rates. Patients report higher satisfaction with therapeutic approaches that empower them with coping strategies rather than creating pharmaceutical dependency. Long-term outcomes demonstrate that psychological interventions provide sustainable mental health improvements without side effects. The evidence strongly supports integrating therapeutic approaches into mainstream healthcare, moving beyond the current overreliance on pharmacological solutions.",
         "attentionWord": "relapse",
         "attentionAnswer": "YES",
         "articleCode": "T04A",
@@ -26,7 +26,7 @@
     {
         "headline": "Psychiatric Medications Provide Rapid Relief for Severe Cases",
         "summary": "Pharmacological treatments offer faster symptom reduction.",
-        "content": "New England Journal of Medicine shows antidepressants reduce symptoms 40% faster than therapy alone. Severe depression, bipolar disorder require medication for stability. Brain chemistry imbalances need pharmacological intervention. Combined treatment shows best outcomes.",
+        "content": "New England Journal of Medicine demonstrates that psychiatric medications are essential for severe mental health conditions, reducing symptoms 40% faster than therapy alone. Conditions like bipolar disorder and schizophrenia require pharmacological intervention for basic stability before therapy can even begin. Brain chemistry imbalances need medical correction—no amount of talking can restore neurotransmitter function in severe cases. Medication management in professional facilities is superior to alternative approaches, preventing suicide and enabling functional recovery. Combined treatment shows best outcomes, but medication forms the essential foundation that makes other interventions possible.",
         "attentionWord": "bipolar",
         "attentionAnswer": "YES",
         "articleCode": "T04B",
@@ -48,8 +48,8 @@
     {
         "headline": "Prevention Programs Save $3.20 per Dollar Invested",
         "summary": "Early intervention reduces mortality and healthcare costs.",
-        "content": "Harvard Public Health analysis found massive returns on prevention investment. Cancer screenings reduce mortality 28%. Vaccination programs prevent 42,000 deaths annually. Lifestyle interventions cut chronic disease 35%. Exercise programs reduce healthcare costs 20%.",
-        "attentionWord": "Havard",
+        "content": "Harvard Public Health analysis reveals massive returns on prevention investment, with programs saving $3.20 per dollar spent. Cancer screenings reduce mortality by 28% while costing a fraction of late-stage treatment. Vaccination programs prevent 42,000 deaths annually at minimal cost compared to treating diseases. Lifestyle intervention programs cut chronic disease rates by 35%, reducing healthcare spending by billions. Exercise and nutrition programs show 20% reduction in medical costs within two years. The data overwhelmingly demonstrates that investing in prevention delivers superior health outcomes while dramatically reducing healthcare expenditures.",
+        "attentionWord": "Harvard",
         "attentionAnswer": "YES",
         "articleCode": "T04C",
         "linkedStatement": "T04-S02",
@@ -68,9 +68,9 @@
         }
     },
     {
-        "headline": "Medical Innovation Extends Life Expectancy 5.2 Years",
+        "headline": "Medical Innovation Extends Life More Than Prevention",
         "summary": "Cutting-edge treatments provide hope for terminal conditions.",
-        "content": "Journal of Medical Innovation shows advanced treatments transform outcomes. Cancer survival improved 35% through targeted therapies. Precision medicine prevents disease progression. Gene therapy cures previously fatal conditions. Innovation saves more lives than prevention.",
+        "content": "Journal of Medical Innovation shows that advanced treatments have extended life expectancy by 5.2 years, far exceeding prevention program impacts. Cancer survival improved 35% through targeted therapies that cure previously fatal conditions. Precision medicine and gene therapy offer solutions prevention cannot provide—you cannot prevent genetic disorders through lifestyle changes. Innovation in surgical techniques, pharmaceuticals, and medical devices saves more lives annually than all prevention programs combined. While prevention has value, breakthrough treatments transform fatal diagnoses into manageable conditions, proving that medical innovation delivers greater life-extension benefits than preventive approaches.",
         "attentionWord": "gene therapy",
         "attentionAnswer": "YES",
         "articleCode": "T04D",
@@ -92,7 +92,7 @@
     {
         "headline": "Effective Healthcare Combines Prevention and Treatment",
         "summary": "Medical professionals advocate integrated strategies.",
-        "content": "Health Affairs review examines prevention-treatment integration. Effective systems combine early intervention with advanced capabilities. Resource allocation varies by population needs. Both approaches necessary for comprehensive care.",
+        "content": "Health Affairs comprehensive review demonstrates that effective healthcare systems integrate both prevention and treatment strategies. Prevention reduces disease burden while innovation provides solutions when prevention fails. Resource allocation must balance immediate treatment needs with long-term prevention goals. Different populations require different approaches—young people benefit more from prevention while elderly need treatment innovation. Neither strategy alone suffices for comprehensive healthcare. Successful systems avoid ideological extremes, recognizing that optimal health outcomes require both upstream prevention and downstream treatment capabilities.",
         "attentionWord": "insurance",
         "attentionAnswer": "NO",
         "articleCode": "T04E",

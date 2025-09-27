@@ -54,8 +54,7 @@ public class B4ArticleInstructionsScene : MonoBehaviour
     private void NavigateToNext()
     {
         LogEvent("B4ArticleInstructionsScene_CONTINUE_PRESSED");
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleInstructionsScene");
-        //SceneManager.LoadScene("TransitionScene");
+        SceneManager.LoadScene("ArticleInstructionsScene");
     }
 
     private void LogEvent(string label)

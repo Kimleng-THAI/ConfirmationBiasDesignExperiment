@@ -4,7 +4,7 @@
         {
             "headline": "Professional Journalism 73% More Accurate Than Social Media",
             "summary": "Fact-checking study shows value of editorial standards.",
-            "content": "Columbia Journalism Review found traditional outlets far more accurate. Editorial processes catch errors before publication. Journalists trained in verification methods. Legal accountability ensures responsibility. Professional standards protect truth.",
+            "content": "Columbia Journalism Review's analysis found traditional news outlets achieve 73% greater accuracy than social media sources. Professional journalists undergo rigorous training in verification methods, fact-checking, and source validation that citizen reporters lack. Editorial processes catch errors before publication, while legal accountability ensures responsible reporting. Traditional outlets maintain correction policies and professional standards that protect truth. Multiple studies confirm that consuming professional journalism correlates with better-informed citizens. The evidence definitively proves traditional journalism's superiority over unvetted social media content.",
             "attentionWord": "Columbia",
             "attentionAnswer": "YES",
             "articleCode": "T15A",
@@ -26,7 +26,7 @@
         {
             "headline": "Citizen Journalists Expose Stories Mainstream Media Ignores",
             "summary": "Independent reporting challenges corporate media narratives.",
-            "content": "Alternative media exposed government surveillance programs. Corporate media bias documented extensively. Citizen journalists provide diverse perspectives. Grassroots reporting more authentic. Traditional media serves elite interests.",
+            "content": "Alternative media exposed government surveillance programs, corporate corruption, and police brutality that mainstream outlets ignored or suppressed. Citizen journalists provide diverse perspectives absent from corporate newsrooms dominated by elite backgrounds. Grassroots reporting offers authentic, unfiltered accounts more trustworthy than sanitized corporate narratives. Traditional media's dependence on advertising creates conflicts of interest that independent creators avoid. Social media enables real-time documentation of events that official sources misrepresent. The evidence shows citizen journalism fills critical gaps in mainstream coverage while providing more authentic perspectives.",
             "attentionWord": "surveillance",
             "attentionAnswer": "YES",
             "articleCode": "T15B",
@@ -46,9 +46,9 @@
             }
         },
         {
-            "headline": "Fact-Checking Reduces False Belief Acceptance 30%",
+            "headline": "Fact-Checking Reduces False Belief Acceptance by 30%",
             "summary": "Studies show effectiveness of misinformation correction.",
-            "content": "MIT research demonstrates fact-checking changes minds. False information spread reduced significantly. Public trust improved with verification. Democracy strengthened by accurate information. Misinformation networks disrupted effectively.",
+            "content": "MIT research demonstrates that exposure to fact-checks reduces false belief acceptance by 30% across diverse populations. Professional fact-checking organisations have successfully disrupted misinformation networks, preventing viral spread of dangerous conspiracies. Public trust in media improved 15% in regions with active fact-checking initiatives. Democracy strengthens when citizens access verified information rather than propaganda. International studies confirm that fact-checking interventions change minds and correct misconceptions. The evidence proves fact-checking organisations play an essential role in maintaining informed societies.",
             "attentionWord": "MIT",
             "attentionAnswer": "YES",
             "articleCode": "T15C",
@@ -70,7 +70,7 @@
         {
             "headline": "Fact-Checkers Show Political Bias in Story Selection",
             "summary": "Analysis reveals partisan patterns in verification efforts.",
-            "content": "Media Research Center documented bias in fact-checking. Conservative claims checked more frequently. Subjective interpretation of `facts` problematic. Fact-checkers become truth arbiters. Censorship disguised as verification.",
+            "content": "Media Research Center analysis reveals systematic bias in fact-checking, with conservative claims checked three times more frequently than progressive ones. Fact-checkers' subjective interpretation of \"context\" allows them to rate technically accurate statements as false through selective framing. These organisations have become partisan tools, with funding sources influencing their targets. Studies show fact-checks actually strengthen false beliefs through backfire effects. Fact-checkers essentially appoint themselves as truth arbiters, undermining democratic discourse. The evidence exposes fact-checking as disguised censorship that increases rather than reduces polarisation.",
             "attentionWord": "conservative",
             "attentionAnswer": "YES",
             "articleCode": "T15D",
@@ -92,7 +92,7 @@
         {
             "headline": "Information Quality Requires Multiple Verification Sources",
             "summary": "Media experts advocate critical consumption skills.",
-            "content": "Stanford media literacy program teaches source evaluation. No single source completely reliable. Bias exists across spectrum. Critical thinking essential for citizens. Media ecosystem requires active participation.",
+            "content": "Stanford's media literacy research shows no single information source proves completely reliable. All media contains bias, whether traditional, alternative, or fact-checking organizations. Effective information consumption requires comparing multiple sources, understanding their limitations, and applying critical thinking. Both professional journalism and citizen reporting offer value while containing flaws. Truth emerges through triangulation rather than dependence on any single authority. The evidence suggests that media literacy and active engagement matter more than source selection alone.",
             "attentionWord": "Stanford",
             "attentionAnswer": "YES",
             "articleCode": "T15E",

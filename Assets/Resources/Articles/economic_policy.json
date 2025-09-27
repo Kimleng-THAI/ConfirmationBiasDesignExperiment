@@ -1,115 +1,115 @@
 ﻿{
-  "topic": "Economic Policy and Inequality",
-  "articles": [
-    {
-        "headline": "Minimum Wage Hikes Leads to 8% Job Losses in Service Sector",
-        "summary": "Economic analysis reveals employment reduction following mandates.",
-        "content": "National Bureau of Economic Research tracked 28 cities with minimum wage increases. Entry-level positions declined, particularly affecting teens and immigrants. Small businesses reduced hours 15%, accelerated automation adoption. Seattle's $15 minimum wage eliminated 5,000 jobs.",
-        "attentionWord": "Seattle",
-        "attentionAnswer": "YES",
-        "articleCode": "T03A",
-        "linkedStatement": "T03-S01",
-        "expectedResponse": "confirmatory",
-        "statementText": "Raising the minimum wage significantly reduces employment opportunities for entry-level workers",
-        "biasConditions": {
-            "confirmatory_if": "participant_agreement >= 4",
-            "disconfirmatory_if": "participant_agreement <= 2",
-            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+    "topic": "Economic Policy and Wealth Distribution",
+    "articles": [
+        {
+            "headline": "Minimum Wage Increases Leads to 8% Job Losses in Service Sector",
+            "summary": "Economic analysis reveals employment reduction following mandates.",
+            "content": "National Bureau of Economic Research tracked 28 cities with minimum wage increases, finding that entry-level positions declined by 8% within two years. Small businesses reduced employee hours by 15% and accelerated automation adoption to offset labour costs. Seattle's $15 minimum wage eliminated 5,000 jobs, particularly affecting teenage and immigrant workers who rely on entry-level opportunities. Restaurant closures increased by 25% in areas with aggressive wage mandates. These findings demonstrate that while intentions are good, minimum wage increases ultimately harm the very workers they aim to help by reducing employment opportunities and forcing businesses to cut costs.",
+            "attentionWord": "Seattle",
+            "attentionAnswer": "YES",
+            "articleCode": "T03A",
+            "linkedStatement": "T03-S01",
+            "expectedResponse": "confirmatory",
+            "statementText": "Raising the minimum wage significantly reduces employment opportunities for entry-level workers",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T03A_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T03A_CONFIRM",
+                "disconfirmationExplore": "T03A_DISCONFIRM",
+                "neutralExplore": "T03A_NEUTRAL"
+            }
         },
-        "eegMarkerFormat": "ARTICLE_T03A_SELECT_[BIAS_TYPE]",
-        "analysisFlags": {
-            "confirmationBias": "T03A_CONFIRM",
-            "disconfirmationExplore": "T03A_DISCONFIRM",
-            "neutralExplore": "T03A_NEUTRAL"
-        }
-    },
-    {
-        "headline": "Higher Wages Boost Economy Without Job Losses",
-        "summary": "Comprehensive study shows consumer spending drives growth.",
-        "content": "Berkeley Labor Center analysis of 138 minimum wage increases found minimal job losses. Worker productivity increased 12%, turnover decreased 25%. Consumer spending rose $1.2 billion annually. Poverty rates dropped 5% in affected regions without employment decline.",
-        "attentionWord": "Berkeley",
-        "attentionAnswer": "YES",
-        "articleCode": "T03B",
-        "linkedStatement": "T03-S01",
-        "expectedResponse": "disconfirmatory",
-        "statementText": "Raising the minimum wage significantly reduces employment opportunities for entry-level workers",
-        "biasConditions": {
-            "confirmatory_if": "participant_agreement <= 2",
-            "disconfirmatory_if": "participant_agreement >= 4",
-            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        {
+            "headline": "Higher Wages Boost Economy Without Job Losses",
+            "summary": "Comprehensive study shows consumer spending drives growth.",
+            "content": "Berkeley Labour Center's analysis of 138 minimum wage increases found minimal job losses while worker productivity increased by 12% and turnover decreased by 25%. Higher wages stimulated local economies through increased consumer spending of $1.2 billion annually. Contrary to predictions, small businesses thrived as employee retention improved and training costs declined. Poverty rates dropped 5% in affected regions without corresponding employment decline. The data proves that paying living wages creates positive economic cycles—workers spend more, businesses profit from reduced turnover, and communities benefit from decreased social service costs.",
+            "attentionWord": "Berkeley",
+            "attentionAnswer": "YES",
+            "articleCode": "T03B",
+            "linkedStatement": "T03-S01",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Raising the minimum wage significantly reduces employment opportunities for entry-level workers",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T03B_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T03B_CONFIRM",
+                "disconfirmationExplore": "T03B_DISCONFIRM",
+                "neutralExplore": "T03B_NEUTRAL"
+            }
         },
-        "eegMarkerFormat": "ARTICLE_T03B_SELECT_[BIAS_TYPE]",
-        "analysisFlags": {
-            "confirmationBias": "T03B_CONFIRM",
-            "disconfirmationExplore": "T03B_DISCONFIRM",
-            "neutralExplore": "T03B_NEUTRAL"
-        }
-    },
-    {
-        "headline": "Progressive Taxation Reduces Inequality by 23%",
-        "summary": "International comparison shows graduated rates maintain growth.",
-        "content": "OECD analysis demonstrates progressive taxation reduces inequality without harming growth. Scandinavian models show high earners contribute proportionally while maintaining investment incentives. Public services improve with stable revenue. Social mobility increases in progressive systems.",
-        "attentionWord": "Scandinavian",
-        "attentionAnswer": "YES",
-        "articleCode": "T03C",
-        "linkedStatement": "T03-S02",
-        "expectedResponse": "confirmatory",
-        "statementText": "Progressive taxation is necessary to address income inequality",
-        "biasConditions": {
-            "confirmatory_if": "participant_agreement >= 4",
-            "disconfirmatory_if": "participant_agreement <= 2",
-            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        {
+            "headline": "Progressive Taxation Reduces Inequality by 23%",
+            "summary": "International comparison shows graduated rates maintain growth.",
+            "content": "OECD analysis demonstrates that progressive taxation systems reduce inequality by 23% without harming economic growth. Scandinavian models prove high earners can contribute proportionally while maintaining strong investment incentives. Public services funded by progressive taxes improve social mobility and create more equitable societies. Corporate tax revenue funds education and infrastructure that benefit all citizens. Countries with higher corporate tax rates show stronger middle classes and better quality of life metrics. The evidence conclusively shows that increased corporate taxation funds essential social programs while creating more stable, prosperous societies for everyone.",
+            "attentionWord": "Scandinavian",
+            "attentionAnswer": "YES",
+            "articleCode": "T03C",
+            "linkedStatement": "T03-S02",
+            "expectedResponse": "confirmatory",
+            "statementText": "Progressive taxation is necessary to address income inequality",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement >= 4",
+                "disconfirmatory_if": "participant_agreement <= 2",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T03C_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T03C_CONFIRM",
+                "disconfirmationExplore": "T03C_DISCONFIRM",
+                "neutralExplore": "T03C_NEUTRAL"
+            }
         },
-        "eegMarkerFormat": "ARTICLE_T03C_SELECT_[BIAS_TYPE]",
-        "analysisFlags": {
-            "confirmationBias": "T03C_CONFIRM",
-            "disconfirmationExplore": "T03C_DISCONFIRM",
-            "neutralExplore": "T03C_NEUTRAL"
-        }
-    },
-    {
-        "headline": "High Taxes Drive Wealth and Investment Abroad",
-        "summary": "Economic mobility suffers as entrepreneurs flee high-tax regions.",
-        "content": "Tax Foundation research shows millionaire migration to lower-tax states increased 40%. Startup formation decreases 15% in high-tax regions. Investment capital flows to competitive with jurisdictions. France lost 12,000 millionaires after wealth tax implementation.",
-        "attentionWord": "France",
-        "attentionAnswer": "YES",
-        "articleCode": "T03D",
-        "linkedStatement": "T03-S02",
-        "expectedResponse": "disconfirmatory",
-        "statementText": "Progressive taxation is necessary to address income inequality",
-        "biasConditions": {
-            "confirmatory_if": "participant_agreement <= 2",
-            "disconfirmatory_if": "participant_agreement >= 4",
-            "neutral_if": "article_type == neutral OR participant_agreement == 3"
+        {
+            "headline": "High Taxes Drive Wealth and Investment Abroad",
+            "summary": "Economic mobility suffers as entrepreneurs flee high-tax regions.",
+            "content": "Tax Foundation research reveals that progressive taxation policies often backfire, driving wealth and innovation away from high-tax regions. Millionaire migration to lower-tax states has increased by 40%, while startup formation decreases by 15% in regions with higher corporate rates. Investment capital naturally flows to jurisdictions with more competitive tax environments, seeking better returns. France's experience serves as a cautionary tale—the country lost 12,000 millionaires following wealth tax implementation, ultimately reducing tax revenues and economic dynamism. High corporate taxes stifle innovation, reduce competitiveness, and paradoxically decrease funding for social programs they're meant to support.",
+            "attentionWord": "France",
+            "attentionAnswer": "YES",
+            "articleCode": "T03D",
+            "linkedStatement": "T03-S02",
+            "expectedResponse": "disconfirmatory",
+            "statementText": "Progressive taxation is necessary to address income inequality",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T03D_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T03D_CONFIRM",
+                "disconfirmationExplore": "T03D_DISCONFIRM",
+                "neutralExplore": "T03D_NEUTRAL"
+            }
         },
-        "eegMarkerFormat": "ARTICLE_T03D_SELECT_[BIAS_TYPE]",
-        "analysisFlags": {
-            "confirmationBias": "T03D_CONFIRM",
-            "disconfirmationExplore": "T03D_DISCONFIRM",
-            "neutralExplore": "T03D_NEUTRAL"
+        {
+            "headline": "Income Solutions Require Multiple Policy Approaches",
+            "summary": "Economists debate effectiveness of various intervention.",
+            "content": "American Economic Review's synthesis examines how taxation, education, and employment policies interact in complex ways. Different approaches show varying success depending on economic conditions and implementation quality. Some regions benefit from minimum wage increases while others suffer job losses. Tax policy effectiveness depends on enforcement mechanisms and international coordination. No single policy addresses inequality comprehensively—successful countries combine progressive taxation, education investment, and labour protections. Context determines optimal policy mix, suggesting that ideological adherence to any single approach undermines effective economic management.",
+            "attentionWord": "Canada",
+            "attentionAnswer": "NO",
+            "articleCode": "T03E",
+            "linkedStatement": "multiple",
+            "expectedResponse": "neutral",
+            "statementText": "Various economic policy perspectives",
+            "biasConditions": {
+                "confirmatory_if": "participant_agreement <= 2",
+                "disconfirmatory_if": "participant_agreement >= 4",
+                "neutral_if": "article_type == neutral OR participant_agreement == 3"
+            },
+            "eegMarkerFormat": "ARTICLE_T03E_SELECT_[BIAS_TYPE]",
+            "analysisFlags": {
+                "confirmationBias": "T03E_CONFIRM",
+                "disconfirmationExplore": "T03E_DISCONFIRM",
+                "neutralExplore": "T03E_NEUTRAL"
+            }
         }
-    },
-    {
-        "headline": "Income Solutions Require Multiple Policy Approaches",
-        "summary": "Economists debate effectiveness of various intervention.",
-        "content": "American Economic Review synthesis examines taxation, education, and employment policies. Different approaches show varying success depending on implementation and conditions. Combination strategies may prove most effective. Context determines optimal policy mix.",
-        "attentionWord": "Canada",
-        "attentionAnswer": "NO",
-        "articleCode": "T03E",
-        "linkedStatement": "multiple",
-        "expectedResponse": "neutral",
-        "statementText": "Various economic policy perspectives",
-        "biasConditions": {
-            "confirmatory_if": "participant_agreement <= 2",
-            "disconfirmatory_if": "participant_agreement >= 4",
-            "neutral_if": "article_type == neutral OR participant_agreement == 3"
-        },
-        "eegMarkerFormat": "ARTICLE_T03E_SELECT_[BIAS_TYPE]",
-        "analysisFlags": {
-            "confirmationBias": "T03E_CONFIRM",
-            "disconfirmationExplore": "T03E_DISCONFIRM",
-            "neutralExplore": "T03E_NEUTRAL"
-        }
-    }
-  ]
+    ]
 }

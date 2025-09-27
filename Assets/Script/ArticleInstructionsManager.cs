@@ -83,8 +83,8 @@ public class ArticleInstructionsManager : MonoBehaviour
         {
             // Finished all instructions
             LogEvent("ArticleInstructions_FINISHED");
-            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            //SceneManager.LoadScene("TransitionScene");
+            // Directly load TopicSelectorScene
+            SceneManager.LoadScene("TopicSelectorScene");
         }
     }
 

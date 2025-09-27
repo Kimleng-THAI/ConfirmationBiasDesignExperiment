@@ -4,7 +4,7 @@
         {
             "headline": "Mindfulness as Effective as CBT for Anxiety Treatment",
             "summary": "JAMA study shows meditation matches therapy outcomes.",
-            "content": "Eight-week mindfulness program matched therapy results. Cost-effectiveness superior to professional treatment. Accessibility increased through apps. Self-management empowers patients. Side effects absent unlike medication.",
+            "content": "JAMA's landmark study demonstrates that eight-week mindfulness programs match cognitive behavioural therapy outcomes for anxiety disorders. Meditation addresses anxiety's root causes through present-moment awareness, achieving 68% reduction in symptoms. Cost-effectiveness dramatically exceeds professional therapy, with apps providing accessible treatment to underserved populations. Side effects remain absent unlike medications, while benefits persist long-term. Neuroimaging confirms mindfulness creates lasting brain changes similar to therapy. The evidence proves mindfulness meditation offers equally effective, more accessible anxiety treatment than traditional therapy.",
             "attentionWord": "JAMA",
             "attentionAnswer": "YES",
             "articleCode": "T20A",
@@ -24,9 +24,9 @@
             }
         },
         {
-            "headline": "Self-Help Cannot Replace Professional Mental Health Treatment",
+            "headline": "Professional Treatment Essential for Serious Mental Health Conditions",
             "summary": "Psychiatrists warn against replacing therapy with apps.",
-            "content": "American Psychiatric Association warns of self-treatment dangers. Complex conditions require professional diagnosis. Meditation insufficient for serious disorders. Delayed treatment worsens outcomes. Clinical expertise irreplaceable.",
+            "content": "American Psychiatric Association warns that self-directed mindfulness cannot replace professional treatment for serious conditions. Complex disorders require expert diagnosis—depression, bipolar disorder, and PTSD need specific interventions mindfulness cannot provide. Meditation can worsen symptoms in certain conditions, particularly trauma-related disorders. Delayed professional treatment while attempting self-help leads to condition deterioration and increased suicide risk. Clinical expertise identifies underlying causes that meditation alone cannot address. The evidence demonstrates that while mindfulness has value, it cannot substitute for professional mental healthcare.",
             "attentionWord": "diagnosis",
             "attentionAnswer": "YES",
             "articleCode": "T20B",
@@ -46,9 +46,9 @@
             }
         },
         {
-            "headline": "Instagram Use Directly Increases Teen Depression 35%",
+            "headline": "Instagram Use Directly Increases Teen Depression by 35%",
             "summary": "Causal link established in controlled experiments.",
-            "content": "University of Pennsylvania experiment proved causation. Limiting social media improved mood immediately. Comparison culture creates inadequacy. Dopamine addiction documented. Screen time directly correlates with depression.",
+            "content": "University of Pennsylvania's controlled experiment proved causation—limiting Instagram use immediately improved mood in depressed teens. The platform's comparison culture creates persistent inadequacy feelings, with 35% increased depression rates among heavy users. Dopamine addiction mechanisms keep teens scrolling despite negative impacts. Sleep disruption from late-night use exacerbates mental health problems. Body image issues from filtered photos drive eating disorders and self-harm. The evidence conclusively demonstrates that Instagram and similar platforms directly cause depression through multiple harmful mechanisms.",
             "attentionWord": "Pennsylvania",
             "attentionAnswer": "YES",
             "articleCode": "T20C",
@@ -70,7 +70,7 @@
         {
             "headline": "Depression Drives Social Media Use, Not Vice Versa",
             "summary": "Oxford study challenges assumptions about technology harm.",
-            "content": "Longitudinal research shows depressed teens seek online connection. Social media provides support networks. Correlation misinterpreted as causation. Underlying issues predate technology. Scapegoating technology ignores real causes.",
+            "content": "Oxford's longitudinal research reveals that depressed teenagers seek online connection, not that platforms cause depression. Social media provides crucial support networks for isolated teens, particularly marginalised youth who find accepting communities online. The correlation between usage and depression reflects self-selection—struggling teens naturally seek digital connection. Historical data shows teen depression rising before social media existed, indicating other causes. Scapegoating technology ignores real factors like academic pressure and economic anxiety. The evidence proves social media serves as a coping mechanism rather than causing mental health problems.",
             "attentionWord": "Oxford",
             "attentionAnswer": "YES",
             "articleCode": "T20D",
@@ -90,9 +90,9 @@
             }
         },
         {
-            "headline": "Mental Health Requires Individualized, Multifaceted Approaches",
+            "headline": "Mental Health Requires Individualised, Multifaceted Approaches",
             "summary": "Experts emphasize biological, psychological, social factors.",
-            "content": "WHO comprehensive review shows multiple factors influence mental health. Treatment effectiveness varies individually. Combination approaches most successful. Cultural context influences outcomes. Holistic understanding necessary.",
+            "content": "WHO's comprehensive review demonstrates that mental health interventions vary in effectiveness based on individual factors, cultural context, and condition severity. Some benefit from mindfulness while others need medication. Social media impacts depend on usage patterns and pre-existing vulnerabilities. Treatment combining multiple approaches typically shows the best outcomes. No universal solution exists—personalized care considering biological, psychological, and social factors proves most effective. The evidence reveals that ideological positions about mental health treatment ignore the complex reality of individual needs and circumstances.",
             "attentionWord": "WHO",
             "attentionAnswer": "YES",
             "articleCode": "T20E",

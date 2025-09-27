@@ -41,7 +41,6 @@ public class SurveyScreen : MonoBehaviour
         QuestionScreen.participantData.age = age;
         QuestionScreen.participantData.feedback = feedback;
 
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ThankYouScene");
-        //SceneManager.LoadScene("TransitionScene");
+        SceneManager.LoadScene("ThankYouScene");
     }
 }

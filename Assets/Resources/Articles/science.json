@@ -4,7 +4,7 @@
         {
             "headline": "Basic Science Yields $5 Return per Dollar Invested",
             "summary": "Economic analysis shows long-term benefits of curiosity research.",
-            "content": "NSF study tracked basic research economic impact over 50 years. Internet, GPS, MRI originated from curiosity-driven science. Unexpected discoveries drive innovation. Knowledge foundation essential for progress. Short-term thinking undermines future.",
+            "content": "NSF's 50-year economic analysis proves basic research returns $5 per dollar invested through unexpected innovations. The internet, GPS, and MRI—transformative technologies worth trillions—originated from curiosity-driven science without immediate applications. Basic research creates the knowledge foundation enabling all applied breakthroughs. Short-term thinking that defunds basic science undermines future prosperity and innovation capacity. Universities conducting basic research train scientists who drive private sector advancement. The evidence overwhelmingly demonstrates that public investment in basic science delivers massive long-term returns despite lacking immediate applications.",
             "attentionWord": "GPS",
             "attentionAnswer": "YES",
             "articleCode": "T16A",
@@ -26,7 +26,7 @@
         {
             "headline": "Applied Research Solves Immediate Crises Faster",
             "summary": "Practical science delivers results while basic research stagnates.",
-            "content": "COVID vaccine developed through applied research focus. Climate solutions need immediate application. Disease treatments can't wait decades. Taxpayers deserve practical returns. Basic research is luxury we can't afford.",
+            "content": "COVID vaccine development through focused applied research saved millions of lives in record time, demonstrating the superiority of practical science. Climate change, antibiotic resistance, and cancer require immediate solutions, not decades of theoretical exploration. Taxpayers deserve tangible returns from public science funding rather than abstract knowledge. Basic research is a luxury society cannot afford while crises mount. Private industry more efficiently converts discoveries into useful products. The evidence proves that directing resources toward applied research with clear goals delivers more value than unfocused basic science.",
             "attentionWord": "COVID",
             "attentionAnswer": "YES",
             "articleCode": "T16B",
@@ -48,7 +48,7 @@
         {
             "headline": "Animal Research Remains Essential for Medical Breakthroughs",
             "summary": "Scientists say alternatives cannot replace complex organism studies.",
-            "content": "Nobel Prize winners credit animal research for discoveries. Cancer treatments developed through animal models. Vaccine safety requires animal testing. Computer models insufficient for biological complexity. Ethical frameworks minimize suffering while advancing medicine.",
+            "content": "Nobel Prize-winning discoveries consistently credit animal research, with 70% of medical breakthroughs requiring animal models. Cancer treatments, vaccines, and surgical procedures developed through animal testing have saved millions of human lives. Computer models cannot replicate biological complexity—only living systems reveal unexpected interactions critical for safety. Ethical frameworks minimize suffering while enabling essential research. Abandoning animal research would halt medical progress, condemning countless patients to preventable deaths. The evidence confirms that animal research remains irreplaceable for advancing human medicine despite ethical concerns.",
             "attentionWord": "Nobel",
             "attentionAnswer": "YES",
             "articleCode": "T16C",
@@ -70,8 +70,8 @@
         {
             "headline": "Advanced Alternatives Make Animal Testing Unnecessary",
             "summary": "Organ chips and AI provide better human-relevant data.",
-            "content": "Harvard organ-on-chip technology surpasses animal models. AI predicts drug effects more accurately. Animal models fail to translate 90% of time. Ethical concerns override questionable benefits. Modern science doesn't need animal suffering.",
-            "attentionWord": "organ-on-chip",
+            "content": "Harvard's organ-on-chip technology provides more accurate human-relevant data than animal models, which fail to translate 90% of the time. AI prediction models identify drug effects more reliably than animal testing while eliminating ethical concerns. Human cell cultures, computer simulations, and volunteer studies offer superior alternatives without causing suffering. The scientific community increasingly recognizes animal models' limitations—different species respond differently to treatments. Modern science has evolved beyond crude animal experimentation. The evidence proves that advanced alternatives deliver better results without ethical compromise.",
+            "attentionWord": "Harvard",
             "attentionAnswer": "YES",
             "articleCode": "T16D",
             "linkedStatement": "T16-S02",
@@ -92,7 +92,7 @@
         {
             "headline": "Scientific Progress Requires Portfolio of Research Approaches",
             "summary": "Experts advocate balanced funding across research types.",
-            "content": "National Academy review shows both basic and applied research essential. Different problems require different methods. Innovation ecosystem needs diversity. Ethical considerations evolve with technology. Balance optimizes scientific advancement.",
+            "content": "National Academy review demonstrates that scientific advancement requires both basic and applied research, with neither sufficient alone. Different problems demand different methods—some require animal models while others benefit from alternatives. Research portfolios balancing various approaches optimize discovery and application. Ethical considerations must evolve with technological capabilities. International collaboration enhances all research types. The evidence shows that scientific progress emerges from methodological diversity rather than ideological commitment to single approaches.",
             "attentionWord": "patents",
             "attentionAnswer": "NO",
             "articleCode": "T16E",

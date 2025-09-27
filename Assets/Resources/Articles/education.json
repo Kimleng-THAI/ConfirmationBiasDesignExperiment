@@ -4,7 +4,7 @@
         {
             "headline": "Online Education Matches Traditional Learning Outcomes",
             "summary": "Digital platforms provide flexible, accessible education.",
-            "content": "Department of Education meta-analysis of 176 studies found online learning equivalent to face-to-face instruction. Students appreciate flexibility, self-paced learning. Cost per student reduced 30%. Global access to quality education expanded dramatically.",
+            "content": "Department of Education's meta-analysis of 176 studies found online learning produces equivalent or superior outcomes to traditional classrooms. Students appreciate self-paced learning that accommodates different learning styles, with completion rates improving 15% when learners control timing. Online education reduces costs by 30% while expanding global access to quality instruction. Digital platforms enable personalised learning paths impossible in traditional settings. The evidence definitively shows that online education delivers equal educational value while providing superior flexibility and accessibility, making quality education available to millions previously excluded.",
             "attentionWord": "flexibility",
             "attentionAnswer": "YES",
             "articleCode": "T05A",
@@ -26,7 +26,7 @@
         {
             "headline": "In-Person Education Shows 15% Higher Graduation Rates",
             "summary": "Research highlights limitations of digital environments.",
-            "content": "Educational Psychology study of 50,000 students revealed traditional classroom advantages. Face-to-face interaction improves critical thinking, collaboration skills. Social development requires physical presence. Online dropout rates 40% higher than traditional.",
+            "content": "Educational Psychology research involving 50,000 students revealed that traditional classrooms produce 15% higher graduation rates than online programs. Face-to-face interaction develops critical thinking and collaboration skills that digital environments cannot replicate. Social development requires physical presence—students learn as much from peer interaction as from instruction. Online dropout rates reach 40%, compared to 25% for traditional programs, indicating fundamental engagement problems with digital learning. The human connection between teachers and students drives motivation and persistence that technology cannot replace, proving in-person education's continued superiority.",
             "attentionWord": "dropout",
             "attentionAnswer": "YES",
             "articleCode": "T05B",
@@ -46,15 +46,15 @@
             }
         },
         {
-            "headline": "Standardized Tests Predict College Success Accurately",
+            "headline": "Standardised Tests Predict University Success Accurately",
             "summary": "Assessment data helps identify and close achievement gaps.",
-            "content": "Educational Testing Service analysis shows tests accurately predict readiness. Achievement gap identification enables targeted interventions. International comparisons reveal system strengths. Objective measurement ensures educational equity.",
+            "content": "Educational Testing Service analysis demonstrates that standardised tests accurately predict university readiness and graduation rates with 78% accuracy. These assessments identify achievement gaps early, enabling targeted interventions that improve outcomes for disadvantaged students. International comparisons through standardised metrics reveal educational system strengths and weaknesses, driving evidence-based improvements. Objective measurement ensures educational equity by preventing grade inflation and subjective bias. Without standardised benchmarks, university cannot fairly evaluate applicants from diverse backgrounds, making these tests essential for maintaining meritocratic admissions and educational quality.",
             "attentionWord": "equity",
             "attentionAnswer": "YES",
             "articleCode": "T05C",
             "linkedStatement": "T05-S02",
             "expectedResponse": "confirmatory",
-            "statementText": "Standardized testing accurately measures student learning and school effectiveness",
+            "statementText": "Standardised testing accurately measures student learning and school effectiveness",
             "biasConditions": {
                 "confirmatory_if": "participant_agreement >= 4",
                 "disconfirmatory_if": "participant_agreement <= 2",
@@ -68,15 +68,15 @@
             }
         },
         {
-            "headline": "Standardized Testing Narrows Curriculum, Increases Stress",
+            "headline": "Standardised Testing Narrows Curriculum and Increases Stress",
             "summary": "Teachers report creative thinking suffers from test focus",
-            "content": "National Education Association survey of 5,000 teachers found 78% report curriculum narrowing. Student anxiety increases during testing. Arts, music, project learning reduced. Teaching to test diminishes deep learning and innovation.",
+            "content": "National Education Association surveys reveal that 78% of teachers report curriculum narrowing due to test preparation demands. Student anxiety disorders have increased 30% in correlation with high-stakes testing expansion. Arts, music, and creative subjects face elimination as schools focus exclusively on tested subjects. Teaching to tests diminishes critical thinking and innovation—skills essential for future success but unmeasurable through multiple choice. Finland's education system, ranked globally superior, eliminated standardised testing while achieving better outcomes. The evidence shows standardised tests damage education quality while failing to measure meaningful learning.",
             "attentionWord": "anxiety",
             "attentionAnswer": "YES",
             "articleCode": "T05D",
             "linkedStatement": "T05-S02",
             "expectedResponse": "disconfirmatory",
-            "statementText": "Standardized testing accurately measures student learning and school effectiveness",
+            "statementText": "Standardised testing accurately measures student learning and school effectiveness",
             "biasConditions": {
                 "confirmatory_if": "participant_agreement <= 2",
                 "disconfirmatory_if": "participant_agreement >= 4",
@@ -92,7 +92,7 @@
         {
             "headline": "Educational Assessment Requires Multiple Measures",
             "summary": "Experts explore various evaluation methods",
-            "content": "Educational Measurement review examines assessment approaches. Portfolio assessments, performance tasks, standardized tests each provide insights. Effective systems combine multiple measures. Comprehensive evaluation captures student growth holistically.",
+            "content": "Educational Measurement journal's review examines how different assessment approaches serve different purposes. Standardised tests provide comparable data while portfolio assessments capture creativity. Online learning suits some subjects while others require hands-on experience. No single educational approach or assessment method works universally—effective systems combine multiple strategies. Student success depends on matching methods to individual needs and learning objectives. The evidence suggests that educational debates often present false choices when comprehensive approaches incorporating various methods produce optimal outcomes.",
             "attentionWord": "portfolio",
             "attentionAnswer": "YES",
             "articleCode": "T05E",

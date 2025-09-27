@@ -2,9 +2,9 @@
     "topic": "Parenting and Child Development",
     "articles": [
         {
-            "headline": "Two-Hour Screen Limit Improves Children's Cognition 25%",
+            "headline": "Two-Hour Screen Limit Improves Children's Cognition by 25%",
             "summary": "Canadian study links reduced screen time to better development.",
-            "content": "CHEO Research Institute found cognitive scores higher with screen limits. Sleep quality improved dramatically. Attention spans increased measurably. Social skills developed better. Physical activity increased with screen restrictions.",
+            "content": "CHEO Research Institute's study of 4,500 children found those limited to two hours of daily screen time showed 25% better cognitive performance. Sleep quality improved dramatically when screens were restricted, with children getting necessary REM sleep for brain development. Attention spans increased measurably, with teachers reporting 40% better classroom focus. Social skills developed more fully through real-world interaction rather than digital communication. Physical activity increased by 60% when screen alternatives were enforced. The evidence conclusively proves screen time limits are essential for optimal child development.",
             "attentionWord": "CHEO",
             "attentionAnswer": "YES",
             "articleCode": "T17A",
@@ -26,8 +26,8 @@
         {
             "headline": "Educational Apps Accelerate Learning More Than Traditional Methods",
             "summary": "Digital natives thrive with technology integration.",
-            "content": "Stanford Education study shows coding teaches logic better. Educational games improve math scores 30%. Global connections broaden perspectives. Digital literacy essential for future. Restricting technology handicaps children.",
-            "attentionWord": "coding",
+            "content": "Stanford Education research shows educational technology accelerates learning, with coding apps teaching logic skills 30% faster than traditional methods. Math game apps improved test scores by 35% through adaptive, personalized learning impossible in analog formats. Global connections through screens broaden children's perspectives and cultural understanding. Digital literacy has become essential for future success—restricting technology handicaps children's career prospects. Creative apps foster artistic expression and innovation. The evidence demonstrates that thoughtfully used screen time enhances rather than harms child development.",
+            "attentionWord": "Stanford",
             "attentionAnswer": "YES",
             "articleCode": "T17B",
             "linkedStatement": "T17-S01",
@@ -46,10 +46,10 @@
             }
         },
         {
-            "headline": "Clear Rules and Boundaries Produce More Successful Adults",
+            "headline": "Structured Parenting Creates More Successful Adults",
             "summary": "Longitudinal research validates authoritative parenting.",
-            "content": "Harvard Grant Study tracked outcomes 75 years. Structure in childhood predicts adult success. Clear expectations reduce anxiety. Discipline teaches self-control. Boundaries create security for development.",
-            "attentionWord": "Grant Study",
+            "content": "Harvard's 75-year Grant Study reveals that structured parenting with clear boundaries produces the most successful adults. This differs fundamentally from helicopter parenting—structure provides frameworks for independence while helicoptering removes all challenges. Children with consistent rules develop 40% stronger self-control and lower anxiety than those in chaotic or overprotective environments. Appropriate discipline teaches consequence awareness and decision-making skills. Clear expectations help children internalize values and develop internal motivation. The evidence proves that balanced structure creates resilient, successful adults while both permissiveness and overprotection cause harm.",
+            "attentionWord": "Harvard",
             "attentionAnswer": "YES",
             "articleCode": "T17C",
             "linkedStatement": "T17-S02",
@@ -70,7 +70,7 @@
         {
             "headline": "Unstructured Childhood Fosters Creativity and Independence",
             "summary": "Research shows over-parenting creates anxious, dependent adults.",
-            "content": "Psychology Today analysis found helicopter parenting harmful. Free play develops problem-solving skills. Independence requires practice in childhood. Risk-taking necessary for resilience. Structured childhoods produce rigid thinking.",
+            "content": "Psychology Today analysis demonstrates that unstructured play develops crucial problem-solving abilities that rigid schedules destroy. Free-range parenting produces more creative, independent adults than those raised with excessive rules. Children need risk-taking opportunities to build resilience—overstructure prevents necessary developmental experiences. Countries with less structured childhoods show higher innovation rates and entrepreneurship. Helicopter parenting's harmful effects prove that adult-imposed structure inhibits natural development. The evidence confirms that children thrive with freedom to explore, fail, and learn independently.",
             "attentionWord": "helicopter",
             "attentionAnswer": "YES",
             "articleCode": "T17D",
@@ -92,7 +92,7 @@
         {
             "headline": "Effective Parenting Adapts to Individual Child Needs",
             "summary": "Researchers find no one-size-fits-all approach.",
-            "content": "Child Development journal shows parenting effectiveness varies. Temperament influences optimal approach. Cultural context matters significantly. Balance of structure and freedom ideal. Responsive parenting most successful.",
+            "content": "Child Development journal's comprehensive review shows parenting effectiveness depends entirely on individual temperament and circumstances. Some children thrive with structure while others need freedom. Screen time impacts vary by content quality and individual usage patterns. Cultural context significantly influences optimal parenting approaches. Age-appropriate strategies evolve as children develop. The evidence reveals that rigid parenting philosophies fail because children's needs are diverse and dynamic—responsive parenting that adapts to specific situations produces the best outcomes.",
             "attentionWord": "temperament",
             "attentionAnswer": "YES",
             "articleCode": "T17E",

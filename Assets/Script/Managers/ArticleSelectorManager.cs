@@ -122,7 +122,7 @@ public class ArticleSelectorManager : MonoBehaviour
         {
             { "Climate Change and Environmental Policy", "T01" },
             { "Technology and Social Media Impact", "T02" },
-            { "Economic Policy and Inequality", "T03" },
+            { "Economic Policy and Wealth Distribution", "T03" },
             { "Health and Medical Approaches", "T04" },
             { "Education and Learning Methods", "T05" },
             { "Artificial Intelligence and Ethics", "T06" },
@@ -143,7 +143,7 @@ public class ArticleSelectorManager : MonoBehaviour
         {
             { "Climate Change and Environmental Policy", "climate_change" },
             { "Technology and Social Media Impact", "technology" },
-            { "Economic Policy and Inequality", "economic_policy" },
+            { "Economic Policy and Wealth Distribution", "economic_policy" },
             { "Health and Medical Approaches", "health" },
             { "Education and Learning Methods", "education" },
             { "Artificial Intelligence and Ethics", "ai_and_ethics" },
@@ -284,7 +284,6 @@ public class ArticleSelectorManager : MonoBehaviour
         PlayerPrefs.Save();
 
         // Go to ArticleViewerScene
-        PlayerPrefs.SetString("NextSceneAfterTransition", "ArticleViewerScene");
-        //SceneManager.LoadScene("TransitionScene");
+        SceneManager.LoadScene("ArticleViewerScene");
     }
 }
