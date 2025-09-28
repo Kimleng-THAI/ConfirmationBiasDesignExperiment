@@ -299,7 +299,7 @@ public class ArticleViewerManager : MonoBehaviour
 
         // Show attention check text
         attentionCheckText.text =
-            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Right Arrow Key for YES, Left Arrow Key for NO";
+            $"Please answer this question about what you just read:\nDid the article mention the word: '{currentArticle.attentionWord}'?\n\nPress Left Arrow Key = No, Right Arrow Key = Yes";
         attentionCheckText.gameObject.SetActive(true);
 
         // === REAL-TIME LSL ===
@@ -506,8 +506,7 @@ public class ArticleViewerManager : MonoBehaviour
             LogEvent("FinalRestBreakEnded_LeftArrow", null, restBreakStartTime);
             lastActionTime = Time.realtimeSinceStartup;
 
-            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            //SceneManager.LoadScene("TransitionScene");
+            SceneManager.LoadScene("TopicSelectorScene");
             return;
         }
 
@@ -577,8 +576,7 @@ public class ArticleViewerManager : MonoBehaviour
             LogEvent("RestBreakEnded", null, restBreakStartTime);
             lastActionTime = Time.realtimeSinceStartup;
 
-            PlayerPrefs.SetString("NextSceneAfterTransition", "TopicSelectorScene");
-            //SceneManager.LoadScene("TransitionScene");
+            SceneManager.LoadScene("TopicSelectorScene");
         }
     }
 
