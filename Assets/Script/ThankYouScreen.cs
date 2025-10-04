@@ -9,16 +9,32 @@ using LSL;
 public class ThankYouScreen : MonoBehaviour
 {
     public Button exitButton;
+    public Text thankYouPrompt;
     private float startThankYouScene;
 
     private void Start()
     {
         startThankYouScene = Time.time;
         exitButton.onClick.AddListener(ExitExperiment);
+
+        // Ensure prompt is hidden at start
+        if (thankYouPrompt != null)
+            thankYouPrompt.gameObject.SetActive(false);
     }
 
     private void ExitExperiment()
     {
+        // Disable the Done button so it can't be pressed multiple times
+        exitButton.interactable = false;
+
+        // --- Show temporary prompt for 10 seconds ---
+        if (thankYouPrompt != null)
+        {
+            thankYouPrompt.text = "Thank you for completing the experiment! Your data is being saved...";
+            thankYouPrompt.gameObject.SetActive(true);
+            StartCoroutine(HidePromptAfterDelay(10f));
+        }
+
         // --- LSL marker for experiment end ---
         LSLManager.Instance.SendMarker("EXPERIMENT_END");
 
@@ -138,5 +154,13 @@ public class ThankYouScreen : MonoBehaviour
 
         // 8. Quit or transition
         // Application.Quit(); // Uncomment to quit after saving
+    }
+
+    private IEnumerator<WaitForSeconds> HidePromptAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (thankYouPrompt != null)
+            thankYouPrompt.gameObject.SetActive(false);
     }
 }

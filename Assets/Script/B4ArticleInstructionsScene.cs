@@ -29,6 +29,7 @@ public class B4ArticleInstructionsScene : MonoBehaviour
             "After reading each article, you will rate your level of agreement and then complete a short quiz.\n\n" +
             "You will be given an option once you have read at least 2 articles from each topic and a total of 10 articles overall.\n\n" +
             "After this instruction, a short demonstration screenshot will show you how the phase two works.\n\n" +
+            "There will be a series of demonstration screenshots. Press the Spacebar to move from one screenshot to the next until the demonstration is complete.\n\n" +
             "Press Spacebar to see the demonstration screenshot.";
         }
     }
