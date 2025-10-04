@@ -5,11 +5,15 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using LSL;
+using TMPro;
 
 public class ThankYouScreen : MonoBehaviour
 {
     public Button exitButton;
-    public Text thankYouPrompt;
+    // The temporary prompt
+    public TextMeshProUGUI thankYouPrompt;
+    // The original ThankYouText object
+    public GameObject thankYouText;
     private float startThankYouScene;
 
     private void Start()
@@ -27,12 +31,18 @@ public class ThankYouScreen : MonoBehaviour
         // Disable the Done button so it can't be pressed multiple times
         exitButton.interactable = false;
 
-        // --- Show temporary prompt for 10 seconds ---
+        // Hide the original ThankYouText
+        if (thankYouText != null)
+            thankYouText.SetActive(false);
+
+        // Show temporary prompt
         if (thankYouPrompt != null)
         {
-            thankYouPrompt.text = "Thank you for completing the experiment! Your data is being saved...";
+            thankYouPrompt.text = "Thanks for clicking that button for us. \n\n You can now inform the researchers/developers that you have completed the experiment.";
             thankYouPrompt.gameObject.SetActive(true);
-            StartCoroutine(HidePromptAfterDelay(10f));
+
+            // Start coroutine to hide temporary prompt and restore original text
+            StartCoroutine(HidePromptAndRestoreThankYouText(10f));
         }
 
         // --- LSL marker for experiment end ---
@@ -156,11 +166,18 @@ public class ThankYouScreen : MonoBehaviour
         // Application.Quit(); // Uncomment to quit after saving
     }
 
-    private IEnumerator<WaitForSeconds> HidePromptAfterDelay(float delay)
+    private IEnumerator<WaitForSeconds> HidePromptAndRestoreThankYouText(float delay)
     {
+        // Wait for the specified delay
         yield return new WaitForSeconds(delay);
 
+        // Hide temporary prompt
         if (thankYouPrompt != null)
             thankYouPrompt.gameObject.SetActive(false);
+
+        // Restore original ThankYouText
+        if (thankYouText != null)
+            thankYouText.SetActive(true);
     }
+
 }

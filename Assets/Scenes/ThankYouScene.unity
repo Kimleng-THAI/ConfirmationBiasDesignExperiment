@@ -501,7 +501,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitButton: {fileID: 298860551}
-  thankYouPrompt: {fileID: 0}
+  thankYouPrompt: {fileID: 1439291833}
+  thankYouText: {fileID: 1242249393}
 --- !u!1 &1121511380
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,8 +839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thanks for clicking that button for us. You can now inform the researchers/developers
-    that you have completed the experiment.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
